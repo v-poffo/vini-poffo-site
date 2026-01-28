@@ -438,8 +438,8 @@ p {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 0;
 }
 
 .project-card {
@@ -450,6 +450,15 @@ p {
     cursor: pointer;
     text-decoration: none;
     color: inherit;
+    border-top: 1px solid var(--primary-black);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 .project-card:hover {
