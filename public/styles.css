@@ -553,14 +553,19 @@ p {
 
 .about-text p {
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--primary-black);
-    text-align: left;
+    text-align: justify;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    margin: 0 0 1.2rem 0;
+    margin: 0 0 1.8rem 0;
     padding: 0;
-    max-width: 90%;
+    max-width: 100%;
+}
+
+.about-text strong {
+    font-weight: 700;
+    color: var(--primary-black);
 }
 
 .about-container {
@@ -795,11 +800,11 @@ p {
 
     .about-text p {
         font-size: 0.9rem;
-        line-height: 1.6;
-        text-align: left;
+        line-height: 1.7;
+        text-align: justify;
         word-wrap: break-word;
         overflow-wrap: break-word;
-        margin: 0 0 1.2rem 0;
+        margin: 0 0 1.8rem 0;
         padding: 0;
         max-width: 100%;
     }
