@@ -553,13 +553,14 @@ p {
 
 .about-text p {
     font-size: 0.95rem;
-    line-height: 1.8;
+    line-height: 1.6;
     color: var(--primary-black);
-    text-align: justify;
+    text-align: left;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 1.2rem 0;
     padding: 0;
+    max-width: 90%;
 }
 
 .about-container {
@@ -794,12 +795,13 @@ p {
 
     .about-text p {
         font-size: 0.9rem;
-        line-height: 1.8;
-        text-align: justify;
+        line-height: 1.6;
+        text-align: left;
         word-wrap: break-word;
         overflow-wrap: break-word;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.2rem 0;
         padding: 0;
+        max-width: 100%;
     }
 
     .contact-buttons {
