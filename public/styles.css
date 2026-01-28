@@ -559,12 +559,14 @@ p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     margin: 0 0 1.5rem 0;
+    padding: 0 1rem;
 }
 
 .about-container {
     max-width: 100%;
     margin: 0 auto;
     width: 100%;
+    padding: 0 1.5rem;
 }
 
 .about-content {
@@ -797,6 +799,7 @@ p {
         word-wrap: break-word;
         overflow-wrap: break-word;
         margin: 0 0 1.5rem 0;
+        padding: 0 0.5rem;
     }
 
     .contact-buttons {
