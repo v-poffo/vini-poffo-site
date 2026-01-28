@@ -220,18 +220,19 @@ p {
 /* Logo Centralizada */
 .hero-logo-container {
     position: absolute;
-    top: 50%;
+    top: 80px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
 }
 
 .hero-logo {
-    height: 210px;
+    height: 70px;
     width: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5)) brightness(0) invert(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)) brightness(0) invert(1);
     opacity: 0.95;
+    transition: all 0.3s ease;
 }
 
 .hero-overlay {
@@ -641,8 +642,7 @@ p {
     }
 
     .hero-logo {
-        height: 120px;
-        top: 15%;
+        height: 60px;
     }
 
     .hamburger span {
@@ -746,8 +746,7 @@ p {
     }
 
     .hero-logo {
-        height: 100px;
-        top: 12%;
+        height: 50px;
     }
 
     .filter-buttons {
