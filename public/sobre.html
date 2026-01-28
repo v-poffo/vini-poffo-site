@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Sou Eu - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .sobre-hero {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sobre-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .sobre-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+
+        .sobre-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            color: var(--dark-gray);
+        }
+
+        .sobre-text p {
+            margin-bottom: 2rem;
+        }
+
+        .contact-section {
+            background-color: var(--light-gray);
+            padding: 3rem;
+            border-radius: 4px;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            padding: 1rem 2rem;
+            background-color: var(--accent-green);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 80, 22, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .sobre-hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .sobre-content {
+                padding: 4rem 1.5rem;
+            }
+
+            .sobre-text {
+                font-size: 1rem;
+            }
+
+            .contact-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vini Poffo</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="sobre.html" class="active">Quem Sou Eu</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="sobre-hero">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h1>Quem Sou Eu</h1>
+            <p style="color: var(--primary-white); font-size: 1.1rem;">Conheça minha história e meu trabalho</p>
+        </div>
+    </section>
+
+    <!-- Sobre Content -->
+    <section class="sobre-content">
+        <div class="sobre-text">
+            <p>
+                Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente. Seu processo é artesanal e atravessado por símbolos, política e afeto.
+            </p>
+
+            <p>
+                Premiada pela Funarte (2021) com o videoarte Parte de Mim e eleito pelo SESC SC em 2022 com o seu primeiro curta No Reflexo do Meu Nome, melhor obra de Santa Catarina. Seu segundo filme, (Sub)Urbana, percorreu mais de 20 festivais nacionais e internacionais, conquistando cinco prêmios de melhor filme, incluindo o Prêmio Revelação no IV Transforma Festival e atualmente esta disponível pelo Itaú Play.
+            </p>
+
+            <p>
+                Em 2025 lançou sua primeira web série Tem Feito Uns Dias Esquisitos. Dirigiu mais de 10 videoclipes, incluindo Colapso Invisível de YMA e Aranha de Letrux.
+            </p>
+
+            <p>
+                Além da direção, trabalha com assistência de direção, pesquisa, assistência de arte, cenografia e contrarregragem em projetos diversos.
+            </p>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Vamos Conversar?</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    Email: <a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a>
+                </div>
+                <div class="contact-item">
+                    Instagram: <a href="https://instagram.com/pofovini" target="_blank">@pofovini</a>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <a href="mailto:projetos@vinipoffo.com" class="contact-btn">Enviar Email</a>
+                <a href="https://instagram.com/pofovini" target="_blank" class="contact-btn">Seguir no Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/pofovini" target="_blank">Instagram</a>
+                <a href="mailto:projetos@vinipoffo.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

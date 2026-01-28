@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .projetos-hero {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .projetos-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .projetos-hero p {
+            color: var(--primary-white);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projetos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .projetos-all {
+            padding: 6rem 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-black);
+            background-color: var(--primary-white);
+            color: var(--primary-black);
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-green);
+            color: var(--primary-white);
+            border-color: var(--accent-green);
+        }
+
+        .all-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .projetos-hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .projetos-all {
+                padding: 4rem 1.5rem;
+            }
+
+            .projetos-container {
+                padding: 0 1.5rem;
+            }
+
+            .filter-buttons {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+
+            .all-projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vini Poffo</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projetos.html" class="active">Projetos</a></li>
+                <li><a href="sobre.html">Quem Sou Eu</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="projetos-hero">
+        <div class="projetos-container">
+            <h1>Todos os Projetos</h1>
+            <p>Explore meu portfólio completo de trabalhos em cinema, videoclipes e projetos interdisciplinares.</p>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="projetos-all">
+        <div class="projetos-container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="videoclipe">Videoclipes</button>
+                <button class="filter-btn" data-filter="curta-metragem">Curtas</button>
+            </div>
+            <div id="allProjectsGrid" class="all-projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/pofovini" target="_blank">Instagram</a>
+                <a href="mailto:projetos@vinipoffo.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectsGrid = document.getElementById('allProjectsGrid');
+            let currentFilter = 'all';
+
+            function renderProjects(filter = 'all') {
+                projectsGrid.innerHTML = '';
+                const filteredProjects = filter === 'all' 
+                    ? siteData.projects 
+                    : siteData.projects.filter(p => p.type === filter);
+
+                filteredProjects.forEach(project => {
+                    const card = document.createElement('a');
+                    card.href = `projeto.html?id=${project.id}`;
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}" class="project-card-image">
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">${project.title}</h3>
+                            <p class="project-card-meta">${project.year}</p>
+                            <span class="project-card-type">${project.type}</span>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(card);
+                });
+            }
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.getAttribute('data-filter');
+                    renderProjects(currentFilter);
+                });
+            });
+
+            renderProjects();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "vini-poffo-site",
+  "version": "1.0.0",
+  "description": "Site de portfólio cinematográfico de Vini Poffo",
+  "main": "index.js",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --directory public",
+    "dev": "python3 -m http.server 8000 --directory public"
+  },
+  "keywords": ["portfolio", "cinema", "videoclipes"],
+  "author": "Vini Poffo",
+  "license": "MIT"
+}

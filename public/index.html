@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vini Poffo - Diretor Criativo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vini Poffo</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="sobre.html">Quem Sou Eu</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video/Cartaz -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Desktop: Video -->
+            <div class="hero-media desktop-only">
+                <video id="heroVideo" autoplay muted loop playsinline>
+                    <source src="assets/videos/vira essa boca_portfolio_video.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Mobile: Cartaz -->
+            <div class="hero-media mobile-only">
+                <img id="heroCartaz" src="assets/cartazes/VIRA ESSA BOCA PRA CÁ_CARTAZ 03 (1).jpg" alt="Cartaz do projeto">
+            </div>
+
+            <!-- Overlay com títulos -->
+            <div class="hero-overlay">
+                <div class="hero-titles">
+                    <div id="projectsList" class="projects-list"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Section (Rolagem) -->
+    <section class="projects-section">
+        <div class="projects-container">
+            <h2>Projetos Principais</h2>
+            <div id="projectsGrid" class="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Links Section -->
+    <section class="links-section">
+        <div class="links-container">
+            <h2>Explorar</h2>
+            <div class="links-grid">
+                <a href="projetos.html" class="link-card">
+                    <h3>Todos os Projetos</h3>
+                    <p>Veja meu portfólio completo</p>
+                </a>
+                <a href="sobre.html" class="link-card">
+                    <h3>Quem Sou Eu</h3>
+                    <p>Conheça minha história</p>
+                </a>
+                <a href="mailto:projetos@vinipoffo.com" class="link-card">
+                    <h3>Contato</h3>
+                    <p>Entre em contato comigo</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/pofovini" target="_blank">Instagram</a>
+                <a href="mailto:projetos@vinipoffo.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

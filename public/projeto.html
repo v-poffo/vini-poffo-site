@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .projeto-hero {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            padding: 4rem 2rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .projeto-hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .projeto-hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .projeto-meta {
+            font-size: 1.1rem;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+
+        .projeto-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .projeto-video {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 3rem;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: var(--primary-black);
+        }
+
+        .projeto-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .projeto-description {
+            margin-bottom: 3rem;
+            line-height: 1.9;
+        }
+
+        .projeto-description p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .projeto-ficha {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-bottom: 3rem;
+        }
+
+        .projeto-ficha h3 {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 1rem;
+        }
+
+        .ficha-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ficha-item:last-child {
+            border-bottom: none;
+        }
+
+        .ficha-label {
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
+        .ficha-value {
+            color: var(--dark-gray);
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-green);
+            color: var(--primary-white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .related-projects {
+            margin-top: 6rem;
+            padding-top: 3rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .related-projects h2 {
+            margin-bottom: 2rem;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .projeto-hero {
+                padding: 3rem 1.5rem;
+                min-height: auto;
+            }
+
+            .projeto-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .projeto-ficha {
+                padding: 1.5rem;
+            }
+
+            .ficha-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">Vini Poffo</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="sobre.html">Quem Sou Eu</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projeto Hero -->
+    <section class="projeto-hero">
+        <div class="projeto-hero-content">
+            <a href="projetos.html" class="back-button">← Voltar aos Projetos</a>
+            <div id="projectHero"></div>
+        </div>
+    </section>
+
+    <!-- Projeto Content -->
+    <section class="projeto-content">
+        <div id="projectDetails"></div>
+
+        <!-- Related Projects -->
+        <div class="related-projects">
+            <h2>Outros Projetos</h2>
+            <div id="relatedProjects" class="related-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/pofovini" target="_blank">Instagram</a>
+                <a href="mailto:projetos@vinipoffo.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectId = getUrlParameter('id');
+            const project = siteData.projects.find(p => p.id == projectId);
+
+            if (!project) {
+                document.getElementById('projectDetails').innerHTML = '<p>Projeto não encontrado.</p>';
+                return;
+            }
+
+            // Renderizar hero
+            const heroHTML = `
+                <h1>${project.title}</h1>
+                <div class="projeto-meta">
+                    <span>${project.year}</span> • 
+                    <span>${project.type}</span>
+                    ${project.artist ? `<span> • ${project.artist}</span>` : ''}
+                </div>
+            `;
+            document.getElementById('projectHero').innerHTML = heroHTML;
+
+            // Renderizar detalhes
+            const embedUrl = project.trailerUrl.includes('youtube') 
+                ? project.trailerUrl.replace('youtu.be/', 'youtube.com/embed/').replace('watch?v=', 'embed/')
+                : project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
+
+            const detailsHTML = `
+                <div class="projeto-video">
+                    <iframe src="${embedUrl}" allowfullscreen></iframe>
+                </div>
+
+                <div class="projeto-description">
+                    <p>${project.description}</p>
+                </div>
+
+                <div class="projeto-ficha">
+                    <h3>Ficha Técnica</h3>
+                    <div class="ficha-item">
+                        <span class="ficha-label">Título</span>
+                        <span class="ficha-value">${project.title}</span>
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-label">Ano</span>
+                        <span class="ficha-value">${project.year}</span>
+                    </div>
+                    <div class="ficha-item">
+                        <span class="ficha-label">Tipo</span>
+                        <span class="ficha-value">${project.type}</span>
+                    </div>
+                    ${project.artist ? `
+                    <div class="ficha-item">
+                        <span class="ficha-label">Artista/Produção</span>
+                        <span class="ficha-value">${project.artist}</span>
+                    </div>
+                    ` : ''}
+                    <div class="ficha-item">
+                        <span class="ficha-label">Direção</span>
+                        <span class="ficha-value">Vini Poffo</span>
+                    </div>
+                </div>
+            `;
+            document.getElementById('projectDetails').innerHTML = detailsHTML;
+
+            // Renderizar projetos relacionados
+            const relatedProjects = siteData.projects.filter(p => p.id != projectId).slice(0, 3);
+            let relatedHTML = '';
+            relatedProjects.forEach(p => {
+                relatedHTML += `
+                    <a href="projeto.html?id=${p.id}" class="project-card">
+                        <img src="assets/cartazes/${p.cartazMobile}" alt="${p.title}" class="project-card-image">
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">${p.title}</h3>
+                            <p class="project-card-meta">${p.year}</p>
+                            <span class="project-card-type">${p.type}</span>
+                        </div>
+                    </a>
+                `;
+            });
+            document.getElementById('relatedProjects').innerHTML = relatedHTML;
+        });
+    </script>
+</body>
+</html>
