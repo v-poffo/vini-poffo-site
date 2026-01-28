@@ -64,11 +64,10 @@
             border-color: var(--accent-green);
         }
 
-        /* Polaroid Grid - Disposição orgânica */
-        .polaroid-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem 2rem;
+        /* Masonry Grid - Layout orgânico */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 2rem;
             perspective: 1000px;
         }
 
@@ -77,8 +76,12 @@
             text-decoration: none;
             color: inherit;
             cursor: pointer;
+            margin-bottom: 2rem;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
             transform-style: preserve-3d;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         /* Rotações aleatórias para efeito orgânico */
@@ -94,6 +97,7 @@
         .polaroid-card:hover {
             transform: rotate(0deg) scale(1.05);
             z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .polaroid-wrapper {
@@ -105,24 +109,25 @@
 
         .polaroid-image {
             width: 100%;
-            height: 280px;
-            object-fit: cover;
+            height: auto;
+            object-fit: contain;
             display: block;
             position: relative;
+            background-color: var(--primary-white);
         }
 
         .polaroid-label {
             background-color: var(--primary-white);
-            padding: 1.2rem 0.8rem;
+            padding: 1rem 0.8rem;
             text-align: left;
-            min-height: 60px;
+            min-height: 50px;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .polaroid-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--primary-black);
             margin: 0;
@@ -130,9 +135,9 @@
         }
 
         .polaroid-year {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--dark-gray);
-            margin-top: 0.4rem;
+            margin-top: 0.3rem;
         }
 
         /* Overlay com informações técnicas */
@@ -151,8 +156,8 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 5;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         .polaroid-card:hover .polaroid-overlay {
@@ -161,13 +166,13 @@
 
         .polaroid-overlay h4 {
             margin: 0 0 0.8rem 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
         }
 
         .polaroid-overlay p {
-            margin: 0.4rem 0;
-            font-size: 0.85rem;
+            margin: 0.3rem 0;
+            font-size: 0.8rem;
         }
 
         .overlay-label {
@@ -177,13 +182,9 @@
         }
 
         @media (max-width: 1024px) {
-            .polaroid-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-                gap: 2rem 1.5rem;
-            }
-
-            .polaroid-image {
-                height: 240px;
+            .masonry-grid {
+                column-count: 2;
+                column-gap: 1.5rem;
             }
         }
 
@@ -206,9 +207,9 @@
                 padding-bottom: 1rem;
             }
 
-            .polaroid-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem 1rem;
+            .masonry-grid {
+                column-count: 1;
+                column-gap: 0;
             }
 
             .polaroid-card:nth-child(n) {
@@ -217,10 +218,6 @@
 
             .polaroid-card:hover {
                 transform: rotate(0deg) scale(1.02) !important;
-            }
-
-            .polaroid-image {
-                height: 300px;
             }
         }
     </style>
@@ -263,7 +260,7 @@
                 <button class="filter-btn" data-filter="videoclipe">Videoclipes</button>
                 <button class="filter-btn" data-filter="curta-metragem">Curtas</button>
             </div>
-            <div id="polaroidGrid" class="polaroid-grid"></div>
+            <div id="masonryGrid" class="masonry-grid"></div>
         </div>
     </section>
 
@@ -283,11 +280,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
-            const polaroidGrid = document.getElementById('polaroidGrid');
+            const masonryGrid = document.getElementById('masonryGrid');
             let currentFilter = 'all';
 
             function renderProjects(filter = 'all') {
-                polaroidGrid.innerHTML = '';
+                masonryGrid.innerHTML = '';
                 const filteredProjects = filter === 'all' 
                     ? siteData.projects 
                     : siteData.projects.filter(p => p.type === filter);
@@ -312,11 +309,11 @@
                                 <p><span class="overlay-label">Tipo:</span> ${typeLabel}</p>
                                 <p><span class="overlay-label">Ano:</span> ${project.year}</p>
                                 ${project.artist ? `<p><span class="overlay-label">Artista:</span> ${project.artist}</p>` : ''}
-                                <p style="margin-top: 0.8rem; font-size: 0.8rem; color: #ccc;">${project.description}</p>
+                                <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #ccc;">${project.description}</p>
                             </div>
                         </div>
                     `;
-                    polaroidGrid.appendChild(card);
+                    masonryGrid.appendChild(card);
                 });
             }
 
