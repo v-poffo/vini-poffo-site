@@ -22,20 +22,82 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeroMedia(currentProjectIndex);
     }
 
-    // Renderizar lista de títulos na hero section (Desktop)
+    // Renderizar lista de títulos na hero section (Desktop) - CARROSSEL
+    let titleScrollOffset = 0;
+    const VISIBLE_TITLES = 4;
+    const TITLE_HEIGHT = 60; // Aproximado em pixels
+
     function renderProjectsList() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
 
         projectsList.innerHTML = '';
+        projectsList.style.overflow = 'hidden';
+        projectsList.style.height = `${VISIBLE_TITLES * TITLE_HEIGHT}px`;
+
         projects.forEach((project, index) => {
             const titleElement = document.createElement('div');
             titleElement.className = `project-title ${index === 0 ? 'active' : ''}`;
             titleElement.textContent = project.title;
+            titleElement.style.transition = 'transform 0.3s ease';
             titleElement.addEventListener('click', () => {
                 setActiveProject(index);
+                scrollTitleIntoView(index);
             });
             projectsList.appendChild(titleElement);
+        });
+
+        setupTitleCarousel();
+    }
+
+    function setupTitleCarousel() {
+        const projectsList = document.getElementById('projectsList');
+        if (!projectsList) return;
+
+        // Scroll com mouse wheel
+        projectsList.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const direction = e.deltaY > 0 ? 1 : -1;
+            scrollTitles(direction);
+        });
+
+        // Scroll com mouse move (para cima/baixo)
+        projectsList.addEventListener('mousemove', (e) => {
+            const rect = projectsList.getBoundingClientRect();
+            const relativeY = e.clientY - rect.top;
+            const threshold = 30;
+
+            if (relativeY < threshold) {
+                // Mouse perto do topo - scroll para cima
+                scrollTitles(-1);
+            } else if (relativeY > rect.height - threshold) {
+                // Mouse perto do fundo - scroll para baixo
+                scrollTitles(1);
+            }
+        });
+    }
+
+    function scrollTitles(direction) {
+        const titles = document.querySelectorAll('.project-title');
+        const maxScroll = Math.max(0, titles.length - VISIBLE_TITLES);
+
+        titleScrollOffset += direction;
+        titleScrollOffset = Math.max(0, Math.min(titleScrollOffset, maxScroll));
+
+        titles.forEach((title, index) => {
+            const offset = (index - titleScrollOffset) * TITLE_HEIGHT;
+            title.style.transform = `translateY(${-offset}px)`;
+        });
+    }
+
+    function scrollTitleIntoView(index) {
+        const maxScroll = Math.max(0, projects.length - VISIBLE_TITLES);
+        titleScrollOffset = Math.max(0, Math.min(index, maxScroll));
+
+        const titles = document.querySelectorAll('.project-title');
+        titles.forEach((title, i) => {
+            const offset = (i - titleScrollOffset) * TITLE_HEIGHT;
+            title.style.transform = `translateY(${-offset}px)`;
         });
     }
 
@@ -108,19 +170,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Atualizar mídia do hero (vídeo ou cartaz) com efeito glitch
+    // Atualizar mídia do hero (vídeo ou cartaz) - SEM EFEITO
     function updateHeroMedia(index) {
         const project = projects[index];
         const heroVideo = document.getElementById('heroVideo');
-        const heroMedia = document.querySelector('.hero-media');
-
-        // Adicionar classe de glitch
-        if (heroMedia) {
-            heroMedia.style.animation = 'none';
-            setTimeout(() => {
-                heroMedia.style.animation = 'glitch-in 0.6s ease-out';
-            }, 10);
-        }
 
         if (heroVideo) {
             heroVideo.src = `assets/videos/${project.videoHome}`;

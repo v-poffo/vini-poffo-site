@@ -198,64 +198,7 @@ p {
     display: block;
 }
 
-/* Glitch Effect */
-@keyframes glitch-in {
-    0% {
-        opacity: 0;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translate(0, 0);
-    }
-    10% {
-        opacity: 0.7;
-        clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
-        transform: translate(-3px, 2px);
-    }
-    20% {
-        opacity: 0.8;
-        clip-path: polygon(0 8%, 100% 0, 100% 92%, 0 100%);
-        transform: translate(3px, -2px);
-    }
-    30% {
-        opacity: 0.75;
-        clip-path: polygon(0 12%, 100% 5%, 100% 88%, 0 95%);
-        transform: translate(-2px, 1px);
-    }
-    40% {
-        opacity: 0.9;
-        clip-path: polygon(0 5%, 100% 2%, 100% 95%, 0 98%);
-        transform: translate(2px, -1px);
-    }
-    50% {
-        opacity: 0.85;
-        clip-path: polygon(0 10%, 100% 8%, 100% 90%, 0 92%);
-        transform: translate(-1px, 2px);
-    }
-    60% {
-        opacity: 0.95;
-        clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
-        transform: translate(1px, -1px);
-    }
-    70% {
-        opacity: 0.88;
-        clip-path: polygon(0 7%, 100% 4%, 100% 93%, 0 96%);
-        transform: translate(-2px, 0);
-    }
-    80% {
-        opacity: 0.92;
-        clip-path: polygon(0 2%, 100% 1%, 100% 98%, 0 99%);
-        transform: translate(1px, 1px);
-    }
-    90% {
-        opacity: 0.98;
-        clip-path: polygon(0 1%, 100% 0.5%, 100% 99%, 0 99.5%);
-        transform: translate(0, 0);
-    }
-    100% {
-        opacity: 1;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        transform: translate(0, 0);
-    }
-}
+/* Sem efeito de transição - carregamento direto */
 
 /* Logo Centralizada */
 .hero-logo-container {
@@ -294,6 +237,9 @@ p {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .project-title {
