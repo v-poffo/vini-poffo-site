@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Variáveis do carrossel de títulos - Estilo A24
     const VISIBLE_TITLES = 4;
+    let projectsOrder = [...projects]; // Cópia do array original para rastrear ordem
+    let currentRotation = 0; // Rastrear quantas rotações foram feitas
 
     // Inicializar página
     initializeHome();
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const titleElement = document.createElement('div');
             titleElement.className = `project-title ${index === 0 ? 'active' : ''}`;
             titleElement.dataset.projectIndex = index;
+            titleElement.dataset.clickCount = 0; // Rastrear cliques
             titleElement.innerHTML = `
                 <span class="title-text">${project.title.toUpperCase()}</span>
                 <span class="title-year">${project.year}</span>
@@ -46,14 +49,14 @@ document.addEventListener('DOMContentLoaded', function() {
             titleElement.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                selectProject(index);
+                selectProject(index, titleElement);
             });
             projectsList.appendChild(titleElement);
         });
     }
 
-    // Selecionar projeto e rotacionar títulos
-    function selectProject(clickedIndex) {
+    // Selecionar projeto e rotacionar títulos (REVERSÍVEL)
+    function selectProject(clickedIndex, titleElement) {
         if (clickedIndex === 0) {
             // Já é o primeiro, só atualiza o vídeo
             updateHeroMedia(currentProjectIndex);
@@ -63,10 +66,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
         
+        // Incrementar contador de cliques para este título
+        let clickCount = parseInt(titleElement.dataset.clickCount) || 0;
+        clickCount++;
+        titleElement.dataset.clickCount = clickCount;
+        
+        // Determinar direção: se clique é ímpar, rotaciona pra frente; se par, volta pra trás
+        const rotateForward = clickCount % 2 === 1;
+        
         // Rotacionar array de projetos
-        for (let i = 0; i < clickedIndex; i++) {
-            const first = projects.shift();
-            projects.push(first);
+        if (rotateForward) {
+            // Rotacionar pra frente
+            for (let i = 0; i < clickedIndex; i++) {
+                const first = projects.shift();
+                projects.push(first);
+            }
+            currentRotation += clickedIndex;
+        } else {
+            // Rotacionar pra trás (volta)
+            for (let i = 0; i < clickedIndex; i++) {
+                const last = projects.pop();
+                projects.unshift(last);
+            }
+            currentRotation -= clickedIndex;
         }
         
         // Atualizar índice atual
@@ -76,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const titles = projectsList.querySelectorAll('.project-title');
         titles.forEach((title, i) => {
             title.style.opacity = '0';
-            title.style.transform = 'translateY(-20px)';
+            title.style.transform = rotateForward ? 'translateY(-20px)' : 'translateY(20px)';
         });
         
         setTimeout(() => {
@@ -87,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newTitles = projectsList.querySelectorAll('.project-title');
             newTitles.forEach((title, i) => {
                 title.style.opacity = '0';
-                title.style.transform = 'translateY(20px)';
+                title.style.transform = rotateForward ? 'translateY(20px)' : 'translateY(-20px)';
                 setTimeout(() => {
                     title.style.transition = 'all 0.3s ease';
                     title.style.opacity = '1';
