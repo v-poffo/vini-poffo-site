@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variáveis do carrossel de títulos
     let titleScrollOffset = 0;
     const VISIBLE_TITLES = 4;
-    const TITLE_HEIGHT = 60;
+    const TITLE_HEIGHT = 70;
 
     // Inicializar página
     initializeHome();
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeroMedia(currentProjectIndex);
     }
 
-    // Renderizar lista de títulos na hero section (Desktop) - CARROSSEL
+    // Renderizar lista de títulos na hero section (Desktop) - CARROSSEL ROTATIVO
     function renderProjectsList() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
@@ -39,16 +39,16 @@ document.addEventListener('DOMContentLoaded', function() {
         projects.forEach((project, index) => {
             const titleElement = document.createElement('div');
             titleElement.className = `project-title ${index === 0 ? 'active' : ''}`;
-            titleElement.textContent = project.title;
-            // Sem transform - usando scroll nativo
+            titleElement.textContent = project.title.toUpperCase();
+            titleElement.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
             titleElement.addEventListener('click', () => {
-                setActiveProject(index);
-                scrollTitleIntoView(index);
+                rotateTitleToTop(index);
             });
             projectsList.appendChild(titleElement);
         });
 
         setupTitleCarousel();
+        updateTitlePositions();
     }
 
     function setupTitleCarousel() {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         projectsList.addEventListener('wheel', (e) => {
             e.preventDefault();
             const direction = e.deltaY > 0 ? 1 : -1;
-            scrollTitles(direction);
+            rotateTitles(direction);
         });
 
         // Scroll com mouse move (para cima/baixo)
@@ -70,30 +70,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (relativeY < threshold) {
                 // Mouse perto do topo - scroll para cima
-                scrollTitles(-1);
+                rotateTitles(-1);
             } else if (relativeY > rect.height - threshold) {
                 // Mouse perto do fundo - scroll para baixo
-                scrollTitles(1);
+                rotateTitles(1);
             }
         });
     }
 
-    function scrollTitles(direction) {
-        const projectsList = document.getElementById('projectsList');
-        if (!projectsList) return;
+    function rotateTitles(direction) {
+        const titles = document.querySelectorAll('.project-title');
+        if (titles.length === 0) return;
         
-        const scrollAmount = 60;
-        projectsList.scrollTop += direction * scrollAmount;
+        const projectsList = titles[0].parentElement;
+        
+        if (direction > 0) {
+            // Scroll para baixo - move o primeiro para o final
+            projectsList.appendChild(projectsList.firstChild);
+        } else {
+            // Scroll para cima - move o último para o topo
+            projectsList.insertBefore(projectsList.lastChild, projectsList.firstChild);
+        }
+        
+        updateTitlePositions();
     }
 
-    function scrollTitleIntoView(index) {
-        const projectsList = document.getElementById('projectsList');
-        if (!projectsList) return;
+    function rotateTitleToTop(index) {
+        const titles = document.querySelectorAll('.project-title');
+        if (titles.length === 0) return;
         
-        const titles = projectsList.querySelectorAll('.project-title');
-        if (titles[index]) {
-            titles[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const projectsList = titles[0].parentElement;
+        
+        // Encontrar o índice atual do título clicado
+        let currentIndex = 0;
+        for (let i = 0; i < titles.length; i++) {
+            if (titles[i] === titles[index]) {
+                currentIndex = i;
+                break;
+            }
         }
+        
+        // Rotacionar até que o título clicado fique no topo
+        while (projectsList.children[0] !== titles[index]) {
+            projectsList.appendChild(projectsList.firstChild);
+        }
+        
+        updateTitlePositions();
+        
+        // Atualizar projeto ativo
+        const titleText = titles[index].textContent;
+        const projectIndex = projects.findIndex(p => p.title.toUpperCase() === titleText);
+        if (projectIndex !== -1) {
+            currentProjectIndex = projectIndex;
+            updateHeroMedia(projectIndex);
+        }
+    }
+
+    function updateTitlePositions() {
+        const titles = document.querySelectorAll('.project-title');
+        titles.forEach((title, index) => {
+            const offset = index * TITLE_HEIGHT;
+            title.style.transform = `translateY(${offset}px)`;
+            title.classList.toggle('active', index === 0);
+        });
     }
 
     // Renderizar carrossel vertical para mobile
@@ -267,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.remove('active');
         });
         
-        // Marcar "Home" como ativo por padrão
+        // Marcar "Início" como ativo por padrão
         navLinks[0].classList.add('active');
     }
 
