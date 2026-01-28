@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Variáveis do carrossel de títulos
     let titleScrollOffset = 0;
     const VISIBLE_TITLES = 4;
-    const TITLE_HEIGHT = 70;
+    const TITLE_HEIGHT = 50;
 
     // Inicializar página
     initializeHome();
@@ -55,27 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
 
-        // Scroll com mouse wheel
-        projectsList.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const direction = e.deltaY > 0 ? 1 : -1;
-            rotateTitles(direction);
-        });
-
-        // Scroll com mouse move (para cima/baixo)
-        projectsList.addEventListener('mousemove', (e) => {
-            const rect = projectsList.getBoundingClientRect();
-            const relativeY = e.clientY - rect.top;
-            const threshold = 30;
-
-            if (relativeY < threshold) {
-                // Mouse perto do topo - scroll para cima
-                rotateTitles(-1);
-            } else if (relativeY > rect.height - threshold) {
-                // Mouse perto do fundo - scroll para baixo
-                rotateTitles(1);
-            }
-        });
+        // Remover mouse move - só funciona com clique agora
+        // Os cliques já estão configurados no renderProjectsList
     }
 
     function rotateTitles(direction) {

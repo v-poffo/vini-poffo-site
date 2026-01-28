@@ -272,15 +272,15 @@ p {
     font-weight: 600;
     color: var(--primary-white);
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    padding: 0.8rem 0;
+    padding: 0.3rem 0;
     border-left: 3px solid transparent;
     padding-left: 0.8rem;
     letter-spacing: 0px;
-    line-height: 1.2;
+    line-height: 1.1;
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 90%;
-    height: 70px;
+    height: auto;
     display: flex;
     align-items: center;
 }
