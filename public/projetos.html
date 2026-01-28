@@ -64,12 +64,13 @@
             border-color: var(--accent-green);
         }
 
-        /* Flexible Grid - Lado a lado */
+        /* Flexible Grid - Lado a lado, sem crop */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2.5rem;
             align-items: start;
+            justify-items: center;
         }
 
         .polaroid-card {
@@ -80,6 +81,8 @@
             display: block;
             transform-style: preserve-3d;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 320px;
         }
 
         /* Rotações aleatórias para efeito orgânico */
@@ -103,6 +106,17 @@
             padding: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             position: relative;
+            width: 100%;
+        }
+
+        .polaroid-image-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-white);
+            min-height: 200px;
+            position: relative;
         }
 
         .polaroid-image {
@@ -111,8 +125,6 @@
             object-fit: contain;
             display: block;
             position: relative;
-            background-color: var(--primary-white);
-            max-height: 400px;
         }
 
         .polaroid-label {
@@ -182,8 +194,12 @@
 
         @media (max-width: 1024px) {
             .projects-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
                 gap: 2rem;
+            }
+
+            .polaroid-card {
+                max-width: 280px;
             }
         }
 
@@ -209,6 +225,11 @@
             .projects-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+                justify-items: stretch;
+            }
+
+            .polaroid-card {
+                max-width: 100%;
             }
 
             .polaroid-card:nth-child(n) {
@@ -298,17 +319,19 @@
                     
                     card.innerHTML = `
                         <div class="polaroid-wrapper">
-                            <img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}" class="polaroid-image">
+                            <div class="polaroid-image-container">
+                                <img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}" class="polaroid-image">
+                                <div class="polaroid-overlay">
+                                    <h4>${project.title}</h4>
+                                    <p><span class="overlay-label">Tipo:</span> ${typeLabel}</p>
+                                    <p><span class="overlay-label">Ano:</span> ${project.year}</p>
+                                    ${project.artist ? `<p><span class="overlay-label">Artista:</span> ${project.artist}</p>` : ''}
+                                    <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #ccc;">${project.description}</p>
+                                </div>
+                            </div>
                             <div class="polaroid-label">
                                 <h3 class="polaroid-title">${project.title}</h3>
                                 <p class="polaroid-year">${project.year}</p>
-                            </div>
-                            <div class="polaroid-overlay">
-                                <h4>${project.title}</h4>
-                                <p><span class="overlay-label">Tipo:</span> ${typeLabel}</p>
-                                <p><span class="overlay-label">Ano:</span> ${project.year}</p>
-                                ${project.artist ? `<p><span class="overlay-label">Artista:</span> ${project.artist}</p>` : ''}
-                                <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #ccc;">${project.description}</p>
                             </div>
                         </div>
                     `;
