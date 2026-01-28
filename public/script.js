@@ -5,10 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentProjectIndex = 0;
     let isDesktop = window.innerWidth > 768;
     
-    // Variáveis do carrossel de títulos
-    let titleScrollOffset = 0;
+    // Variáveis do carrossel de títulos - Estilo A24
     const VISIBLE_TITLES = 4;
-    const TITLE_HEIGHT = 50;
 
     // Inicializar página
     initializeHome();
@@ -27,93 +25,76 @@ document.addEventListener('DOMContentLoaded', function() {
         updateHeroMedia(currentProjectIndex);
     }
 
-    // Renderizar lista de títulos na hero section (Desktop) - CARROSSEL ROTATIVO
+    // Renderizar lista de títulos na hero section (Desktop) - ESTILO A24
     function renderProjectsList() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
 
         projectsList.innerHTML = '';
-        projectsList.style.overflow = 'hidden';
-        projectsList.style.height = `${VISIBLE_TITLES * TITLE_HEIGHT}px`;
-
-        projects.forEach((project, index) => {
+        
+        // Mostrar apenas os primeiros VISIBLE_TITLES títulos
+        const visibleProjects = projects.slice(0, VISIBLE_TITLES);
+        
+        visibleProjects.forEach((project, index) => {
             const titleElement = document.createElement('div');
             titleElement.className = `project-title ${index === 0 ? 'active' : ''}`;
-            titleElement.textContent = project.title.toUpperCase();
-            titleElement.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            titleElement.addEventListener('click', () => {
-                rotateTitleToTop(index);
+            titleElement.dataset.projectIndex = index;
+            titleElement.innerHTML = `
+                <span class="title-text">${project.title.toUpperCase()}</span>
+                <span class="title-year">${project.year}</span>
+            `;
+            titleElement.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                selectProject(index);
             });
             projectsList.appendChild(titleElement);
         });
-
-        setupTitleCarousel();
-        updateTitlePositions();
     }
 
-    function setupTitleCarousel() {
+    // Selecionar projeto e rotacionar títulos
+    function selectProject(clickedIndex) {
+        if (clickedIndex === 0) {
+            // Já é o primeiro, só atualiza o vídeo
+            updateHeroMedia(currentProjectIndex);
+            return;
+        }
+        
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
-
-        // Remover mouse move - só funciona com clique agora
-        // Os cliques já estão configurados no renderProjectsList
-    }
-
-    function rotateTitles(direction) {
-        const titles = document.querySelectorAll('.project-title');
-        if (titles.length === 0) return;
         
-        const projectsList = titles[0].parentElement;
-        
-        if (direction > 0) {
-            // Scroll para baixo - move o primeiro para o final
-            projectsList.appendChild(projectsList.firstChild);
-        } else {
-            // Scroll para cima - move o último para o topo
-            projectsList.insertBefore(projectsList.lastChild, projectsList.firstChild);
+        // Rotacionar array de projetos
+        for (let i = 0; i < clickedIndex; i++) {
+            const first = projects.shift();
+            projects.push(first);
         }
         
-        updateTitlePositions();
-    }
-
-    function rotateTitleToTop(index) {
-        const titles = document.querySelectorAll('.project-title');
-        if (titles.length === 0) return;
+        // Atualizar índice atual
+        currentProjectIndex = 0;
         
-        const projectsList = titles[0].parentElement;
-        
-        // Encontrar o índice atual do título clicado
-        let currentIndex = 0;
-        for (let i = 0; i < titles.length; i++) {
-            if (titles[i] === titles[index]) {
-                currentIndex = i;
-                break;
-            }
-        }
-        
-        // Rotacionar até que o título clicado fique no topo
-        while (projectsList.children[0] !== titles[index]) {
-            projectsList.appendChild(projectsList.firstChild);
-        }
-        
-        updateTitlePositions();
-        
-        // Atualizar projeto ativo
-        const titleText = titles[index].textContent;
-        const projectIndex = projects.findIndex(p => p.title.toUpperCase() === titleText);
-        if (projectIndex !== -1) {
-            currentProjectIndex = projectIndex;
-            updateHeroMedia(projectIndex);
-        }
-    }
-
-    function updateTitlePositions() {
-        const titles = document.querySelectorAll('.project-title');
-        titles.forEach((title, index) => {
-            const offset = index * TITLE_HEIGHT;
-            title.style.transform = `translateY(${offset}px)`;
-            title.classList.toggle('active', index === 0);
+        // Re-renderizar títulos com animação
+        const titles = projectsList.querySelectorAll('.project-title');
+        titles.forEach((title, i) => {
+            title.style.opacity = '0';
+            title.style.transform = 'translateY(-20px)';
         });
+        
+        setTimeout(() => {
+            renderProjectsList();
+            updateHeroMedia(0);
+            
+            // Animar entrada
+            const newTitles = projectsList.querySelectorAll('.project-title');
+            newTitles.forEach((title, i) => {
+                title.style.opacity = '0';
+                title.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    title.style.transition = 'all 0.3s ease';
+                    title.style.opacity = '1';
+                    title.style.transform = 'translateY(0)';
+                }, i * 50);
+            });
+        }, 200);
     }
 
     // Renderizar carrossel vertical para mobile
@@ -163,13 +144,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Renderizar grid de projetos na seção de projetos
+    // Renderizar grid de projetos na seção de projetos (SEM TAG DE TIPO)
     function renderProjectsGrid() {
         const projectsGrid = document.getElementById('projectsGrid');
         if (!projectsGrid) return;
 
         projectsGrid.innerHTML = '';
-        projects.forEach((project) => {
+        siteData.projects.forEach((project) => {
             const card = document.createElement('a');
             card.href = `projeto.html?id=${project.id}`;
             card.className = 'project-card';
@@ -178,34 +159,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="project-card-content">
                     <h3 class="project-card-title">${project.title}</h3>
                     <p class="project-card-meta">${project.year}</p>
-                    <span class="project-card-type">${project.type}</span>
                 </div>
             `;
             projectsGrid.appendChild(card);
         });
     }
 
-    // Atualizar mídia do hero (vídeo ou cartaz) - SEM EFEITO
+    // Atualizar mídia do hero (vídeo ou cartaz)
     function updateHeroMedia(index) {
         const project = projects[index];
         const heroVideo = document.getElementById('heroVideo');
 
-        if (heroVideo) {
+        if (heroVideo && project) {
             heroVideo.src = `assets/videos/${project.videoHome}`;
             heroVideo.play();
         }
-    }
-
-    // Definir projeto ativo
-    function setActiveProject(index) {
-        currentProjectIndex = index;
-        updateHeroMedia(index);
-
-        // Atualizar classe ativa nos títulos
-        const titles = document.querySelectorAll('.project-title');
-        titles.forEach((title, i) => {
-            title.classList.toggle('active', i === index);
-        });
     }
 
     // Setup do menu hamburger
@@ -232,11 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Setup da navegação de projetos
     function setupProjectNavigation() {
-        // Você pode adicionar auto-rotação aqui se quiser
-        // setInterval(() => {
-        //     currentProjectIndex = (currentProjectIndex + 1) % projects.length;
-        //     setActiveProject(currentProjectIndex);
-        // }, 10000);
+        // Auto-rotação desabilitada
     }
 
     // Setup da seta de scroll
@@ -255,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Esconder seta quando rolar para baixo
         window.addEventListener('scroll', () => {
             const heroSection = document.getElementById('hero');
+            if (!heroSection) return;
             const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
             const scrollPosition = window.scrollY + window.innerHeight;
 
@@ -273,25 +238,10 @@ document.addEventListener('DOMContentLoaded', function() {
             isDesktop = window.innerWidth > 768;
             
             if (wasDesktop !== isDesktop) {
-                // Reinicializar quando mudar de desktop para mobile ou vice-versa
                 location.reload();
             }
         });
     }
-
-    // Atualizar link ativo na navegação
-    function updateActiveNavLink() {
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        // Marcar "Início" como ativo por padrão
-        navLinks[0].classList.add('active');
-    }
-
-    updateActiveNavLink();
 
     // Setup de filtro de projetos
     const filterButtons = document.querySelectorAll('.filter-btn');
@@ -306,11 +256,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function filterProjects(filter) {
         const projectsGrid = document.getElementById('projectsGrid');
+        if (!projectsGrid) return;
+        
         projectsGrid.innerHTML = '';
         
         const filteredProjects = filter === 'all' 
-            ? projects 
-            : projects.filter(p => p.type === filter);
+            ? siteData.projects 
+            : siteData.projects.filter(p => p.type === filter);
 
         filteredProjects.forEach(project => {
             const card = document.createElement('a');
@@ -321,7 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="project-card-content">
                     <h3 class="project-card-title">${project.title}</h3>
                     <p class="project-card-meta">${project.year}</p>
-                    <span class="project-card-type">${project.type}</span>
                 </div>
             `;
             projectsGrid.appendChild(card);
