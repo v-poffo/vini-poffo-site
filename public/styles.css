@@ -555,8 +555,9 @@ p {
     font-size: 0.95rem;
     line-height: 1.8;
     color: var(--primary-black);
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .about-container {
@@ -790,7 +791,9 @@ p {
     .about-text p {
         font-size: 0.9rem;
         line-height: 1.8;
-        text-align: justify;
+        text-align: left;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .contact-buttons {
