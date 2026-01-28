@@ -805,14 +805,12 @@ p {
         text-align: justify;
         word-wrap: break-word;
         overflow-wrap: break-word;
-        margin: 0 auto 1.8rem auto;
-        padding: 0 1rem;
-        max-width: 90%;
+        margin: 0 0 1.8rem 0;
+        padding: 0 1.5rem;
     }
 
     .about-text {
-        margin: 0 auto;
-        max-width: 90%;
+        width: 100%;
     }
 
     .contact-buttons {
