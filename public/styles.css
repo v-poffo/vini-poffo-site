@@ -796,21 +796,23 @@ p {
     .about-content {
         gap: 1rem;
         width: 100%;
-    }
-
-    .about-text {
-        width: 100%;
+        margin: 0 auto;
     }
 
     .about-text p {
         font-size: 0.9rem;
         line-height: 1.7;
-        text-align: left;
+        text-align: justify;
         word-wrap: break-word;
         overflow-wrap: break-word;
-        margin: 0 0 1.8rem 0;
-        padding: 0;
-        max-width: 100%;
+        margin: 0 auto 1.8rem auto;
+        padding: 0 1rem;
+        max-width: 90%;
+    }
+
+    .about-text {
+        margin: 0 auto;
+        max-width: 90%;
     }
 
     .contact-buttons {
