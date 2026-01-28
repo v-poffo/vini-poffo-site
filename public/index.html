@@ -38,9 +38,11 @@
                 </video>
             </div>
 
-            <!-- Mobile: Cartaz -->
-            <div class="hero-media mobile-only">
-                <img id="heroCartaz" src="assets/cartazes/vira-boca-cartaz.jpg" alt="Cartaz do projeto">
+            <!-- Mobile: Carrossel Vertical -->
+            <div class="hero-carousel mobile-only">
+                <div class="carousel-container">
+                    <div id="carouselItems" class="carousel-items"></div>
+                </div>
             </div>
 
             <!-- Logo Centralizada -->
@@ -48,11 +50,16 @@
                 <img src="assets/logo/logo.avif" alt="Vini Poffo" class="hero-logo">
             </div>
 
-            <!-- Overlay com títulos -->
-            <div class="hero-overlay">
+            <!-- Overlay com títulos (Desktop) -->
+            <div class="hero-overlay desktop-only">
                 <div class="hero-titles">
                     <div id="projectsList" class="projects-list"></div>
                 </div>
+            </div>
+
+            <!-- Overlay com título (Mobile) -->
+            <div class="hero-overlay-mobile mobile-only">
+                <div class="hero-title-mobile" id="heroTitleMobile"></div>
             </div>
 
             <!-- Seta para baixo -->

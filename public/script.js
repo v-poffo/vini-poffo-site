@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const projects = siteData.projects;
     let currentProjectIndex = 0;
+    let isDesktop = window.innerWidth > 768;
 
     // Inicializar página
     initializeHome();
@@ -10,15 +11,18 @@ document.addEventListener('DOMContentLoaded', function() {
     setupProjectNavigation();
     setupScrollIndicator();
     setupResponsiveMedia();
+    setupMobileCarousel();
 
     // Função para inicializar a home
     function initializeHome() {
-        renderProjectsList();
+        if (isDesktop) {
+            renderProjectsList();
+        }
         renderProjectsGrid();
         updateHeroMedia(currentProjectIndex);
     }
 
-    // Renderizar lista de títulos na hero section
+    // Renderizar lista de títulos na hero section (Desktop)
     function renderProjectsList() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
@@ -33,6 +37,53 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             projectsList.appendChild(titleElement);
         });
+    }
+
+    // Renderizar carrossel vertical para mobile
+    function setupMobileCarousel() {
+        const carouselItems = document.getElementById('carouselItems');
+        if (!carouselItems) return;
+
+        // Criar items do carrossel
+        projects.forEach((project, index) => {
+            const item = document.createElement('div');
+            item.className = 'carousel-item';
+            item.innerHTML = `<img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}">`;
+            carouselItems.appendChild(item);
+        });
+
+        // Atualizar título ao rolar
+        const carouselContainer = document.querySelector('.carousel-items');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('scroll', () => {
+                const scrollPosition = carouselContainer.scrollTop;
+                const itemHeight = carouselContainer.offsetHeight;
+                const newIndex = Math.round(scrollPosition / itemHeight);
+                
+                if (newIndex !== currentProjectIndex && newIndex < projects.length) {
+                    currentProjectIndex = newIndex;
+                    updateMobileTitle(currentProjectIndex);
+                }
+            });
+        }
+
+        // Atualizar título inicial
+        updateMobileTitle(0);
+    }
+
+    // Atualizar título no mobile
+    function updateMobileTitle(index) {
+        const project = projects[index];
+        const titleContainer = document.getElementById('heroTitleMobile');
+        
+        if (titleContainer) {
+            titleContainer.innerHTML = `
+                <div class="project-info">
+                    <div class="project-title-large">${project.title}</div>
+                    <div class="project-year">${project.year}</div>
+                </div>
+            `;
+        }
     }
 
     // Renderizar grid de projetos na seção de projetos
@@ -61,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateHeroMedia(index) {
         const project = projects[index];
         const heroVideo = document.getElementById('heroVideo');
-        const heroCartaz = document.getElementById('heroCartaz');
         const heroMedia = document.querySelector('.hero-media');
 
         // Adicionar classe de glitch
@@ -75,10 +125,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroVideo) {
             heroVideo.src = `assets/videos/${project.videoHome}`;
             heroVideo.play();
-        }
-
-        if (heroCartaz) {
-            heroCartaz.src = `assets/cartazes/${project.cartazMobile}`;
         }
     }
 
@@ -155,8 +201,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Setup de mídia responsiva
     function setupResponsiveMedia() {
         window.addEventListener('resize', () => {
-            // Ajustar mídia conforme o tamanho da tela
-            updateHeroMedia(currentProjectIndex);
+            const wasDesktop = isDesktop;
+            isDesktop = window.innerWidth > 768;
+            
+            if (wasDesktop !== isDesktop) {
+                // Reinicializar quando mudar de desktop para mobile ou vice-versa
+                location.reload();
+            }
         });
     }
 
