@@ -172,6 +172,11 @@ p {
     background-color: var(--primary-black);
 }
 
+.hero.mobile-only {
+    height: auto;
+    min-height: 100vh;
+}
+
 .hero-container {
     position: relative;
     width: 100%;
@@ -325,10 +330,12 @@ p {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    position: relative;
+    z-index: 1;
 }
 
 .carousel-item {
@@ -627,6 +634,17 @@ p {
 
     .mobile-only {
         display: block;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    .hero-container {
+        height: auto;
+        min-height: 100vh;
     }
 
     .nav-container {
