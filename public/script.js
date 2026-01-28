@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const titleElement = document.createElement('div');
             titleElement.className = `project-title ${index === 0 ? 'active' : ''}`;
             titleElement.textContent = project.title;
-            titleElement.style.transition = 'transform 0.3s ease';
+            // Sem transform - usando scroll nativo
             titleElement.addEventListener('click', () => {
                 setActiveProject(index);
                 scrollTitleIntoView(index);
@@ -79,31 +79,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function scrollTitles(direction) {
-        const titles = document.querySelectorAll('.project-title');
-        if (titles.length === 0) return;
+        const projectsList = document.getElementById('projectsList');
+        if (!projectsList) return;
         
-        const maxScroll = Math.max(0, titles.length - VISIBLE_TITLES);
-
-        titleScrollOffset += direction;
-        titleScrollOffset = Math.max(0, Math.min(titleScrollOffset, maxScroll));
-
-        titles.forEach((title, index) => {
-            const offset = (index - titleScrollOffset) * TITLE_HEIGHT;
-            title.style.transform = `translateY(${-offset}px)`;
-        });
+        const scrollAmount = 60;
+        projectsList.scrollTop += direction * scrollAmount;
     }
 
     function scrollTitleIntoView(index) {
-        const titles = document.querySelectorAll('.project-title');
-        if (titles.length === 0) return;
+        const projectsList = document.getElementById('projectsList');
+        if (!projectsList) return;
         
-        const maxScroll = Math.max(0, titles.length - VISIBLE_TITLES);
-        titleScrollOffset = Math.max(0, Math.min(index, maxScroll));
-
-        titles.forEach((title, i) => {
-            const offset = (i - titleScrollOffset) * TITLE_HEIGHT;
-            title.style.transform = `translateY(${-offset}px)`;
-        });
+        const titles = projectsList.querySelectorAll('.project-title');
+        if (titles[index]) {
+            titles[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
 
     // Renderizar carrossel vertical para mobile
