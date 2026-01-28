@@ -553,8 +553,10 @@ p {
 
 .about-text p {
     font-size: 0.95rem;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--primary-black);
+    text-align: justify;
+    hyphens: auto;
 }
 
 .about-container {
@@ -783,6 +785,12 @@ p {
 
     .about-content {
         gap: 1rem;
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        text-align: justify;
     }
 
     .contact-buttons {
