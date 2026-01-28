@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const projects = siteData.projects;
     let currentProjectIndex = 0;
     let isDesktop = window.innerWidth > 768;
+    
+    // Variáveis do carrossel de títulos
+    let titleScrollOffset = 0;
+    const VISIBLE_TITLES = 4;
+    const TITLE_HEIGHT = 60;
 
     // Inicializar página
     initializeHome();
@@ -23,10 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Renderizar lista de títulos na hero section (Desktop) - CARROSSEL
-    let titleScrollOffset = 0;
-    const VISIBLE_TITLES = 4;
-    const TITLE_HEIGHT = 60; // Aproximado em pixels
-
     function renderProjectsList() {
         const projectsList = document.getElementById('projectsList');
         if (!projectsList) return;
@@ -79,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function scrollTitles(direction) {
         const titles = document.querySelectorAll('.project-title');
+        if (titles.length === 0) return;
+        
         const maxScroll = Math.max(0, titles.length - VISIBLE_TITLES);
 
         titleScrollOffset += direction;
@@ -91,10 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function scrollTitleIntoView(index) {
-        const maxScroll = Math.max(0, projects.length - VISIBLE_TITLES);
+        const titles = document.querySelectorAll('.project-title');
+        if (titles.length === 0) return;
+        
+        const maxScroll = Math.max(0, titles.length - VISIBLE_TITLES);
         titleScrollOffset = Math.max(0, Math.min(index, maxScroll));
 
-        const titles = document.querySelectorAll('.project-title');
         titles.forEach((title, i) => {
             const offset = (i - titleScrollOffset) * TITLE_HEIGHT;
             title.style.transform = `translateY(${-offset}px)`;
