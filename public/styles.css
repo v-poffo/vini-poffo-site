@@ -559,7 +559,7 @@ p {
     word-wrap: break-word;
     overflow-wrap: break-word;
     margin: 0 0 1.5rem 0;
-    padding: 0 1rem;
+    padding: 0;
 }
 
 .about-container {
@@ -799,7 +799,7 @@ p {
         word-wrap: break-word;
         overflow-wrap: break-word;
         margin: 0 0 1.5rem 0;
-        padding: 0 0.5rem;
+        padding: 0;
     }
 
     .contact-buttons {
