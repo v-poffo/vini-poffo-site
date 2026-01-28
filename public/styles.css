@@ -787,7 +787,7 @@ p {
     }
 
     .about-photo {
-        aspect-ratio: 1/1;
+        display: none;
     }
 
     .about-text h3 {
@@ -801,7 +801,7 @@ p {
     .about-text p {
         font-size: 0.9rem;
         line-height: 1.7;
-        text-align: justify;
+        text-align: left;
         word-wrap: break-word;
         overflow-wrap: break-word;
         margin: 0 0 1.8rem 0;
