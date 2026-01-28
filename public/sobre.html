@@ -8,12 +8,27 @@
     <style>
         /* Hero Section com Foto */
         .sobre-hero {
-            background: linear-gradient(135deg, #3a5f6f 0%, #4a7a8f 100%);
-            color: var(--primary-white);
+            background: radial-gradient(ellipse at center, #3a5f6f 0%, #2d8659 50%, #1a4d3a 100%);
+            position: relative;
+            overflow: hidden;
             padding: 4rem 2rem;
             min-height: 600px;
             display: flex;
             align-items: center;
+        }
+
+        /* Textura sutil no fundo */
+        .sobre-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(113, 136, 120, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(58, 95, 111, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .sobre-hero-content {
@@ -24,6 +39,12 @@
             gap: 4rem;
             align-items: center;
             width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sobre-hero-text {
+            color: var(--primary-white);
         }
 
         .sobre-hero-text h1 {
@@ -44,12 +65,13 @@
             position: relative;
             display: flex;
             justify-content: center;
+            align-items: flex-end;
         }
 
         .sobre-hero-photo img {
-            max-width: 100%;
+            max-width: 85%;
             height: auto;
-            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.4));
         }
 
         /* Seções com cores */
