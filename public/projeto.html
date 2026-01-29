@@ -242,12 +242,49 @@
                 const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                 videoHTML = `
                     <div class="projeto-video youtube-thumbnail">
-                        <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer">
+                        <a href="#" onclick="openYouTubeModal('${videoId}'); return false;">
                             <img src="${thumbnailUrl}" alt="${project.title}">
                             <div class="play-button">▶</div>
                         </a>
                     </div>
                 `;
+                
+                // Adicionar modal ao final da página
+                if (!document.getElementById('youtubeModal')) {
+                    const modal = document.createElement('div');
+                    modal.id = 'youtubeModal';
+                    modal.className = 'youtube-modal';
+                    modal.innerHTML = `
+                        <div class="youtube-modal-content">
+                            <span class="youtube-modal-close" onclick="closeYouTubeModal()">&times;</span>
+                            <iframe id="youtubeIframe" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                }
+            
+                window.openYouTubeModal = function(videoId) {
+                    const modal = document.getElementById('youtubeModal');
+                    const iframe = document.getElementById('youtubeIframe');
+                    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                };
+                
+                window.closeYouTubeModal = function() {
+                    const modal = document.getElementById('youtubeModal');
+                    const iframe = document.getElementById('youtubeIframe');
+                    iframe.src = '';
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                };
+                
+                window.addEventListener('click', function(event) {
+                    const modal = document.getElementById('youtubeModal');
+                    if (event.target === modal) {
+                        closeYouTubeModal();
+                    }
+                });
             } else {
                 const embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
                 videoHTML = `
