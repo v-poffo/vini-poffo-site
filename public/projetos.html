@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projetos - Vini Poffo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         .projetos-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hero/todososprojetos.png') center/cover no-repeat;
@@ -88,6 +90,24 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
             max-width: 320px;
+            opacity: 0;
+        }
+
+        .polaroid-image {
+            clip-path: inset(0% 100% 0% 0%);
+        }
+
+        .polaroid-card.animate-in .polaroid-image {
+            animation: revealImage 0.8s ease-out forwards;
+        }
+
+        @keyframes revealImage {
+            from {
+                clip-path: inset(0% 100% 0% 0%);
+            }
+            to {
+                clip-path: inset(0% 0% 0% 0%);
+            }
         }
 
         /* Rotações aleatórias para efeito orgânico */
@@ -368,6 +388,57 @@
             const projectsGrid = document.getElementById('projectsGrid');
             let currentFilter = 'all';
 
+            // Registrar ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            function animateCards() {
+                const cards = document.querySelectorAll('.polaroid-card');
+                const directions = ['left', 'right', 'top', 'bottom'];
+                
+                cards.forEach((card, index) => {
+                    const direction = directions[index % directions.length];
+                    let startX = 0, startY = 0;
+                    
+                    switch(direction) {
+                        case 'left':
+                            startX = -100;
+                            break;
+                        case 'right':
+                            startX = 100;
+                            break;
+                        case 'top':
+                            startY = -100;
+                            break;
+                        case 'bottom':
+                            startY = 100;
+                            break;
+                    }
+                    
+                    gsap.fromTo(card, 
+                        {
+                            opacity: 0,
+                            x: startX,
+                            y: startY
+                        },
+                        {
+                            opacity: 1,
+                            x: 0,
+                            y: 0,
+                            duration: 0.6,
+                            delay: index * 0.1,
+                            scrollTrigger: {
+                                trigger: card,
+                                start: 'top 80%',
+                                toggleActions: 'play none none none'
+                            },
+                            onComplete: () => {
+                                card.classList.add('animate-in');
+                            }
+                        }
+                    );
+                });
+            }
+
             function renderProjects(filter = 'all') {
                 projectsGrid.innerHTML = '';
                 const filteredProjects = filter === 'all' 
@@ -408,6 +479,12 @@
                     
                     projectsGrid.appendChild(card);
                 });
+                
+                // Animar cards após renderizar
+                setTimeout(() => {
+                    animateCards();
+                    ScrollTrigger.refresh();
+                }, 100);
             }
 
             filterButtons.forEach(btn => {
@@ -418,6 +495,9 @@
                     renderProjects(currentFilter);
                 });
             });
+            
+            // Renderizar projetos inicialmente
+            renderProjects('all');
 
             // Criar modal de vídeo
             function createVideoModal() {
