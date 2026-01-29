@@ -169,166 +169,64 @@
             line-height: 1.6; 
         }
         
-        /* ===== PROCESSO CRIATIVO - GRID PHOTOSHOP EXATO ===== */
+        /* ===== PROCESSO CRIATIVO - GRID FIGMA ===== */
         .section-processo { 
-            min-height: 100vh;
-            padding: 3rem 2rem; 
+            min-height: auto; 
+            padding: 4rem 2rem; 
             display: flex; 
-            flex-direction: column;
             align-items: center; 
-            justify-content: flex-start; 
+            justify-content: center; 
             position: relative; 
             background: #718878;
         }
         
-        .processo-wrapper {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
+        .processo-container { 
+            max-width: 1200px; 
+            width: 100%; 
+            position: relative; 
+            z-index: 1; 
         }
         
-        /* Grid EXATO do Photoshop - Posições absolutas */
-        .grid-photoshop {
+        .grid-figma {
             position: relative;
             width: 100%;
-            height: 550px;
-            margin-bottom: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            aspect-ratio: 1920 / 1080;
         }
         
-        .foto {
+        .figma-elemento {
             position: absolute;
-            overflow: hidden;
             opacity: 0;
             transition: all 0.3s ease;
             border-radius: 15px;
+            overflow: hidden;
         }
         
-        .foto img {
+        .figma-elemento svg {
             width: 100%;
             height: 100%;
-            object-fit: cover;
             display: block;
-            border-radius: 15px;
         }
         
-        .foto:hover {
+        .figma-elemento:hover {
             transform: scale(1.02);
             z-index: 10;
         }
         
-        /* LINHA 1 - Posições EXATAS */
-        .f1 { 
-            left: 3%; 
-            top: 0; 
-            width: 100px; 
-            height: 160px; 
-        }
-        .f2 { 
-            left: 15%; 
-            top: 0; 
-            width: 280px; 
-            height: 160px; 
-        }
-        .f3 { 
-            left: 48%; 
-            top: 0; 
-            width: 140px; 
-            height: 280px; 
-        }
-        .f4 { 
-            left: 65%; 
-            top: 0; 
-            width: 280px; 
-            height: 160px; 
-        }
+        /* Posições exatas do Figma (em percentual para responsividade) */
+        .f1 { left: 2.5%; top: 3%; width: 8%; aspect-ratio: 94/92; }
+        .f2 { left: 13%; top: 3%; width: 30%; aspect-ratio: 297/103; }
+        .f3 { left: 48%; top: 0%; width: 14%; aspect-ratio: 129/102; }
+        .f4 { left: 68%; top: 3%; width: 28%; aspect-ratio: 280/89; }
         
-        /* LINHA 2 - Posições EXATAS */
-        .f5 { 
-            left: 3%; 
-            top: 180px; 
-            width: 200px; 
-            height: 140px; 
-        }
-        .f6 { 
-            left: 28%; 
-            top: 180px; 
-            width: 180px; 
-            height: 300px; 
-        }
-        .f7 { 
-            left: 65%; 
-            top: 180px; 
-            width: 280px; 
-            height: 100px; 
-        }
+        .f5 { left: 2.5%; top: 17%; width: 12%; aspect-ratio: 121/227; }
+        .f6 { left: 26%; top: 17%; width: 26%; aspect-ratio: 257/130; }
+        .f7 { left: 68%; top: 17%; width: 28%; aspect-ratio: 280/89; }
         
-        /* LINHA 3 - Posições EXATAS */
-        .f8 { 
-            left: 3%; 
-            top: 340px; 
-            width: 140px; 
-            height: 120px; 
-        }
-        .f9 { 
-            left: 18%; 
-            top: 340px; 
-            width: 140px; 
-            height: 180px; 
-        }
-        .f10 { 
-            left: 50%; 
-            top: 310px; 
-            width: 400px; 
-            height: 180px; 
-        }
-        
-        /* Quadrados azuis */
-        .quadrado-azul {
-            background: #4a6a7a;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            text-align: center;
-        }
-        
-        .quadrado-azul h3 {
-            font-size: 1rem;
-            font-weight: 900;
-            color: white;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-        
-        .quadrado-azul p {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.8);
-            line-height: 1.4;
-        }
-        
-        .quadrado-azul .btn-cta {
-            margin-top: 0.5rem;
-            padding: 0.4rem 1rem;
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .quadrado-azul .btn-cta:hover {
-            background: white;
-            color: #4a6a7a;
-        }
+        .f8 { left: 2.5%; top: 32%; width: 9%; aspect-ratio: 91/96; }
+        .f9 { left: 16%; top: 32%; width: 14%; aspect-ratio: 97/189; }
+        .f10 { left: 42%; top: 32%; width: 54%; aspect-ratio: 193/198; }
         
         /* Área de contato embaixo */
         .contato-area {
@@ -355,6 +253,7 @@
             justify-content: center;
             gap: 3rem;
             opacity: 0;
+            flex-wrap: wrap;
         }
         
         .contato-links a {
@@ -405,11 +304,9 @@
         
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .grid-photoshop {
-                height: 450px;
-            }
-            .f1, .f2, .f3, .f4, .f5, .f6, .f7, .f8, .f9, .f10 {
-                transform: scale(0.8);
+            .grid-figma {
+                aspect-ratio: auto;
+                height: 600px;
             }
         }
         
@@ -424,28 +321,20 @@
                 gap: 3rem; 
             } 
             
-            .grid-photoshop {
-                height: auto;
+            .grid-figma {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 1rem;
+                height: auto;
+                aspect-ratio: auto;
                 position: static;
             }
             
-            .foto {
+            .figma-elemento {
                 position: static !important;
                 width: 100% !important;
-                height: auto !important;
-                aspect-ratio: 1;
-            }
-            
-            .f3, .f6 {
-                aspect-ratio: 0.7;
-            }
-            
-            .f10 {
-                grid-column: span 2;
-                aspect-ratio: 2;
+                left: auto !important;
+                top: auto !important;
             }
             
             .contato-links {
@@ -514,44 +403,44 @@
         </div>
     </section>
 
-    <!-- PROCESSO CRIATIVO - GRID PHOTOSHOP EXATO -->
+    <!-- PROCESSO CRIATIVO - GRID FIGMA -->
     <section class="section-processo">
-        <div class="processo-wrapper">
-            <div class="grid-photoshop">
-                <!-- LINHA 1 -->
-                <div class="foto f1">
-                    <img src="assets/processo/vini1.png" alt="Vini 1">
+        <div class="processo-container">
+            <div class="grid-figma">
+                <!-- Linha 1 -->
+                <div class="figma-elemento f1">
+                    <svg viewBox="0 0 94 92" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 1 1.svg" width="94" height="92"/></svg>
                 </div>
-                <div class="foto f2">
-                    <img src="assets/processo/vini2_.png" alt="Vini 2">
+                <div class="figma-elemento f2">
+                    <svg viewBox="0 0 297 103" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 2_ 1.svg" width="297" height="103"/></svg>
                 </div>
-                <div class="foto f3">
-                    <img src="assets/processo/vini4.png" alt="Vini 3">
+                <div class="figma-elemento f3">
+                    <svg viewBox="0 0 129 102" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 3_ 1.svg" width="129" height="102"/></svg>
                 </div>
-                <div class="foto f4">
-                    <img src="assets/processo/vini5.png" alt="Vini 4">
-                </div>
-                
-                <!-- LINHA 2 -->
-                <div class="foto f5">
-                    <img src="assets/processo/vini6.png" alt="Vini 5">
-                </div>
-                <div class="foto f6">
-                    <img src="assets/processo/vini7.png" alt="Vini 6">
-                </div>
-                <div class="foto f7 quadrado-azul">
-                    <h3>Processo Criativo</h3>
+                <div class="figma-elemento f4">
+                    <svg viewBox="0 0 280 89" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 4 1.svg" width="280" height="89"/></svg>
                 </div>
                 
-                <!-- LINHA 3 -->
-                <div class="foto f8 quadrado-azul">
-                    <h3>Vamos Conversar?</h3>
+                <!-- Linha 2 -->
+                <div class="figma-elemento f5">
+                    <svg viewBox="0 0 121 227" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 5 1.svg" width="121" height="227"/></svg>
                 </div>
-                <div class="foto f9">
-                    <img src="assets/processo/vini10.png" alt="Vini 7">
+                <div class="figma-elemento f6">
+                    <svg viewBox="0 0 257 130" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 6 1.svg" width="257" height="130"/></svg>
                 </div>
-                <div class="foto f10">
-                    <img src="assets/processo/vini8.png" alt="Vini 8">
+                <div class="figma-elemento f7">
+                    <svg viewBox="0 0 280 89" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 7 1.svg" width="280" height="89"/></svg>
+                </div>
+                
+                <!-- Linha 3 -->
+                <div class="figma-elemento f8">
+                    <svg viewBox="0 0 91 96" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 8 1.svg" width="91" height="96"/></svg>
+                </div>
+                <div class="figma-elemento f9">
+                    <svg viewBox="0 0 97 189" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 9 1.svg" width="97" height="189"/></svg>
+                </div>
+                <div class="figma-elemento f10">
+                    <svg viewBox="0 0 193 198" xmlns="http://www.w3.org/2000/svg"><image href="assets/figma-grid/vini 10 1.svg" width="193" height="198"/></svg>
                 </div>
             </div>
             
@@ -592,11 +481,11 @@
             gsap.fromTo('.pf-title', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: '.section-pf', start: 'top 80%', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.pf-item', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.pf-container', start: 'top 80%', toggleActions: 'play reverse play reverse' } });
             
-            // Grid Photoshop animations - Quadrados vindo de lados diferentes
-            const fotos = document.querySelectorAll('.foto');
-            fotos.forEach((foto, index) => {
+            // Grid Figma animations
+            const elementos = document.querySelectorAll('.figma-elemento');
+            elementos.forEach((elemento, index) => {
                 const fromLeft = index % 2 === 0;
-                gsap.fromTo(foto, 
+                gsap.fromTo(elemento, 
                     { opacity: 0, x: fromLeft ? -80 : 80, y: 30, scale: 0.9 }, 
                     { 
                         opacity: 1, 
@@ -607,7 +496,7 @@
                         delay: index * 0.12,
                         ease: 'power2.out',
                         scrollTrigger: { 
-                            trigger: '.grid-photoshop', 
+                            trigger: '.grid-figma', 
                             start: 'top 85%', 
                             toggleActions: 'play reverse play reverse' 
                         } 
@@ -622,7 +511,7 @@
                     opacity: 1, 
                     y: 0,
                     duration: 0.8, 
-                    delay: fotos.length * 0.12,
+                    delay: elementos.length * 0.12,
                     ease: 'power2.out',
                     scrollTrigger: { 
                         trigger: '.contato-area', 
@@ -638,7 +527,7 @@
                     opacity: 1, 
                     y: 0,
                     duration: 0.8, 
-                    delay: (fotos.length * 0.12) + 0.2,
+                    delay: (elementos.length * 0.12) + 0.2,
                     ease: 'power2.out',
                     scrollTrigger: { 
                         trigger: '.contato-area', 
