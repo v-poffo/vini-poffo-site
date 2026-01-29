@@ -233,23 +233,23 @@
             background: var(--accent-green-light); 
         }
         
-        /* Grid de Quadrados */
-        .grid-quadrados{
+        /* Grid de Quadrados - Exatamente como no Photoshop */
+        .grid-quadrados {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
             margin-bottom: 3rem;
         }
         
         .quadrado{
             position: relative;
-            aspect-ratio: 1;
             border-radius: 12px;
             overflow: hidden;
             opacity: 0;
             transform: translateY(50px);
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
         }
         
         .quadrado:hover{
@@ -261,6 +261,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s ease;
+            display: block;
         }
         
         .quadrado:hover img{
@@ -292,6 +293,22 @@
             padding: 2rem;
             line-height: 1.4;
         }
+        
+        /* Tamanhos dos quadrados - Grid 12 colunas */
+        .q1 { grid-column: span 3; aspect-ratio: 1; }
+        .q2 { grid-column: span 4; aspect-ratio: 1; }
+        .q3 { grid-column: span 3; aspect-ratio: 1; }
+        .q4 { grid-column: span 2; aspect-ratio: 1; }
+        
+        .q5 { grid-column: span 3; aspect-ratio: 1; }
+        .q6 { grid-column: span 3; aspect-ratio: 1; }
+        .q7 { grid-column: span 3; aspect-ratio: 1; }
+        .q8 { grid-column: span 3; aspect-ratio: 1; }
+        
+        .q9 { grid-column: span 3; aspect-ratio: 1; }
+        .q10 { grid-column: span 3; aspect-ratio: 1; }
+        .q11 { grid-column: span 4; aspect-ratio: 1; }
+        .q12 { grid-column: span 2; aspect-ratio: 1; }
         
         /* Quadrados vazios (azuis) */
         .quadrado-vazio{
@@ -442,8 +459,8 @@
         
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .grid-quadrados {
-                grid-template-columns: repeat(3, 1fr);
+            .q1, .q2, .q3, .q4, .q5, .q6, .q7, .q8, .q9, .q10, .q11, .q12 {
+                grid-column: span 6 !important;
             }
         }
         
@@ -470,14 +487,14 @@
                 width: 100%; 
             }
             
-            .grid-quadrados {
-                grid-template-columns: repeat(2, 1fr);
+            .q1, .q2, .q3, .q4, .q5, .q6, .q7, .q8, .q9, .q10, .q11, .q12 {
+                grid-column: span 4 !important;
             }
         }
         
         @media (max-width: 480px) {
-            .grid-quadrados {
-                grid-template-columns: 1fr;
+            .q1, .q2, .q3, .q4, .q5, .q6, .q7, .q8, .q9, .q10, .q11, .q12 {
+                grid-column: span 12 !important;
             }
         }
     </style>
@@ -547,67 +564,90 @@
             <h2 class="processo-title">Processo Criativo</h2>
             
             <div class="grid-quadrados">
-                <!-- Quadrado 1 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_1326.jpeg" alt="Estúdio">
+                <!-- Linha 1 -->
+                <div class="quadrado q1">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_4.png" alt="Você com câmera">
                     <div class="quadrado-overlay">
-                        <div class="quadrado-text">Direção Criativa</div>
+                        <div class="quadrado-text">Direção</div>
                     </div>
                 </div>
                 
-                <!-- Quadrado 2 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_3179.jpeg" alt="Monitor">
+                <div class="quadrado q2">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_5.png" alt="Estúdio vermelho">
                     <div class="quadrado-overlay">
                         <div class="quadrado-text">Produção</div>
                     </div>
                 </div>
                 
-                <!-- Quadrado 3 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_3199.jpeg" alt="Set">
+                <div class="quadrado q3">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_6.png" alt="Você com chapéu">
                     <div class="quadrado-overlay">
-                        <div class="quadrado-text">Set de Filmagem</div>
+                        <div class="quadrado-text">Criatividade</div>
                     </div>
                 </div>
                 
-                <!-- Quadrado 4 - Vazio (Azul) -->
-                <div class="quadrado quadrado-vazio">
+                <div class="quadrado q4">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_7.png" alt="Você com megafone">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Voz</div>
+                    </div>
+                </div>
+                
+                <!-- Linha 2 -->
+                <div class="quadrado q5">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_8.png" alt="Você em set">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Set</div>
+                    </div>
+                </div>
+                
+                <div class="quadrado q6">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_2.png" alt="Você rindo">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Alegria</div>
+                    </div>
+                </div>
+                
+                <div class="quadrado q7 quadrado-vazio">
                     <div class="quadrado-vazio-content">
-                        <h3>Processo Criativo</h3>
-                        <p>Abordagem artesanal e transformadora</p>
+                        <h3>Processo</h3>
+                        <p>Artesanal e Transformador</p>
                     </div>
                 </div>
                 
-                <!-- Quadrado 5 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_4915.jpeg" alt="Estúdio Branco">
+                <div class="quadrado q8">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_10.png" alt="Você com chapéu vermelho">
                     <div class="quadrado-overlay">
-                        <div class="quadrado-text">Equipe</div>
+                        <div class="quadrado-text">Liderança</div>
                     </div>
                 </div>
                 
-                <!-- Quadrado 6 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_4253.jpeg" alt="Evento">
-                    <div class="quadrado-overlay">
-                        <div class="quadrado-text">Colaboração</div>
+                <!-- Linha 3 -->
+                <div class="quadrado q9 quadrado-vazio">
+                    <div class="quadrado-vazio-content">
+                        <h3>Vamos</h3>
+                        <p>Conversar?</p>
                     </div>
                 </div>
                 
-                <!-- Quadrado 7 - Foto -->
-                <div class="quadrado">
-                    <img src="assets/processo-criativo-cropped/cropped_IMG_4254.jpeg" alt="Mergulho">
+                <div class="quadrado q10">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_11.png" alt="Você mergulhando">
                     <div class="quadrado-overlay">
                         <div class="quadrado-text">Exploração</div>
                     </div>
                 </div>
                 
-                <!-- Quadrado 8 - Vazio (Azul) -->
-                <div class="quadrado quadrado-vazio">
-                    <div class="quadrado-vazio-content">
-                        <h3>Vamos Conversar?</h3>
-                        <p>Colaborações criativas e projetos desafiadores</p>
+                <div class="quadrado q11">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_0.png" alt="Você de câmera">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Filmagem</div>
+                    </div>
+                </div>
+                
+                <div class="quadrado q12">
+                    <img src="assets/processo-criativo-photoshop/site_vini_layer_3.png" alt="Você em set">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Arte</div>
                     </div>
                 </div>
             </div>
