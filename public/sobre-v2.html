@@ -32,7 +32,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(42, 74, 90, 0.15) 0%, rgba(52, 90, 106, 0.15) 100%);
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%);
             z-index: 0;
         }
 
@@ -80,8 +80,8 @@
             border-radius: 2px;
         }
 
-        /* ===== SEÇÃO 2: FILMOGRAFIA + PRÊMIOS (LADO A LADO) ===== */
-        .section-filmografia-premios {
+        /* ===== SEÇÃO 2: PRÊMIOS + FILMOGRAFIA (LADO A LADO) ===== */
+        .section-pf {
             min-height: 100vh;
             padding: 8rem 2rem;
             display: flex;
@@ -90,7 +90,7 @@
             position: relative;
         }
 
-        .section-filmografia-premios::before {
+        .section-pf::before {
             content: '';
             position: absolute;
             top: 0;
@@ -101,7 +101,7 @@
             z-index: 0;
         }
 
-        .fp-container {
+        .pf-container {
             max-width: 1200px;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -110,55 +110,82 @@
             z-index: 1;
         }
 
-        .fp-column {
+        .pf-column {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
 
-        .fp-title {
-            font-size: 1.8rem;
+        .pf-title {
+            font-size: 1.6rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             position: relative;
             padding-bottom: 1rem;
             opacity: 0;
             transform: translateY(-30px);
         }
 
-        .fp-title::after {
+        .pf-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
+            width: 30px;
+            height: 1px;
             background: var(--accent-green-light);
         }
 
-        .fp-item {
+        /* Coluna Prêmios - Verde Claro */
+        .pf-column.premios {
+            border-left: 2px solid rgba(113, 136, 120, 0.3);
+            padding-left: 2rem;
+        }
+
+        .pf-column.premios .pf-title {
+            color: var(--accent-green-light);
+        }
+
+        /* Coluna Filmografia - Azul */
+        .pf-column.filmografia {
+            border-left: 2px solid rgba(42, 74, 90, 0.3);
+            padding-left: 2rem;
+        }
+
+        .pf-column.filmografia .pf-title {
+            color: #3a7a9a;
+        }
+
+        .pf-item {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
         }
 
-        .fp-item:hover {
+        .pf-item:hover {
             transform: translateY(-2px);
         }
 
-        .fp-item h3 {
-            font-size: 0.9rem;
+        .pf-item h3 {
+            font-size: 0.85rem;
             text-transform: uppercase;
             margin-bottom: 0.3rem;
-            color: var(--accent-green-light);
             font-weight: 700;
             letter-spacing: 0.05em;
         }
 
-        .fp-item p {
-            font-size: 0.85rem;
+        .pf-column.premios .pf-item h3 {
+            color: var(--accent-green-light);
+        }
+
+        .pf-column.filmografia .pf-item h3 {
+            color: #3a7a9a;
+        }
+
+        .pf-item p {
+            font-size: 0.8rem;
             color: #a0a0a0;
             line-height: 1.6;
         }
@@ -211,8 +238,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
-            height: 2px;
+            width: 30px;
+            height: 1px;
             background: var(--accent-green-light);
         }
 
@@ -242,10 +269,45 @@
             position: relative;
         }
 
-        /* Elemento gráfico SVG */
+        /* SVG Animado */
         svg {
             width: 100%;
             height: 100%;
+        }
+
+        svg line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 2s ease-in-out forwards;
+        }
+
+        svg circle {
+            opacity: 0;
+            animation: fadeInCircle 1.5s ease-out 1.5s forwards;
+        }
+
+        svg rect {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawRect 1.5s ease-in-out 2s forwards;
+        }
+
+        @keyframes drawLine {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes fadeInCircle {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes drawRect {
+            to {
+                stroke-dashoffset: 0;
+            }
         }
 
         /* ===== SEÇÃO 4: CTA / CONTATO ===== */
@@ -284,8 +346,8 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
+            width: 30px;
+            height: 1px;
             background: var(--accent-green-light);
         }
 
@@ -364,7 +426,7 @@
                 gap: 3rem;
             }
 
-            .fp-container {
+            .pf-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -375,7 +437,7 @@
             }
 
             .hero-text h1,
-            .fp-title,
+            .pf-title,
             .processo-text h2,
             .cta-container h2 {
                 font-size: 1.8rem;
@@ -426,81 +488,81 @@
                 <p>Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.</p>
             </div>
             <div class="hero-image">
-                <img src="assets/about/vini-poffo.png" alt="Vini Poffo">
+                <img src="assets/vini-poffo-sobre.png" alt="Vini Poffo">
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 2: FILMOGRAFIA + PRÊMIOS -->
-    <section class="section-filmografia-premios">
-        <div class="fp-container">
-            <!-- FILMOGRAFIA -->
-            <div class="fp-column">
-                <h2 class="fp-title">Filmografia</h2>
+    <!-- SEÇÃO 2: PRÊMIOS + FILMOGRAFIA -->
+    <section class="section-pf">
+        <div class="pf-container">
+            <!-- PRÊMIOS (Esquerda) -->
+            <div class="pf-column premios">
+                <h2 class="pf-title">Prêmios</h2>
                 
-                <div class="fp-item">
-                    <h3>Vira Essa Boca Pra Cá</h3>
-                    <p>Videoclipe • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
-                </div>
-
-                <div class="fp-item">
-                    <h3>Tem Feito Uns Dias Esquisitos</h3>
-                    <p>Curta-metragem • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
-                </div>
-
-                <div class="fp-item">
-                    <h3>(Sub)Urbana</h3>
-                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
-                </div>
-
-                <div class="fp-item">
-                    <h3>No Reflexo do Meu Nome</h3>
-                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
-                </div>
-
-                <div class="fp-item">
-                    <h3>Debaixo do Guarda-chuva</h3>
-                    <p>Curta documental • 2021<br>Direção: Vini Poffo</p>
-                </div>
-
-                <div class="fp-item">
-                    <h3>Marias</h3>
-                    <p>Curta documental • 2020<br>Direção: Vini Poffo</p>
-                </div>
-            </div>
-
-            <!-- PRÊMIOS -->
-            <div class="fp-column">
-                <h2 class="fp-title">Prêmios</h2>
-                
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>5 Prêmios de Melhor Filme</h3>
                     <p>(Sub)Urbana – Festival SESC</p>
                 </div>
 
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>Prêmio Revelação</h3>
                     <p>Transforma Festival</p>
                 </div>
 
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>Curta Fest Brasília 2024</h3>
                     <p>Categoria Aranha</p>
                 </div>
 
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>SESC SC</h3>
                     <p>No Reflexo do Meu Nome – Reconhecimento Nacional</p>
                 </div>
 
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>Exibições Internacionais</h3>
                     <p>Trabalhos exibidos em festivais internacionais</p>
                 </div>
 
-                <div class="fp-item">
+                <div class="pf-item">
                     <h3>Lei Paulo Gustavo</h3>
                     <p>Contemplado para desenvolvimento de projetos</p>
+                </div>
+            </div>
+
+            <!-- FILMOGRAFIA (Direita) -->
+            <div class="pf-column filmografia">
+                <h2 class="pf-title">Filmografia</h2>
+                
+                <div class="pf-item">
+                    <h3>Vira Essa Boca Pra Cá</h3>
+                    <p>Videoclipe • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
+                </div>
+
+                <div class="pf-item">
+                    <h3>Tem Feito Uns Dias Esquisitos</h3>
+                    <p>Curta-metragem • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
+                </div>
+
+                <div class="pf-item">
+                    <h3>(Sub)Urbana</h3>
+                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
+                </div>
+
+                <div class="pf-item">
+                    <h3>No Reflexo do Meu Nome</h3>
+                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
+                </div>
+
+                <div class="pf-item">
+                    <h3>Debaixo do Guarda-chuva</h3>
+                    <p>Curta documental • 2021<br>Direção: Vini Poffo</p>
+                </div>
+
+                <div class="pf-item">
+                    <h3>Marias</h3>
+                    <p>Curta documental • 2020<br>Direção: Vini Poffo</p>
                 </div>
             </div>
         </div>
@@ -517,25 +579,22 @@
             <div class="processo-visual">
                 <div class="processo-graphic">
                     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Linhas geométricas minimalistas -->
-                        <line x1="50" y1="50" x2="350" y2="50" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="50" y1="150" x2="350" y2="150" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="50" y1="250" x2="350" y2="250" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="50" y1="350" x2="350" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <!-- Linhas horizontais -->
+                        <line x1="50" y1="80" x2="350" y2="80" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="50" y1="180" x2="350" y2="180" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="50" y1="280" x2="350" y2="280" stroke="#718880" stroke-width="1" opacity="0.4"/>
                         
                         <!-- Linhas verticais -->
-                        <line x1="50" y1="50" x2="50" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="150" y1="50" x2="150" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="250" y1="50" x2="250" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
-                        <line x1="350" y1="50" x2="350" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="80" y1="50" x2="80" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="200" y1="50" x2="200" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="320" y1="50" x2="320" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
                         
                         <!-- Elementos destacados -->
-                        <circle cx="100" cy="100" r="8" fill="#718880" opacity="0.6"/>
-                        <circle cx="300" cy="300" r="8" fill="#718880" opacity="0.6"/>
-                        <rect x="120" y="180" width="160" height="40" fill="none" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <circle cx="80" cy="80" r="6" fill="#718880" opacity="0.6"/>
+                        <circle cx="320" cy="280" r="6" fill="#718880" opacity="0.6"/>
                         
-                        <!-- Linhas diagonais -->
-                        <line x1="50" y1="350" x2="350" y2="50" stroke="#718880" stroke-width="1" opacity="0.2"/>
+                        <!-- Retângulo central -->
+                        <rect x="120" y="160" width="160" height="60" fill="none" stroke="#718880" stroke-width="1" opacity="0.4"/>
                     </svg>
                 </div>
             </div>
@@ -591,8 +650,8 @@
                 { opacity: 1, scale: 1, duration: 1, ease: 'power2.out', delay: 0.2 }
             );
             
-            // ===== SEÇÃO 2: FILMOGRAFIA + PRÊMIOS =====
-            gsap.fromTo('.fp-title',
+            // ===== SEÇÃO 2: PRÊMIOS + FILMOGRAFIA =====
+            gsap.fromTo('.pf-title',
                 { opacity: 0, y: -30 },
                 {
                     opacity: 1,
@@ -600,14 +659,14 @@
                     duration: 0.8,
                     stagger: 0.2,
                     scrollTrigger: {
-                        trigger: '.section-filmografia-premios',
+                        trigger: '.section-pf',
                         start: 'top center',
                         toggleActions: 'play none none none'
                     }
                 }
             );
             
-            gsap.fromTo('.fp-item',
+            gsap.fromTo('.pf-item',
                 { opacity: 0, y: 20 },
                 {
                     opacity: 1,
@@ -615,7 +674,7 @@
                     duration: 0.6,
                     stagger: 0.08,
                     scrollTrigger: {
-                        trigger: '.fp-container',
+                        trigger: '.pf-container',
                         start: 'top 80%',
                         toggleActions: 'play none none none'
                     }
