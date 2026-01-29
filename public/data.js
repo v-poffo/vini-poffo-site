@@ -18,6 +18,7 @@ const siteData = {
       cartazMobile: "dias-esquisitos-cartaz.png",
       trailerUrl: "https://youtu.be/VoZ8e76yASQ?si=T5BxmH5B-QIwLYRr",
       description: "Direção de Vini Poffo e Luana Skibinski. Roteiro de Zalu Amorim e Vini Poffo. Concepção de arte. Premiada pela Mostra SESC de Cinema 2025 e Prêmio Catarinense de Cinema.",
+      duracao: "25 minutos",
       credits: {
         elenco: ["Leonardo Lima", "Rafaella Narciso", "Bernardo Araújo", "Guy Lima", "Tayla Evangelista", "Berna Sant'Anna", "Ana Miranda"],
         direcao: ["Vini Poffo", "Luana Skibinski"],

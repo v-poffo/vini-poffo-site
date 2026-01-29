@@ -80,20 +80,31 @@
             border: none;
         }
 
-        .projeto-description {
-            margin-bottom: 2rem;
-            line-height: 1.9;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .projeto-description-hero {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .projeto-description p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+        .projeto-description-hero p {
             color: var(--primary-white);
             text-align: justify;
+            margin: 0;
+        }
+
+        .projeto-content-columns {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .projeto-credits-column {
+            display: flex;
+            flex-direction: column;
         }
 
         .projeto-ficha {
@@ -296,6 +307,11 @@
             .credit-label {
                 font-size: 0.75rem;
             }
+
+            .projeto-content-columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
@@ -370,6 +386,9 @@
                     <span>${project.year}</span> • 
                     <span>${project.type}</span>
                     ${project.artist ? `<span> • ${project.artist}</span>` : ''}
+                </div>
+                <div class="projeto-description-hero">
+                    <p>${project.description}</p>
                 </div>
             `;
             document.getElementById('projectHero').innerHTML = heroHTML;
@@ -465,11 +484,8 @@
             const detailsHTML = `
                 ${videoHTML}
 
-                <div class="projeto-description">
-                    <p>${project.description}</p>
-                </div>
-
-                <div class="projeto-ficha">
+                <div class="projeto-content-columns">
+                    <div class="projeto-ficha">
                     <h3>Ficha Técnica</h3>
                     <div class="ficha-item">
                         <span class="ficha-label">Título</span>
@@ -493,7 +509,14 @@
                         <span class="ficha-label">Direção</span>
                         <span class="ficha-value">Vini Poffo</span>
                     </div>
-                </div>
+                    ${project.duracao ? `
+                    <div class="ficha-item">
+                        <span class="ficha-label">Duração</span>
+                        <span class="ficha-value">${project.duracao}</span>
+                    </div>
+                    ` : ''}
+                    </div>
+                    <div class="projeto-credits-column">
             `;
 
             // Adicionar créditos se existirem
@@ -546,6 +569,11 @@
 
                 creditsHTML += `</div>`;
             }
+
+            creditsHTML += `
+                    </div>
+                </div>
+            `;
 
             document.getElementById('projectDetails').innerHTML = detailsHTML + creditsHTML;
 
