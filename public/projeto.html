@@ -10,15 +10,41 @@
             background-color: var(--primary-black);
             color: var(--primary-white);
             padding: 4rem 2rem;
-            min-height: 60vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projeto-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+            z-index: 1;
+        }
+
+        .projeto-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
 
         .projeto-hero-content {
             max-width: 900px;
             text-align: center;
+            position: relative;
+            z-index: 2;
         }
 
         .projeto-hero h1.page-title {
@@ -290,6 +316,18 @@
                 </div>
             `;
             document.getElementById('projectHero').innerHTML = heroHTML;
+
+            // Adicionar video de fundo ao hero
+            if (project.videoHome) {
+                const heroSection = document.querySelector('.projeto-hero');
+                const video = document.createElement('video');
+                video.src = `assets/videos/${project.videoHome}`;
+                video.autoplay = true;
+                video.muted = true;
+                video.loop = true;
+                video.playsinline = true;
+                heroSection.appendChild(video);
+            }
 
             // Renderizar detalhes
             let videoHTML;
