@@ -1,0 +1,59 @@
+backend:
+  name: github
+  repo: v-poffo/vini-poffo-site
+  branch: main
+  auth_endpoint: api/auth
+
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "pages"
+    label: "Páginas"
+    folder: "public"
+    create: false
+    files:
+      - name: "sobre"
+        label: "Página Sobre"
+        file: "public/sobre.html"
+        fields:
+          - { label: "Título da Página", name: "title", widget: "string", default: "Sobre - Vini Poffo" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Nome", name: "name", widget: "string", default: "Vini Poffo" }
+              - { label: "Descrição 1", name: "desc1", widget: "text", default: "Diretor criativo, pesquisador e artista multidisciplinar com foco em cinema, videoclipes e projetos interdisciplinares." }
+              - { label: "Descrição 2", name: "desc2", widget: "text", default: "Cada projeto é atravessado por símbolos, política e afeto." }
+              - { label: "Foto", name: "image", widget: "image", default: "/assets/vini-poffo-sobre.png" }
+          
+          - label: "Prêmios"
+            name: "premios"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descrição", name: "descricao", widget: "string" }
+          
+          - label: "Filmografia"
+            name: "filmografia"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string" }
+              - { label: "Descrição", name: "descricao", widget: "string" }
+          
+          - label: "Processo Criativo"
+            name: "processo"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", default: "Processo Criativo" }
+              - { label: "Descrição 1", name: "desc1", widget: "text" }
+              - { label: "Descrição 2", name: "desc2", widget: "text" }
+          
+          - label: "CTA (Call to Action)"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "titulo", widget: "string", default: "Vamos Conversar?" }
+              - { label: "Descrição", name: "descricao", widget: "string" }
+              - { label: "Email", name: "email", widget: "string", default: "projetos@vinipoffo.com" }
+              - { label: "Instagram", name: "instagram", widget: "string", default: "@poffovini" }
