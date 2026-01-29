@@ -49,6 +49,17 @@ h1 {
     font-weight: 400;
 }
 
+/* Títulos principais com estilo da home */
+.page-title {
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--primary-white);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
 h2 {
     font-size: 2.8rem;
     line-height: 1.2;
