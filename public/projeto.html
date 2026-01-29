@@ -34,7 +34,7 @@
         .projeto-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 6rem 2rem;
             background-color: var(--primary-black);
             color: var(--primary-white);
         }
@@ -42,7 +42,7 @@
         .projeto-video {
             width: 100%;
             aspect-ratio: 16 / 9;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             border-radius: 4px;
             overflow: hidden;
             background-color: var(--primary-black);
@@ -133,6 +133,60 @@
             gap: 2rem;
         }
 
+        .project-card {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            background-color: var(--primary-white);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background-color: var(--primary-white);
+            min-height: 200px;
+        }
+
+        .project-card-content {
+            padding: 1rem;
+            background-color: var(--primary-white);
+        }
+
+        .project-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .project-card-meta {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            margin-top: 0.3rem;
+        }
+
+        .project-card-type {
+            display: inline-block;
+            background-color: var(--accent-green-light);
+            color: var(--primary-white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
         @media (max-width: 768px) {
             .projeto-hero {
                 padding: 3rem 1.5rem;
@@ -158,7 +212,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: #111A17;">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">

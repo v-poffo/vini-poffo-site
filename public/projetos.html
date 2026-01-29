@@ -396,22 +396,10 @@
                         </div>
                     `;
                     
-                    // Adicionar evento de clique para abrir o vídeo
-                    if (project.videoHome) {
-                        card.addEventListener('click', () => {
-                            openVideoModal(`assets/videos/${project.videoHome}`, project.title);
-                        });
-                    } else if (project.trailerUrl) {
-                        card.addEventListener('click', () => {
-                            window.open(project.trailerUrl, '_blank');
-                        });
-                    } else {
-                        // Se não tiver vídeo, redirecionar para a página do projeto
-                        card.style.cursor = 'pointer';
-                        card.addEventListener('click', () => {
-                            window.location.href = `projeto.html?id=${project.id}`;
-                        });
-                    }
+                    // Adicionar evento de clique para ir para a página do projeto
+                    card.addEventListener('click', () => {
+                        window.location.href = `projeto.html?id=${project.id}`;
+                    });
                     
                     projectsGrid.appendChild(card);
                 });
