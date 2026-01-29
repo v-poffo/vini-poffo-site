@@ -192,7 +192,7 @@ class AdvancedEditor {
       padding: 20px;
       z-index: 9999;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      max-height: 500px;
+      max-height: 600px;
       overflow-y: auto;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
     `;
@@ -237,7 +237,25 @@ class AdvancedEditor {
 
       <button id="delete-element" style="width: 100%; padding: 10px; background: #ff6b6b; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; margin-bottom: 10px;">🗑️ Deletar</button>
 
-      <button id="reset-styles" style="width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;">↺ Resetar</button>
+      <button id="reset-styles" style="width: 100%; padding: 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold; margin-bottom: 15px;">↺ Resetar</button>
+      
+      <hr style="margin: 15px 0; border: none; border-top: 1px solid #ddd;">
+      
+      <h3 style="margin: 15px 0 10px 0; font-size: 12px; color: #111A17; font-weight: bold;">Adicionar Imagem</h3>
+      <select id="image-select" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px; box-sizing: border-box;">
+        <option value="">Selecione uma imagem...</option>
+        <option value="/assets/processo/vini1.png">Vini 1</option>
+        <option value="/assets/processo/vini2.png">Vini 2</option>
+        <option value="/assets/processo/vini3.png">Vini 3</option>
+        <option value="/assets/processo/vini4.png">Vini 4</option>
+        <option value="/assets/processo/vini5.png">Vini 5</option>
+        <option value="/assets/processo/vini6.png">Vini 6</option>
+        <option value="/assets/processo/vini7.png">Vini 7</option>
+        <option value="/assets/processo/vini8.png">Vini 8</option>
+        <option value="/assets/processo/vini9.png">Vini 9</option>
+        <option value="/assets/processo/vini10.png">Vini 10</option>
+      </select>
+      <button id="add-image" style="width: 100%; padding: 10px; background: #718878; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: bold;">📷 Adicionar Imagem</button>
     `;
 
     document.body.appendChild(panel);
@@ -284,6 +302,36 @@ class AdvancedEditor {
         this.updateEditorPanel();
       }
     });
+
+    document.getElementById('add-image')?.addEventListener('click', () => {
+      const select = document.getElementById('image-select');
+      if (select.value) {
+        this.addImage(select.value);
+        select.value = '';
+      }
+    });
+  }
+
+  addImage(src) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.cssText = `
+      position: fixed;
+      left: 100px;
+      top: 100px;
+      width: 200px;
+      height: auto;
+      z-index: 9999;
+      cursor: grab;
+      outline: 2px dashed #718878;
+      outline-offset: 4px;
+    `;
+
+    img.addEventListener('mousedown', (e) => this.startDrag(e, img));
+    img.addEventListener('click', (e) => this.selectElement(e, img));
+
+    document.body.appendChild(img);
+    this.selectElement({ stopPropagation: () => {} }, img);
   }
 
   updateEditorPanel() {
