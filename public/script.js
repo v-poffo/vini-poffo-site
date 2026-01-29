@@ -153,6 +153,57 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Registrar ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    function animateProjectCards() {
+        const cards = document.querySelectorAll('.project-card');
+        const directions = ['left', 'right', 'top', 'bottom'];
+        
+        cards.forEach((card, index) => {
+            const direction = directions[index % directions.length];
+            let startX = 0, startY = 0;
+            
+            switch(direction) {
+                case 'left':
+                    startX = -100;
+                    break;
+                case 'right':
+                    startX = 100;
+                    break;
+                case 'top':
+                    startY = -100;
+                    break;
+                case 'bottom':
+                    startY = 100;
+                    break;
+            }
+            
+            gsap.fromTo(card, 
+                {
+                    opacity: 0,
+                    x: startX,
+                    y: startY
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    scrollTrigger: {
+                        trigger: card,
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    },
+                    onComplete: () => {
+                        card.classList.add('animate-in');
+                    }
+                }
+            );
+        });
+    }
+
     // Renderizar grid de projetos na seção de projetos (SEM TAG DE TIPO)
     function renderProjectsGrid() {
         const projectsGrid = document.getElementById('projectsGrid');
@@ -172,6 +223,12 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             projectsGrid.appendChild(card);
         });
+        
+        // Animar cards após renderizar
+        setTimeout(() => {
+            animateProjectCards();
+            ScrollTrigger.refresh();
+        }, 100);
     }
 
     // Atualizar mídia do hero (vídeo ou cartaz)

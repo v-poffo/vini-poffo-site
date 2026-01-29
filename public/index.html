@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vini Poffo - Diretor Criativo</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         /* Polaroid Style para Projects */
         .projects-grid {
@@ -29,6 +31,24 @@
             padding: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            opacity: 0;
+        }
+
+        .project-card-image {
+            opacity: 0;
+        }
+
+        .project-card.animate-in .project-card-image {
+            animation: revealImageFade 1s ease-out forwards;
+        }
+
+        @keyframes revealImageFade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .project-card:nth-child(1) { transform: rotate(-2deg); }
