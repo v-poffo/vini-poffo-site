@@ -9,55 +9,477 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         body { background-color: #111A17; color: var(--primary-white); }
-        .section-hero { min-height: auto; padding: 10rem 2rem 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .section-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%); z-index: 0; }
-        .section-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 2; }
-        .hero-content { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: flex-end; position: relative; z-index: 1; }
-        .hero-text h1 { font-size: 2.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: -0.02em; font-style: italic; opacity: 0; transform: translateX(50px); text-align: right; }
-        .hero-text p { font-size: 0.95rem; line-height: 1.8; color: #c0c0c0; margin-bottom: 1.5rem; text-align: justify; opacity: 0; transform: translateY(20px); }
-        .hero-image { position: relative; opacity: 0; transform: scale(0.8) translateX(-30px); max-width: 300px; margin: 0; }
-        .hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)); border-radius: 2px; }
-        .section-pf { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; border-left: 2px solid transparent; background: linear-gradient(90deg, rgba(113, 136, 120, 0.05) 0%, transparent 50%); }
-        .section-pf::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 0; }
-        .pf-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; position: relative; z-index: 1; }
-        .pf-column { display: flex; flex-direction: column; gap: 2rem; }
-        .pf-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem; position: relative; padding-bottom: 1rem; opacity: 1; transform: translateY(0); font-style: italic; }
-        .pf-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
-        .pf-column.premios { border-left: 2px solid rgba(113, 136, 120, 0.3); padding-left: 2rem; }
-        .pf-column.premios .pf-title { color: var(--accent-green-light); }
-        .pf-column.filmografia { border-left: 2px solid rgba(42, 74, 90, 0.3); padding-left: 2rem; }
-        .pf-column.filmografia .pf-title { color: #3a7a9a; }
-        .pf-item { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
-        .pf-item:hover { transform: translateY(-2px); }
-        .pf-item h3 { font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
-        .pf-column.premios .pf-item h3 { color: var(--accent-green-light); }
-        .pf-column.filmografia .pf-item h3 { color: #3a7a9a; }
-        .pf-item p { font-size: 0.8rem; color: #a0a0a0; line-height: 1.6; }
-        .section-processo { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: rgba(75 98 82); }
-        .processo-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 1; } .processo-visual { order: -1; }
-        .processo-text h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; opacity: 0; transform: translateX(-50px); position: relative; padding-bottom: 1.5rem; font-style: italic; }
-        .processo-text h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
-        .processo-text p { font-size: 0.95rem; line-height: 1.8; color: #c0c0c0; margin-bottom: 1.5rem; text-align: justify; opacity: 0; transform: translateY(20px); }
-        .processo-visual { position: relative; opacity: 0; transform: translateX(50px); height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 2px; padding: 2rem; }
-        .processo-graphic { width: 100%; height: 100%; position: relative; max-width: 500px; max-height: 500px; }
-        svg { width: 100%; height: 100%; }
-        svg line { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #f0f0f0; stroke-width: 1; }
-        svg circle { opacity: 0; fill: #f0f0f0; stroke: #f0f0f0; stroke-width: 1; }
-        svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #f0f0f0; stroke-width: 1; fill: none; }
-        .section-cta { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); }
-        .cta-container { max-width: 900px; text-align: center; position: relative; z-index: 1; }
-        .cta-container h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; opacity: 0; transform: translateY(-50px); position: relative; padding-bottom: 1.5rem; font-style: italic; }
-        .cta-container h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 30px; height: 1px; background: var(--accent-green-light); }
-        .cta-container p { font-size: 0.95rem; line-height: 1.8; color: #c0c0c0; margin-bottom: 3rem; opacity: 0; transform: translateY(20px); }
-        .cta-buttons { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; opacity: 0; transform: translateY(30px); margin-bottom: 2rem; }
-        .cta-btn { padding: 0.8rem 2rem; font-size: 0.85rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; border: 1px solid var(--accent-green-light); background: transparent; color: var(--accent-green-light); cursor: pointer; transition: all 0.3s ease; border-radius: 0; text-decoration: none; display: inline-block; }
-        .cta-btn:hover { background: var(--accent-green-light); color: var(--primary-black); transform: translateY(-2px); }
-        .cta-btn.primary { background: var(--accent-green-light); color: var(--primary-black); }
-        .cta-btn.primary:hover { background: transparent; color: var(--accent-green-light); }
-        .contact-info { opacity: 0; transform: translateY(30px); font-size: 0.85rem; }
-        .contact-info a { color: var(--accent-green-light); text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-        .contact-info a:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; gap: 3rem; } .pf-container { grid-template-columns: 1fr; gap: 3rem; } .processo-container { grid-template-columns: 1fr; gap: 3rem; } .hero-text h1, .pf-title, .processo-text h2, .cta-container h2 { font-size: 1.8rem; } .cta-buttons { flex-direction: column; } .cta-btn { width: 100%; } .processo-visual { height: 300px; } }
+        
+        /* ===== HERO SECTION ===== */
+        .section-hero { 
+            min-height: auto; 
+            padding: 10rem 2rem 6rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            overflow: hidden; 
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%);
+        }
+        
+        .section-hero::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: -1px; 
+            left: 0; 
+            right: 0; 
+            height: 2px; 
+            background: linear-gradient(90deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); 
+            z-index: 2; 
+        }
+        
+        .hero-content { 
+            max-width: 1200px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            align-items: flex-end; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .hero-text h1 { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            line-height: 1.2; 
+            margin-bottom: 2rem; 
+            text-transform: uppercase; 
+            letter-spacing: -0.02em; 
+            font-style: italic; 
+            opacity: 0; 
+            transform: translateX(50px); 
+            text-align: right; 
+        }
+        
+        .hero-text p { 
+            font-size: 0.95rem; 
+            line-height: 1.8; 
+            color: #c0c0c0; 
+            margin-bottom: 1.5rem; 
+            text-align: justify; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+        
+        .hero-image { 
+            position: relative; 
+            opacity: 0; 
+            transform: scale(0.8) translateX(-30px); 
+            max-width: 300px; 
+            margin: 0; 
+        }
+        
+        .hero-image img { 
+            max-width: 100%; 
+            height: auto; 
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)); 
+            border-radius: 2px; 
+        }
+        
+        /* ===== PREMIOS & FILMOGRAFIA SECTION ===== */
+        .section-pf { 
+            min-height: auto; 
+            padding: 6rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            background: linear-gradient(90deg, rgba(113, 136, 120, 0.05) 0%, transparent 50%);
+        }
+        
+        .section-pf::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            bottom: 0; 
+            width: 2px; 
+            background: linear-gradient(180deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); 
+            z-index: 0; 
+        }
+        
+        .pf-container { 
+            max-width: 1200px; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 4rem; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .pf-column { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 2rem; 
+        }
+        
+        .pf-title { 
+            font-size: 1.6rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: -0.02em; 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 1rem; 
+            opacity: 0; 
+            transform: translateY(-20px); 
+            font-style: italic; 
+        }
+        
+        .pf-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 30px; 
+            height: 1px; 
+            background: var(--accent-green-light); 
+        }
+        
+        .pf-column.premios { 
+            border-left: 2px solid rgba(113, 136, 120, 0.3); 
+            padding-left: 2rem; 
+        }
+        
+        .pf-column.premios .pf-title { 
+            color: var(--accent-green-light); 
+        }
+        
+        .pf-column.filmografia { 
+            border-left: 2px solid rgba(42, 74, 90, 0.3); 
+            padding-left: 2rem; 
+        }
+        
+        .pf-column.filmografia .pf-title { 
+            color: #3a7a9a; 
+        }
+        
+        .pf-item { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: all 0.3s ease; 
+        }
+        
+        .pf-item:hover { 
+            transform: translateY(-2px); 
+        }
+        
+        .pf-item h3 { 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            margin-bottom: 0.3rem; 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+        }
+        
+        .pf-column.premios .pf-item h3 { 
+            color: var(--accent-green-light); 
+        }
+        
+        .pf-column.filmografia .pf-item h3 { 
+            color: #3a7a9a; 
+        }
+        
+        .pf-item p { 
+            font-size: 0.8rem; 
+            color: #a0a0a0; 
+            line-height: 1.6; 
+        }
+        
+        /* ===== PROCESSO CRIATIVO GRID SECTION ===== */
+        .section-processo { 
+            min-height: auto; 
+            padding: 8rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            background: rgba(113, 136, 120, 0.08);
+        }
+        
+        .processo-container { 
+            max-width: 1400px; 
+            width: 100%; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .processo-title { 
+            font-size: 2.2rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin-bottom: 3rem; 
+            letter-spacing: -0.02em; 
+            opacity: 0; 
+            transform: translateY(-30px); 
+            position: relative; 
+            padding-bottom: 1.5rem; 
+            font-style: italic; 
+            color: var(--accent-green-light);
+        }
+        
+        .processo-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 30px; 
+            height: 1px; 
+            background: var(--accent-green-light); 
+        }
+        
+        /* Grid de Quadrados */
+        .grid-quadrados{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .quadrado{
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quadrado:hover{
+            transform: translateY(-5px);
+        }
+        
+        .quadrado img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .quadrado:hover img{
+            transform: scale(1.05);
+        }
+        
+        .quadrado-overlay{
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .quadrado:hover .quadrado-overlay{
+            opacity: 1;
+        }
+        
+        .quadrado-text{
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 2rem;
+            line-height: 1.4;
+        }
+        
+        /* Quadrados vazios (azuis) */
+        .quadrado-vazio{
+            background: linear-gradient(135deg, rgba(58, 122, 154, 0.3) 0%, rgba(42, 74, 90, 0.3) 100%);
+            border: 2px solid rgba(58, 122, 154, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quadrado-vazio-content{
+            text-align: center;
+            opacity: 0;
+            animation: typewriter 3s steps(40) forwards;
+        }
+        
+        .quadrado-vazio h3{
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #3a7a9a;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .quadrado-vazio p{
+            font-size: 0.9rem;
+            color: #c0c0c0;
+            line-height: 1.6;
+        }
+        
+        /* Animação de digitação */
+        @keyframes typewriter {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* ===== CTA SECTION ===== */
+        .section-cta { 
+            min-height: auto; 
+            padding: 6rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%);
+        }
+        
+        .cta-container { 
+            max-width: 900px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 1; 
+        }
+        
+        .cta-container h2 { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin-bottom: 2rem; 
+            letter-spacing: -0.02em; 
+            opacity: 0; 
+            transform: translateY(-50px); 
+            position: relative; 
+            padding-bottom: 1.5rem; 
+            font-style: italic; 
+        }
+        
+        .cta-container h2::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 30px; 
+            height: 1px; 
+            background: var(--accent-green-light); 
+        }
+        
+        .cta-container p { 
+            font-size: 0.95rem; 
+            line-height: 1.8; 
+            color: #c0c0c0; 
+            margin-bottom: 3rem; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+        
+        .cta-buttons { 
+            display: flex; 
+            gap: 2rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            margin-bottom: 2rem; 
+        }
+        
+        .cta-btn { 
+            padding: 0.8rem 2rem; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+            border: 1px solid var(--accent-green-light); 
+            background: transparent; 
+            color: var(--accent-green-light); 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border-radius: 0; 
+            text-decoration: none; 
+            display: inline-block; 
+        }
+        
+        .cta-btn:hover { 
+            background: var(--accent-green-light); 
+            color: var(--primary-black); 
+            transform: translateY(-2px); 
+        }
+        
+        .cta-btn.primary { 
+            background: var(--accent-green-light); 
+            color: var(--primary-black); 
+        }
+        
+        .cta-btn.primary:hover { 
+            background: transparent; 
+            color: var(--accent-green-light); 
+        }
+        
+        .contact-info { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            font-size: 0.85rem; 
+        }
+        
+        .contact-info a { 
+            color: var(--accent-green-light); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+        }
+        
+        .contact-info a:hover { 
+            text-decoration: underline; 
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .grid-quadrados {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) { 
+            .hero-content { 
+                grid-template-columns: 1fr; 
+                gap: 3rem; 
+            } 
+            
+            .pf-container { 
+                grid-template-columns: 1fr; 
+                gap: 3rem; 
+            } 
+            
+            .hero-text h1, .pf-title, .processo-title, .cta-container h2 { 
+                font-size: 1.8rem; 
+            } 
+            
+            .cta-buttons { 
+                flex-direction: column; 
+            } 
+            
+            .cta-btn { 
+                width: 100%; 
+            }
+            
+            .grid-quadrados {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .grid-quadrados {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -81,6 +503,7 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="section-hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -94,6 +517,7 @@
         </div>
     </section>
 
+    <!-- PREMIOS & FILMOGRAFIA SECTION -->
     <section class="section-pf">
         <div class="pf-container">
             <div class="pf-column premios">
@@ -117,31 +541,80 @@
         </div>
     </section>
 
+    <!-- PROCESSO CRIATIVO GRID SECTION -->
     <section class="section-processo">
         <div class="processo-container">
-            <div class="processo-text">
-                <h2>Processo Criativo</h2>
-                <p>Trabalho com uma abordagem artesanal, onde cada projeto é uma oportunidade de explorar símbolos, política e afeto. Acredito que a criatividade deve servir como ferramenta de transformação e reflexão.</p>
-                <p>Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas. Atuo principalmente com direção criativa, pesquisa, assistência de direção, assistência de arte e cenografia, sempre mantendo a autenticidade e a profundidade como pilares.</p>
-            </div>
-            <div class="processo-visual">
-                <div class="processo-graphic">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="50" y1="80" x2="350" y2="80"/>
-                        <line x1="50" y1="200" x2="350" y2="200"/>
-                        <line x1="50" y1="320" x2="350" y2="320"/>
-                        <line x1="80" y1="50" x2="80" y2="350"/>
-                        <line x1="200" y1="50" x2="200" y2="350"/>
-                        <line x1="320" y1="50" x2="320" y2="350"/>
-                        <circle cx="80" cy="80" r="8"/>
-                        <circle cx="320" cy="320" r="8"/>
-                        <rect x="120" y="160" width="160" height="80"/>
-                    </svg>
+            <h2 class="processo-title">Processo Criativo</h2>
+            
+            <div class="grid-quadrados">
+                <!-- Quadrado 1 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_1326.jpeg" alt="Estúdio">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Direção Criativa</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 2 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_3179.jpeg" alt="Monitor">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Produção</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 3 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_3199.jpeg" alt="Set">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Set de Filmagem</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 4 - Vazio (Azul) -->
+                <div class="quadrado quadrado-vazio">
+                    <div class="quadrado-vazio-content">
+                        <h3>Processo Criativo</h3>
+                        <p>Abordagem artesanal e transformadora</p>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 5 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_4915.jpeg" alt="Estúdio Branco">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Equipe</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 6 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_4253.jpeg" alt="Evento">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Colaboração</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 7 - Foto -->
+                <div class="quadrado">
+                    <img src="assets/processo-criativo-cropped/cropped_IMG_4254.jpeg" alt="Mergulho">
+                    <div class="quadrado-overlay">
+                        <div class="quadrado-text">Exploração</div>
+                    </div>
+                </div>
+                
+                <!-- Quadrado 8 - Vazio (Azul) -->
+                <div class="quadrado quadrado-vazio">
+                    <div class="quadrado-vazio-content">
+                        <h3>Vamos Conversar?</h3>
+                        <p>Colaborações criativas e projetos desafiadores</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA SECTION -->
     <section class="section-cta">
         <div class="cta-container">
             <h2>Vamos Conversar?</h2>
@@ -173,32 +646,57 @@
         document.addEventListener('DOMContentLoaded', function() {
             gsap.registerPlugin(ScrollTrigger);
             
+            // Hero animations
             gsap.fromTo('.hero-text h1', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.hero-text p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.hero-image', { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 1, ease: 'power2.out', delay: 0.2, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
             
+            // PF animations
+            gsap.fromTo('.pf-title', { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.6, scrollTrigger: { trigger: '.section-pf', start: 'top 80%', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.pf-item', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.pf-container', start: 'top 80%', toggleActions: 'play reverse play reverse' } });
             
-            gsap.fromTo('.processo-text h2', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.8, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.processo-text p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.processo-visual', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.8, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            
-            const svgLines = document.querySelectorAll('svg line');
-            const svgRects = document.querySelectorAll('svg rect');
-            const svgCircles = document.querySelectorAll('svg circle');
-            
-            svgLines.forEach(line => {
-                gsap.to(line, { strokeDashoffset: 0, duration: 2.5, ease: 'power2.inOut', scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+            // Grid animations - Quadrados vindo de lados
+            const quadrados = document.querySelectorAll('.quadrado');
+            quadrados.forEach((quadrado, index) => {
+                const fromLeft = index % 2 === 0;
+                gsap.fromTo(quadrado, 
+                    { opacity: 0, x: fromLeft ? -50 : 50, y: 30 }, 
+                    { 
+                        opacity: 1, 
+                        x: 0, 
+                        y: 0, 
+                        duration: 0.8, 
+                        delay: index * 0.1,
+                        ease: 'power2.out',
+                        scrollTrigger: { 
+                            trigger: '.grid-quadrados', 
+                            start: 'top 80%', 
+                            toggleActions: 'play reverse play reverse' 
+                        } 
+                    }
+                );
             });
             
-            svgRects.forEach(rect => {
-                gsap.to(rect, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', delay: 3.5, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+            // Texto digitando letra por letra
+            const textoVazio = document.querySelectorAll('.quadrado-vazio-content');
+            textoVazio.forEach((texto, index) => {
+                gsap.fromTo(texto, 
+                    { opacity: 0 }, 
+                    { 
+                        opacity: 1, 
+                        duration: 2, 
+                        delay: (quadrados.length * 0.1) + (index * 0.3),
+                        ease: 'power1.inOut',
+                        scrollTrigger: { 
+                            trigger: '.grid-quadrados', 
+                            start: 'top 80%', 
+                            toggleActions: 'play reverse play reverse' 
+                        } 
+                    }
+                );
             });
             
-            svgCircles.forEach(circle => {
-                gsap.to(circle, { opacity: 1, duration: 1.5, ease: 'power2.out', delay: 2.5, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            });
-            
+            // CTA animations
             gsap.fromTo('.cta-container h2', { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.cta-container p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.2, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
             gsap.fromTo('.cta-buttons', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.4, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
