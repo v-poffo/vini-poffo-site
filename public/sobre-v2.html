@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Hero Section com Foto - Foto flutuante */
+        .sobre-hero-wrapper {
+            position: relative;
+        }
+
+        .sobre-hero {
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.55) 0%, rgba(52, 90, 106, 0.55) 50%, rgba(42, 74, 90, 0.55) 100%), linear-gradient(135deg, #111A17 0%, #1a2622 50%, #111A17 100%);
+            position: relative;
+            overflow: visible;
+            padding: 6rem 2rem 0.5rem 2rem;
+            min-height: auto;
+        }
+
+        .sobre-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sobre-hero-text {
+            color: var(--primary-white);
+            text-align: justify;
+            padding-bottom: 2rem;
+        }
+
+        .sobre-hero-text h1 {
+            /* Usando page-title class para estilo */
+        }
+
+        .sobre-hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .sobre-hero-photo {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: -80px;
+            z-index: 10;
+        }
+
+        .sobre-hero-photo img {
+            max-width: 85%;
+            height: auto;
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.4));
+            display: block;
+        }
+
+        /* Faixa preta entre hero e seções */
+        .white-spacer {
+            background-color: var(--primary-black);
+            height: 60px;
+            position: relative;
+        }
+
+        /* Seções com cores */
+        .sobre-sections {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem 2rem;
+            background-color: var(--primary-black);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 0;
+            margin-top: 17px;
+        }
+
+        .section-grid-bottom {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            margin-top: 5rem;
+        }
+
+        .section-box {
+            padding: 3rem;
+            border-radius: 8px;
+            color: var(--primary-white);
+        }
+
+        .section-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .section-box p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-box li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .section-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Cores das seções */
+        .section-green-light {
+            background-color: rgba(113, 136, 120, 0.5);
+            border: 1px solid rgba(113, 136, 120, 0.7);
+        }
+
+        .section-green-dark {
+            background-color: rgba(36, 66, 53, 0.5);
+            border: 1px solid rgba(36, 66, 53, 0.7);
+        }
+
+        .section-blue {
+            background-color: #2a4f5f;
+            border: 1px solid rgba(42, 79, 95, 0.7);
+            color: var(--primary-white);
+        }
+
+        .section-blue p {
+            color: var(--primary-white);
+            text-align: justify;
+        }
+
+        .section-blue li {
+            color: var(--primary-white);
+        }
+
+        .section-white {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--primary-white);
+        }
+
+        .section-white h2 {
+            color: var(--primary-white);
+        }
+
+        .section-white p,
+        .section-white li {
+            color: var(--primary-white);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--primary-white);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .section-box.contact-section {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: var(--primary-white);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .section-box.contact-section h2 {
+            color: var(--primary-white);
+        }
+
+        .section-box.contact-section p,
+        .section-box.contact-section .contact-item {
+            color: var(--primary-white);
+        }
+
+        .contact-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-green-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-white);
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-green-light);
+            color: var(--primary-white);
+            border: none;
+            border-radius: 4px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--accent-green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sobre-hero {
+                padding: 2rem 1.5rem 0 1.5rem;
+                min-height: auto;
+                border-bottom: 6px solid white;
+            }
+
+            .sobre-hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sobre-hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-grid,
+            .section-grid-bottom {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section-box {
+                padding: 2rem;
+            }
+
+            .section-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #111A17;">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo/logo.avif" alt="Vini Poffo" class="logo-img">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início.</a></li>
+                <li><a href="projetos.html">Projetos.</a></li>
+                <li><a href="sobre.html" class="active">Sobre.</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section com Foto -->
+    <section class="sobre-hero">
+        <div class="sobre-hero-content">
+            <div class="sobre-hero-text">
+                <h1 class="page-title">Sobre</h1>
+                <p>
+                    Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente.
+                </p>
+                <p>
+                    Seu processo é artesanal e atravessado por símbolos, política e afeto.
+                </p>
+            </div>
+            <div class="sobre-hero-photo">
+                <img src="assets/vini-poffo-sobre.png" alt="Vini Poffo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Faixa branca para foto flutuante -->
+    <div class="white-spacer"></div>
+
+    <!-- Seções com cores -->
+    <section class="sobre-sections">
+        <div class="section-grid">
+            <!-- Prêmios -->
+            <div class="section-box section-green-light">
+                <h2>Prêmios</h2>
+                <ul>
+                    <li>5 Prêmios de melhor filme – (Sub)Urbana</li>
+                    <li>Transforma Festival – Prêmio Revelação</li>
+                    <li>Curta Fest Brasília 2024 – Aranha</li>
+                    <li>SESC SC – No Reflexo do Meu Nome</li>
+                    <li>Funarte 2021</li>
+                    <li>Hits Perdidos 2019</li>
+                </ul>
+            </div>
+
+            <!-- Filmografia -->
+            <div class="section-box section-green-dark">
+                <h2>Filmografia</h2>
+                <ul>
+                    <li>Não Alimente os Cães – Curta-metragem (2026)</li>
+                    <li>Tem Feito Uns Dias Esquisitos – Curta-metragem (2025)</li>
+                    <li>(Sub)Urbana – Curta-metragem (2023)</li>
+                    <li>No Reflexo do Meu Nome – Curta-metragem (2023)</li>
+                    <li>Debaixo do Guarda-chuva pra Ser Resistência – Curta documental (2021)</li>
+                    <li>Marias – Curta documental (2020)</li>
+                    <li>Parte de Mim – Vídeo-arte (2019)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Processo Criativo e Vamos Conversar lado a lado -->
+        <div class="section-grid-bottom">
+            <!-- Processo Criativo -->
+            <div class="section-box section-blue">
+                <h2>Processo Criativo</h2>
+                <p>
+                    Trabalho com uma abordagem artesanal, onde cada projeto é uma oportunidade de explorar símbolos, política e afeto. Acredito que a criatividade deve servir como ferramenta de transformação e reflexão.
+                </p>
+                <p>
+                    Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas. Atuo principalmente com <strong>direção criativa, pesquisa, assistência de direção, assistência de arte e cenografia </strong>, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.
+                </p>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section-box contact-section">
+            <h2>Vamos Conversar?</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    Email: <a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a>
+                </div>
+                <div class="contact-item">
+                    Instagram: <a href="https://instagram.com/poffovini" target="_blank">@poffovini</a>
+                </div>
+            </div>
+            <div class="contact-buttons">
+                <a href="mailto:projetos@vinipoffo.com" class="contact-btn">Enviar Email</a>
+                <a href="https://instagram.com/poffovini" target="_blank" class="contact-btn">Seguir no Instagram</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="https://instagram.com/poffovini" target="_blank">Instagram</a>
+                <a href="mailto:projetos@vinipoffo.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
