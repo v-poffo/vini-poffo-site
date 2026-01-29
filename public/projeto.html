@@ -238,11 +238,16 @@
                 } else if (project.trailerUrl.includes('embed/')) {
                     videoId = project.trailerUrl.split('embed/')[1].split('?')[0];
                 }
-                const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
                 const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                // Detectar se é mobile
+                const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
+                const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+                const youtubeLink = isMobile ? youtubeUrl : '#';
+                const onClickHandler = isMobile ? `window.open('${youtubeUrl}', '_blank'); return false;` : `openYouTubeModal('${videoId}'); return false;`;
+                
                 videoHTML = `
                     <div class="projeto-video youtube-thumbnail">
-                        <a href="#" onclick="openYouTubeModal('${videoId}'); return false;">
+                        <a href="${youtubeLink}" onclick="${onClickHandler}" ${isMobile ? 'target="_blank" rel="noopener noreferrer"' : ''}>
                             <img src="${thumbnailUrl}" alt="${project.title}">
                             <div class="play-button">▶</div>
                         </a>

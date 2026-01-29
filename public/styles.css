@@ -989,6 +989,22 @@ p {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
+/* Mobile - Botão de play menor */
+@media (max-width: 768px) {
+    .play-button {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        background-color: rgba(255, 255, 255, 0.25);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .youtube-thumbnail a:hover .play-button {
+        background-color: rgba(255, 255, 255, 0.4);
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
 .projeto-video iframe {
     width: 100%;
     height: 100%;
