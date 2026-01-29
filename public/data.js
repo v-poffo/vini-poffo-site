@@ -5,7 +5,7 @@ const siteData = {
     description: "Diretor criativo, cinematógrafo e editor",
     email: "projetos@vinipoffo.com",
     instagram: "pofovini",
-    about: "Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente. Seu processo é artesanal e atravessado por símbolos, política e afeto.\n\nPremiada pela Funarte (2021) com o videoarte Parte de Mim e eleito pelo SESC SC em 2022 com o seu primeiro curta No Reflexo do Meu Nome, melhor obra de Santa Catarina. Seu segundo filme, (Sub)Urbana, percorreu mais de 20 festivais nacionais e internacionais, conquistando cinco prêmios de melhor filme, incluindo o Prêmio Revelação no IV Transforma Festival e atualmente esta disponível pelo Itaú Play. Em 2025 lançou sua primeira web série Tem Feito Uns Dias Esquisitos. Dirigiu mais de 10 videoclipes, incluindo Colapso Invisível de YMA e Aranha de Letrux."
+    about: "Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente. Seu processo é artesanal e atravessado por símbolos, política e afeto.\n\nPremiada pela Funarte (2021) com o videoarte Parte de Mim e eleito pelo SESC SC em 2022 com o seu primeiro curta No Reflexo do Meu Nome, melhor obra de Santa Catarina. Seu segundo filme, (Sub)Urbana, percorreu mais de 20 festivais nacionais e internacionais, conquistando cinco prêmios de melhor filme, incluindo o Prêmio Revelação no IV Transforma Festival e atualmente esta disponível pelo Itaú Play. Em 2025 lançou seu curta Tem Feito Uns Dias Esquisitos. Dirigiu mais de 10 videoclipes, incluindo Colapso Invisível de YMA e Aranha de Letrux."
   },
   projects: [
     {
@@ -13,11 +13,11 @@ const siteData = {
       title: "Tem feito uns dias esquisitos",
       year: 2025,
       type: "curta-metragem",
-      artist: "Web série",
+      artist: "",
       videoHome: "tfde_portfolio_video.mp4",
       cartazMobile: "dias-esquisitos-cartaz.png",
       trailerUrl: "https://youtu.be/VoZ8e76yASQ?si=T5BxmH5B-QIwLYRr",
-      description: "Primeira web série de Vini Poffo. Direção, roteiro e concepção de arte. Premiada pela Mostra SESC de Cinema 2025 e Prêmio Catarinense de Cinema."
+      description: "Direção de Vini Poffo e Luana Skibinski. Roteiro de Zalu Amorim e Vini Poffo. Concepção de arte. Premiada pela Mostra SESC de Cinema 2025 e Prêmio Catarinense de Cinema."
     },
     {
       id: 1,
