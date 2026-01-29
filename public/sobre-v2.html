@@ -53,6 +53,7 @@
             margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: -0.02em;
+            font-style: italic;
             opacity: 0;
             transform: translateX(-50px);
         }
@@ -71,6 +72,8 @@
             position: relative;
             opacity: 0;
             transform: scale(0.9);
+            max-width: 300px;
+            margin: 0 auto;
         }
 
         .hero-image img {
@@ -126,6 +129,7 @@
             padding-bottom: 1rem;
             opacity: 0;
             transform: translateY(-30px);
+            font-style: italic;
         }
 
         .pf-title::after {
@@ -200,17 +204,6 @@
             position: relative;
         }
 
-        .section-processo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(42, 74, 90, 0.08) 0%, rgba(52, 90, 106, 0.08) 100%);
-            z-index: 0;
-        }
-
         .processo-container {
             max-width: 1200px;
             display: grid;
@@ -231,6 +224,7 @@
             transform: translateX(-50px);
             position: relative;
             padding-bottom: 1.5rem;
+            font-style: italic;
         }
 
         .processo-text h2::after {
@@ -261,12 +255,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, rgba(113, 136, 120, 0.15) 0%, rgba(113, 136, 120, 0.1) 100%);
+            border-radius: 2px;
+            padding: 2rem;
         }
 
         .processo-graphic {
             width: 100%;
             height: 100%;
             position: relative;
+            max-width: 250px;
+            max-height: 250px;
         }
 
         /* SVG Animado */
@@ -338,6 +337,7 @@
             transform: translateY(-50px);
             position: relative;
             padding-bottom: 1.5rem;
+            font-style: italic;
         }
 
         .cta-container h2::after {
@@ -452,7 +452,7 @@
             }
 
             .processo-visual {
-                height: 250px;
+                height: 300px;
             }
         }
     </style>
@@ -661,7 +661,7 @@
                     scrollTrigger: {
                         trigger: '.section-pf',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -676,7 +676,7 @@
                     scrollTrigger: {
                         trigger: '.pf-container',
                         start: 'top 80%',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -691,7 +691,7 @@
                     scrollTrigger: {
                         trigger: '.section-processo',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -706,7 +706,7 @@
                     scrollTrigger: {
                         trigger: '.section-processo',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -720,7 +720,7 @@
                     scrollTrigger: {
                         trigger: '.section-processo',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -735,7 +735,7 @@
                     scrollTrigger: {
                         trigger: '.section-cta',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -750,7 +750,7 @@
                     scrollTrigger: {
                         trigger: '.section-cta',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -765,7 +765,7 @@
                     scrollTrigger: {
                         trigger: '.section-cta',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
@@ -780,7 +780,7 @@
                     scrollTrigger: {
                         trigger: '.section-cta',
                         start: 'top center',
-                        toggleActions: 'play none none none'
+                        toggleActions: 'play reverse play reverse'
                     }
                 }
             );
