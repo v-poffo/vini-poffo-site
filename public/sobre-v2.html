@@ -32,7 +32,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%);
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.15) 0%, rgba(52, 90, 106, 0.15) 100%);
             z-index: 0;
         }
 
@@ -58,9 +58,9 @@
         }
 
         .hero-text p {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             line-height: 1.8;
-            color: #d0d0d0;
+            color: #c0c0c0;
             margin-bottom: 1.5rem;
             text-align: justify;
             opacity: 0;
@@ -77,11 +77,11 @@
             max-width: 100%;
             height: auto;
             filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
-            border-radius: 4px;
+            border-radius: 2px;
         }
 
-        /* ===== SEÇÃO 2: FILMOGRAFIA ===== */
-        .section-filmografia {
+        /* ===== SEÇÃO 2: FILMOGRAFIA + PRÊMIOS (LADO A LADO) ===== */
+        .section-filmografia-premios {
             min-height: 100vh;
             padding: 8rem 2rem;
             display: flex;
@@ -90,130 +90,80 @@
             position: relative;
         }
 
-        .section-filmografia::before {
+        .section-filmografia-premios::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, rgba(36, 66, 53, 0.1), rgba(42, 74, 90, 0.1));
+            background: linear-gradient(to bottom, rgba(36, 66, 53, 0.05), rgba(42, 74, 90, 0.05));
             z-index: 0;
         }
 
-        .filmografia-container {
+        .fp-container {
             max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             position: relative;
             z-index: 1;
         }
 
-        .section-title {
-            font-size: 2.8rem;
+        .fp-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .fp-title {
+            font-size: 1.8rem;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 4rem;
             letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
             opacity: 0;
             transform: translateY(-30px);
         }
 
-        .filmografia-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .fp-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-green-light);
         }
 
-        .filmografia-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 4px;
+        .fp-item {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(20px);
             transition: all 0.3s ease;
         }
 
-        .filmografia-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(113, 136, 120, 0.5);
-            transform: translateY(-5px);
+        .fp-item:hover {
+            transform: translateY(-2px);
         }
 
-        .filmografia-item h3 {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-            color: var(--accent-green-light);
-        }
-
-        .filmografia-item p {
-            font-size: 0.95rem;
-            color: #b0b0b0;
-        }
-
-        /* ===== SEÇÃO 3: PRÊMIOS ===== */
-        .section-premios {
-            min-height: 100vh;
-            padding: 8rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .section-premios::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(42, 74, 90, 0.1), rgba(36, 66, 53, 0.1));
-            z-index: 0;
-        }
-
-        .premios-container {
-            max-width: 1000px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .premios-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .premio-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid var(--accent-green-light);
-            opacity: 0;
-            transform: translateX(-30px);
-        }
-
-        .premio-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-            color: var(--accent-green-light);
-        }
-
-        .premio-content h3 {
-            font-size: 1.1rem;
+        .fp-item h3 {
+            font-size: 0.9rem;
             text-transform: uppercase;
             margin-bottom: 0.3rem;
-            color: var(--primary-white);
+            color: var(--accent-green-light);
+            font-weight: 700;
+            letter-spacing: 0.05em;
         }
 
-        .premio-content p {
-            font-size: 0.95rem;
-            color: #b0b0b0;
+        .fp-item p {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            line-height: 1.6;
         }
 
-        /* ===== SEÇÃO 4: PROCESSO CRIATIVO ===== */
+        /* ===== SEÇÃO 3: PROCESSO CRIATIVO ===== */
         .section-processo {
             min-height: 100vh;
             padding: 8rem 2rem;
@@ -230,7 +180,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.08) 0%, rgba(52, 90, 106, 0.08) 100%);
             z-index: 0;
         }
 
@@ -245,47 +195,60 @@
         }
 
         .processo-text h2 {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
             opacity: 0;
             transform: translateX(-50px);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .processo-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-green-light);
         }
 
         .processo-text p {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             line-height: 1.8;
-            color: #d0d0d0;
+            color: #c0c0c0;
             margin-bottom: 1.5rem;
             text-align: justify;
             opacity: 0;
             transform: translateY(20px);
         }
 
-        .processo-highlights {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+        .processo-visual {
+            position: relative;
             opacity: 0;
             transform: translateX(50px);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .highlight-item {
-            padding: 1.5rem;
-            background: rgba(113, 136, 120, 0.2);
-            border-left: 4px solid var(--accent-green-light);
-            border-radius: 2px;
+        .processo-graphic {
+            width: 100%;
+            height: 100%;
+            position: relative;
         }
 
-        .highlight-item strong {
-            color: var(--accent-green-light);
-            text-transform: uppercase;
-            font-size: 0.9rem;
+        /* Elemento gráfico SVG */
+        svg {
+            width: 100%;
+            height: 100%;
         }
 
-        /* ===== SEÇÃO 5: CTA / CONTATO ===== */
+        /* ===== SEÇÃO 4: CTA / CONTATO ===== */
         .section-cta {
             min-height: 100vh;
             padding: 8rem 2rem;
@@ -293,7 +256,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(42, 74, 90, 0.2) 0%, rgba(52, 90, 106, 0.2) 100%);
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%);
         }
 
         .cta-container {
@@ -304,19 +267,32 @@
         }
 
         .cta-container h2 {
-            font-size: 3.2rem;
+            font-size: 2.5rem;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 2rem;
             letter-spacing: -0.02em;
             opacity: 0;
             transform: translateY(-50px);
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .cta-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--accent-green-light);
         }
 
         .cta-container p {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             line-height: 1.8;
-            color: #d0d0d0;
+            color: #c0c0c0;
             margin-bottom: 3rem;
             opacity: 0;
             transform: translateY(20px);
@@ -329,20 +305,21 @@
             flex-wrap: wrap;
             opacity: 0;
             transform: translateY(30px);
+            margin-bottom: 2rem;
         }
 
         .cta-btn {
-            padding: 1rem 2.5rem;
-            font-size: 1rem;
+            padding: 0.8rem 2rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.05em;
-            border: 2px solid var(--accent-green-light);
+            border: 1px solid var(--accent-green-light);
             background: transparent;
             color: var(--accent-green-light);
             cursor: pointer;
             transition: all 0.3s ease;
-            border-radius: 2px;
+            border-radius: 0;
             text-decoration: none;
             display: inline-block;
         }
@@ -350,8 +327,7 @@
         .cta-btn:hover {
             background: var(--accent-green-light);
             color: var(--primary-black);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(113, 136, 120, 0.3);
+            transform: translateY(-2px);
         }
 
         .cta-btn.primary {
@@ -365,9 +341,9 @@
         }
 
         .contact-info {
-            margin-top: 3rem;
             opacity: 0;
             transform: translateY(30px);
+            font-size: 0.85rem;
         }
 
         .contact-info a {
@@ -388,20 +364,21 @@
                 gap: 3rem;
             }
 
+            .fp-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
             .processo-container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
 
             .hero-text h1,
-            .section-title,
+            .fp-title,
             .processo-text h2,
             .cta-container h2 {
-                font-size: 2rem;
-            }
-
-            .filmografia-grid {
-                grid-template-columns: 1fr;
+                font-size: 1.8rem;
             }
 
             .cta-buttons {
@@ -410,6 +387,10 @@
 
             .cta-btn {
                 width: 100%;
+            }
+
+            .processo-visual {
+                height: 250px;
             }
         }
     </style>
@@ -441,128 +422,127 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Vini Poffo</h1>
-                <p>Diretor criativo, pesquisador e artista multidisciplinar com foco em cinema, videoclipes e projetos interdisciplinares. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal, onde cada projeto é atravessado por símbolos, política e afeto.</p>
-                <p>Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.</p>
+                <p>Diretor criativo, pesquisador e artista multidisciplinar com foco em cinema, videoclipes e projetos interdisciplinares. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal.</p>
+                <p>Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.</p>
             </div>
             <div class="hero-image">
-                <img src="assets/fotos/vini-poffo-foto.jpg" alt="Vini Poffo">
+                <img src="assets/about/vini-poffo.png" alt="Vini Poffo">
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 2: FILMOGRAFIA -->
-    <section class="section-filmografia">
-        <div class="filmografia-container">
-            <h2 class="section-title">Filmografia</h2>
-            <div class="filmografia-grid">
-                <div class="filmografia-item">
+    <!-- SEÇÃO 2: FILMOGRAFIA + PRÊMIOS -->
+    <section class="section-filmografia-premios">
+        <div class="fp-container">
+            <!-- FILMOGRAFIA -->
+            <div class="fp-column">
+                <h2 class="fp-title">Filmografia</h2>
+                
+                <div class="fp-item">
                     <h3>Vira Essa Boca Pra Cá</h3>
-                    <p>Videoclipe • 2025</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo e Luana Skibinski</p>
+                    <p>Videoclipe • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
                 </div>
-                <div class="filmografia-item">
+
+                <div class="fp-item">
                     <h3>Tem Feito Uns Dias Esquisitos</h3>
-                    <p>Curta-metragem • 2025</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo e Luana Skibinski</p>
+                    <p>Curta-metragem • 2025<br>Direção: Vini Poffo e Luana Skibinski</p>
                 </div>
-                <div class="filmografia-item">
+
+                <div class="fp-item">
                     <h3>(Sub)Urbana</h3>
-                    <p>Curta-metragem • 2023</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo</p>
+                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
                 </div>
-                <div class="filmografia-item">
+
+                <div class="fp-item">
                     <h3>No Reflexo do Meu Nome</h3>
-                    <p>Curta-metragem • 2023</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo</p>
+                    <p>Curta-metragem • 2023<br>Direção: Vini Poffo</p>
                 </div>
-                <div class="filmografia-item">
+
+                <div class="fp-item">
                     <h3>Debaixo do Guarda-chuva</h3>
-                    <p>Curta documental • 2021</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo</p>
+                    <p>Curta documental • 2021<br>Direção: Vini Poffo</p>
                 </div>
-                <div class="filmografia-item">
+
+                <div class="fp-item">
                     <h3>Marias</h3>
-                    <p>Curta documental • 2020</p>
-                    <p style="margin-top: 1rem; font-size: 0.9rem;">Direção: Vini Poffo</p>
+                    <p>Curta documental • 2020<br>Direção: Vini Poffo</p>
+                </div>
+            </div>
+
+            <!-- PRÊMIOS -->
+            <div class="fp-column">
+                <h2 class="fp-title">Prêmios</h2>
+                
+                <div class="fp-item">
+                    <h3>5 Prêmios de Melhor Filme</h3>
+                    <p>(Sub)Urbana – Festival SESC</p>
+                </div>
+
+                <div class="fp-item">
+                    <h3>Prêmio Revelação</h3>
+                    <p>Transforma Festival</p>
+                </div>
+
+                <div class="fp-item">
+                    <h3>Curta Fest Brasília 2024</h3>
+                    <p>Categoria Aranha</p>
+                </div>
+
+                <div class="fp-item">
+                    <h3>SESC SC</h3>
+                    <p>No Reflexo do Meu Nome – Reconhecimento Nacional</p>
+                </div>
+
+                <div class="fp-item">
+                    <h3>Exibições Internacionais</h3>
+                    <p>Trabalhos exibidos em festivais internacionais</p>
+                </div>
+
+                <div class="fp-item">
+                    <h3>Lei Paulo Gustavo</h3>
+                    <p>Contemplado para desenvolvimento de projetos</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 3: PRÊMIOS -->
-    <section class="section-premios">
-        <div class="premios-container">
-            <h2 class="section-title">Prêmios & Reconhecimentos</h2>
-            <div class="premios-list">
-                <div class="premio-item">
-                    <div class="premio-icon">🏆</div>
-                    <div class="premio-content">
-                        <h3>5 Prêmios de Melhor Filme</h3>
-                        <p>(Sub)Urbana – Festival SESC</p>
-                    </div>
-                </div>
-                <div class="premio-item">
-                    <div class="premio-icon">🎬</div>
-                    <div class="premio-content">
-                        <h3>Prêmio Revelação</h3>
-                        <p>Transforma Festival</p>
-                    </div>
-                </div>
-                <div class="premio-item">
-                    <div class="premio-icon">⭐</div>
-                    <div class="premio-content">
-                        <h3>Curta Fest Brasília 2024</h3>
-                        <p>Categoria Aranha</p>
-                    </div>
-                </div>
-                <div class="premio-item">
-                    <div class="premio-icon">🎭</div>
-                    <div class="premio-content">
-                        <h3>SESC SC – No Reflexo do Meu Nome</h3>
-                        <p>Reconhecimento Nacional</p>
-                    </div>
-                </div>
-                <div class="premio-item">
-                    <div class="premio-icon">🌍</div>
-                    <div class="premio-content">
-                        <h3>Exibições Internacionais</h3>
-                        <p>Trabalhos exibidos em festivais internacionais</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO 4: PROCESSO CRIATIVO -->
+    <!-- SEÇÃO 3: PROCESSO CRIATIVO -->
     <section class="section-processo">
         <div class="processo-container">
             <div class="processo-text">
                 <h2>Processo Criativo</h2>
                 <p>Trabalho com uma abordagem artesanal, onde cada projeto é uma oportunidade de explorar símbolos, política e afeto. Acredito que a criatividade deve servir como ferramenta de transformação e reflexão.</p>
-                <p>Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas, sempre mantendo a autenticidade e a profundidade como pilares.</p>
+                <p>Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas. Atuo principalmente com direção criativa, pesquisa, assistência de direção, assistência de arte e cenografia, sempre mantendo a autenticidade e a profundidade como pilares.</p>
             </div>
-            <div class="processo-highlights">
-                <div class="highlight-item">
-                    <strong>Direção Criativa</strong>
-                    <p>Conceituação e direção visual de projetos</p>
-                </div>
-                <div class="highlight-item">
-                    <strong>Pesquisa & Desenvolvimento</strong>
-                    <p>Investigação profunda antes de cada projeto</p>
-                </div>
-                <div class="highlight-item">
-                    <strong>Assistência de Direção</strong>
-                    <p>Colaboração em set e pré-produção</p>
-                </div>
-                <div class="highlight-item">
-                    <strong>Cenografia & Arte</strong>
-                    <p>Concepção e direção de arte</p>
+            <div class="processo-visual">
+                <div class="processo-graphic">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Linhas geométricas minimalistas -->
+                        <line x1="50" y1="50" x2="350" y2="50" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="50" y1="150" x2="350" y2="150" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="50" y1="250" x2="350" y2="250" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="50" y1="350" x2="350" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        
+                        <!-- Linhas verticais -->
+                        <line x1="50" y1="50" x2="50" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="150" y1="50" x2="150" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="250" y1="50" x2="250" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        <line x1="350" y1="50" x2="350" y2="350" stroke="#718880" stroke-width="1" opacity="0.3"/>
+                        
+                        <!-- Elementos destacados -->
+                        <circle cx="100" cy="100" r="8" fill="#718880" opacity="0.6"/>
+                        <circle cx="300" cy="300" r="8" fill="#718880" opacity="0.6"/>
+                        <rect x="120" y="180" width="160" height="40" fill="none" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        
+                        <!-- Linhas diagonais -->
+                        <line x1="50" y1="350" x2="350" y2="50" stroke="#718880" stroke-width="1" opacity="0.2"/>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 5: CTA / CONTATO -->
+    <!-- SEÇÃO 4: CTA / CONTATO -->
     <section class="section-cta">
         <div class="cta-container">
             <h2>Vamos Conversar?</h2>
@@ -611,67 +591,38 @@
                 { opacity: 1, scale: 1, duration: 1, ease: 'power2.out', delay: 0.2 }
             );
             
-            // ===== SEÇÃO 2: FILMOGRAFIA =====
-            gsap.fromTo('.section-filmografia .section-title',
+            // ===== SEÇÃO 2: FILMOGRAFIA + PRÊMIOS =====
+            gsap.fromTo('.fp-title',
                 { opacity: 0, y: -30 },
                 {
                     opacity: 1,
                     y: 0,
                     duration: 0.8,
+                    stagger: 0.2,
                     scrollTrigger: {
-                        trigger: '.section-filmografia',
+                        trigger: '.section-filmografia-premios',
                         start: 'top center',
                         toggleActions: 'play none none none'
                     }
                 }
             );
             
-            gsap.fromTo('.filmografia-item',
-                { opacity: 0, y: 40 },
+            gsap.fromTo('.fp-item',
+                { opacity: 0, y: 20 },
                 {
                     opacity: 1,
                     y: 0,
                     duration: 0.6,
-                    stagger: 0.1,
+                    stagger: 0.08,
                     scrollTrigger: {
-                        trigger: '.filmografia-grid',
+                        trigger: '.fp-container',
                         start: 'top 80%',
                         toggleActions: 'play none none none'
                     }
                 }
             );
             
-            // ===== SEÇÃO 3: PRÊMIOS =====
-            gsap.fromTo('.section-premios .section-title',
-                { opacity: 0, y: -30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: '.section-premios',
-                        start: 'top center',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-            
-            gsap.fromTo('.premio-item',
-                { opacity: 0, x: -30 },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    scrollTrigger: {
-                        trigger: '.premios-list',
-                        start: 'top 80%',
-                        toggleActions: 'play none none none'
-                    }
-                }
-            );
-            
-            // ===== SEÇÃO 4: PROCESSO =====
+            // ===== SEÇÃO 3: PROCESSO =====
             gsap.fromTo('.processo-text h2',
                 { opacity: 0, x: -50 },
                 {
@@ -701,22 +652,21 @@
                 }
             );
             
-            gsap.fromTo('.highlight-item',
+            gsap.fromTo('.processo-visual',
                 { opacity: 0, x: 50 },
                 {
                     opacity: 1,
                     x: 0,
-                    duration: 0.6,
-                    stagger: 0.1,
+                    duration: 0.8,
                     scrollTrigger: {
-                        trigger: '.processo-highlights',
-                        start: 'top 80%',
+                        trigger: '.section-processo',
+                        start: 'top center',
                         toggleActions: 'play none none none'
                     }
                 }
             );
             
-            // ===== SEÇÃO 5: CTA =====
+            // ===== SEÇÃO 4: CTA =====
             gsap.fromTo('.cta-container h2',
                 { opacity: 0, y: -50 },
                 {
