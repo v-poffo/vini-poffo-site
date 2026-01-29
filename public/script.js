@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `
                 <img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}" class="project-card-image">
                 <div class="project-card-content">
-                    <h3 class="project-card-title">${project.title}</h3>
+                    <h3 class="project-card-title">${project.title.toUpperCase()}</h3>
                     <p class="project-card-meta">${project.year}</p>
                 </div>
             `;
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `
                 <img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}" class="project-card-image">
                 <div class="project-card-content">
-                    <h3 class="project-card-title">${project.title}</h3>
+                    <h3 class="project-card-title">${project.title.toUpperCase()}</h3>
                     <p class="project-card-meta">${project.year}</p>
                 </div>
             `;
