@@ -28,7 +28,7 @@ const siteData = {
       videoHome: "vira essa boca_portfolio_video.mp4",
       cartazMobile: "vira-boca-cartaz.jpg",
       trailerUrl: "https://youtu.be/UuH-i5Qx21Y?si=-8I7cTjI7gVP49Bn",
-      description: "Videoclipe de Vira essa boca pra cá, dirigido por Vini Poffo."
+      description: "Videoclipe de Vira essa boca pra cá - Letrux feat Nouvella, dirigido por Vini Poffo."
     },
     {
       id: 2,
@@ -39,18 +39,18 @@ const siteData = {
       videoHome: "dropar_portfolio_video.mp4",
       cartazMobile: "dropar-nome-cartaz.jpg",
       trailerUrl: "https://youtu.be/PUFx8Z9AEtU?si=e1YZrPLZMNTh92JV",
-      description: "Videoclipe de Dropar teu nome, dirigido por Vini Poffo. Lançamento pela Noize."
+      description: "Videoclipe de Dropar teu nome - Letrux feat Nouvela, dirigido por Vini Poffo. Lançamento pela Noize."
     },
     {
       id: 4,
       title: "Outres de Nós",
       year: 2025,
       type: "videoclipe",
-      artist: "Jesus Lumma feat Dandara",
+      artist: "Jesus Lumma feat Dandara Manoela",
       videoHome: "outres_portfolio_video.mp4",
       cartazMobile: "outres-nos-cartaz.png",
       trailerUrl: "https://youtu.be/w2uoe7uvmQQ?si=4vmcp7Dq3mBHq9o_",
-      description: "Videoclipe de Outres de Nós, dirigido por Vini Poffo."
+      description: "Videoclipe de Outres de Nós da artista Jesus Lumma feat Dandara Manoela, dirigido por Vini Poffo."
     },
     {
       id: 7,
@@ -61,7 +61,7 @@ const siteData = {
       videoHome: "noreflexo_portfolio_video.mp4",
       cartazMobile: "reflexo-nome-cartaz.png",
       trailerUrl: "https://vimeo.com/820329509?fl=pl&fe=sh",
-      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo. Eleito pelo SESC SC em 2022 como melhor obra de Santa Catarina. Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito. Exibido em mais de 15 festivais nacionais e internacionais."
+      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
     },
     {
       id: 5,
@@ -72,7 +72,7 @@ const siteData = {
       videoHome: "aranha_portfolio_video.mp4",
       cartazMobile: "aranha-cartaz.png",
       trailerUrl: "https://www.youtube.com/watch?v=b-a2mUsEfOE",
-      description: "Videoclipe de Aranha, dirigido por Vini Poffo. Convidado pelo MVF para o festival na Argentina e Colômbia. Melhor videoclipe pelo Curta Fest Brasilia 2024."
+      description: "Videoclipe de Aranha, dirigido por Sillas H e  Vini Poffo. Melhor videoclipe pelo Curta Fest Brasilia 2024. Convidado pelo MVF para o festival na Argentina e Colômbia"
     },
     {
       id: 6,
@@ -83,7 +83,7 @@ const siteData = {
       videoHome: "suburbana_portfolio_video.mp4",
       cartazMobile: "suburbana-cartaz.png",
       trailerUrl: "https://vimeo.com/820330742?fl=pl&fe=sh",
-      description: "Curta-metragem (Sub)Urbana, direção e co-roteiro de Vini Poffo. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
+      description: "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
     },
     {
       id: 8,
