@@ -17,7 +17,27 @@ const siteData = {
       videoHome: "tfde_portfolio_video.mp4",
       cartazMobile: "dias-esquisitos-cartaz.png",
       trailerUrl: "https://youtu.be/VoZ8e76yASQ?si=T5BxmH5B-QIwLYRr",
-      description: "Direção de Vini Poffo e Luana Skibinski. Roteiro de Zalu Amorim e Vini Poffo. Concepção de arte. Premiada pela Mostra SESC de Cinema 2025 e Prêmio Catarinense de Cinema."
+      description: "Direção de Vini Poffo e Luana Skibinski. Roteiro de Zalu Amorim e Vini Poffo. Concepção de arte. Premiada pela Mostra SESC de Cinema 2025 e Prêmio Catarinense de Cinema.",
+      credits: {
+        elenco: ["Leonardo Lima", "Rafaella Narciso", "Bernardo Araújo", "Guy Lima", "Tayla Evangelista", "Berna Sant'Anna", "Ana Miranda"],
+        direcao: ["Vini Poffo", "Luana Skibinski"],
+        roteiro: ["Zalu Amorim", "Vini Poffo"],
+        preparacaoElenco: ["Mar Rosa"],
+        direcaoFotografia: ["Jaque Kogus"],
+        operadoraCamera: ["Millena Rosado"],
+        concepcaoArte: ["Luan Baeta", "Matheus De Luca", "Vini Poffo"],
+        direcaoArte: ["Matheus De Luca"],
+        design: ["Alice Costa"],
+        direcaoSom: ["Gabu"],
+        trilhaSonora: ["YMA", "Fernando Rischbieter"],
+        producaoExecutiva: ["Ive Machado"],
+        controller: ["Lari Reimerer"],
+        direcaoProducao: ["Adriana Perdiz"],
+        makingOf: ["Anita Poffo"],
+        fotografiaStill: ["Ligia Ferreira"],
+        producao: ["Sufe"],
+        apoio: "Contemplado pela Lei Paulo Gustavo"
+      }
     },
     {
       id: 1,

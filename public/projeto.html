@@ -93,6 +93,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.05rem;
             color: var(--primary-white);
+            text-align: justify;
         }
 
         .projeto-ficha {
@@ -113,7 +114,7 @@
         .ficha-item {
             display: flex;
             justify-content: space-between;
-            padding: 0.8rem 0;
+            padding: 0.5rem 0;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -217,6 +218,53 @@
             margin-top: 0.5rem;
         }
 
+        .projeto-credits {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .projeto-credits h3 {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 1rem;
+            color: var(--primary-white);
+        }
+
+        .credit-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .credit-item:last-child {
+            border-bottom: none;
+        }
+
+        .credit-item.apoio {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 1rem 0;
+            font-style: italic;
+            color: var(--accent-green);
+        }
+
+        .credit-label {
+            font-weight: 600;
+            color: var(--primary-white);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .credit-value {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
         @media (max-width: 768px) {
             .projeto-hero {
                 padding: 3rem 1.5rem;
@@ -238,6 +286,15 @@
 
             .related-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .credit-item {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+            }
+
+            .credit-label {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -438,7 +495,59 @@
                     </div>
                 </div>
             `;
-            document.getElementById('projectDetails').innerHTML = detailsHTML;
+
+            // Adicionar créditos se existirem
+            let creditsHTML = '';
+            if (project.credits) {
+                creditsHTML = `
+                    <div class="projeto-credits">
+                        <h3>Créditos</h3>
+                `;
+
+                const creditLabels = {
+                    producao: "Produção",
+                    elenco: "Elenco",
+                    direcao: "Direção",
+                    roteiro: "Roteiro",
+                    preparacaoElenco: "Preparação de Elenco",
+                    direcaoFotografia: "Direção de Fotografia",
+                    operadoraCamera: "Operadora de Câmera",
+                    concepcaoArte: "Concepção de Arte",
+                    direcaoArte: "Direção de Arte",
+                    design: "Design",
+                    direcaoSom: "Direção de Som",
+                    trilhaSonora: "Trilha Sonora",
+                    producaoExecutiva: "Produção Executiva",
+                    controller: "Controller",
+                    direcaoProducao: "Direção de Produção",
+                    makingOf: "Making Of",
+                    fotografiaStill: "Fotografia Still"
+                };
+
+                for (const [key, label] of Object.entries(creditLabels)) {
+                    if (project.credits[key]) {
+                        const names = Array.isArray(project.credits[key]) ? project.credits[key].join(", ") : project.credits[key];
+                        creditsHTML += `
+                            <div class="credit-item">
+                                <span class="credit-label">${label}</span>
+                                <span class="credit-value">${names}</span>
+                            </div>
+                        `;
+                    }
+                }
+
+                if (project.credits.apoio) {
+                    creditsHTML += `
+                        <div class="credit-item apoio">
+                            <span class="credit-value">${project.credits.apoio}</span>
+                        </div>
+                    `;
+                }
+
+                creditsHTML += `</div>`;
+            }
+
+            document.getElementById('projectDetails').innerHTML = detailsHTML + creditsHTML;
 
             // Renderizar projetos relacionados
             const relatedProjects = siteData.projects.filter(p => p.id != projectId).slice(0, 3);
