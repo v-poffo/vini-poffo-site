@@ -228,7 +228,7 @@
             document.getElementById('projectHero').innerHTML = heroHTML;
 
             // Renderizar detalhes
-            let embedUrl;
+            let videoHTML;
             if (project.trailerUrl.includes('youtube') || project.trailerUrl.includes('youtu.be')) {
                 let videoId;
                 if (project.trailerUrl.includes('youtu.be/')) {
@@ -238,17 +238,27 @@
                 } else if (project.trailerUrl.includes('embed/')) {
                     videoId = project.trailerUrl.split('embed/')[1].split('?')[0];
                 }
-                const params = project.trailerUrl.includes('?') ? '?' + project.trailerUrl.split('?')[1] : '';
-                embedUrl = `https://www.youtube.com/embed/${videoId}${params}`;
-                console.log('YouTube URL:', project.trailerUrl, '-> videoId:', videoId, '-> embedUrl:', embedUrl);
+                const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+                const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+                videoHTML = `
+                    <div class="projeto-video youtube-thumbnail">
+                        <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer">
+                            <img src="${thumbnailUrl}" alt="${project.title}">
+                            <div class="play-button">▶</div>
+                        </a>
+                    </div>
+                `;
             } else {
-                embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
+                const embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
+                videoHTML = `
+                    <div class="projeto-video">
+                        <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                    </div>
+                `;
             }
 
             const detailsHTML = `
-                <div class="projeto-video">
-                    <iframe src="${embedUrl}" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                </div>
+                ${videoHTML}
 
                 <div class="projeto-description">
                     <p>${project.description}</p>
