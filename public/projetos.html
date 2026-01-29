@@ -94,19 +94,19 @@
         }
 
         .polaroid-image {
-            clip-path: inset(0% 100% 0% 0%);
+            opacity: 0;
         }
 
         .polaroid-card.animate-in .polaroid-image {
-            animation: revealImage 0.8s ease-out forwards;
+            animation: revealImageFade 1s ease-out forwards;
         }
 
-        @keyframes revealImage {
+        @keyframes revealImageFade {
             from {
-                clip-path: inset(0% 100% 0% 0%);
+                opacity: 0;
             }
             to {
-                clip-path: inset(0% 0% 0% 0%);
+                opacity: 1;
             }
         }
 
