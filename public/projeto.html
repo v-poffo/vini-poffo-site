@@ -228,12 +228,21 @@
             document.getElementById('projectHero').innerHTML = heroHTML;
 
             // Renderizar detalhes
-            const embedUrl = project.trailerUrl.includes('youtube') 
-                ? project.trailerUrl
-                    .replace('youtu.be/', 'www.youtube.com/embed/')
-                    .replace('youtube.com/watch?v=', 'www.youtube.com/embed/')
-                    .replace('youtube.com/embed/', 'www.youtube.com/embed/')
-                : project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
+            let embedUrl;
+            if (project.trailerUrl.includes('youtube')) {
+                let videoId;
+                if (project.trailerUrl.includes('youtu.be/')) {
+                    videoId = project.trailerUrl.split('youtu.be/')[1].split('?')[0];
+                } else if (project.trailerUrl.includes('watch?v=')) {
+                    videoId = project.trailerUrl.split('watch?v=')[1].split('&')[0];
+                } else if (project.trailerUrl.includes('embed/')) {
+                    videoId = project.trailerUrl.split('embed/')[1].split('?')[0];
+                }
+                const params = project.trailerUrl.includes('?') ? '?' + project.trailerUrl.split('?')[1] : '';
+                embedUrl = `https://www.youtube.com/embed/${videoId}${params}`;
+            } else {
+                embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
+            }
 
             const detailsHTML = `
                 <div class="projeto-video">
