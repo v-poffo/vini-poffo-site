@@ -397,9 +397,13 @@
                     `;
                     
                     // Adicionar evento de clique para abrir o vídeo
-                    if (project.trailerUrl) {
+                    if (project.videoHome) {
                         card.addEventListener('click', () => {
-                            openVideoModal(project.trailerUrl, project.title);
+                            openVideoModal(`assets/videos/${project.videoHome}`, project.title);
+                        });
+                    } else if (project.trailerUrl) {
+                        card.addEventListener('click', () => {
+                            window.open(project.trailerUrl, '_blank');
                         });
                     } else {
                         // Se não tiver vídeo, redirecionar para a página do projeto
