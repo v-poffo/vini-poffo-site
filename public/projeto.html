@@ -406,7 +406,14 @@
                 video.muted = true;
                 video.loop = true;
                 video.playsinline = true;
+                video.setAttribute('webkit-playsinline', 'webkit-playsinline');
+                video.setAttribute('x5-playsinline', 'x5-playsinline');
                 heroSection.appendChild(video);
+                
+                // Forçar play no mobile
+                video.play().catch(error => {
+                    console.log('Autoplay bloqueado:', error);
+                });
             }
 
             // Renderizar detalhes
