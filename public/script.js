@@ -107,6 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const item = document.createElement('div');
             item.className = 'carousel-item';
             item.innerHTML = `<img src="assets/cartazes/${project.cartazMobile}" alt="${project.title}">`;
+            
+            // Adicionar evento de clique para abrir o vídeo de 15 segundos
+            if (project.videoHome) {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', () => {
+                    openVideoModal(`assets/videos/${project.videoHome}`);
+                });
+            }
+            
             carouselItems.appendChild(item);
         });
 
@@ -284,4 +293,77 @@ document.addEventListener('DOMContentLoaded', function() {
 function getUrlParameter(name) {
     const url = new URL(window.location);
     return url.searchParams.get(name);
+}
+
+
+// Modal de vídeo para mobile
+function createVideoModal() {
+    if (document.getElementById('videoModal')) return;
+    
+    const modal = document.createElement('div');
+    modal.id = 'videoModal';
+    modal.style.cssText = `
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+    `;
+    modal.innerHTML = `
+        <div style="position: relative; width: 90%; max-width: 500px;">
+            <span id="videoModalClose" style="
+                position: absolute;
+                top: -40px;
+                right: 0;
+                color: white;
+                font-size: 30px;
+                cursor: pointer;
+                z-index: 10001;
+            ">&times;</span>
+            <video id="videoPlayer" style="width: 100%; height: auto; border-radius: 8px;" muted autoplay loop playsinline>
+                <source src="" type="video/mp4">
+            </video>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    
+    // Fechar ao clicar no X
+    document.getElementById('videoModalClose').addEventListener('click', closeVideoModal);
+    
+    // Fechar ao clicar fora do vídeo
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeVideoModal();
+        }
+    });
+}
+
+function openVideoModal(videoUrl) {
+    createVideoModal();
+    const modal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    videoPlayer.src = videoUrl;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    videoPlayer.play();
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    
+    if (videoPlayer) {
+        videoPlayer.pause();
+        videoPlayer.src = '';
+    }
+    if (modal) {
+        modal.style.display = 'none';
+    }
+    document.body.style.overflow = 'auto';
 }
