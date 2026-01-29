@@ -229,7 +229,7 @@
 
             // Renderizar detalhes
             let embedUrl;
-            if (project.trailerUrl.includes('youtube')) {
+            if (project.trailerUrl.includes('youtube') || project.trailerUrl.includes('youtu.be')) {
                 let videoId;
                 if (project.trailerUrl.includes('youtu.be/')) {
                     videoId = project.trailerUrl.split('youtu.be/')[1].split('?')[0];
@@ -240,6 +240,7 @@
                 }
                 const params = project.trailerUrl.includes('?') ? '?' + project.trailerUrl.split('?')[1] : '';
                 embedUrl = `https://www.youtube.com/embed/${videoId}${params}`;
+                console.log('YouTube URL:', project.trailerUrl, '-> videoId:', videoId, '-> embedUrl:', embedUrl);
             } else {
                 embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
             }
