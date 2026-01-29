@@ -58,6 +58,7 @@ h1 {
     line-height: 1.15;
     font-style: italic;
     margin-bottom: 2rem;
+    text-transform: uppercase;
 }
 
 h2 {
