@@ -74,17 +74,6 @@ const siteData = {
       description: "Videoclipe de Outres de Nós da artista Jesus Lumma feat Dandara Manoela, dirigido por Vini Poffo."
     },
     {
-      id: 7,
-      title: "No reflexo do meu nome",
-      year: 2023,
-      type: "curta-metragem",
-      artist: "Curta-metragem",
-      videoHome: "noreflexo_portfolio_video.mp4",
-      cartazMobile: "reflexo-nome-cartaz.png",
-      trailerUrl: "https://vimeo.com/820329509?fl=pl&fe=sh",
-      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
-    },
-    {
       id: 5,
       title: "Aranha",
       year: 2024,
@@ -106,6 +95,18 @@ const siteData = {
       trailerUrl: "https://vimeo.com/820330742?fl=pl&fe=sh",
       description: "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
     },
+    {
+      id: 7,
+      title: "No reflexo do meu nome",
+      year: 2023,
+      type: "curta-metragem",
+      artist: "Curta-metragem",
+      videoHome: "noreflexo_portfolio_video.mp4",
+      cartazMobile: "reflexo-nome-cartaz.png",
+      trailerUrl: "https://vimeo.com/820329509?fl=pl&fe=sh",
+      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
+    },
+   
     {
       id: 8,
       title: "De baixo do guarda-chuva pra ser resistência",
