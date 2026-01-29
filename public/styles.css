@@ -71,11 +71,7 @@ p {
 
 /* Navbar - A24 Style (Transparent Overlay) */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    position: relative;
     background-color: transparent;
     padding: 1rem 2rem 2rem 2rem;
 }
@@ -114,7 +110,7 @@ p {
     list-style: none;
     gap: 0.5rem;
     position: fixed;
-    top: 130px;
+    top: 80px;
     right: 0;
     width: 200px;
     height: auto;
