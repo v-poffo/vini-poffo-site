@@ -16,13 +16,13 @@
 
         /* ===== SEÇÃO 1: HERO / SOBRE ===== */
         .section-hero {
-            min-height: 100vh;
+            min-height: auto;
+            padding: 6rem 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 4rem 2rem;
         }
 
         .section-hero::before {
@@ -40,14 +40,14 @@
             max-width: 1200px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: center;
+            gap: 3rem;
+            align-items: flex-start;
             position: relative;
             z-index: 1;
         }
 
         .hero-text h1 {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
             line-height: 1.2;
             margin-bottom: 2rem;
@@ -55,7 +55,8 @@
             letter-spacing: -0.02em;
             font-style: italic;
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(50px);
+            text-align: right;
         }
 
         .hero-text p {
@@ -71,9 +72,9 @@
         .hero-image {
             position: relative;
             opacity: 0;
-            transform: scale(0.9);
-            max-width: 300px;
-            margin: 0 auto;
+            transform: scale(0.8) translateX(-30px);
+            max-width: 350px;
+            margin: 0;
         }
 
         .hero-image img {
@@ -85,8 +86,8 @@
 
         /* ===== SEÇÃO 2: PRÊMIOS + FILMOGRAFIA (LADO A LADO) ===== */
         .section-pf {
-            min-height: 100vh;
-            padding: 8rem 2rem;
+            min-height: auto;
+            padding: 6rem 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,12 +197,13 @@
 
         /* ===== SEÇÃO 3: PROCESSO CRIATIVO ===== */
         .section-processo {
-            min-height: 100vh;
-            padding: 8rem 2rem;
+            min-height: auto;
+            padding: 6rem 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            background: rgba(113, 136, 120, 0.2);
         }
 
         .processo-container {
@@ -255,7 +257,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(113, 136, 120, 0.15) 0%, rgba(113, 136, 120, 0.1) 100%);
+            background: rgba(113, 136, 120, 0.3);
             border-radius: 2px;
             padding: 2rem;
         }
@@ -264,8 +266,8 @@
             width: 100%;
             height: 100%;
             position: relative;
-            max-width: 250px;
-            max-height: 250px;
+            max-width: 320px;
+            max-height: 320px;
         }
 
         /* SVG Animado */
@@ -277,18 +279,24 @@
         svg line {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: drawLine 2s ease-in-out forwards;
+            animation: drawLine 2.5s ease-in-out forwards;
+            stroke: #f0f0f0;
+            stroke-width: 1;
         }
 
         svg circle {
             opacity: 0;
-            animation: fadeInCircle 1.5s ease-out 1.5s forwards;
+            animation: fadeInCircle 1.5s ease-out 2.5s forwards;
+            fill: #f0f0f0;
         }
 
         svg rect {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
-            animation: drawRect 1.5s ease-in-out 2s forwards;
+            animation: drawRect 1.5s ease-in-out 3.5s forwards;
+            stroke: #f0f0f0;
+            stroke-width: 1;
+            fill: none;
         }
 
         @keyframes drawLine {
@@ -311,8 +319,8 @@
 
         /* ===== SEÇÃO 4: CTA / CONTATO ===== */
         .section-cta {
-            min-height: 100vh;
-            padding: 8rem 2rem;
+            min-height: auto;
+            padding: 6rem 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -580,21 +588,21 @@
                 <div class="processo-graphic">
                     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                         <!-- Linhas horizontais -->
-                        <line x1="50" y1="80" x2="350" y2="80" stroke="#718880" stroke-width="1" opacity="0.4"/>
-                        <line x1="50" y1="180" x2="350" y2="180" stroke="#718880" stroke-width="1" opacity="0.4"/>
-                        <line x1="50" y1="280" x2="350" y2="280" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="50" y1="80" x2="350" y2="80"/>
+                        <line x1="50" y1="200" x2="350" y2="200"/>
+                        <line x1="50" y1="320" x2="350" y2="320"/>
                         
                         <!-- Linhas verticais -->
-                        <line x1="80" y1="50" x2="80" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
-                        <line x1="200" y1="50" x2="200" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
-                        <line x1="320" y1="50" x2="320" y2="350" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <line x1="80" y1="50" x2="80" y2="350"/>
+                        <line x1="200" y1="50" x2="200" y2="350"/>
+                        <line x1="320" y1="50" x2="320" y2="350"/>
                         
                         <!-- Elementos destacados -->
-                        <circle cx="80" cy="80" r="6" fill="#718880" opacity="0.6"/>
-                        <circle cx="320" cy="280" r="6" fill="#718880" opacity="0.6"/>
+                        <circle cx="80" cy="80" r="8"/>
+                        <circle cx="320" cy="320" r="8"/>
                         
                         <!-- Retângulo central -->
-                        <rect x="120" y="160" width="160" height="60" fill="none" stroke="#718880" stroke-width="1" opacity="0.4"/>
+                        <rect x="120" y="160" width="160" height="80"/>
                     </svg>
                 </div>
             </div>
@@ -636,18 +644,18 @@
             
             // ===== SEÇÃO 1: HERO =====
             gsap.fromTo('.hero-text h1',
-                { opacity: 0, x: -50 },
-                { opacity: 1, x: 0, duration: 1, ease: 'power2.out' }
+                { opacity: 0, x: 50 },
+                { opacity: 1, x: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } }
             );
             
             gsap.fromTo('.hero-text p',
                 { opacity: 0, y: 20 },
-                { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3 }
+                { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } }
             );
             
             gsap.fromTo('.hero-image',
-                { opacity: 0, scale: 0.9 },
-                { opacity: 1, scale: 1, duration: 1, ease: 'power2.out', delay: 0.2 }
+                { opacity: 0, scale: 0.8, x: -30 },
+                { opacity: 1, scale: 1, x: 0, duration: 1, ease: 'power2.out', delay: 0.2, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } }
             );
             
             // ===== SEÇÃO 2: PRÊMIOS + FILMOGRAFIA =====
