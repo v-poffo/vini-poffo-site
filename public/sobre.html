@@ -169,38 +169,38 @@
             line-height: 1.6; 
         }
         
-        /* ===== PROCESSO CRIATIVO - GRID PHOTOSHOP ===== */
+        /* ===== PROCESSO CRIATIVO - GRID PHOTOSHOP EXATO ===== */
         .section-processo { 
-            min-height: auto; 
-            padding: 4rem 2rem; 
+            min-height: 100vh;
+            padding: 3rem 2rem; 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
-            justify-content: center; 
+            justify-content: flex-start; 
             position: relative; 
-            background: #718878; /* Cor exata do Photoshop */
+            background: #718878;
         }
         
-        .processo-container { 
-            max-width: 1400px; 
-            width: 100%; 
-            position: relative; 
-            z-index: 1; 
+        .processo-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        /* Grid EXATAMENTE como no Photoshop */
+        /* Grid EXATO do Photoshop - Posições absolutas */
         .grid-photoshop {
-            display: grid;
-            grid-template-columns: repeat(24, 1fr);
-            grid-template-rows: repeat(3, auto);
-            gap: 1rem;
-            padding: 2rem;
+            position: relative;
+            width: 100%;
+            height: 550px;
+            margin-bottom: 3rem;
         }
         
         .foto {
-            position: relative;
+            position: absolute;
             overflow: hidden;
             opacity: 0;
             transition: all 0.3s ease;
+            border-radius: 15px;
         }
         
         .foto img {
@@ -208,79 +208,114 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            border-radius: 20px;
+            border-radius: 15px;
         }
         
         .foto:hover {
             transform: scale(1.02);
+            z-index: 10;
         }
         
-        /* Texto sobre as fotos */
-        .foto-texto {
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            right: 1rem;
-            color: white;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            opacity: 0;
+        /* LINHA 1 - Posições EXATAS */
+        .f1 { 
+            left: 3%; 
+            top: 0; 
+            width: 100px; 
+            height: 160px; 
+        }
+        .f2 { 
+            left: 15%; 
+            top: 0; 
+            width: 280px; 
+            height: 160px; 
+        }
+        .f3 { 
+            left: 48%; 
+            top: 0; 
+            width: 140px; 
+            height: 280px; 
+        }
+        .f4 { 
+            left: 65%; 
+            top: 0; 
+            width: 280px; 
+            height: 160px; 
         }
         
-        /* Posições EXATAS do Photoshop - Linha 1 */
-        .f1 { grid-column: 1 / 6; grid-row: 1; }
-        .f2 { grid-column: 6 / 14; grid-row: 1; }
-        .f3 { grid-column: 14 / 20; grid-row: 1; }
-        .f4 { grid-column: 20 / 25; grid-row: 1; }
+        /* LINHA 2 - Posições EXATAS */
+        .f5 { 
+            left: 3%; 
+            top: 180px; 
+            width: 200px; 
+            height: 140px; 
+        }
+        .f6 { 
+            left: 28%; 
+            top: 180px; 
+            width: 180px; 
+            height: 300px; 
+        }
+        .f7 { 
+            left: 65%; 
+            top: 180px; 
+            width: 280px; 
+            height: 100px; 
+        }
         
-        /* Linha 2 */
-        .f5 { grid-column: 1 / 7; grid-row: 2; }
-        .f6 { grid-column: 7 / 15; grid-row: 2; }
-        .f7 { grid-column: 15 / 20; grid-row: 2; } /* Quadrado azul */
-        .f8 { grid-column: 20 / 25; grid-row: 2; }
-        
-        /* Linha 3 */
-        .f9 { grid-column: 1 / 6; grid-row: 3; } /* Quadrado azul - Vamos Conversar */
-        .f10 { grid-column: 6 / 11; grid-row: 3; }
-        .f11 { grid-column: 11 / 19; grid-row: 3; }
-        .f12 { grid-column: 19 / 25; grid-row: 3; }
+        /* LINHA 3 - Posições EXATAS */
+        .f8 { 
+            left: 3%; 
+            top: 340px; 
+            width: 140px; 
+            height: 120px; 
+        }
+        .f9 { 
+            left: 18%; 
+            top: 340px; 
+            width: 140px; 
+            height: 180px; 
+        }
+        .f10 { 
+            left: 50%; 
+            top: 310px; 
+            width: 400px; 
+            height: 180px; 
+        }
         
         /* Quadrados azuis */
         .quadrado-azul {
-            background: linear-gradient(135deg, #2a4a5a 0%, #345a6a 100%);
-            border-radius: 20px;
+            background: #4a6a7a;
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
         }
         
         .quadrado-azul h3 {
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: 900;
             color: white;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             font-style: italic;
         }
         
         .quadrado-azul p {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: rgba(255,255,255,0.8);
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
         .quadrado-azul .btn-cta {
-            margin-top: 1rem;
-            padding: 0.6rem 1.5rem;
+            margin-top: 0.5rem;
+            padding: 0.4rem 1rem;
             background: transparent;
             border: 1px solid white;
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 0.05em;
@@ -292,7 +327,55 @@
         
         .quadrado-azul .btn-cta:hover {
             background: white;
-            color: #2a4a5a;
+            color: #4a6a7a;
+        }
+        
+        /* Área de contato embaixo */
+        .contato-area {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contato-area h3 {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-style: italic;
+            opacity: 0;
+        }
+        
+        .contato-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            opacity: 0;
+        }
+        
+        .contato-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contato-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .contato-links .linha {
+            width: 30px;
+            height: 1px;
+            background: white;
         }
         
         /* ===== FOOTER FAIXA ===== */
@@ -323,20 +406,11 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .grid-photoshop {
-                grid-template-columns: repeat(12, 1fr);
+                height: 450px;
             }
-            .f1 { grid-column: 1 / 5; }
-            .f2 { grid-column: 5 / 10; }
-            .f3 { grid-column: 10 / 13; }
-            .f4 { grid-column: 1 / 4; grid-row: 2; }
-            .f5 { grid-column: 4 / 8; }
-            .f6 { grid-column: 8 / 13; }
-            .f7 { grid-column: 1 / 5; grid-row: 3; }
-            .f8 { grid-column: 5 / 9; }
-            .f9 { grid-column: 9 / 13; }
-            .f10 { grid-column: 1 / 5; grid-row: 4; }
-            .f11 { grid-column: 5 / 10; }
-            .f12 { grid-column: 10 / 13; }
+            .f1, .f2, .f3, .f4, .f5, .f6, .f7, .f8, .f9, .f10 {
+                transform: scale(0.8);
+            }
         }
         
         @media (max-width: 768px) { 
@@ -351,19 +425,32 @@
             } 
             
             .grid-photoshop {
-                grid-template-columns: repeat(6, 1fr);
-                gap: 0.8rem;
+                height: auto;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                position: static;
             }
             
-            .f1, .f2, .f3, .f4, .f5, .f6, .f7, .f8, .f9, .f10, .f11, .f12 {
-                grid-column: span 3 !important;
-                grid-row: auto !important;
+            .foto {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                aspect-ratio: 1;
             }
-        }
-        
-        @media (max-width: 480px) {
-            .f1, .f2, .f3, .f4, .f5, .f6, .f7, .f8, .f9, .f10, .f11, .f12 {
-                grid-column: span 6 !important;
+            
+            .f3, .f6 {
+                aspect-ratio: 0.7;
+            }
+            
+            .f10 {
+                grid-column: span 2;
+                aspect-ratio: 2;
+            }
+            
+            .contato-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -427,11 +514,11 @@
         </div>
     </section>
 
-    <!-- PROCESSO CRIATIVO - GRID PHOTOSHOP -->
+    <!-- PROCESSO CRIATIVO - GRID PHOTOSHOP EXATO -->
     <section class="section-processo">
-        <div class="processo-container">
+        <div class="processo-wrapper">
             <div class="grid-photoshop">
-                <!-- Linha 1 -->
+                <!-- LINHA 1 -->
                 <div class="foto f1">
                     <img src="assets/processo/vini1.png" alt="Vini 1">
                 </div>
@@ -445,7 +532,7 @@
                     <img src="assets/processo/vini5.png" alt="Vini 4">
                 </div>
                 
-                <!-- Linha 2 -->
+                <!-- LINHA 2 -->
                 <div class="foto f5">
                     <img src="assets/processo/vini6.png" alt="Vini 5">
                 </div>
@@ -454,26 +541,32 @@
                 </div>
                 <div class="foto f7 quadrado-azul">
                     <h3>Processo Criativo</h3>
-                    <p>Uma abordagem artesanal e transformadora</p>
-                </div>
-                <div class="foto f8">
-                    <img src="assets/processo/vini8.png" alt="Vini 7">
                 </div>
                 
-                <!-- Linha 3 -->
-                <div class="foto f9 quadrado-azul">
+                <!-- LINHA 3 -->
+                <div class="foto f8 quadrado-azul">
                     <h3>Vamos Conversar?</h3>
-                    <a href="mailto:projetos@vinipoffo.com" class="btn-cta">Contato</a>
-                    <a href="https://instagram.com/poffovini" target="_blank" class="btn-cta">Instagram</a>
+                </div>
+                <div class="foto f9">
+                    <img src="assets/processo/vini10.png" alt="Vini 7">
                 </div>
                 <div class="foto f10">
-                    <img src="assets/processo/vini10.png" alt="Vini 8">
+                    <img src="assets/processo/vini8.png" alt="Vini 8">
                 </div>
-                <div class="foto f11">
-                    <img src="assets/processo/vini8.png" alt="Vini 9">
-                </div>
-                <div class="foto f12">
-                    <img src="assets/processo/vini5.png" alt="Vini 10">
+            </div>
+            
+            <!-- Área de contato embaixo -->
+            <div class="contato-area">
+                <h3>Entre em Contato</h3>
+                <div class="contato-links">
+                    <a href="mailto:projetos@vinipoffo.com">
+                        <span class="linha"></span>
+                        projetos@vinipoffo.com
+                    </a>
+                    <a href="https://instagram.com/poffovini" target="_blank">
+                        <span class="linha"></span>
+                        @poffovini
+                    </a>
                 </div>
             </div>
         </div>
@@ -482,10 +575,6 @@
     <!-- FOOTER FAIXA -->
     <footer class="footer-faixa">
         <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
-        <p>
-            <a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a>
-            <a href="https://instagram.com/poffovini" target="_blank">@poffovini</a>
-        </p>
     </footer>
 
     <script src="data.js"></script>
@@ -515,36 +604,49 @@
                         y: 0, 
                         scale: 1,
                         duration: 0.8, 
-                        delay: index * 0.1,
+                        delay: index * 0.12,
                         ease: 'power2.out',
                         scrollTrigger: { 
                             trigger: '.grid-photoshop', 
-                            start: 'top 80%', 
+                            start: 'top 85%', 
                             toggleActions: 'play reverse play reverse' 
                         } 
                     }
                 );
             });
             
-            // Textos dentro das fotos - animação letra por letra
-            const textosQuadrado = document.querySelectorAll('.quadrado-azul h3, .quadrado-azul p');
-            textosQuadrado.forEach((texto, index) => {
-                gsap.fromTo(texto, 
-                    { opacity: 0, y: 20 }, 
-                    { 
-                        opacity: 1, 
-                        y: 0,
-                        duration: 1, 
-                        delay: (fotos.length * 0.1) + (index * 0.2),
-                        ease: 'power2.out',
-                        scrollTrigger: { 
-                            trigger: '.grid-photoshop', 
-                            start: 'top 80%', 
-                            toggleActions: 'play reverse play reverse' 
-                        } 
-                    }
-                );
-            });
+            // Contato area animations
+            gsap.fromTo('.contato-area h3', 
+                { opacity: 0, y: 20 }, 
+                { 
+                    opacity: 1, 
+                    y: 0,
+                    duration: 0.8, 
+                    delay: fotos.length * 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: { 
+                        trigger: '.contato-area', 
+                        start: 'top 90%', 
+                        toggleActions: 'play reverse play reverse' 
+                    } 
+                }
+            );
+            
+            gsap.fromTo('.contato-links', 
+                { opacity: 0, y: 20 }, 
+                { 
+                    opacity: 1, 
+                    y: 0,
+                    duration: 0.8, 
+                    delay: (fotos.length * 0.12) + 0.2,
+                    ease: 'power2.out',
+                    scrollTrigger: { 
+                        trigger: '.contato-area', 
+                        start: 'top 90%', 
+                        toggleActions: 'play reverse play reverse' 
+                    } 
+                }
+            );
         });
     </script>
 </body>
