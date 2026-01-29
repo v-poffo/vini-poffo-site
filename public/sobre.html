@@ -6,17 +6,17 @@
     <title>Sobre - Vini Poffo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Hero Section com Foto */
+        /* Hero Section com Foto - Foto flutuante */
+        .sobre-hero-wrapper {
+            position: relative;
+        }
+
         .sobre-hero {
             background: linear-gradient(135deg, #2a4f5f 0%, #3a5f6f 50%, #2a4f5f 100%);
             position: relative;
             overflow: visible;
-            padding: 4rem 2rem 2rem 2rem;
+            padding: 4rem 2rem 4rem 2rem;
             min-height: auto;
-            display: flex;
-            align-items: flex-end;
-            border-bottom: 4px solid white;
-            margin-bottom: 0;
         }
 
         .sobre-hero-content {
@@ -25,7 +25,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
             position: relative;
             z-index: 1;
@@ -34,6 +34,7 @@
         .sobre-hero-text {
             color: var(--primary-white);
             text-align: justify;
+            padding-bottom: 2rem;
         }
 
         .sobre-hero-text h1 {
@@ -54,8 +55,9 @@
             position: relative;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            margin-bottom: -4px;
+            align-items: flex-start;
+            margin-bottom: -200px;
+            z-index: 10;
         }
 
         .sobre-hero-photo img {
@@ -65,11 +67,18 @@
             display: block;
         }
 
+        /* Faixa branca entre hero e seções */
+        .white-spacer {
+            background-color: var(--primary-white);
+            height: 180px;
+            position: relative;
+        }
+
         /* Seções com cores */
         .sobre-sections {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 6rem 2rem 0 2rem;
+            padding: 4rem 2rem 0 2rem;
             background-color: var(--primary-white);
         }
 
@@ -321,6 +330,9 @@
             </div>
         </div>
     </section>
+
+    <!-- Faixa branca para foto flutuante -->
+    <div class="white-spacer"></div>
 
     <!-- Seções com cores -->
     <section class="sobre-sections">
