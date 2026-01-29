@@ -229,7 +229,10 @@
 
             // Renderizar detalhes
             const embedUrl = project.trailerUrl.includes('youtube') 
-                ? project.trailerUrl.replace('youtu.be/', 'youtube.com/embed/').replace('watch?v=', 'embed/')
+                ? project.trailerUrl
+                    .split('?')[0] // Remove parâmetros
+                    .replace('youtu.be/', 'youtube.com/embed/')
+                    .replace('watch?v=', 'embed/')
                 : project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
 
             const detailsHTML = `
