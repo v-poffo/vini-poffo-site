@@ -10,6 +10,7 @@
     <style>
         body { background-color: #111A17; color: var(--primary-white); }
         
+        /* HERO */
         .section-hero { min-height: auto; padding: 10rem 2rem 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .section-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%); z-index: 0; }
         .section-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 2; }
@@ -19,13 +20,25 @@
         .hero-image { position: relative; opacity: 0; transform: scale(0.8) translateX(-30px); max-width: 300px; margin: 0; }
         .hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)); border-radius: 2px; }
         
-        .section-experiencias { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(90deg, rgba(113, 136, 120, 0.02) 0%, transparent 50%); }
-        .section-experiencias::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(113, 136, 120, 0.3) 0%, rgba(42, 74, 90, 0.3) 100%); z-index: 0; }
-        .experiencias-container { max-width: 1200px; width: 100%; position: relative; z-index: 1; }
+        /* PRÊMIOS & FILMOGRAFIA */
+        .section-pf { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(90deg, rgba(113, 136, 120, 0.05) 0%, transparent 50%); }
+        .section-pf::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 0; }
+        .pf-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; position: relative; z-index: 1; }
+        .pf-column { display: flex; flex-direction: column; gap: 2rem; }
+        .pf-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem; position: relative; padding-bottom: 1rem; opacity: 1; transform: translateY(0); font-style: italic; }
+        .pf-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
+        .pf-column.premios { border-left: 2px solid rgba(113, 136, 120, 0.3); padding-left: 2rem; }
+        .pf-column.premios .pf-title { color: var(--accent-green-light); }
+        .pf-column.filmografia { border-left: 2px solid rgba(42, 74, 90, 0.3); padding-left: 2rem; }
+        .pf-column.filmografia .pf-title { color: #3a7a9a; }
+        .pf-item { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
+        .pf-item:hover { transform: translateY(-2px); }
+        .pf-item h3 { font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
+        .pf-column.premios .pf-item h3 { color: var(--accent-green-light); }
+        .pf-column.filmografia .pf-item h3 { color: #3a7a9a; }
+        .pf-item p { font-size: 0.8rem; color: #a0a0a0; line-height: 1.6; }
         
-        .section-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 3rem; position: relative; padding-bottom: 1.5rem; font-style: italic; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
-        
+        /* PROCESSO */
         .section-processo { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: #718878; }
         .processo-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 1; }
         .processo-visual { order: -1; }
@@ -39,31 +52,34 @@
         svg circle { opacity: 0; fill: #2a2a2a; stroke: #2a2a2a; stroke-width: 1; }
         svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #2a2a2a; stroke-width: 1; fill: none; }
         
-        .experiencia-category { margin-bottom: 2rem; border: 1px solid rgba(113, 136, 120, 0.2); border-radius: 2px; overflow: hidden; transition: all 0.3s ease; }
-        .experiencia-category.expanded { border-color: var(--accent-green-light); }
+        /* EXPERIÊNCIAS */
+        .section-experiencias { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; }
+        .experiencias-container { max-width: 1200px; width: 100%; position: relative; z-index: 1; }
+        .section-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 3rem; position: relative; padding-bottom: 1.5rem; font-style: italic; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
         
-        .category-header { padding: 1.5rem 2rem; background: rgba(113, 136, 120, 0.05); cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.3s ease; }
-        .category-header:hover { background: rgba(113, 136, 120, 0.1); }
-        .category-header h3 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
-        .category-header .toggle-icon { font-size: 1.5rem; transition: transform 0.3s ease; }
-        .experiencia-category.expanded .toggle-icon { transform: rotate(180deg); }
+        .exp-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .exp-btn { padding: 0.8rem 2rem; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; border: 1px solid rgba(113, 136, 120, 0.3); background: transparent; color: #c0c0c0; cursor: pointer; transition: all 0.3s ease; border-radius: 0; text-decoration: none; display: inline-block; }
+        .exp-btn:hover { border-color: var(--accent-green-light); color: var(--accent-green-light); }
+        .exp-btn.active { border-color: var(--accent-green-light); color: var(--accent-green-light); background: rgba(113, 136, 120, 0.1); }
         
-        .category-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .experiencia-category.expanded .category-content { max-height: none; overflow: visible; }
+        /* MODAL/POP-UP */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); opacity: 0; transition: opacity 0.3s ease; }
+        .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .modal-content { background-color: #1a2420; border: 1px solid rgba(113, 136, 120, 0.3); border-radius: 2px; padding: 3rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #c0c0c0; cursor: pointer; transition: all 0.3s ease; background: none; border: none; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
+        .modal-close:hover { color: var(--accent-green-light); }
+        .modal-title { font-size: 1.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; font-style: italic; position: relative; padding-bottom: 1rem; }
+        .modal-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
+        .modal-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(113, 136, 120, 0.2); }
+        .modal-item:last-child { border-bottom: none; }
+        .modal-item-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-green-light); }
+        .modal-item-role { font-size: 0.85rem; color: #a0a0a0; margin-bottom: 0.3rem; }
+        .modal-item-year { font-size: 0.75rem; text-transform: uppercase; color: rgba(113, 136, 120, 0.7); font-weight: 600; letter-spacing: 0.1em; }
+        .modal-item-location { font-size: 0.8rem; color: #808080; margin-top: 0.3rem; }
         
-        .projects-list { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }
-        
-        .project-item { padding: 1.5rem; border-left: 2px solid rgba(113, 136, 120, 0.4); background: transparent; transition: all 0.3s ease; position: relative; }
-        .project-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--accent-green-light); opacity: 0; transition: opacity 0.3s ease; }
-        .project-item:hover { transform: translateX(5px); }
-        .project-item:hover::before { opacity: 1; }
-        
-        .project-year { font-size: 0.7rem; text-transform: uppercase; color: rgba(113, 136, 120, 0.7); font-weight: 600; letter-spacing: 0.15em; margin-bottom: 0.8rem; }
-        .project-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
-        .project-role { font-size: 0.8rem; color: #b0b0b0; margin-bottom: 0.3rem; font-weight: 500; }
-        .project-location { font-size: 0.75rem; color: #909090; margin-bottom: 0.8rem; }
-        .project-awards { font-size: 0.8rem; color: rgba(113, 136, 120, 0.8); line-height: 1.5; font-weight: 500; }
-        
+        /* CTA */
         .section-cta { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); }
         .cta-container { max-width: 900px; text-align: center; position: relative; z-index: 1; }
         .cta-container h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; opacity: 0; transform: translateY(-50px); position: relative; padding-bottom: 1.5rem; font-style: italic; }
@@ -82,15 +98,15 @@
             .hero-content { grid-template-columns: 1fr; gap: 3rem; display: flex; flex-direction: column; } 
             .hero-image { order: -1; max-width: 100%; } 
             .hero-text { order: 1; } 
-            .hero-text h1, .section-title { font-size: 1.8rem; } 
+            .pf-container { grid-template-columns: 1fr; gap: 3rem; } 
+            .processo-container { grid-template-columns: 1fr; gap: 3rem; } 
+            .hero-text h1, .pf-title, .processo-text h2, .cta-container h2, .section-title { font-size: 1.8rem; } 
             .cta-buttons { flex-direction: column; } 
             .cta-btn { width: 100%; } 
-            .project-item { padding: 1.2rem; }
-            .category-header { padding: 1rem 1.5rem; }
-            .projects-list { padding: 1.5rem; gap: 1.5rem; }
-            .processo-container { grid-template-columns: 1fr; gap: 3rem; }
             .processo-visual { height: 300px; }
-            .processo-text h2 { font-size: 1.8rem; }
+            .exp-buttons { gap: 1rem; }
+            .exp-btn { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
+            .modal-content { padding: 2rem; }
         }
     </style>
 </head>
@@ -115,6 +131,7 @@
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="section-hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -128,224 +145,30 @@
         </div>
     </section>
 
-    <section class="section-experiencias">
-        <div class="experiencias-container">
-            <h2 class="section-title">Experiências</h2>
-            
-            <!-- FILMES -->
-            <div class="experiencia-category expanded">
-                <div class="category-header">
-                    <h3>Filmes</h3>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="category-content">
-                    <div class="projects-list">
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Tem Feito Uns Dias Esquisitos – Curta-metragem</div>
-                            <div class="project-role">Direção, roteiro e concepção de arte</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                            <div class="project-awards">🏆 Mostra SESC de Cinema 2025<br>🏆 Prêmio Catarinense de Cinema</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2024</div>
-                            <div class="project-title">O Viajante e a Raposa – Curta-metragem</div>
-                            <div class="project-role">Direção</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                            <div class="project-awards">Sem estreia prevista</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2023</div>
-                            <div class="project-title">(Sub)Urbana – Curta-metragem</div>
-                            <div class="project-role">Direção e co-roteirista</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                            <div class="project-awards">🏆 5 prêmios de melhor filme<br>🏆 Prêmio Revelação – IV Transforma Festival<br>🏆 Exibição em mais de 20 festivais nacionais e internacionais<br>🏆 Prêmio Catarinense de Cinema</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2022</div>
-                            <div class="project-title">No Reflexo do Meu Nome – Curta-metragem</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                            <div class="project-awards">🏆 Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>🏆 Mais de 15 festivais nacionais e internacionais</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2021</div>
-                            <div class="project-title">Debaixo do Guarda-Chuva pra Ser Resistência – Curta</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2021</div>
-                            <div class="project-title">Marias – Curta Documental</div>
-                            <div class="project-role">Direção</div>
-                            <div class="project-location">Santa Catarina, Brasil</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- PRÊMIOS & FILMOGRAFIA -->
+    <section class="section-pf">
+        <div class="pf-container">
+            <div class="pf-column premios">
+                <h2 class="pf-title">Prêmios</h2>
+                <div class="pf-item"><h3>5 Prêmios de Melhor Filme</h3><p>(Sub)Urbana – Festival SESC</p></div>
+                <div class="pf-item"><h3>Prêmio Revelação</h3><p>Transforma Festival</p></div>
+                <div class="pf-item"><h3>Curta Fest Brasília 2024</h3><p>Categoria Aranha</p></div>
+                <div class="pf-item"><h3>SESC SC</h3><p>No Reflexo do Meu Nome – Reconhecimento Nacional</p></div>
+                <div class="pf-item"><h3>Exibições Internacionais</h3><p>Trabalhos exibidos em festivais internacionais</p></div>
+                <div class="pf-item"><h3>Lei Paulo Gustavo</h3><p>Contemplado para desenvolvimento de projetos</p></div>
             </div>
-
-            <!-- VIDEOCLIPES -->
-            <div class="experiencia-category expanded">
-                <div class="category-header">
-                    <h3>Videoclipes</h3>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="category-content">
-                    <div class="projects-list">
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Pote de Ouro – Liniker e Priscila Sena</div>
-                            <div class="project-role">Assist Prod Executiva</div>
-                            <div class="project-location">SC, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Dropar Teu Nome – Letrux feat Nouvella</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">SC, Brasil</div>
-                            <div class="project-awards">🏆 Lançamento pela Noize</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Vira Essa Boca Pra Cá – Letrux feat Nouvella</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">SC, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Outres de Nós – Jesus Lumma</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">SC, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Carta Marcada – Vitor Kley</div>
-                            <div class="project-role">Assistência de produção de objeto</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2024</div>
-                            <div class="project-title">Aranha – Letrux</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">SC, Brasil</div>
-                            <div class="project-awards">🏆 Convidado pelo MVF para o festival na Argentina e Colômbia<br>🏆 Melhor videoclipe pelo Curta Fest Brasilia 2024</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2023</div>
-                            <div class="project-title">Barman – Ananda Paixão</div>
-                            <div class="project-role">Assistência de direção</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2023</div>
-                            <div class="project-title">No Game – Ananda Paixão</div>
-                            <div class="project-role">Making of</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2022</div>
-                            <div class="project-title">Baião de Dois – Aretuza Lovi & Getúlio Abelha</div>
-                            <div class="project-role">Direção e direção de arte</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2022</div>
-                            <div class="project-title">Bailão – Gabeu</div>
-                            <div class="project-role">Direção de arte</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2020</div>
-                            <div class="project-title">Moços e Moças – Jesus Lumma</div>
-                            <div class="project-role">Direção de arte</div>
-                            <div class="project-location">SC, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2020</div>
-                            <div class="project-title">Ela Terra – Malu Maria</div>
-                            <div class="project-role">Direção e roteiro</div>
-                            <div class="project-location">SC, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2019</div>
-                            <div class="project-title">Sugar Daddy – Gabeu</div>
-                            <div class="project-role">Direção de arte</div>
-                            <div class="project-location">SP, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2019</div>
-                            <div class="project-title">Colapso Invisível – YMA</div>
-                            <div class="project-role">Direção de arte</div>
-                            <div class="project-location">SP, Brasil</div>
-                            <div class="project-awards">🏆 Melhor videoclipe - Hits Perdidos 2019</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ARTE, CENOGRAFIA E OUTROS -->
-            <div class="experiencia-category">
-                <div class="category-header">
-                    <h3>Arte, Cenografia & Outros</h3>
-                    <span class="toggle-icon">▼</span>
-                </div>
-                <div class="category-content">
-                    <div class="projects-list">
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">CERAVE – Pele Sequinha</div>
-                            <div class="project-role">Publicidade – Assistência de Produção de Objetos</div>
-                            <div class="project-location">São Paulo, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Nutren – Eu Me Vejo Pró-Idade</div>
-                            <div class="project-role">Publicidade – Assistência de Produção de Objetos</div>
-                            <div class="project-location">São Paulo, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">Álbum – Som do Alê</div>
-                            <div class="project-role">Visualizer – Assistência de Arte e Cenografia</div>
-                            <div class="project-location">São Paulo, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2025</div>
-                            <div class="project-title">DIVÃ – Calma São Paulo</div>
-                            <div class="project-role">Editorial – Assistência de Arte</div>
-                            <div class="project-location">São Paulo, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2024</div>
-                            <div class="project-title">Calma Business – Calma São Paulo</div>
-                            <div class="project-role">Editorial – Assistência de Arte</div>
-                            <div class="project-location">São Paulo, Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2024</div>
-                            <div class="project-title">Segue o Baile – E! Channel</div>
-                            <div class="project-role">Reality Show – Making of (still) e Operação de Câmera PTZ</div>
-                            <div class="project-location">Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2020–Atualmente</div>
-                            <div class="project-title">Maria Homem</div>
-                            <div class="project-role">Direção e Criação de Conteúdo para YouTube e Instagram</div>
-                            <div class="project-location">Brasil</div>
-                        </div>
-                        <div class="project-item">
-                            <div class="project-year">2021</div>
-                            <div class="project-title">Parte de Mim – FUNARTE</div>
-                            <div class="project-role">Videoarte – Direção</div>
-                            <div class="project-location">Brasil</div>
-                            <div class="project-awards">🏆 Projeto premiado no Prêmio RespirArte da FUNARTE</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="pf-column filmografia">
+                <h2 class="pf-title">Filmografia</h2>
+                <div class="pf-item"><h3>Tem Feito Uns Dias Esquisitos</h3><p>Curta-metragem • 2025<br>Direção: Vini Poffo e Luana Skibinski</p></div>
+                <div class="pf-item"><h3>(Sub)Urbana</h3><p>Curta-metragem • 2023<br>Direção: Vini Poffo</p></div>
+                <div class="pf-item"><h3>No Reflexo do Meu Nome</h3><p>Curta-metragem • 2023<br>Direção: Vini Poffo</p></div>
+                <div class="pf-item"><h3>Debaixo do Guarda-chuva</h3><p>Curta documental • 2021<br>Direção: Vini Poffo</p></div>
+                <div class="pf-item"><h3>Marias</h3><p>Curta documental • 2020<br>Direção: Vini Poffo</p></div>
             </div>
         </div>
     </section>
 
+    <!-- PROCESSO -->
     <section class="section-processo">
         <div class="processo-container">
             <div class="processo-text">
@@ -371,12 +194,119 @@
         </div>
     </section>
 
+    <!-- EXPERIÊNCIAS -->
+    <section class="section-experiencias">
+        <div class="experiencias-container">
+            <h2 class="section-title">Experiências</h2>
+            <div class="exp-buttons">
+                <button class="exp-btn active" data-category="filmes">Filmes</button>
+                <button class="exp-btn" data-category="videoclipes">Videoclipes</button>
+                <button class="exp-btn" data-category="cenografia">Cenografia</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAIS -->
+    <div id="filmesModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Filmes</h3>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Tem Feito Uns Dias Esquisitos</div>
+                <div class="modal-item-role">Direção, roteiro e concepção de arte</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2024</div>
+                <div class="modal-item-title">O Viajante e a Raposa</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2023</div>
+                <div class="modal-item-title">(Sub)Urbana</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2023</div>
+                <div class="modal-item-title">No Reflexo do Meu Nome</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2021</div>
+                <div class="modal-item-title">Debaixo do Guarda-chuva</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2020</div>
+                <div class="modal-item-title">Marias</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="videoclipesModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Videoclipes</h3>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Vira Essa Boca Pra Cá</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2024</div>
+                <div class="modal-item-title">Teu Lado</div>
+                <div class="modal-item-role">Direção de arte</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2023</div>
+                <div class="modal-item-title">Ninguém Merecia</div>
+                <div class="modal-item-role">Assistência de direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2022</div>
+                <div class="modal-item-title">Sem Volta</div>
+                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cenografiaModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Cenografia & Arte</h3>
+            <div class="modal-item">
+                <div class="modal-item-year">2024</div>
+                <div class="modal-item-title">Projeto X</div>
+                <div class="modal-item-role">Assistência de arte</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2023</div>
+                <div class="modal-item-title">Projeto Y</div>
+                <div class="modal-item-role">Cenografia</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
     <section class="section-cta">
         <div class="cta-container">
             <h2>Vamos Conversar?</h2>
             <p>Tenho interesse em colaborações criativas e projetos desafiadores.</p>
             <div class="cta-buttons">
-                <a href="mailto:projetos@vinipoffo.com" class="cta-btn primary">Mandar um E-mail</a>
+                <a href="mailto:projetos@vinipoffo.com" class="cta-btn primary">Mandar um e-mail</a>
                 <a href="https://instagram.com/poffovini" target="_blank" class="cta-btn">Seguir no Instagram</a>
             </div>
             <div class="contact-info">
@@ -402,15 +332,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Expandir/Colapsar categorias
-        document.querySelectorAll('.category-header').forEach(header => {
-            header.addEventListener('click', function() {
-                const category = this.parentElement;
-                category.classList.toggle('expanded');
-            });
-        });
-
-        // Animações GSAP
+        // ANIMAÇÕES GSAP
         gsap.registerPlugin(ScrollTrigger);
 
         gsap.fromTo('.hero-text h1', { opacity: 0, transform: 'translateX(50px)' }, { 
@@ -423,14 +345,46 @@
             opacity: 1, transform: 'scale(1) translateX(0)', duration: 0.8, delay: 0.3
         });
 
-        gsap.fromTo('.section-title', { opacity: 0, transform: 'translateY(-30px)' }, {
-            opacity: 1, transform: 'translateY(0)', duration: 0.6, scrollTrigger: {
-                trigger: '.section-experiencias', start: 'top center', toggleActions: 'play reverse play reverse'
+        gsap.fromTo('.pf-item', { opacity: 0, transform: 'translateY(20px)' }, {
+            opacity: 1, transform: 'translateY(0)', duration: 0.5, stagger: 0.1, scrollTrigger: {
+                trigger: '.section-pf', start: 'top center', toggleActions: 'play reverse play reverse'
             }
         });
 
-        gsap.fromTo('.project-item', { opacity: 0, transform: 'translateX(-20px)' }, {
-            opacity: 1, transform: 'translateX(0)', duration: 0.5, stagger: 0.1, scrollTrigger: {
+        gsap.fromTo('.processo-text h2', { opacity: 0, transform: 'translateX(-50px)' }, { 
+            opacity: 1, transform: 'translateX(0)', duration: 0.8, scrollTrigger: { 
+                trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.processo-text p', { opacity: 0, transform: 'translateY(20px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, stagger: 0.15, scrollTrigger: { 
+                trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.processo-visual', { opacity: 0, transform: 'translateX(50px)' }, { 
+            opacity: 1, transform: 'translateX(0)', duration: 0.8, scrollTrigger: { 
+                trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+
+        const svgLines = document.querySelectorAll('svg line');
+        const svgRects = document.querySelectorAll('svg rect');
+        const svgCircles = document.querySelectorAll('svg circle');
+        
+        svgLines.forEach(line => {
+            gsap.to(line, { strokeDashoffset: 0, duration: 2.5, ease: 'power2.inOut', scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+        });
+        
+        svgRects.forEach(rect => {
+            gsap.to(rect, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+        });
+        
+        svgCircles.forEach((circle, index) => {
+            gsap.to(circle, { opacity: 1, duration: 1, delay: 0.5 + (index * 0.3), scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+        });
+
+        gsap.fromTo('.section-title', { opacity: 0, transform: 'translateY(-30px)' }, {
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, scrollTrigger: {
                 trigger: '.section-experiencias', start: 'top center', toggleActions: 'play reverse play reverse'
             }
         });
@@ -455,6 +409,44 @@
                 trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
             } 
         });
+
+        // MODAL FUNCTIONALITY
+        const expBtns = document.querySelectorAll('.exp-btn');
+        const modals = {
+            'filmes': document.getElementById('filmesModal'),
+            'videoclipes': document.getElementById('videoclipesModal'),
+            'cenografia': document.getElementById('cenografiaModal')
+        };
+
+        expBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.dataset.category;
+                const modal = modals[category];
+                
+                expBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                Object.values(modals).forEach(m => m.classList.remove('show'));
+                modal.classList.add('show');
+            });
+        });
+
+        // FECHAR MODAL
+        document.querySelectorAll('.modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.modal').classList.remove('show');
+            });
+        });
+
+        // FECHAR MODAL AO CLICAR FORA
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        });
+
+        // ABRIR PRIMEIRO MODAL POR PADRÃO
+        modals['filmes'].classList.add('show');
     </script>
 </body>
 </html>
