@@ -52,13 +52,11 @@
         svg circle { opacity: 0; fill: #2a2a2a; stroke: #2a2a2a; stroke-width: 1; }
         svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #2a2a2a; stroke-width: 1; fill: none; }
         
-        /* EXPERIÊNCIAS */
-        .section-experiencias { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; }
-        .experiencias-container { max-width: 1200px; width: 100%; position: relative; z-index: 1; }
-        .section-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 3rem; position: relative; padding-bottom: 1.5rem; font-style: italic; }
-        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
+        /* BOTÕES DE EXPERIÊNCIAS */
+        .exp-buttons-wrapper { padding: 3rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; }
+        .exp-buttons-container { max-width: 1200px; width: 100%; position: relative; z-index: 1; }
         
-        .exp-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .exp-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
         .exp-btn { padding: 0.8rem 2rem; font-size: 0.85rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; border: 1px solid rgba(113, 136, 120, 0.3); background: transparent; color: #c0c0c0; cursor: pointer; transition: all 0.3s ease; border-radius: 0; text-decoration: none; display: inline-block; }
         .exp-btn:hover { border-color: var(--accent-green-light); color: var(--accent-green-light); }
         .exp-btn.active { border-color: var(--accent-green-light); color: var(--accent-green-light); background: rgba(113, 136, 120, 0.1); }
@@ -66,7 +64,7 @@
         /* MODAL/POP-UP */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
-        .modal-content { background-color: #1a2420; border: 1px solid rgba(113, 136, 120, 0.3); border-radius: 2px; padding: 3rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
+        .modal-content { background: linear-gradient(135deg, rgba(42, 74, 90, 0.95) 0%, rgba(52, 90, 106, 0.95) 100%); border: 1px solid rgba(113, 136, 120, 0.5); border-radius: 2px; padding: 3rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
         @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #c0c0c0; cursor: pointer; transition: all 0.3s ease; background: none; border: none; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
         .modal-close:hover { color: var(--accent-green-light); }
@@ -75,9 +73,10 @@
         .modal-item { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(113, 136, 120, 0.2); }
         .modal-item:last-child { border-bottom: none; }
         .modal-item-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent-green-light); }
-        .modal-item-role { font-size: 0.85rem; color: #a0a0a0; margin-bottom: 0.3rem; }
-        .modal-item-year { font-size: 0.75rem; text-transform: uppercase; color: rgba(113, 136, 120, 0.7); font-weight: 600; letter-spacing: 0.1em; }
-        .modal-item-location { font-size: 0.8rem; color: #808080; margin-top: 0.3rem; }
+        .modal-item-role { font-size: 0.85rem; color: #d0d0d0; margin-bottom: 0.3rem; }
+        .modal-item-year { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green-light); font-weight: 600; letter-spacing: 0.1em; }
+        .modal-item-location { font-size: 0.8rem; color: #b0b0b0; margin-top: 0.3rem; }
+        .modal-item-awards { font-size: 0.8rem; color: var(--accent-green-light); margin-top: 0.5rem; line-height: 1.5; font-weight: 500; }
         
         /* CTA */
         .section-cta { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); }
@@ -106,7 +105,7 @@
             .processo-visual { height: 300px; }
             .exp-buttons { gap: 1rem; }
             .exp-btn { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
-            .modal-content { padding: 2rem; }
+            .modal-content { padding: 2rem; max-height: 70vh; }
         }
     </style>
 </head>
@@ -194,17 +193,16 @@
         </div>
     </section>
 
-    <!-- EXPERIÊNCIAS -->
-    <section class="section-experiencias">
-        <div class="experiencias-container">
-            <h2 class="section-title">Experiências</h2>
+    <!-- BOTÕES DE EXPERIÊNCIAS -->
+    <div class="exp-buttons-wrapper">
+        <div class="exp-buttons-container">
             <div class="exp-buttons">
                 <button class="exp-btn active" data-category="filmes">Filmes</button>
                 <button class="exp-btn" data-category="videoclipes">Videoclipes</button>
-                <button class="exp-btn" data-category="cenografia">Cenografia</button>
+                <button class="exp-btn" data-category="cenografia">Cenografia & Arte</button>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- MODAIS -->
     <div id="filmesModal" class="modal">
@@ -214,37 +212,40 @@
             <div class="modal-item">
                 <div class="modal-item-year">2025</div>
                 <div class="modal-item-title">Tem Feito Uns Dias Esquisitos</div>
-                <div class="modal-item-role">Direção, roteiro e concepção de arte</div>
+                <div class="modal-item-role">Web série • Direção, roteiro e concepção de arte</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-awards">Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2024</div>
                 <div class="modal-item-title">O Viajante e a Raposa</div>
-                <div class="modal-item-role">Direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-role">Curta-metragem • Direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil (sem estreia prevista)</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2023</div>
                 <div class="modal-item-title">(Sub)Urbana</div>
-                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-role">Curta-metragem • Direção e co-roteirista</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-awards">5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2023</div>
+                <div class="modal-item-year">2022</div>
                 <div class="modal-item-title">No Reflexo do Meu Nome</div>
-                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-role">Curta-metragem • Direção e roteiro</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-awards">Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2021</div>
+                <div class="modal-item-title">Debaixo do Guarda-chuva pra ser Resistência</div>
+                <div class="modal-item-role">Curta • Direção e roteiro</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2021</div>
-                <div class="modal-item-title">Debaixo do Guarda-chuva</div>
-                <div class="modal-item-role">Direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
-            </div>
-            <div class="modal-item">
-                <div class="modal-item-year">2020</div>
                 <div class="modal-item-title">Marias</div>
-                <div class="modal-item-role">Direção</div>
+                <div class="modal-item-role">Curta documental • Direção</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
             </div>
         </div>
@@ -256,27 +257,90 @@
             <h3 class="modal-title">Videoclipes</h3>
             <div class="modal-item">
                 <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Pote de Ouro</div>
+                <div class="modal-item-role">Assist. Prod. Executiva • Liniker e Priscila Sena</div>
+                <div class="modal-item-location">SC, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Dropar Teu Nome</div>
+                <div class="modal-item-role">Direção e roteiro • Letrux feat Nouvella</div>
+                <div class="modal-item-location">SC, Brasil</div>
+                <div class="modal-item-awards">Lançamento pela Noize</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
                 <div class="modal-item-title">Vira Essa Boca Pra Cá</div>
-                <div class="modal-item-role">Direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-role">Direção e roteiro • Letrux feat Nouvella</div>
+                <div class="modal-item-location">SC, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Outres de Nós</div>
+                <div class="modal-item-role">Direção e roteiro • Jesus Lumma</div>
+                <div class="modal-item-location">SC, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Carta Marcada</div>
+                <div class="modal-item-role">Assist. de Produção de Objeto • Vitor Kley</div>
+                <div class="modal-item-location">SP, Brasil</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2024</div>
-                <div class="modal-item-title">Teu Lado</div>
-                <div class="modal-item-role">Direção de arte</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-title">Aranha</div>
+                <div class="modal-item-role">Direção e roteiro • Letrux</div>
+                <div class="modal-item-location">SC, Brasil</div>
+                <div class="modal-item-awards">Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2023</div>
-                <div class="modal-item-title">Ninguém Merecia</div>
-                <div class="modal-item-role">Assistência de direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-title">Barman</div>
+                <div class="modal-item-role">Assistência de direção • Ananda Paixão</div>
+                <div class="modal-item-location">SP, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2023</div>
+                <div class="modal-item-title">No Game</div>
+                <div class="modal-item-role">Making of • Ananda Paixão</div>
+                <div class="modal-item-location">SP, Brasil</div>
             </div>
             <div class="modal-item">
                 <div class="modal-item-year">2022</div>
-                <div class="modal-item-title">Sem Volta</div>
-                <div class="modal-item-role">Direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-title">Baião de Dois</div>
+                <div class="modal-item-role">Direção e direção de arte • Aretuza Lovi & Getúlio Abelha</div>
+                <div class="modal-item-location">SP, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2022</div>
+                <div class="modal-item-title">Bailão</div>
+                <div class="modal-item-role">Direção de arte • Gabeu</div>
+                <div class="modal-item-location">SP, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2020</div>
+                <div class="modal-item-title">Moços e Moças</div>
+                <div class="modal-item-role">Direção de arte • Jesus Lumma</div>
+                <div class="modal-item-location">SC, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2020</div>
+                <div class="modal-item-title">Ela Terra</div>
+                <div class="modal-item-role">Direção e roteiro • Malu Maria</div>
+                <div class="modal-item-location">SC, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2019</div>
+                <div class="modal-item-title">Sugar Daddy</div>
+                <div class="modal-item-role">Direção de arte • Gabeu</div>
+                <div class="modal-item-location">SP, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2019</div>
+                <div class="modal-item-title">Colapso Invisível</div>
+                <div class="modal-item-role">Direção de arte • YMA</div>
+                <div class="modal-item-location">SP, Brasil</div>
+                <div class="modal-item-awards">Melhor videoclipe - Hits Perdidos 2019</div>
             </div>
         </div>
     </div>
@@ -286,16 +350,53 @@
             <button class="modal-close">&times;</button>
             <h3 class="modal-title">Cenografia & Arte</h3>
             <div class="modal-item">
-                <div class="modal-item-year">2024</div>
-                <div class="modal-item-title">Projeto X</div>
-                <div class="modal-item-role">Assistência de arte</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">CERAVE - Pele Sequinha</div>
+                <div class="modal-item-role">Publicidade • Assist. de Producao de Objetos</div>
+                <div class="modal-item-location">Sao Paulo, Brasil</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2023</div>
-                <div class="modal-item-title">Projeto Y</div>
-                <div class="modal-item-role">Cenografia</div>
-                <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Nutren - Eu Me Vejo Pro-Idade</div>
+                <div class="modal-item-role">Publicidade • Assist. de Producao de Objetos</div>
+                <div class="modal-item-location">Sao Paulo, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">Album - Som do Ale</div>
+                <div class="modal-item-role">Visualizer • Assist. de arte e cenografia</div>
+                <div class="modal-item-location">Sao Paulo, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2025</div>
+                <div class="modal-item-title">DIVA - Calma Sao Paulo</div>
+                <div class="modal-item-role">Editorial • Assist. de arte</div>
+                <div class="modal-item-location">Sao Paulo, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2024</div>
+                <div class="modal-item-title">Calma Business - Calma Sao Paulo</div>
+                <div class="modal-item-role">Editorial • Assist. de arte</div>
+                <div class="modal-item-location">Sao Paulo, Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2024</div>
+                <div class="modal-item-title">Segue o Baile - E! Channel</div>
+                <div class="modal-item-role">Reality show • Making of (still) e operacao de camera PTZ</div>
+                <div class="modal-item-location">Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2020 - Atualmente</div>
+                <div class="modal-item-title">Maria Homem</div>
+                <div class="modal-item-role">Direcao e criacao de conteudo para YouTube e Instagram</div>
+                <div class="modal-item-location">Brasil</div>
+            </div>
+            <div class="modal-item">
+                <div class="modal-item-year">2021</div>
+                <div class="modal-item-title">Parte de Mim</div>
+                <div class="modal-item-role">Videoarte • Direcao • FUNARTE</div>
+                <div class="modal-item-location">Brasil</div>
+                <div class="modal-item-awards">Projeto premiado no Premio RespirArte da FUNARTE</div>
             </div>
         </div>
     </div>
