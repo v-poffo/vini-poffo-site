@@ -64,7 +64,7 @@
         /* MODAL/POP-UP */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
-        .modal-content { background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 0; padding: 3rem; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
+        .modal-content { background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 3rem; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
         @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #111A17; cursor: pointer; transition: all 0.3s ease; background: none; border: none; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
         .modal-close:hover { color: var(--accent-green-light); }
@@ -201,32 +201,32 @@
             <button class="modal-close">&times;</button>
             <h3 class="modal-title">Filmes</h3>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
                 <div><span class="modal-item-title">Tem Feito Uns Dias Esquisitos</span><span class="modal-item-type">direção, roteiro e concepção de arte</span></div>
+                <div class="modal-item-year">2025</div>
                 <div class="modal-item-awards">Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2024</div>
                 <div><span class="modal-item-title">O Viajante e a Raposa</span><span class="modal-item-type">direção</span></div>
+                <div class="modal-item-year">2024</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2023</div>
                 <div><span class="modal-item-title">(Sub)Urbana</span><span class="modal-item-type">direção e co-roteirista</span></div>
+                <div class="modal-item-year">2023</div>
                 <div class="modal-item-awards">5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2022</div>
                 <div><span class="modal-item-title">No Reflexo do Meu Nome</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-year">2022</div>
                 <div class="modal-item-awards">Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2021</div>
                 <div><span class="modal-item-title">Debaixo do Guarda-chuva pra ser Resistência</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-year">2021</div>
                 <div class="modal-item-awards">Selecionado em mais de 10 festivais nacionais e internacionais</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2021</div>
                 <div><span class="modal-item-title">Marias</span><span class="modal-item-type">direção</span></div>
+                <div class="modal-item-year">2021</div>
             </div>
         </div>
     </div>
@@ -236,76 +236,62 @@
             <button class="modal-close">&times;</button>
             <h3 class="modal-title">Videoclipes</h3>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
                 <div><span class="modal-item-title">Pote de Ouro</span><span class="modal-item-type">assist. prod. executiva</span></div>
-                <div class="modal-item-artists">Liniker e Priscila Sena</div>
+                <div class="modal-item-artists">Liniker e Priscila Sena • 2025</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
                 <div><span class="modal-item-title">Dropar Teu Nome</span><span class="modal-item-type">direção e roteiro</span></div>
-                <div class="modal-item-artists">Letrux feat Nouvella</div>
+                <div class="modal-item-artists">Letrux feat Nouvella • 2025</div>
                 <div class="modal-item-awards">Lançamento pela Noize</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
                 <div><span class="modal-item-title">Vira Essa Boca Pra Cá</span><span class="modal-item-type">direção e roteiro</span></div>
-                <div class="modal-item-artists">Letrux feat Nouvella</div>
+                <div class="modal-item-artists">Letrux feat Nouvella • 2025</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
                 <div><span class="modal-item-title">Outres de Nós</span><span class="modal-item-type">direção e roteiro</span></div>
-                <div class="modal-item-artists">Jesus Lumma</div>
+                <div class="modal-item-artists">Jesus Lumma • 2025</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Carta Marcada</span><span class="modal-item-type">assist. de produção de objeto</span></div>
-                <div class="modal-item-artists">Vitor Kley</div>
-                <div class="modal-item-year">2025</div>
+                <div class="modal-item-artists">Vitor Kley • 2025</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Aranha</span><span class="modal-item-type">direção e roteiro</span></div>
-                <div class="modal-item-artists">Letrux</div>
-                <div class="modal-item-year">2024</div>
+                <div class="modal-item-artists">Letrux • 2024</div>
                 <div class="modal-item-awards">Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Barman</span><span class="modal-item-type">assistência de direção</span></div>
-                <div class="modal-item-artists">Ananda Paixão</div>
-                <div class="modal-item-year">2023</div>
+                <div class="modal-item-artists">Ananda Paixão • 2023</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">No Game</span><span class="modal-item-type">making of</span></div>
-                <div class="modal-item-artists">Ananda Paixão</div>
-                <div class="modal-item-year">2023</div>
+                <div class="modal-item-artists">Ananda Paixão • 2023</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Baião de Dois</span><span class="modal-item-type">direção e direção de arte</span></div>
-                <div class="modal-item-artists">Aretuza Lovi & Getúlio Abelha</div>
-                <div class="modal-item-year">2022</div>
+                <div class="modal-item-artists">Aretuza Lovi & Getúlio Abelha • 2022</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Bailão</span><span class="modal-item-type">direção de arte</span></div>
-                <div class="modal-item-artists">Gabeu</div>
-                <div class="modal-item-year">2022</div>
+                <div class="modal-item-artists">Gabeu • 2022</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Moços e Moças</span><span class="modal-item-type">direção de arte</span></div>
-                <div class="modal-item-artists">Jesus Lumma</div>
-                <div class="modal-item-year">2020</div>
+                <div class="modal-item-artists">Jesus Lumma • 2020</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Ela Terra</span><span class="modal-item-type">direção e roteiro</span></div>
-                <div class="modal-item-artists">Malu Maria</div>
-                <div class="modal-item-year">2020</div>
+                <div class="modal-item-artists">Malu Maria • 2020</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Sugar Daddy</span><span class="modal-item-type">direção de arte</span></div>
-                <div class="modal-item-artists">Gabeu</div>
-                <div class="modal-item-year">2019</div>
+                <div class="modal-item-artists">Gabeu • 2019</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Colapso Invisível</span><span class="modal-item-type">direção de arte</span></div>
-                <div class="modal-item-artists">YMA</div>
-                <div class="modal-item-year">2019</div>
+                <div class="modal-item-artists">YMA • 2019</div>
                 <div class="modal-item-awards">Melhor videoclipe - Hits Perdidos 2019</div>
             </div>
         </div>
@@ -320,15 +306,15 @@
                 <div class="modal-item-type-project">Curta-metragem • Outros • 2025</div>
             </div>
             <div class="modal-item">
-                <div><span class="modal-item-title">Voe Azul</span><span class="modal-item-type">assist. de objetos</span></div>
-                <div class="modal-item-type-project">Publicidade • Outros • 2025</div>
-            </div>
-            <div class="modal-item">
                 <div><span class="modal-item-title">CERAVE - Pele Sequinha</span><span class="modal-item-type">assist. de produção de objetos</span></div>
                 <div class="modal-item-type-project">Publicidade • Outros • 2025</div>
             </div>
             <div class="modal-item">
                 <div><span class="modal-item-title">Nutren - Eu Me Vejo Pro-Idade</span><span class="modal-item-type">assist. de produção de objetos</span></div>
+                <div class="modal-item-type-project">Publicidade • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Voe Azul</span><span class="modal-item-type">assist. de objetos</span></div>
                 <div class="modal-item-type-project">Publicidade • Outros • 2025</div>
             </div>
             <div class="modal-item">
@@ -365,7 +351,10 @@
             <div class="processo-visual">
                 <div class="processo-graphic">
                     <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50" y1="80" x2="350" y2="80"/>
                         <line x1="50" y1="200" x2="350" y2="200"/>
+                        <line x1="50" y1="320" x2="350" y2="320"/>
+                        <line x1="80" y1="50" x2="80" y2="350"/>
                         <line x1="200" y1="50" x2="200" y2="350"/>
                         <line x1="320" y1="50" x2="320" y2="350"/>
                         <circle cx="80" cy="80" r="8"/>
