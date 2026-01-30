@@ -63,13 +63,13 @@
         .exp-btn.active { border-color: var(--accent-green-light); color: var(--accent-green-light); background: rgba(113, 136, 120, 0.1); }
         
         /* MODAL/POP-UP */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); opacity: 0; transition: opacity 0.3s ease; }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); opacity: 0; transition: opacity 0.3s ease; }
         .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
         .modal-content { background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 3rem; max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; animation: slideIn 0.3s ease; }
         @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; font-weight: 700; color: #111A17; cursor: pointer; transition: all 0.3s ease; background: none; border: none; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; }
-        .modal-close::before { content: ''; position: absolute; width: 20px; height: 2px; background: #111A17; transform: rotate(45deg); transition: all 0.3s ease; }
-        .modal-close::after { content: ''; position: absolute; width: 20px; height: 2px; background: #111A17; transform: rotate(-45deg); transition: all 0.3s ease; }
+        .modal-close { position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); font-size: 1.5rem; font-weight: 700; color: var(--primary-white); cursor: pointer; transition: all 0.3s ease; background: none; border: none; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; z-index: 1001; }
+        .modal-close::before { content: ''; position: absolute; width: 20px; height: 2px; background: var(--primary-white); transform: rotate(45deg); transition: all 0.3s ease; }
+        .modal-close::after { content: ''; position: absolute; width: 20px; height: 2px; background: var(--primary-white); transform: rotate(-45deg); transition: all 0.3s ease; }
         .modal-close:hover::before, .modal-close:hover::after { background: var(--accent-green-light); }
         .modal-title { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; font-style: italic; position: relative; padding-bottom: 1.5rem; color: var(--accent-green-light); }
         .modal-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: #2A4A5A; }
