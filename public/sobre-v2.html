@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - Vini Poffo</title>
+    <title>Sobre - Vini Poffo (v2)</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         body { background-color: #111A17; color: var(--primary-white); }
+        
         .section-hero { min-height: auto; padding: 10rem 2rem 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .section-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%); z-index: 0; }
         .section-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 2; }
@@ -17,33 +18,37 @@
         .hero-text p { font-size: 0.95rem; line-height: 1.8; color: #c0c0c0; margin-bottom: 1.5rem; text-align: justify; opacity: 0; transform: translateY(20px); }
         .hero-image { position: relative; opacity: 0; transform: scale(0.8) translateX(-30px); max-width: 300px; margin: 0; }
         .hero-image img { max-width: 100%; height: auto; filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5)); border-radius: 2px; }
-        .section-pf { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; border-left: 2px solid transparent; background: linear-gradient(90deg, rgba(113, 136, 120, 0.05) 0%, transparent 50%); }
-        .section-pf::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(113, 136, 120, 0.5) 0%, rgba(42, 74, 90, 0.5) 100%); z-index: 0; }
-        .pf-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; position: relative; z-index: 1; }
-        .pf-column { display: flex; flex-direction: column; gap: 2rem; }
-        .pf-title { font-size: 1.6rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 1.5rem; position: relative; padding-bottom: 1rem; opacity: 1; transform: translateY(0); font-style: italic; }
-        .pf-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
-        .pf-column.premios { border-left: 2px solid rgba(113, 136, 120, 0.3); padding-left: 2rem; }
-        .pf-column.premios .pf-title { color: var(--accent-green-light); }
-        .pf-column.filmografia { border-left: 2px solid rgba(42, 74, 90, 0.3); padding-left: 2rem; }
-        .pf-column.filmografia .pf-title { color: #3a7a9a; }
-        .pf-item { opacity: 0; transform: translateY(20px); transition: all 0.3s ease; }
-        .pf-item:hover { transform: translateY(-2px); }
-        .pf-item h3 { font-size: 0.85rem; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 700; letter-spacing: 0.05em; }
-        .pf-column.premios .pf-item h3 { color: var(--accent-green-light); }
-        .pf-column.filmografia .pf-item h3 { color: #3a7a9a; }
-        .pf-item p { font-size: 0.8rem; color: #a0a0a0; line-height: 1.6; }
-        .section-processo { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: rgba(75 98 82); }
-        .processo-container { max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; position: relative; z-index: 1; } .processo-visual { order: -1; }
-        .processo-text h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; opacity: 0; transform: translateX(-50px); position: relative; padding-bottom: 1.5rem; font-style: italic; }
-        .processo-text h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 30px; height: 1px; background: var(--accent-green-light); }
-        .processo-text p { font-size: 0.95rem; line-height: 1.8; color: #c0c0c0; margin-bottom: 1.5rem; text-align: justify; opacity: 0; transform: translateY(20px); }
-        .processo-visual { position: relative; opacity: 0; transform: translateX(50px); height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 2px; padding: 2rem; }
-        .processo-graphic { width: 100%; height: 100%; position: relative; max-width: 500px; max-height: 500px; }
-        svg { width: 100%; height: 100%; }
-        svg line { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #f0f0f0; stroke-width: 1; }
-        svg circle { opacity: 0; fill: #f0f0f0; stroke: #f0f0f0; stroke-width: 1; }
-        svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #f0f0f0; stroke-width: 1; fill: none; }
+        
+        .section-experiencias { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(90deg, rgba(113, 136, 120, 0.02) 0%, transparent 50%); }
+        .section-experiencias::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(113, 136, 120, 0.3) 0%, rgba(42, 74, 90, 0.3) 100%); z-index: 0; }
+        .experiencias-container { max-width: 1200px; width: 100%; position: relative; z-index: 1; }
+        
+        .section-title { font-size: 2rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 3rem; position: relative; padding-bottom: 1.5rem; font-style: italic; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: var(--accent-green-light); }
+        
+        .experiencia-category { margin-bottom: 2rem; border: 1px solid rgba(113, 136, 120, 0.2); border-radius: 2px; overflow: hidden; transition: all 0.3s ease; }
+        .experiencia-category.expanded { border-color: var(--accent-green-light); }
+        
+        .category-header { padding: 1.5rem 2rem; background: rgba(113, 136, 120, 0.05); cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.3s ease; }
+        .category-header:hover { background: rgba(113, 136, 120, 0.1); }
+        .category-header h3 { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+        .category-header .toggle-icon { font-size: 1.5rem; transition: transform 0.3s ease; }
+        .experiencia-category.expanded .toggle-icon { transform: rotate(180deg); }
+        
+        .category-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .experiencia-category.expanded .category-content { max-height: 2000px; }
+        
+        .projects-list { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+        
+        .project-item { padding: 1.5rem; border-left: 3px solid var(--accent-green-light); background: rgba(113, 136, 120, 0.03); transition: all 0.3s ease; }
+        .project-item:hover { background: rgba(113, 136, 120, 0.08); transform: translateX(5px); }
+        
+        .project-year { font-size: 0.75rem; text-transform: uppercase; color: var(--accent-green-light); font-weight: 700; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .project-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .project-role { font-size: 0.85rem; color: #a0a0a0; margin-bottom: 0.5rem; }
+        .project-location { font-size: 0.8rem; color: #808080; margin-bottom: 1rem; }
+        .project-awards { font-size: 0.85rem; color: var(--accent-green-light); line-height: 1.6; }
+        
         .section-cta { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); }
         .cta-container { max-width: 900px; text-align: center; position: relative; z-index: 1; }
         .cta-container h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em; opacity: 0; transform: translateY(-50px); position: relative; padding-bottom: 1.5rem; font-style: italic; }
@@ -57,7 +62,18 @@
         .contact-info { opacity: 0; transform: translateY(30px); font-size: 0.85rem; }
         .contact-info a { color: var(--accent-green-light); text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
         .contact-info a:hover { text-decoration: underline; }
-        @media (max-width: 768px) { .hero-content { grid-template-columns: 1fr; gap: 3rem; } .pf-container { grid-template-columns: 1fr; gap: 3rem; } .processo-container { grid-template-columns: 1fr; gap: 3rem; } .hero-text h1, .pf-title, .processo-text h2, .cta-container h2 { font-size: 1.8rem; } .cta-buttons { flex-direction: column; } .cta-btn { width: 100%; } .processo-visual { height: 300px; } }
+        
+        @media (max-width: 768px) { 
+            .hero-content { grid-template-columns: 1fr; gap: 3rem; display: flex; flex-direction: column; } 
+            .hero-image { order: -1; max-width: 100%; } 
+            .hero-text { order: 1; } 
+            .hero-text h1, .section-title { font-size: 1.8rem; } 
+            .cta-buttons { flex-direction: column; } 
+            .cta-btn { width: 100%; } 
+            .project-item { padding: 1rem; }
+            .category-header { padding: 1rem 1.5rem; }
+            .projects-list { padding: 1.5rem; gap: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -76,7 +92,7 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Início.</a></li>
                 <li><a href="projetos.html">Projetos.</a></li>
-                <li><a href="sobre.html" class="active">Sobre.</a></li>
+                <li><a href="sobre-v2.html" class="active">Sobre (v2).</a></li>
             </ul>
         </div>
     </nav>
@@ -94,49 +110,219 @@
         </div>
     </section>
 
-    <section class="section-pf">
-        <div class="pf-container">
-            <div class="pf-column premios">
-                <h2 class="pf-title">Prêmios</h2>
-                <div class="pf-item"><h3>5 Prêmios de Melhor Filme</h3><p>(Sub)Urbana – Festival SESC</p></div>
-                <div class="pf-item"><h3>Prêmio Revelação</h3><p>Transforma Festival</p></div>
-                <div class="pf-item"><h3>Curta Fest Brasília 2024</h3><p>Categoria Aranha</p></div>
-                <div class="pf-item"><h3>SESC SC</h3><p>No Reflexo do Meu Nome – Reconhecimento Nacional</p></div>
-                <div class="pf-item"><h3>Exibições Internacionais</h3><p>Trabalhos exibidos em festivais internacionais</p></div>
-                <div class="pf-item"><h3>Lei Paulo Gustavo</h3><p>Contemplado para desenvolvimento de projetos</p></div>
+    <section class="section-experiencias">
+        <div class="experiencias-container">
+            <h2 class="section-title">Experiências</h2>
+            
+            <!-- FILMES E SÉRIES -->
+            <div class="experiencia-category expanded">
+                <div class="category-header">
+                    <h3>Filmes & Séries</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Tem Feito Uns Dias Esquisitos – Web Série</div>
+                            <div class="project-role">Direção, roteiro e concepção de arte</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                            <div class="project-awards">🏆 Mostra SESC de Cinema 2025<br>🏆 Prêmio Catarinense de Cinema</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2024</div>
+                            <div class="project-title">O Viajante e a Raposa – Curta-metragem</div>
+                            <div class="project-role">Direção</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                            <div class="project-awards">Sem estreia prevista</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2023</div>
+                            <div class="project-title">(Sub)Urbana – Curta-metragem</div>
+                            <div class="project-role">Direção e co-roteirista</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                            <div class="project-awards">🏆 5 prêmios de melhor filme<br>🏆 Prêmio Revelação – IV Transforma Festival<br>🏆 Exibição em mais de 20 festivais nacionais e internacionais<br>🏆 Prêmio Catarinense de Cinema</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2022</div>
+                            <div class="project-title">No Reflexo do Meu Nome – Curta-metragem</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                            <div class="project-awards">🏆 Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>🏆 Mais de 15 festivais nacionais e internacionais</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2021</div>
+                            <div class="project-title">Debaixo do Guarda-Chuva pra Ser Resistência – Curta</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2021</div>
+                            <div class="project-title">Marias – Curta Documental</div>
+                            <div class="project-role">Direção</div>
+                            <div class="project-location">Santa Catarina, Brasil</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pf-column filmografia">
-                <h2 class="pf-title">Filmografia</h2>
-                <div class="pf-item"><h3>Vira Essa Boca Pra Cá</h3><p>Videoclipe • 2025<br>Direção: Vini Poffo e Luana Skibinski</p></div>
-                <div class="pf-item"><h3>Tem Feito Uns Dias Esquisitos</h3><p>Curta-metragem • 2025<br>Direção: Vini Poffo e Luana Skibinski</p></div>
-                <div class="pf-item"><h3>(Sub)Urbana</h3><p>Curta-metragem • 2023<br>Direção: Vini Poffo</p></div>
-                <div class="pf-item"><h3>No Reflexo do Meu Nome</h3><p>Curta-metragem • 2023<br>Direção: Vini Poffo</p></div>
-                <div class="pf-item"><h3>Debaixo do Guarda-chuva</h3><p>Curta documental • 2021<br>Direção: Vini Poffo</p></div>
-                <div class="pf-item"><h3>Marias</h3><p>Curta documental • 2020<br>Direção: Vini Poffo</p></div>
-            </div>
-        </div>
-    </section>
 
-    <section class="section-processo">
-        <div class="processo-container">
-            <div class="processo-text">
-                <h2>Processo Criativo</h2>
-                <p>Trabalho com uma abordagem artesanal, onde cada projeto é uma oportunidade de explorar símbolos, política e afeto. Acredito que a criatividade deve servir como ferramenta de transformação e reflexão.</p>
-                <p>Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas. Atuo principalmente com direção criativa, pesquisa, assistência de direção, assistência de arte e cenografia, sempre mantendo a autenticidade e a profundidade como pilares.</p>
+            <!-- VIDEOCLIPES -->
+            <div class="experiencia-category expanded">
+                <div class="category-header">
+                    <h3>Videoclipes</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Pote de Ouro – Liniker e Priscila Sena</div>
+                            <div class="project-role">Assist Prod Executiva</div>
+                            <div class="project-location">SC, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Dropar Teu Nome – Letrux feat Nouvella</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">SC, Brasil</div>
+                            <div class="project-awards">🏆 Lançamento pela Noize</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Vira Essa Boca Pra Cá – Letrux feat Nouvella</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">SC, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Outres de Nós – Jesus Lumma</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">SC, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Carta Marcada – Vitor Kley</div>
+                            <div class="project-role">Assistência de produção de objeto</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2024</div>
+                            <div class="project-title">Aranha – Letrux</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">SC, Brasil</div>
+                            <div class="project-awards">🏆 Convidado pelo MVF para o festival na Argentina e Colômbia<br>🏆 Melhor videoclipe pelo Curta Fest Brasilia 2024</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2023</div>
+                            <div class="project-title">Barman – Ananda Paixão</div>
+                            <div class="project-role">Assistência de direção</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2023</div>
+                            <div class="project-title">No Game – Ananda Paixão</div>
+                            <div class="project-role">Making of</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2022</div>
+                            <div class="project-title">Baião de Dois – Aretuza Lovi & Getúlio Abelha</div>
+                            <div class="project-role">Direção e direção de arte</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2022</div>
+                            <div class="project-title">Bailão – Gabeu</div>
+                            <div class="project-role">Direção de arte</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2020</div>
+                            <div class="project-title">Moços e Moças – Jesus Lumma</div>
+                            <div class="project-role">Direção de arte</div>
+                            <div class="project-location">SC, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2020</div>
+                            <div class="project-title">Ela Terra – Malu Maria</div>
+                            <div class="project-role">Direção e roteiro</div>
+                            <div class="project-location">SC, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2019</div>
+                            <div class="project-title">Sugar Daddy – Gabeu</div>
+                            <div class="project-role">Direção de arte</div>
+                            <div class="project-location">SP, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2019</div>
+                            <div class="project-title">Colapso Invisível – YMA</div>
+                            <div class="project-role">Direção de arte</div>
+                            <div class="project-location">SP, Brasil</div>
+                            <div class="project-awards">🏆 Melhor videoclipe - Hits Perdidos 2019</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="processo-visual">
-                <div class="processo-graphic">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-                        <line x1="50" y1="80" x2="350" y2="80"/>
-                        <line x1="50" y1="200" x2="350" y2="200"/>
-                        <line x1="50" y1="320" x2="350" y2="320"/>
-                        <line x1="80" y1="50" x2="80" y2="350"/>
-                        <line x1="200" y1="50" x2="200" y2="350"/>
-                        <line x1="320" y1="50" x2="320" y2="350"/>
-                        <circle cx="80" cy="80" r="8"/>
-                        <circle cx="320" cy="320" r="8"/>
-                        <rect x="120" y="160" width="160" height="80"/>
-                    </svg>
+
+            <!-- ARTE, CENOGRAFIA E OUTROS -->
+            <div class="experiencia-category">
+                <div class="category-header">
+                    <h3>Arte, Cenografia & Outros</h3>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="category-content">
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">CERAVE – Pele Sequinha</div>
+                            <div class="project-role">Publicidade – Assistência de Produção de Objetos</div>
+                            <div class="project-location">São Paulo, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Nutren – Eu Me Vejo Pró-Idade</div>
+                            <div class="project-role">Publicidade – Assistência de Produção de Objetos</div>
+                            <div class="project-location">São Paulo, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">Álbum – Som do Alê</div>
+                            <div class="project-role">Visualizer – Assistência de Arte e Cenografia</div>
+                            <div class="project-location">São Paulo, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2025</div>
+                            <div class="project-title">DIVÃ – Calma São Paulo</div>
+                            <div class="project-role">Editorial – Assistência de Arte</div>
+                            <div class="project-location">São Paulo, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2024</div>
+                            <div class="project-title">Calma Business – Calma São Paulo</div>
+                            <div class="project-role">Editorial – Assistência de Arte</div>
+                            <div class="project-location">São Paulo, Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2024</div>
+                            <div class="project-title">Segue o Baile – E! Channel</div>
+                            <div class="project-role">Reality Show – Making of (still) e Operação de Câmera PTZ</div>
+                            <div class="project-location">Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2020–Atualmente</div>
+                            <div class="project-title">Maria Homem</div>
+                            <div class="project-role">Direção e Criação de Conteúdo para YouTube e Instagram</div>
+                            <div class="project-location">Brasil</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-year">2021</div>
+                            <div class="project-title">Parte de Mim – FUNARTE</div>
+                            <div class="project-role">Videoarte – Direção</div>
+                            <div class="project-location">Brasil</div>
+                            <div class="project-awards">🏆 Projeto premiado no Prêmio RespirArte da FUNARTE</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,62 +333,84 @@
             <h2>Vamos Conversar?</h2>
             <p>Tenho interesse em colaborações criativas e projetos desafiadores.</p>
             <div class="cta-buttons">
-                <a href="mailto:projetos@vinipoffo.com" class="cta-btn primary">Mandar um e-mail</a>
+                <a href="mailto:projetos@vinipoffo.com" class="cta-btn primary">Mandar um E-mail</a>
                 <a href="https://instagram.com/poffovini" target="_blank" class="cta-btn">Seguir no Instagram</a>
             </div>
             <div class="contact-info">
-                <p>Email: <a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a></p>
-                <p>Instagram: <a href="https://instagram.com/poffovini" target="_blank">@poffovini</a></p>
+                <p><a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a> • <a href="https://instagram.com/poffovini" target="_blank">@poffovini</a></p>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/poffovini" target="_blank">Instagram</a>
-                <a href="mailto:projetos@vinipoffo.com">Email</a>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <ul>
+                    <li><a href="https://instagram.com/poffovini" target="_blank">Instagram</a></li>
+                    <li><a href="mailto:projetos@vinipoffo.com">Email</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="data.js"></script>
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            gsap.registerPlugin(ScrollTrigger);
-            
-            gsap.fromTo('.hero-text h1', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1, ease: 'power2.out', scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.hero-text p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power2.out', delay: 0.3, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.hero-image', { opacity: 0, scale: 0.8, x: -30 }, { opacity: 1, scale: 1, x: 0, duration: 1, ease: 'power2.out', delay: 0.2, scrollTrigger: { trigger: '.section-hero', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            
-            gsap.fromTo('.pf-item', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, scrollTrigger: { trigger: '.pf-container', start: 'top 80%', toggleActions: 'play reverse play reverse' } });
-            
-            gsap.fromTo('.processo-text h2', { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.8, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.processo-text p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.processo-visual', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.8, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            
-            const svgLines = document.querySelectorAll('svg line');
-            const svgRects = document.querySelectorAll('svg rect');
-            const svgCircles = document.querySelectorAll('svg circle');
-            
-            svgLines.forEach(line => {
-                gsap.to(line, { strokeDashoffset: 0, duration: 2.5, ease: 'power2.inOut', scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
+        // Expandir/Colapsar categorias
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const category = this.parentElement;
+                category.classList.toggle('expanded');
             });
-            
-            svgRects.forEach(rect => {
-                gsap.to(rect, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut', delay: 3.5, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            });
-            
-            svgCircles.forEach(circle => {
-                gsap.to(circle, { opacity: 1, duration: 1.5, ease: 'power2.out', delay: 2.5, scrollTrigger: { trigger: '.section-processo', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            });
-            
-            gsap.fromTo('.cta-container h2', { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.8, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.cta-container p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.2, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.cta-buttons', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.4, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
-            gsap.fromTo('.contact-info', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6, delay: 0.6, scrollTrigger: { trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' } });
+        });
+
+        // Animações GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.fromTo('.hero-text h1', { opacity: 0, transform: 'translateX(50px)' }, { 
+            opacity: 1, transform: 'translateX(0)', duration: 0.8, delay: 0.2 
+        });
+        gsap.fromTo('.hero-text p', { opacity: 0, transform: 'translateY(20px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.4, stagger: 0.2
+        });
+        gsap.fromTo('.hero-image', { opacity: 0, transform: 'scale(0.8) translateX(-30px)' }, { 
+            opacity: 1, transform: 'scale(1) translateX(0)', duration: 0.8, delay: 0.3
+        });
+
+        gsap.fromTo('.section-title', { opacity: 0, transform: 'translateY(-30px)' }, {
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, scrollTrigger: {
+                trigger: '.section-experiencias', start: 'top center', toggleActions: 'play reverse play reverse'
+            }
+        });
+
+        gsap.fromTo('.project-item', { opacity: 0, transform: 'translateX(-20px)' }, {
+            opacity: 1, transform: 'translateX(0)', duration: 0.5, stagger: 0.1, scrollTrigger: {
+                trigger: '.section-experiencias', start: 'top center', toggleActions: 'play reverse play reverse'
+            }
+        });
+
+        gsap.fromTo('.cta-container h2', { opacity: 0, transform: 'translateY(-50px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.8, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.cta-container p', { opacity: 0, transform: 'translateY(20px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.2, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.cta-buttons', { opacity: 0, transform: 'translateY(30px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.4, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.contact-info', { opacity: 0, transform: 'translateY(30px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.6, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
         });
     </script>
 </body>
