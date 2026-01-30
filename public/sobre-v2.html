@@ -112,14 +112,15 @@
             .hero-content { grid-template-columns: 1fr; gap: 3rem; display: flex; flex-direction: column; } 
             .hero-image { order: -1; max-width: 100%; } 
             .hero-text { order: 1; } 
-            .pf-container { grid-template-columns: 1fr; gap: 3rem; } 
+            .pf-container { display: none; }
+            .section-pf { display: none; }
             .processo-container { grid-template-columns: 1fr; gap: 3rem; } 
-            .hero-text h1, .pf-title, .processo-text h2, .cta-container h2, .section-title { font-size: 1.8rem; } 
+            .hero-text h1, .pf-title, .processo-text h2, .cta-container h2 { font-size: 1.8rem; } 
             .cta-buttons { flex-direction: column; } 
             .cta-btn { width: 100%; } 
             .processo-visual { height: 300px; }
-            .exp-buttons { gap: 1rem; }
-            .exp-btn { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
+            .exp-buttons { gap: 1rem; flex-direction: column; }
+            .exp-btn { padding: 0.6rem 1.5rem; font-size: 0.75rem; width: 100%; }
             .modal-content { padding: 2rem; max-height: 70vh; }
             .footer-content { gap: 1rem; }
             .footer-section ul { flex-direction: column; gap: 0.5rem; }
@@ -188,9 +189,41 @@
     <div class="exp-buttons-wrapper">
         <div class="exp-buttons-container">
             <div class="exp-buttons">
+                <button class="exp-btn" data-category="premios">Prêmios</button>
                 <button class="exp-btn active" data-category="filmes">Filmes</button>
                 <button class="exp-btn" data-category="videoclipes">Videoclipes</button>
                 <button class="exp-btn" data-category="cenografia">Arte, Cenografia e Outros</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PRÊMIOS -->
+    <div id="premiosModal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Prêmios</h3>
+            <div class="modal-item">
+                <div><span class="modal-item-title">5 Prêmios de Melhor Filme</span></div>
+                <div class="modal-item-artists">(Sub)Urbana – Festival SESC</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Prêmio Revelação</span></div>
+                <div class="modal-item-artists">Transforma Festival</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Curta Fest Brasília 2024</span></div>
+                <div class="modal-item-artists">Categoria Aranha</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">SESC SC</span></div>
+                <div class="modal-item-artists">No Reflexo do Meu Nome – Reconhecimento Nacional</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Exibições Internacionais</span></div>
+                <div class="modal-item-artists">Trabalhos exibidos em festivais internacionais</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Lei Paulo Gustavo</span></div>
+                <div class="modal-item-artists">Contemplado para desenvolvimento de projetos</div>
             </div>
         </div>
     </div>
@@ -483,7 +516,9 @@
 
         // MODAL FUNCTIONALITY
         const expBtns = document.querySelectorAll('.exp-btn');
-        const modals = {
+
+        const modalsWithPremios = {
+            'premios': document.getElementById('premiosModal'),
             'filmes': document.getElementById('filmesModal'),
             'videoclipes': document.getElementById('videoclipesModal'),
             'cenografia': document.getElementById('cenografiaModal')
@@ -492,12 +527,12 @@
         expBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const category = this.dataset.category;
-                const modal = modals[category];
+                const modal = modalsWithPremios[category];
                 
                 expBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                Object.values(modals).forEach(m => m.classList.remove('show'));
+                Object.values(modalsWithPremios).forEach(m => m.classList.remove('show'));
                 modal.classList.add('show');
             });
         });
