@@ -48,9 +48,9 @@
         .processo-visual { position: relative; opacity: 0; transform: translateX(50px); height: 400px; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 2px; padding: 2rem; }
         .processo-graphic { width: 100%; height: 100%; position: relative; max-width: 500px; max-height: 500px; }
         svg { width: 100%; height: 100%; }
-        svg line { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #2a2a2a; stroke-width: 1; }
-        svg circle { opacity: 0; fill: #2a2a2a; stroke: #2a2a2a; stroke-width: 1; }
-        svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #2a2a2a; stroke-width: 1; fill: none; }
+        svg line { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #ffffff; stroke-width: 1; }
+        svg circle { opacity: 0; fill: #ffffff; stroke: #ffffff; stroke-width: 1; }
+        svg rect { stroke-dasharray: 1000; stroke-dashoffset: 1000; stroke: #ffffff; stroke-width: 1; fill: none; }
         
         /* BOTÕES DE EXPERIÊNCIAS */
         .exp-buttons-wrapper { padding: 2rem 2rem 4rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -72,11 +72,13 @@
         .modal-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: #2A4A5A; }
         .modal-item { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid #2A4A5A; }
         .modal-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-        .modal-item-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--accent-green-light); font-style: italic; }
-        .modal-item-role { font-size: 0.9rem; color: #244235; margin-bottom: 0.5rem; font-weight: 600; }
-        .modal-item-year { font-size: 0.75rem; text-transform: uppercase; color: #111A17; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
-        .modal-item-location { font-size: 0.8rem; color: #111A17; margin-top: 0.3rem; }
-        .modal-item-awards { font-size: 0.8rem; color: #244235; margin-top: 0.8rem; line-height: 1.8; font-weight: 500; }
+        .modal-item-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--accent-green-light); font-style: italic; text-transform: uppercase; display: inline; }
+        .modal-item-type { font-size: 0.75rem; color: #2A4A5A; margin-left: 0.5rem; font-weight: 600; text-transform: lowercase; display: inline; }
+        .modal-item-role { font-size: 0.9rem; color: #111A17; margin-bottom: 0.5rem; font-weight: 600; text-transform: lowercase; }
+        .modal-item-year { font-size: 0.75rem; text-transform: uppercase; color: #111A17; font-weight: 600; letter-spacing: 0.1em; margin-bottom: 0.3rem; display: none; }
+        .modal-item-location { font-size: 0.8rem; color: #111A17; margin-top: 0.5rem; margin-bottom: 0.3rem; }
+        .modal-item-artists { font-size: 0.8rem; color: #111A17; margin-top: 0.3rem; margin-bottom: 0.3rem; }
+        .modal-item-awards { font-size: 0.8rem; color: #111A17; margin-top: 0.8rem; line-height: 1.8; font-weight: 500; }
         
         /* CTA */
         .section-cta { min-height: auto; padding: 6rem 2rem; display: flex; align-items: center; justify-content: center; position: relative; background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); }
@@ -218,48 +220,45 @@
         </div>
     </div>
 
+
+
     <!-- MODAIS -->
     <div id="filmesModal" class="modal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
             <h3 class="modal-title">Filmes</h3>
             <div class="modal-item">
-                <div class="modal-item-year">2025</div>
-                <div class="modal-item-title">Tem Feito Uns Dias Esquisitos</div>
-                <div class="modal-item-role">Web série • Direção, roteiro e concepção de arte</div>
+                <div><span class="modal-item-title">Tem Feito Uns Dias Esquisitos</span><span class="modal-item-type">curta-metragem</span></div>
+                <div class="modal-item-role">direção, roteiro e concepção de arte</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
                 <div class="modal-item-awards">Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2024</div>
-                <div class="modal-item-title">O Viajante e a Raposa</div>
-                <div class="modal-item-role">Curta-metragem • Direção</div>
-                <div class="modal-item-location">Santa Catarina, Brasil (sem estreia prevista)</div>
+                <div><span class="modal-item-title">O Viajante e a Raposa</span><span class="modal-item-type">curta-metragem</span></div>
+                <div class="modal-item-role">direção</div>
+                <div class="modal-item-location">Santa Catarina, Brasil</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2023</div>
-                <div class="modal-item-title">(Sub)Urbana</div>
-                <div class="modal-item-role">Curta-metragem • Direção e co-roteirista</div>
+                <div><span class="modal-item-title">(Sub)Urbana</span><span class="modal-item-type">curta-metragem</span></div>
+                <div class="modal-item-role">direção e co-roteirista</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
                 <div class="modal-item-awards">5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2022</div>
-                <div class="modal-item-title">No Reflexo do Meu Nome</div>
-                <div class="modal-item-role">Curta-metragem • Direção e roteiro</div>
+                <div><span class="modal-item-title">No Reflexo do Meu Nome</span><span class="modal-item-type">curta-metragem</span></div>
+                <div class="modal-item-role">direção e roteiro</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
                 <div class="modal-item-awards">Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2021</div>
-                <div class="modal-item-title">Debaixo do Guarda-chuva pra ser Resistência</div>
-                <div class="modal-item-role">Curta • Direção e roteiro</div>
+                <div><span class="modal-item-title">Debaixo do Guarda-chuva pra ser Resistência</span><span class="modal-item-type">curta-metragem</span></div>
+                <div class="modal-item-role">direção e roteiro</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
+                <div class="modal-item-awards">Selecionado em mais de 10 festivais nacionais e internacionais</div>
             </div>
             <div class="modal-item">
-                <div class="modal-item-year">2021</div>
-                <div class="modal-item-title">Marias</div>
-                <div class="modal-item-role">Curta documental • Direção</div>
+                <div><span class="modal-item-title">Marias</span><span class="modal-item-type">curta documental</span></div>
+                <div class="modal-item-role">direção</div>
                 <div class="modal-item-location">Santa Catarina, Brasil</div>
             </div>
         </div>
@@ -414,6 +413,29 @@
             </div>
         </div>
     </div>
+
+    <!-- PROCESSO CRIATIVO -->
+    <section class="section-processo">
+        <div class="processo-container">
+            <div class="processo-visual">
+                <div class="processo-graphic">
+                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="50" y1="200" x2="350" y2="200"/>
+                        <line x1="200" y1="50" x2="200" y2="350"/>
+                        <line x1="320" y1="50" x2="320" y2="350"/>
+                        <circle cx="80" cy="80" r="8"/>
+                        <circle cx="320" cy="320" r="8"/>
+                        <rect x="120" y="160" width="160" height="80"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="processo-text">
+                <h2>Processo Criativo</h2>
+                <p>Trabalho com uma abordagem artesanal, onde cada projeto é uma oportunidade de explorar símbolos, política e afeto. Acredito que a criatividade deve servir como ferramenta de transformação e reflexão.</p>
+                <p>Meus trabalhos buscam questionar narrativas convencionais e criar espaços para novas perspectivas. Atuo principalmente com direção criativa, pesquisa, assistência de direção, assistência de arte e cenografia, sempre mantendo a autenticidade e a profundidade como pilares.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- CTA -->
     <section class="section-cta">
