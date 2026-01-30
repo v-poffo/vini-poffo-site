@@ -93,6 +93,18 @@
         .contact-info a { color: var(--accent-green-light); text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
         .contact-info a:hover { text-decoration: underline; }
         
+        /* FOOTER */
+        footer { background-color: #111A17; color: var(--primary-white); padding: 3rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .footer-section { text-align: left; }
+        .footer-section h4 { font-size: 0.9rem; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1rem; color: var(--accent-green-light); }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #c0c0c0; text-decoration: none; font-size: 0.85rem; transition: all 0.3s ease; }
+        .footer-section a:hover { color: var(--accent-green-light); }
+        .footer-section p { font-size: 0.8rem; color: #a0a0a0; line-height: 1.6; }
+        @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; } }
+        
         @media (max-width: 768px) { 
             .hero-content { grid-template-columns: 1fr; gap: 3rem; display: flex; flex-direction: column; } 
             .hero-image { order: -1; max-width: 100%; } 
@@ -106,6 +118,8 @@
             .exp-buttons { gap: 1rem; }
             .exp-btn { padding: 0.6rem 1.5rem; font-size: 0.75rem; }
             .modal-content { padding: 2rem; max-height: 70vh; }
+            .footer-content { grid-template-columns: 1fr; }
+            .footer-section { text-align: center; }
         }
     </style>
 </head>
@@ -199,7 +213,7 @@
             <div class="exp-buttons">
                 <button class="exp-btn active" data-category="filmes">Filmes</button>
                 <button class="exp-btn" data-category="videoclipes">Videoclipes</button>
-                <button class="exp-btn" data-category="cenografia">Cenografia & Arte</button>
+                <button class="exp-btn" data-category="cenografia">Arte, Cenografia e Outros</button>
             </div>
         </div>
     </div>
@@ -348,7 +362,7 @@
     <div id="cenografiaModal" class="modal">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <h3 class="modal-title">Cenografia & Arte</h3>
+            <h3 class="modal-title">Arte, Cenografia e Outros</h3>
             <div class="modal-item">
                 <div class="modal-item-year">2025</div>
                 <div class="modal-item-title">CERAVE - Pele Sequinha</div>
@@ -546,8 +560,7 @@
             }
         });
 
-        // ABRIR PRIMEIRO MODAL POR PADRÃO
-        modals['filmes'].classList.add('show');
+        // NÃO ABRIR MODAL AUTOMATICAMENTE - USUÁRIO CLICA PARA ABRIR
     </script>
 </body>
 </html>
