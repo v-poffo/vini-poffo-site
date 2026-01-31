@@ -784,6 +784,61 @@
             font-family: var(--font-primary);
             margin-bottom: 1rem;
         }
+
+        @media (min-width: 769px) {
+            .cards-container {
+                display: grid !important;
+                grid-template-columns: repeat(6, 1fr) !important;
+                grid-auto-rows: 1fr !important;
+                gap: 0 !important;
+                height: 640px !important;
+                aspect-ratio: 16/9 !important;
+            }
+            
+            .flip-card-front {
+                background-attachment: fixed !important;
+                background-size: 100% 100% !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0 !important;
+                height: auto !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+
+            .flip-card:nth-child(-n+8) {
+                grid-column: span 1 !important;
+                aspect-ratio: 1 / 1 !important;
+                height: auto !important;
+            }
+
+            .flip-card:nth-child(9) {
+                grid-column: span 2 !important;
+                aspect-ratio: 2 / 1 !important;
+                height: auto !important;
+            }
+
+            .flip-card-front {
+                background-attachment: scroll !important;
+                background-size: cover !important;
+                background-position: center !important;
+            }
+
+            .flip-card:nth-child(1) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-1.png) !important; }
+            .flip-card:nth-child(2) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-2.jpg) !important; }
+            .flip-card:nth-child(3) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-3.png) !important; }
+            .flip-card:nth-child(4) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-4.png) !important; }
+            .flip-card:nth-child(5) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-5.png) !important; }
+            .flip-card:nth-child(6) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-6.png) !important; }
+            .flip-card:nth-child(7) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-7.png) !important; }
+            .flip-card:nth-child(8) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-8.png) !important; }
+            .flip-card:nth-child(9) .flip-card-front { background-image: url(assets/quem-sou-eu/mobile-card-9.png) !important; }
+        }
     </style>
 </head>
 <body>
