@@ -5,231 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vini Poffo - One Page Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        /* Estilos específicos para a estrutura One Page */
+        :root {
+            --font-primary: 'Montserrat', sans-serif;
+        }
+
         body {
             background-color: var(--primary-black);
             overflow-x: hidden;
-        }
-
-        section {
-            width: 100%;
-            position: relative;
-        }
-
-        /* Seção Projetos - Carrossel Horizontal */
-        .projects-onepage {
-            padding: 4rem 0 8rem 0;
-            background-color: var(--primary-black);
-            overflow: hidden;
-        }
-
-        .filter-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 0 2rem;
-        }
-
-        .filter-btn {
-            padding: 0.6rem 1.2rem;
-            border: 1px solid var(--primary-white);
-            background-color: transparent;
-            color: var(--primary-white);
-            cursor: pointer;
             font-family: var(--font-primary);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            transition: all 0.3s ease;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background-color: var(--accent-green-light);
-            border-color: var(--accent-green-light);
-        }
+        section { width: 100%; position: relative; }
 
-        .projects-carousel-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            padding: 2rem 0;
-            cursor: grab;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+        /* --- PROJETOS: POLAROIDES RETANGULARES --- */
+        .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
+        
+        .filter-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; padding: 0 2rem; }
+        .filter-btn {
+            padding: 0.6rem 1.2rem; border: 1px solid var(--primary-white); background: transparent; color: var(--primary-white);
+            cursor: pointer; font-family: var(--font-primary); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s;
         }
+        .filter-btn:hover, .filter-btn.active { background-color: var(--accent-green-light); border-color: var(--accent-green-light); }
 
+        .projects-carousel-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 2rem 0; cursor: grab; scrollbar-width: none; }
         .projects-carousel-wrapper::-webkit-scrollbar { display: none; }
-        .projects-carousel-wrapper:active { cursor: grabbing; }
-
-        .projects-carousel-content {
-            display: inline-flex;
-            gap: 2.5rem;
-            padding: 0 4rem;
-        }
+        .projects-carousel-content { display: inline-flex; gap: 3rem; padding: 0 4rem; }
 
         .polaroid-card {
-            display: inline-block;
-            vertical-align: top;
-            white-space: normal;
-            width: 280px;
-            flex-shrink: 0;
-            text-decoration: none;
-            color: inherit;
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            display: inline-block; vertical-align: top; white-space: normal; width: 260px; flex-shrink: 0;
+            text-decoration: none; color: inherit; transition: transform 0.3s ease; position: relative;
         }
+        .polaroid-wrapper { background-color: var(--primary-white); padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        
+        /* Ajuste para formato Pôster (Retangular Vertical) */
+        .polaroid-image-container { width: 100%; aspect-ratio: 2 / 3; overflow: hidden; background-color: #f0f0f0; position: relative; }
+        .polaroid-image { width: 100%; height: 100%; object-fit: cover; }
 
-        .polaroid-wrapper {
-            background-color: var(--primary-white);
-            padding: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .polaroid-image-container {
-            width: 100%;
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            background-color: #f0f0f0;
-            position: relative;
-        }
-
-        .polaroid-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Overlay do Projeto */
         .polaroid-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.85);
-            color: var(--primary-white);
-            padding: 1.2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 5;
-            font-size: 0.8rem;
-            line-height: 1.4;
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9);
+            color: var(--primary-white); padding: 1.5rem; display: flex; flex-direction: column; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease; z-index: 5; font-size: 0.75rem; line-height: 1.5;
         }
-
+        .polaroid-overlay h4 { font-size: 0.9rem; margin-bottom: 0.8rem; font-weight: 800; color: var(--accent-green-light); }
+        .polaroid-overlay p { margin-bottom: 0.4rem; }
+        .overlay-label { font-weight: 700; text-transform: uppercase; font-size: 0.65rem; color: #aaa; margin-right: 4px; }
         .polaroid-card:hover .polaroid-overlay { opacity: 1; }
 
-        .polaroid-label {
-            padding: 0.8rem 0.4rem;
-            text-align: left;
-        }
+        .polaroid-label { padding: 1rem 0.4rem; text-align: left; }
+        .polaroid-title { font-size: 0.8rem; font-weight: 800; color: var(--primary-black); margin: 0; text-transform: uppercase; }
+        .polaroid-year { font-size: 0.7rem; color: var(--dark-gray); margin-top: 0.2rem; }
 
-        .polaroid-title {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--primary-black);
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .polaroid-year {
-            font-size: 0.75rem;
-            color: var(--dark-gray);
-            margin-top: 0.2rem;
-        }
-
-        /* Seção Sobre - Estilo Mosaico Invertido */
-        .about-onepage {
-            background-color: #111A17;
-            padding: 0;
-            position: relative;
-        }
-
-        .cards-wrapper {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-auto-rows: 1fr;
-            width: 100%;
-            height: 100%;
-        }
+        /* --- SOBRE: MOSAICO FIEL --- */
+        .about-onepage { background-color: #111A17; padding: 0; position: relative; }
+        .cards-wrapper { width: 100%; aspect-ratio: 16 / 9; }
+        .cards-container { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 1fr; width: 100%; height: 100%; }
 
         .flip-card { perspective: 1000px; }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 4px;
-        }
-        .flip-card-front {
-            background-image: url('assets/quem-sou-eu/vinisobrewebcineasta.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-        }
-        .flip-card-back {
-            transform: rotateY(180deg);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            color: white;
-        }
+        .flip-card.clickable { cursor: pointer; }
+        
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; }
+        .flip-card-front { background-image: url('assets/quem-sou-eu/vinisobrewebcineasta.png'); background-size: cover; background-attachment: fixed; background-position: center; }
+        
+        .flip-card-back { transform: rotateY(180deg); padding: 2rem; display: flex; flex-direction: column; justify-content: center; color: white; }
         .flip-card-back.blue { background: radial-gradient(circle, #2d617a, #113c51); }
         .flip-card-back.green { background: radial-gradient(circle, #718878, #3d5250); }
 
-        .flip-card-back-title { font-size: 1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; font-style: italic; }
-        .flip-card-back-text { font-size: 0.75rem; line-height: 1.5; opacity: 0.9; text-align: justify; }
+        .flip-card-back-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem; font-style: italic; letter-spacing: -0.02em; }
+        .flip-card-back-text { font-size: 0.8rem; line-height: 1.7; opacity: 0.95; text-align: justify; }
 
-        .flip-card-back-cta-buttons { display: flex; gap: 0.5rem; margin-top: 1rem; }
+        .flip-card-back-cta-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
         .flip-card-back-cta-btn {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.65rem;
-            border: 1px solid white;
-            color: white;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: 0.3s;
+            padding: 0.6rem 1.2rem; font-size: 0.7rem; border: 1px solid white; color: white; text-decoration: none;
+            text-transform: uppercase; font-weight: 800; transition: 0.3s;
         }
         .flip-card-back-cta-btn:hover { background: white; color: #113c51; }
 
-        /* MODAL STYLE (From sobre.html) */
+        /* MODAL STYLE (Original) */
         .modal { 
-            display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; 
+            display: none; position: fixed; z-index: 4000; left: 0; top: 0; width: 100%; height: 100%; 
             background-color: rgba(0, 0, 0, 0.6); align-items: center; justify-content: center;
         }
         .modal.show { display: flex; }
         .modal-content { 
-            background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 2.5rem; 
-            max-width: 650px; width: 90%; max-height: 85vh; overflow-y: auto; position: relative; 
+            background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 3rem; 
+            max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; 
         }
-        .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #2A4A5A; }
-        .modal-title { font-size: 1.3rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.5rem; color: #718878; font-style: italic; }
-        .modal-item { margin-bottom: 1.2rem; border-bottom: 1px solid rgba(42, 74, 90, 0.1); padding-bottom: 0.8rem; }
-        .modal-item-title { font-weight: 700; color: #2A4A5A; font-size: 0.9rem; margin-right: 0.5rem; }
-        .modal-item-type { font-size: 0.75rem; color: #718878; font-style: italic; }
-        .modal-item-artists { font-size: 0.8rem; color: #555; margin-top: 0.2rem; }
-        .modal-item-awards { font-size: 0.75rem; color: #718878; margin-top: 0.3rem; line-height: 1.4; }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #2A4A5A; }
+        .modal-title { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; color: #718878; font-style: italic; }
+        .modal-item { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(42, 74, 90, 0.1); padding-bottom: 1rem; }
+        .modal-item-title { font-weight: 800; color: #2A4A5A; font-size: 1rem; margin-right: 0.6rem; }
+        .modal-item-type { font-size: 0.8rem; color: #718878; font-style: italic; }
+        .modal-item-artists { font-size: 0.85rem; color: #555; margin-top: 0.3rem; }
+        .modal-item-awards { font-size: 0.8rem; color: #718878; margin-top: 0.4rem; line-height: 1.5; }
 
         @media (max-width: 768px) {
             .cards-wrapper { aspect-ratio: auto; height: auto; }
@@ -237,6 +110,7 @@
             .flip-card { grid-column: span 1 !important; aspect-ratio: 1/1; }
             .flip-card:nth-child(9) { grid-column: span 2 !important; aspect-ratio: 2/1; }
             .flip-card:nth-child(10) { display: none; }
+            .polaroid-card { width: 220px; }
         }
     </style>
 </head>
@@ -255,31 +129,16 @@
         </div>
     </nav>
 
-    <!-- Seção 1: Hero (Original) -->
     <section class="hero" id="hero">
         <div class="hero-container">
-            <div class="hero-media desktop-only">
-                <video id="heroVideo" autoplay muted loop playsinline></video>
-            </div>
-            <div class="hero-carousel mobile-only">
-                <div class="carousel-container"><div id="carouselItems" class="carousel-items"></div></div>
-            </div>
-            <!-- Logo central removida conforme solicitado -->
-            <div class="hero-overlay desktop-only">
-                <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
-            </div>
-            <div class="hero-overlay-mobile mobile-only">
-                <div class="hero-title-mobile" id="heroTitleMobile"></div>
-            </div>
-            <div class="scroll-indicator">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
+            <div class="hero-media desktop-only"><video id="heroVideo" autoplay muted loop playsinline></video></div>
+            <div class="hero-carousel mobile-only"><div class="carousel-container"><div id="carouselItems" class="carousel-items"></div></div></div>
+            <div class="hero-overlay desktop-only"><div class="hero-titles"><div id="projectsList" class="projects-list"></div></div></div>
+            <div class="hero-overlay-mobile mobile-only"><div class="hero-title-mobile" id="heroTitleMobile"></div></div>
+            <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
         </div>
     </section>
 
-    <!-- Seção 2: Projetos (Carrossel Horizontal com Filtros) -->
     <section class="projects-onepage" id="projects">
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="todos">Todos.</button>
@@ -287,18 +146,13 @@
             <button class="filter-btn" data-filter="videoclipe">Videoclipes.</button>
         </div>
         <div class="projects-carousel-wrapper" id="carouselWrapper">
-            <div class="projects-carousel-content" id="projectsCarousel">
-                <!-- Injetado via JS -->
-            </div>
+            <div class="projects-carousel-content" id="projectsCarousel"></div>
         </div>
     </section>
 
-    <!-- Seção 3: Sobre (Mosaico) -->
     <section class="about-onepage" id="about">
         <div class="cards-wrapper">
-            <div class="cards-container" id="aboutGrid">
-                <!-- Injetado via JS -->
-            </div>
+            <div class="cards-container" id="aboutGrid"></div>
         </div>
     </section>
 
@@ -312,7 +166,7 @@
         </div>
     </footer>
 
-    <!-- MODAIS DA SEÇÃO SOBRE -->
+    <!-- MODAIS -->
     <div id="filmesModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Filmes</h3><div id="filmesList"></div></div></div>
     <div id="premiosModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Prêmios</h3><div id="premiosList"></div></div></div>
     <div id="videoclipesModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Videoclipes</h3><div id="videoclipesList"></div></div></div>
