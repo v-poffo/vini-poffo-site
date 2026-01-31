@@ -27,6 +27,7 @@
             background-color: #111A17;
             position: relative;
             padding: 1rem 2rem 1rem 2rem;
+            border-bottom: none;
         }
 
         /* HERO SECTION */
@@ -64,11 +65,13 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            margin: 0 auto;
         }
 
         .cards-wrapper {
-            width: 90%;
-            max-width: 90%;
+            width: calc(100% - 4rem);
+            max-width: calc(100% - 4rem);
+            margin: 0 2rem;
             aspect-ratio: 16 / 9;
             display: flex;
             align-items: center;
@@ -325,12 +328,12 @@
             font-size: 2.5rem; 
             font-weight: 900; 
             text-transform: uppercase; 
-            margin-bottom: 2rem; 
+            margin-bottom: 1rem; 
             letter-spacing: -0.02em; 
             opacity: 0; 
             transform: translateY(-50px); 
             position: relative; 
-            padding-bottom: 1.5rem; 
+            padding-bottom: 1rem; 
             font-style: italic; 
             color: #ffffff; 
         }
@@ -350,7 +353,7 @@
             font-size: 0.95rem; 
             line-height: 1.8; 
             color: #c0c0c0; 
-            margin-bottom: 3rem; 
+            margin-bottom: 1.5rem; 
             opacity: 0; 
             transform: translateY(20px); 
         }
@@ -402,6 +405,7 @@
             opacity: 0; 
             transform: translateY(30px); 
             font-size: 0.85rem; 
+            margin-top: 1rem;
         }
 
         .contact-info a { 
