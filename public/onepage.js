@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('a');
             card.href = `projeto.html?id=${p.id}`;
             card.className = 'polaroid-card';
-            // Aumentando a inclinação para ser mais orgânico (-4 a 4 graus)
             const rot = (Math.random() * 8 - 4).toFixed(1);
             card.style.transform = `rotate(${rot}deg)`;
             
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillModals() {
-        // FILMES
+        // FILMES (COMPLETO)
         const filmes = [
             { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema" },
             { t: "O Viajante e a Raposa", y: "2024", d: "direção" },
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
-        // PRÊMIOS
+        // PRÊMIOS (COMPLETO)
         const premios = [
             { t: "5 Prêmios de Melhor Filme", a: "(Sub)Urbana – Festival SESC" },
             { t: "Prêmio Revelação", a: "Transforma Festival" },
@@ -169,24 +168,36 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><div class="modal-item-artists">${p.a}</div></div>`).join('');
 
-        // VIDEOCLIPES
+        // VIDEOCLIPES (COMPLETO - EXTRAÍDO DO ORIGINAL)
         const vcs = [
             { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker e Priscila Sena • 2025" },
-            { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025" },
+            { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025", w: "Lançamento pela Noize" },
             { t: "Vira Essa Boca Pra Cá", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025" },
-            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024<br>Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024" },
+            { t: "Outres de Nós", d: "direção e roteiro", a: "Jesus Lumma • 2025" },
+            { t: "Carta Marcada", d: "assist. de produção de objeto", a: "Vitor Kley • 2025" },
+            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024", w: "Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024" },
+            { t: "Barman", d: "assistência de direção", a: "Ananda Paixão • 2023" },
+            { t: "No Game", d: "making of", a: "Ananda Paixão • 2023" },
             { t: "Baião de Dois", d: "direção e direção de arte", a: "Aretuza Lovi & Getúlio Abelha • 2022" },
-            { t: "Bailão", d: "direção de arte", a: "Gabeu • 2022" }
+            { t: "Bailão", d: "direção de arte", a: "Gabeu • 2022" },
+            { t: "Moços e Moças", d: "direção de arte", a: "Jesus Lumma • 2020" },
+            { t: "Ela Terra", d: "direção e roteiro", a: "Malu Maria • 2020" },
+            { t: "Sugar Daddy", d: "direção de arte", a: "Gabeu • 2019" },
+            { t: "Colapso Invisível", d: "direção de arte", a: "YMA • 2019", w: "Melhor videoclipe - Hits Perdidos 2019" }
         ];
-        document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div></div>`).join('');
+        document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div>${v.w ? `<div class="modal-item-awards">${v.w}</div>` : ''}</div>`).join('');
         
-        // CENOGRAFIA
+        // CENOGRAFIA E OUTROS (COMPLETO - EXTRAÍDO DO ORIGINAL)
         const ceno = [
-            { t: "Santo", d: "assist. de arte", a: "Curta-metragem • 2025" },
-            { t: "CERAVE - Pele Sequinha", d: "assist. de produção de objetos", a: "Publicidade • 2025" },
-            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • 2025" },
-            { t: "Album - Som do Ale", d: "assist. de arte e cenografia", a: "Visualizer • 2025" },
-            { t: "DIVA - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • 2025" }
+            { t: "Santo", d: "assist. de arte", a: "Curta-metragem • Outros • 2025" },
+            { t: "CERAVE - Pele Sequinha", d: "assist. de produção de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Nutren - Eu Me Vejo Pro-Idade", d: "assist. de produção de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Album - Som do Ale", d: "assist. de arte e cenografia", a: "Visualizer • Outros • 2025" },
+            { t: "DIVA - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • Outros • 2025" },
+            { t: "Calma Business - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • Outros • 2024" },
+            { t: "Segue o Baile - E! Channel", d: "making of (still) e operação de câmera PTZ", a: "Reality show • Outros • 2024" },
+            { t: "Maria Homem", d: "direção e criação de conteúdo", a: "YouTube e Instagram • Outros • 2020 - Atualmente" }
         ];
         document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
     }
