@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 1.2,
             stagger: 0.1,
             ease: "power3.out",
-            onComplete: () => {
-                // Após as polaroides se posicionarem, iniciamos a revelação das fotos
+            onStart: () => {
+                // DISPARO IMEDIATO: A revelação começa JUNTO com o movimento
                 document.querySelectorAll('.polaroid-image').forEach(img => {
                     img.classList.add('revealed');
                 });
