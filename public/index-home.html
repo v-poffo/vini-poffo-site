@@ -49,14 +49,15 @@
         
         .polaroid-image { 
             width: 100%; height: 100%; object-fit: cover; 
-            opacity: 0; transition: opacity 2s ease-in-out; /* Efeito de revelação da foto */
+            opacity: 0; transition: opacity 3s ease-in-out; /* Revelação mais lenta e dramática */
         }
         .polaroid-image.revealed { opacity: 1; }
 
         .polaroid-overlay {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9);
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); /* Opacidade reduzida para 50% */
             color: var(--primary-white); padding: 1.2rem; display: flex; flex-direction: column; justify-content: flex-end;
             opacity: 0; transition: opacity 0.3s ease; z-index: 5; font-size: 0.7rem; line-height: 1.4;
+            backdrop-filter: blur(2px); /* Leve desfoque para legibilidade */
         }
         .polaroid-overlay .overlay-text { font-size: 0.7rem; color: #ffffff; text-align: left; }
         .polaroid-card:hover .polaroid-overlay { opacity: 1; }

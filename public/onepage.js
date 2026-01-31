@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `
                 <div class="polaroid-wrapper">
                     <div class="polaroid-image-container">
-                        <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image" onload="this.classList.add('revealed')">
+                        <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image">
                         <div class="polaroid-overlay">
                             <div class="overlay-text">${overlayText}</div>
                         </div>
@@ -116,20 +116,26 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             y: (i) => {
                 const mod = i % 4;
-                if (mod === 0) return 150;  // Vem de baixo
-                if (mod === 1) return -150; // Vem de cima
+                if (mod === 0) return 150;
+                if (mod === 1) return -150;
                 return 0;
             },
             x: (i) => {
                 const mod = i % 4;
-                if (mod === 2) return 150;  // Vem da direita
-                if (mod === 3) return -150; // Vem da esquerda
+                if (mod === 2) return 150;
+                if (mod === 3) return -150;
                 return 0;
             },
             opacity: 0,
-            duration: 1.5,
-            stagger: 0.15,
-            ease: "power3.out"
+            duration: 1.2,
+            stagger: 0.1,
+            ease: "power3.out",
+            onComplete: () => {
+                // Após as polaroides se posicionarem, iniciamos a revelação das fotos
+                document.querySelectorAll('.polaroid-image').forEach(img => {
+                    img.classList.add('revealed');
+                });
+            }
         });
     }
 
