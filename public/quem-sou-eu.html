@@ -166,23 +166,16 @@
         .flip-card-front { 
             background-color: white; 
             z-index: 2;
-            background-image: url('assets/quem-sou-eu/vinisobreweb.png');
-            background-size: 600% 400%;
-            background-repeat: no-repeat;
         }
 
-        /* CARD BACKGROUND POSITIONS - Each card shows its portion of the full image */
-        /* Grid: 6 columns x 4 rows. Each card positioned based on its actual grid location */
-        .flip-card.card-1 .flip-card-front { background-position: 0% 0%; }
-        .flip-card.card-2 .flip-card-front { background-position: 33.33% 0%; }
-        .flip-card.card-3 .flip-card-front { background-position: 50% 0%; }
-        .flip-card.card-4 .flip-card-front { background-position: 0% 25%; }
-        .flip-card.card-5 .flip-card-front { background-position: 66.66% 25%; }
-        .flip-card.card-6 .flip-card-front { background-position: 83.33% 25%; }
-        .flip-card.card-7 .flip-card-front { background-position: 0% 50%; }
-        .flip-card.card-8 .flip-card-front { background-position: 33.33% 50%; }
-        .flip-card.card-9 .flip-card-front { background-position: 0% 75%; }
-        .flip-card.card-10 .flip-card-front { background-position: 50% 75%; }
+        .flip-card-front img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
 
         /* VERSO - BLUE GRADIENT (pop-ups) */
         .flip-card-back.blue { 
@@ -673,6 +666,7 @@
             <div class="flip-card card-1" data-category="quem-sou-eu" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_1.png" alt="Quem Sou Eu">
                     </div>
                     <div class="flip-card-back green">
                         <div class="flip-card-back-content spaced">
@@ -687,6 +681,7 @@
             <div class="flip-card card-2" data-category="filmes" data-modal="true">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_2.png" alt="Filmes">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content centered">
@@ -701,6 +696,7 @@
             <div class="flip-card card-3" data-category="premios" data-modal="true">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_3.png" alt="Prêmios">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content centered">
@@ -715,6 +711,7 @@
             <div class="flip-card card-4" data-category="processo" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_4.png" alt="Processo Criativo">
                     </div>
                     <div class="flip-card-back green">
                         <div class="flip-card-back-content spaced">
@@ -729,6 +726,7 @@
             <div class="flip-card card-5" data-category="videoclipes" data-modal="true">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_5.png" alt="Videoclipes">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content centered">
@@ -743,6 +741,7 @@
             <div class="flip-card card-6" data-category="cenografia" data-modal="true">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_6.png" alt="Arte, Cenografia e Outros">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content centered">
@@ -757,6 +756,7 @@
             <div class="flip-card card-7" data-category="projetos" data-modal="false" data-link="projetos.html">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_7.png" alt="Projetos">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content centered">
@@ -770,6 +770,7 @@
             <div class="flip-card card-8" data-category="direcao" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_8.png" alt="Direção">
                     </div>
                     <div class="flip-card-back green">
                         <div class="flip-card-back-content spaced">
@@ -784,6 +785,7 @@
             <div class="flip-card card-9" data-category="autoral" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_9.png" alt="Cinema Autoral">
                     </div>
                     <div class="flip-card-back green">
                         <div class="flip-card-back-content spaced">
@@ -797,6 +799,7 @@
             <div class="flip-card card-10" data-category="contato" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_10.png" alt="Vamos Conversar?">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content flip-card-back-cta">
