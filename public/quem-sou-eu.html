@@ -629,10 +629,16 @@
                 aspect-ratio: 1 / 1;
             }
 
-            /* CARD 9 - RETANGULAR HORIZONTAL (PENÚLTIMA LINHA, 2 COLUNAS) */
+            /* CARD 9 - RETANGULAR HORIZONTAL (SEPARADO, 2 COLUNAS) */
             .flip-card:nth-child(9) {
                 grid-column: 1 / -1;
                 aspect-ratio: 16 / 9;
+                margin-top: 0;
+            }
+
+            /* CARDS 1-8 CONTAINER - COMPACT GRID */
+            .flip-card:nth-child(n+1):nth-child(-n+8) {
+                margin-bottom: 0;
             }
 
             /* CARD 10 - RETANGULAR HORIZONTAL (ÚLTIMA LINHA, 2 COLUNAS) */
