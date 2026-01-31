@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vini Poffo - Diretor Criativo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* Polaroid Style para Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            align-items: start;
+            justify-items: center;
+        }
+
+        .project-card {
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            display: block;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 320px;
+            background-color: var(--primary-white);
+            padding: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        .project-card-image {
+            opacity: 0;
+        }
+
+        .project-card.animate-in .project-card-image {
+            animation: revealImageFade 1s ease-out forwards;
+        }
+
+        @keyframes revealImageFade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .project-card:nth-child(1) { transform: rotate(-2deg); }
+        .project-card:nth-child(2) { transform: rotate(1.5deg); }
+        .project-card:nth-child(3) { transform: rotate(-1deg); }
+        .project-card:nth-child(4) { transform: rotate(2deg); }
+        .project-card:nth-child(5) { transform: rotate(-1.5deg); }
+        .project-card:nth-child(6) { transform: rotate(1deg); }
+        .project-card:nth-child(7) { transform: rotate(-2.5deg); }
+        .project-card:nth-child(8) { transform: rotate(1.5deg); }
+
+        .project-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            background-color: var(--primary-white);
+            min-height: 200px;
+        }
+
+        .project-card-content {
+            padding: 1rem 0.8rem;
+            text-align: left;
+            min-height: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-black);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .project-card-meta {
+            font-size: 0.8rem;
+            color: var(--dark-gray);
+            margin-top: 0.3rem;
+        }
+
+        .project-card-type {
+            display: inline-block;
+            background-color: var(--accent-green-light);
+            color: var(--primary-white);
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        /* Projetos Section */
+        .projetos-all {
+            padding: 10rem 2rem 6rem 2rem;
+            background-color: var(--primary-black);
+        }
+
+        .projetos-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-white);
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--accent-green-light);
+            color: var(--primary-white);
+            border-color: var(--accent-green-light);
+        }
+
+        /* Sobre Section */
+        .cards-section {
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: visible;
+            background: #111A17;
+        }
+
+        .cards-wrapper {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cards-container {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 360px;
+            gap: 0;
+            background: #111A17;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-card-front {
+            background-color: #111A17;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .flip-card-back.green {
+            background: linear-gradient(135deg, #1a4d3e 0%, #2d6b5f 100%);
+        }
+
+        .flip-card-back.blue {
+            background: linear-gradient(135deg, #113c51 0%, #2d617a 100%);
+        }
+
+        .flip-card-back-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .flip-card-back-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-white);
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-back-text {
+            font-size: 0.95rem;
+            color: var(--primary-white);
+            line-height: 1.6;
+        }
+
+        /* Grid Layout */
+        .card-1 { grid-column: span 2; grid-row: span 1; }
+        .card-2 { grid-column: span 1; grid-row: span 1; }
+        .card-3 { grid-column: span 1; grid-row: span 1; }
+        .card-4 { grid-column: span 2; grid-row: span 1; }
+        .card-5 { grid-column: span 1; grid-row: span 1; }
+        .card-6 { grid-column: span 1; grid-row: span 1; }
+        .card-7 { grid-column: span 3; grid-row: span 1; }
+        .card-8 { grid-column: span 2; grid-row: span 1; }
+        .card-9 { grid-column: span 2; grid-row: span 1; }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 200px;
+            }
+
+            .card-1 { grid-column: span 2; }
+            .card-2 { grid-column: span 1; }
+            .card-3 { grid-column: span 1; }
+            .card-4 { grid-column: span 2; }
+            .card-5 { grid-column: span 1; }
+            .card-6 { grid-column: span 1; }
+            .card-7 { grid-column: span 2; }
+            .card-8 { grid-column: span 2; }
+            .card-9 { grid-column: span 2; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo desktop-hide">
+                <a href="index2.html">
+                    <img src="assets/logo/logo.avif" alt="Vini Poffo" class="logo-img">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index2.html" class="active">Início.</a></li>
+                <li><a href="projetos.html">Projetos.</a></li>
+                <li><a href="sobre.html">Sobre.</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video/Cartaz -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <!-- Desktop: Video -->
+            <div class="hero-media desktop-only">
+                <video id="heroVideo" autoplay muted loop playsinline>
+                    <source src="assets/videos/vira essa boca_portfolio_video.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <!-- Mobile: Carrossel Vertical -->
+            <div class="hero-carousel mobile-only">
+                <div class="carousel-container">
+                    <div id="carouselItems" class="carousel-items"></div>
+                </div>
+            </div>
+
+            <!-- Logo no topo (Desktop) -->
+            <div class="hero-logo-container desktop-only">
+                <img src="assets/logo/logo.avif" alt="Vini Poffo" class="hero-logo">
+            </div>
+
+            <!-- Overlay com títulos (Desktop) -->
+            <div class="hero-overlay desktop-only">
+                <div class="hero-titles">
+                    <div id="projectsList" class="projects-list"></div>
+                </div>
+            </div>
+
+            <!-- Overlay com título (Mobile) -->
+            <div class="hero-overlay-mobile mobile-only">
+                <div class="hero-title-mobile" id="heroTitleMobile"></div>
+            </div>
+
+            <!-- Seta para baixo -->
+            <div class="scroll-indicator">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Section -->
+    <section class="projetos-all">
+        <div class="projetos-container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">TODOS</button>
+                <button class="filter-btn" data-filter="curta-metragem">CURTAS</button>
+                <button class="filter-btn" data-filter="videoclipe">VIDEOCLIPES</button>
+            </div>
+            <div id="projectsGrid" class="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Sobre Section - Mosaic -->
+    <section class="cards-section">
+        <div class="cards-wrapper">
+            <div class="cards-container">
+                <!-- Card 1: Quem Sou Eu -->
+                <div class="flip-card card-1" data-category="quem-sou-eu" data-modal="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_1.png" alt="Quem Sou Eu">
+                        </div>
+                        <div class="flip-card-back green">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Vini Poffo</div>
+                                <div class="flip-card-back-text">Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Filmes -->
+                <div class="flip-card card-2" data-category="filmes" data-modal="true">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_2.png" alt="Filmes">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Filmes</div>
+                                <div class="flip-card-back-text">Desenvolvo filmes autorais que investigam identidade, memória e território.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Prêmios -->
+                <div class="flip-card card-3" data-category="premios" data-modal="true">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_3.png" alt="Prêmios">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Prêmios</div>
+                                <div class="flip-card-back-text">Reconhecimentos conquistados ao longo da trajetória criativa.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Processo Criativo -->
+                <div class="flip-card card-4" data-category="processo" data-modal="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_4.png" alt="Processo Criativo">
+                        </div>
+                        <div class="flip-card-back green">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Processo Criativo</div>
+                                <div class="flip-card-back-text">Me interesso por imagens que carregam tempo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Videoclipes -->
+                <div class="flip-card card-5" data-category="videoclipes" data-modal="true">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_5.png" alt="Videoclipes">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Videoclipes</div>
+                                <div class="flip-card-back-text">Espaço de invenção estética.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Arte, Cenografia -->
+                <div class="flip-card card-6" data-category="cenografia" data-modal="true">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_6.png" alt="Arte, Cenografia">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Arte, Cenografia</div>
+                                <div class="flip-card-back-text">Experiências que ampliam meu olhar.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7: Projetos -->
+                <div class="flip-card card-7" data-category="projetos" data-modal="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_7.png" alt="Projetos">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Projetos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8: Direção -->
+                <div class="flip-card card-8" data-category="direcao" data-modal="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/test_card_8.png" alt="Direção">
+                        </div>
+                        <div class="flip-card-back green">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Direção</div>
+                                <div class="flip-card-back-text">Acredito no cinema como prática coletiva.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9: Vamos Conversar -->
+                <div class="flip-card card-9" data-category="contato" data-modal="false">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="assets/quem-sou-eu/mobile-card-9.png" alt="Vamos Conversar?">
+                        </div>
+                        <div class="flip-card-back blue">
+                            <div class="flip-card-back-content">
+                                <div class="flip-card-back-title">Vamos Conversar?</div>
+                                <div class="flip-card-back-text">Estou aberta a colaborações e novos projetos.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Flip card functionality
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+        });
+
+        // Load projects
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            if (projectsGrid && typeof projects !== 'undefined') {
+                projects.forEach((project, index) => {
+                    const card = document.createElement('a');
+                    card.href = `projeto.html?id=${project.id}`;
+                    card.className = 'project-card';
+                    card.innerHTML = `
+                        <img src="${project.image}" alt="${project.title}" class="project-card-image">
+                        <div class="project-card-content">
+                            <h3 class="project-card-title">${project.title}</h3>
+                            <p class="project-card-meta">${project.year}</p>
+                            <span class="project-card-type">${project.type}</span>
+                        </div>
+                    `;
+                    projectsGrid.appendChild(card);
+                    setTimeout(() => card.classList.add('animate-in'), index * 100);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
