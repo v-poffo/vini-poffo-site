@@ -641,32 +641,18 @@
                 margin-bottom: 0;
             }
 
-            /* CARD 10 - RETANGULAR HORIZONTAL (ÚLTIMA LINHA, 2 COLUNAS) */
+            /* HIDE CARD 10 ON MOBILE */
             .flip-card:nth-child(10) {
-                grid-column: 1 / -1;
-                aspect-ratio: 16 / 9;
+                display: none;
             }
+        }
 
-            /* CARD 9 - RETANGULAR HORIZONTAL NO DESKTOP */
-            @media (min-width: 1025px) {
-                .flip-card:nth-child(9) {
-                    grid-column: 1 / -1;
-                    grid-row: auto;
-                    aspect-ratio: 16 / 9;
-                }
-
-                /* HIDE TITLE ON DESKTOP FOR CARD 9 */
-                .flip-card:nth-child(9) .flip-card-back-title {
-                    display: none;
-                }
+        /* DESKTOP - CARD 9 HIDE TITLE */
+        @media (min-width: 1025px) {
+            .flip-card:nth-child(9) .flip-card-back-title {
+                display: none;
             }
-
-            /* HIDE TITLE ON MOBILE FOR CARD 9 */
-            @media (max-width: 1024px) {
-                .flip-card:nth-child(9) .flip-card-back-title {
-                    display: none;
-                }
-            }
+        }
 
             .flip-card-front {
                 background-size: cover;
