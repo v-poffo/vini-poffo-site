@@ -238,8 +238,63 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
     window.onclick = (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); };
 
+    // --- MENU HAMBÚRGUER E NAVEGAÇÃO ---
+    function initializeMenu() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        // Toggle do menu hambúrguer
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Navegação suave para as seções
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                
+                // Verifica se é um link de âncora na mesma página
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetId = href.substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        // Scroll suave até a seção
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Fecha o menu após clicar (mobile)
+                        if (hamburger && navMenu) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', (e) => {
+            if (navMenu && hamburger) {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            }
+        });
+    }
+
     initializeHero();
     renderProjectsCarousel();
     renderAbout();
     fillModals();
+    initializeMenu();
 });
