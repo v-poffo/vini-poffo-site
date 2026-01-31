@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quem Sou Eu - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* DESIGN PHILOSOPHY: Full Image Mosaic Grid with 3D Flip Cards
+           Color Palette: Green #718878, Blue gradients #113c51 to #2d617a
+           Layout: CSS Grid covering 100% of the image - seamless mosaic
+           Typography: Montserrat (same as homepage) - elegant and refined
+           Text Layout: Title top, text bottom for text cards; centered for modals
+           Vignette: Subtle radial gradient on back
+        */
+
+        body { 
+            background-color: #111A17; 
+            color: var(--primary-white); 
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION */
+        .section-hero { 
+            min-height: auto; 
+            padding: 5rem 2rem 1rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.3) 0%, rgba(52, 90, 106, 0.3) 100%);
+        }
+
+        .hero-content { 
+            max-width: 900px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        .hero-content h1 { 
+            display: none;
+        }
+
+        .hero-content p { 
+            display: none;
+        }
+
+        /* GRID CONTAINER - FULL IMAGE MOSAIC */
+        .cards-section {
+            padding: 0;
+            background: #111A17;
+        }
+
+        .cards-container { 
+            width: 100%; 
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0;
+            grid-auto-rows: 360px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* GRID LAYOUT - COVERS 100% OF IMAGE */
+        .flip-card:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+        .flip-card:nth-child(2) { grid-column: span 1; grid-row: span 1; }
+        .flip-card:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+        .flip-card:nth-child(4) { grid-column: span 2; grid-row: span 1; }
+        .flip-card:nth-child(5) { grid-column: span 1; grid-row: span 1; }
+        .flip-card:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+        .flip-card:nth-child(7) { grid-column: span 2; grid-row: span 1; }
+        .flip-card:nth-child(8) { grid-column: span 2; grid-row: span 1; }
+        .flip-card:nth-child(9) { grid-column: span 3; grid-row: span 1; }
+        .flip-card:nth-child(10) { grid-column: span 3; grid-row: span 1; }
+
+        /* RESPONSIVE GRID */
+        @media (max-width: 1199px) {
+            .cards-container {
+                grid-template-columns: repeat(4, 1fr);
+                grid-auto-rows: 240px;
+            }
+            
+            .flip-card:nth-child(1) { grid-column: span 2; }
+            .flip-card:nth-child(2) { grid-column: span 1; }
+            .flip-card:nth-child(3) { grid-column: span 1; }
+            .flip-card:nth-child(4) { grid-column: span 2; }
+            .flip-card:nth-child(5) { grid-column: span 1; }
+            .flip-card:nth-child(6) { grid-column: span 1; }
+            .flip-card:nth-child(7) { grid-column: span 2; }
+            .flip-card:nth-child(8) { grid-column: span 2; }
+            .flip-card:nth-child(9) { grid-column: span 2; }
+            .flip-card:nth-child(10) { grid-column: span 2; }
+        }
+
+        @media (max-width: 767px) {
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 180px;
+            }
+            
+            .flip-card { grid-column: span 1 !important; grid-row: span 1 !important; }
+        }
+
+        /* 3D FLIP CARD STYLES */
+        .flip-card { 
+            perspective: 1000px; 
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flip-card[data-modal="true"] {
+            cursor: pointer;
+        }
+
+        .flip-card[data-modal="false"] {
+            cursor: default;
+        }
+
+        .flip-card-inner { 
+            position: relative; 
+            width: 100%; 
+            height: 100%; 
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+            transform-style: preserve-3d; 
+        }
+
+        .flip-card:hover .flip-card-inner { 
+            transform: rotateY(180deg); 
+        }
+
+        .flip-card-front, .flip-card-back { 
+            position: absolute; 
+            width: 100%; 
+            height: 100%; 
+            backface-visibility: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0;
+            padding: 0;
+            border-radius: 8px;
+        }
+
+        .flip-card-front { 
+            background-color: white; 
+            z-index: 2; 
+        }
+
+        .flip-card-front img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* VERSO - BLUE GRADIENT (pop-ups) */
+        .flip-card-back.blue { 
+            background: radial-gradient(circle at center, #2d617a 0%, #1f4d5f 40%, #113c51 100%);
+            transform: rotateY(180deg); 
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        /* VERSO - GREEN GRADIENT (text cards) */
+        .flip-card-back.green { 
+            background: radial-gradient(circle at center, #718878 0%, #5a6f6a 40%, #3d5250 100%);
+            transform: rotateY(180deg); 
+            z-index: 1; 
+        }
+
+        .flip-card-back { 
+            flex-direction: column; 
+            gap: 1rem;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* SUBTLE VIGNETTE OVERLAY */
+        .flip-card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0) 0%, rgba(0,0,0,0.08) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* BACK CONTENT - CENTERED (for pop-ups) */
+        .flip-card-back-content.centered { 
+            text-align: center; 
+            color: #ffffff; 
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        /* BACK CONTENT - TOP/BOTTOM (for text cards) */
+        .flip-card-back-content.spaced { 
+            text-align: left; 
+            color: #ffffff; 
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            height: 100%;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 1.5rem 0;
+        }
+
+        .flip-card-back-title { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            line-height: 1.3;
+            font-family: var(--font-primary);
+            font-style: italic;
+            margin: 0;
+        }
+
+        .flip-card-back-text { 
+            font-size: 0.8rem; 
+            line-height: 1.7; 
+            color: rgba(255, 255, 255, 0.95);
+            font-family: var(--font-primary);
+            text-align: justify;
+            text-justify: inter-word;
+            margin: 0;
+        }
+
+        .flip-card-back-content.centered .flip-card-back-text {
+            text-align: center;
+            text-justify: auto;
+        }
+
+        .flip-card-back-content.centered .flip-card-back-text {
+            text-align: center;
+            text-justify: auto;
+        }
+
+        .flip-card-back-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        /* CTA SECTION */
+        .section-cta { 
+            min-height: auto; 
+            padding: 6rem 2rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            background: linear-gradient(135deg, rgba(42, 74, 90, 0.1) 0%, rgba(52, 90, 106, 0.1) 100%); 
+        }
+
+        .cta-container { 
+            max-width: 900px; 
+            text-align: center; 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        .cta-container h2 { 
+            font-size: 2.5rem; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            margin-bottom: 2rem; 
+            letter-spacing: -0.02em; 
+            opacity: 0; 
+            transform: translateY(-50px); 
+            position: relative; 
+            padding-bottom: 1.5rem; 
+            font-style: italic; 
+            color: #ffffff; 
+        }
+
+        .cta-container h2::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 30px; 
+            height: 1px; 
+            background: #ffffff; 
+        }
+
+        .cta-container p { 
+            font-size: 0.95rem; 
+            line-height: 1.8; 
+            color: #c0c0c0; 
+            margin-bottom: 3rem; 
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+
+        .cta-buttons { 
+            display: flex; 
+            gap: 2rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            margin-bottom: 2rem; 
+        }
+
+        .cta-btn { 
+            padding: 0.8rem 2rem; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+            border: 1px solid #ffffff; 
+            background: transparent; 
+            color: #ffffff; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border-radius: 0; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-family: var(--font-primary);
+        }
+
+        .cta-btn:hover { 
+            background: #ffffff; 
+            color: #111A17; 
+            transform: translateY(-2px); 
+        }
+
+        .cta-btn.primary { 
+            background: #ffffff; 
+            color: #111A17; 
+        }
+
+        .cta-btn.primary:hover { 
+            background: transparent; 
+            color: #ffffff; 
+        }
+
+        .contact-info { 
+            opacity: 0; 
+            transform: translateY(30px); 
+            font-size: 0.85rem; 
+        }
+
+        .contact-info a { 
+            color: #ffffff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+        }
+
+        .contact-info a:hover { 
+            text-decoration: underline; 
+        }
+
+        /* MODAL/POP-UP */
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.3); 
+            opacity: 0; 
+            transition: opacity 0.3s ease; 
+        }
+
+        .modal.show { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 1; 
+        }
+
+        .modal-content { 
+            background: #F3F8F4; 
+            border: 2px solid #2A4A5A; 
+            border-radius: 8px; 
+            padding: 3rem; 
+            max-width: 700px; 
+            width: 90%; 
+            max-height: 80vh; 
+            overflow-y: auto; 
+            position: relative; 
+            animation: slideIn 0.3s ease; 
+        }
+
+        @keyframes slideIn { 
+            from { transform: translateY(-50px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
+
+        .modal-close { 
+            position: absolute; 
+            top: 1.5rem; 
+            right: 1.5rem; 
+            background: none; 
+            border: none; 
+            font-size: 2rem; 
+            cursor: pointer; 
+            color: #2A4A5A; 
+            transition: all 0.3s ease; 
+        }
+
+        .modal-close:hover { 
+            color: #718878; 
+        }
+
+        .modal-title { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            margin-bottom: 2rem; 
+            letter-spacing: -0.02em; 
+            font-style: italic; 
+            position: relative; 
+            padding-bottom: 1.5rem; 
+            color: #718878; 
+            font-family: var(--font-primary);
+        }
+
+        .modal-title::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 40px; 
+            height: 2px; 
+            background: #2A4A5A; 
+        }
+
+        .modal-item { 
+            margin-bottom: 2.5rem; 
+            padding-bottom: 2.5rem; 
+            border-bottom: 1px solid #2A4A5A; 
+        }
+
+        .modal-item:last-child { 
+            border-bottom: none; 
+            padding-bottom: 0; 
+            margin-bottom: 0; 
+        }
+
+        .modal-item-title { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            margin-bottom: 0.3rem; 
+            color: #718878; 
+            font-style: italic; 
+            text-transform: uppercase; 
+            display: inline; 
+            font-family: var(--font-primary);
+        }
+
+        .modal-item-type { 
+            font-size: 0.75rem; 
+            color: #2A4A5A; 
+            margin-left: 0.5rem; 
+            font-weight: 600; 
+            text-transform: lowercase; 
+            display: inline; 
+            font-family: var(--font-primary);
+        }
+
+        .modal-item-artists { 
+            font-size: 0.8rem; 
+            color: #111A17; 
+            margin-top: 0.3rem; 
+            margin-bottom: 0.3rem; 
+            font-family: var(--font-primary);
+        }
+
+        .modal-item-awards { 
+            font-size: 0.8rem; 
+            color: #111A17; 
+            margin-top: 0.8rem; 
+            line-height: 1.8; 
+            font-weight: 500; 
+            font-family: var(--font-primary);
+        }
+
+        /* FOOTER */
+        footer { 
+            background-color: #111A17; 
+            color: var(--primary-white); 
+            padding: 3rem 2rem; 
+            text-align: center; 
+        }
+
+        .footer-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 1.5rem; 
+            text-align: center; 
+        }
+
+        .footer-section { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            flex-wrap: wrap; 
+        }
+
+        .footer-section ul { 
+            list-style: none; 
+            display: flex; 
+            gap: 2rem; 
+        }
+
+        .footer-section a { 
+            color: #c0c0c0; 
+            text-decoration: none; 
+            font-size: 0.85rem; 
+            transition: all 0.3s ease; 
+            font-family: var(--font-primary);
+        }
+
+        .footer-section a:hover { 
+            color: #718878; 
+        }
+
+        .footer-section p { 
+            font-size: 0.8rem; 
+            color: #a0a0a0; 
+            line-height: 1.6; 
+            margin: 0; 
+            font-family: var(--font-primary);
+        }
+
+        /* SPECIAL CARDS - PROJETOS & VAMOS CONVERSAR */
+        .flip-card-back-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .flip-card-back-cta .flip-card-back-title {
+            margin-bottom: 0;
+        }
+
+        .flip-card-back-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-direction: row;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .flip-card-back-cta-btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            border: 1px solid #ffffff;
+            background: transparent;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            text-decoration: none;
+            display: inline-block;
+            font-family: var(--font-primary);
+            white-space: nowrap;
+        }
+
+        .flip-card-back-cta-btn:hover {
+            background: #ffffff;
+            color: #113c51;
+        }
+
+        .flip-card-back-cta-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            font-family: var(--font-primary);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo/logo.avif" alt="Vini Poffo" class="logo-img">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início.</a></li>
+                <li><a href="projetos.html">Projetos.</a></li>
+                <li><a href="sobre.html">Sobre.</a></li>
+                <li><a href="quem-sou-eu.html" class="active">Quem Sou Eu.</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="section-hero">
+        <div class="hero-content">
+            <h1>Quem Sou Eu?</h1>
+            <p>Explore os diferentes aspectos da minha trajetória criativa através de imagens e histórias que refletem meu trabalho e minha visão de mundo.</p>
+        </div>
+    </section>
+
+    <!-- FULL IMAGE MOSAIC GRID -->
+    <section class="cards-section">
+        <div class="cards-container">
+            <!-- Card 1: Quem Sou Eu (2 cols x 1 row) - NO MODAL (shows text on flip) -->
+            <div class="flip-card" data-category="quem-sou-eu" data-modal="false">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_1.png" alt="Quem Sou Eu">
+                    </div>
+                    <div class="flip-card-back green">
+                        <div class="flip-card-back-content spaced">
+                            <div class="flip-card-back-title">Quem Sou Eu</div>
+                            <div class="flip-card-back-text">Sou Vini Poffo, diretora criativa, cineasta e artista, com foco em cinema, videoclipes e projetos interdisciplinares. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Filmes (1 col x 1 row) - OPENS MODAL -->
+            <div class="flip-card" data-category="filmes" data-modal="true">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_2.png" alt="Filmes">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content centered">
+                            <div class="flip-card-back-title">Filmes</div>
+                            <div class="flip-card-back-text">Desenvolvo filmes autorais que investigam identidade, memória e território.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Prêmios (1 col x 1 row) - OPENS MODAL -->
+            <div class="flip-card" data-category="premios" data-modal="true">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_3.png" alt="Prêmios">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content centered">
+                            <div class="flip-card-back-title">Prêmios</div>
+                            <div class="flip-card-back-text">Reconhecimentos e prêmios conquistados ao longo da trajetória criativa.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Processo Criativo (2 cols x 1 row) - NO MODAL (shows text on flip) -->
+            <div class="flip-card" data-category="processo" data-modal="false">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_4.png" alt="Processo Criativo">
+                    </div>
+                    <div class="flip-card-back green">
+                        <div class="flip-card-back-content spaced">
+                            <div class="flip-card-back-title">Processo Criativo</div>
+                            <div class="flip-card-back-text">Me interesso por imagens que carregam tempo.<br><br>Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Videoclipes (1 col x 1 row) - OPENS MODAL -->
+            <div class="flip-card" data-category="videoclipes" data-modal="true">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_5.png" alt="Videoclipes">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content centered">
+                            <div class="flip-card-back-title">Videoclipes</div>
+                            <div class="flip-card-back-text">Vejo o videoclipe como um espaço de invenção estética, onde imagem, corpo e som constroem narrativas experimentais e com força conceitual.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Arte, Cenografia e Outros (1 col x 1 row) - OPENS MODAL -->
+            <div class="flip-card" data-category="cenografia" data-modal="true">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_6.png" alt="Arte, Cenografia e Outros">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content centered">
+                            <div class="flip-card-back-title">Arte, Cenografia e Outros</div>
+                            <div class="flip-card-back-text">Experiências que ampliam meu olhar sobre o set e fortalecem minha capacidade de construir projetos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7: Projetos (3 cols x 1 row) - LINK TO PROJETOS PAGE -->
+            <div class="flip-card" data-category="projetos" data-modal="false" data-link="projetos.html">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_7.png" alt="Projetos">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content centered">
+                            <div class="flip-card-back-title">Projetos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8: Direção (2 cols x 1 row) - NO MODAL (shows text on flip) -->
+            <div class="flip-card" data-category="direcao" data-modal="false">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_8.png" alt="Direção">
+                    </div>
+                    <div class="flip-card-back green">
+                        <div class="flip-card-back-content spaced">
+                            <div class="flip-card-back-title">Direção</div>
+                            <div class="flip-card-back-text">Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9: Cinema Autoral (2 cols x 1 row) - NO MODAL (shows text on flip) -->
+            <div class="flip-card" data-category="autoral" data-modal="false">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_9.png" alt="Cinema Autoral">
+                    </div>
+                    <div class="flip-card-back green">
+                        <div class="flip-card-back-content spaced">
+                            <div class="flip-card-back-text">Cada filme ou videoclipe é resultado de um acúmulo de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação. Gosto de estar próxima do processo, acompanhando cada detalhe, porque é ali que a magia acontece.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 10: Vamos Conversar? (3 cols x 1 row) - CONTACT -->
+            <div class="flip-card" data-category="contato" data-modal="false">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="assets/quem-sou-eu/card_10.png" alt="Vamos Conversar?">
+                    </div>
+                    <div class="flip-card-back blue">
+                        <div class="flip-card-back-content flip-card-back-cta">
+                            <div class="flip-card-back-title">Vamos Conversar?</div>
+                            <div class="flip-card-back-cta-text">Estou aberta a colaborações e novos projetos.<br><br>Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.</div>
+                            <div class="flip-card-back-cta-buttons">
+                                <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Me mande um email</a>
+                                <a href="https://instagram.com/poffovini" target="_blank" class="flip-card-back-cta-btn">Me siga no Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAIS -->
+    <!-- Modal: Filmes -->
+    <div id="filmesModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Filmes</h3>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Tem Feito Uns Dias Esquisitos</span><span class="modal-item-type">direção, roteiro e concepção de arte</span></div>
+                <div class="modal-item-artists">2025</div>
+                <div class="modal-item-awards">Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">O Viajante e a Raposa</span><span class="modal-item-type">direção</span></div>
+                <div class="modal-item-artists">2024</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">(Sub)Urbana</span><span class="modal-item-type">direção e co-roteirista</span></div>
+                <div class="modal-item-artists">2023</div>
+                <div class="modal-item-awards">5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">No Reflexo do Meu Nome</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">2022</div>
+                <div class="modal-item-awards">Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Debaixo do Guarda-chuva pra ser Resistência</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">2021</div>
+                <div class="modal-item-awards">Selecionado em mais de 10 festivais nacionais e internacionais</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Marias</span><span class="modal-item-type">direção</span></div>
+                <div class="modal-item-artists">2021</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Prêmios -->
+    <div id="premiosModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Prêmios</h3>
+            <div class="modal-item">
+                <div><span class="modal-item-title">5 Prêmios de Melhor Filme</span></div>
+                <div class="modal-item-artists">(Sub)Urbana – Festival SESC</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Prêmio Revelação</span></div>
+                <div class="modal-item-artists">Transforma Festival</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Curta Fest Brasília 2024</span></div>
+                <div class="modal-item-artists">Categoria Aranha</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">SESC SC</span></div>
+                <div class="modal-item-artists">No Reflexo do Meu Nome – Reconhecimento Nacional</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Exibições Internacionais</span></div>
+                <div class="modal-item-artists">Trabalhos exibidos em festivais internacionais</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Lei Paulo Gustavo</span></div>
+                <div class="modal-item-artists">Contemplado para desenvolvimento de projetos</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Videoclipes -->
+    <div id="videoclipesModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Videoclipes</h3>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Pote de Ouro</span><span class="modal-item-type">assist. prod. executiva</span></div>
+                <div class="modal-item-artists">Liniker e Priscila Sena • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Dropar Teu Nome</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">Letrux feat Nouvella • 2025</div>
+                <div class="modal-item-awards">Lançamento pela Noize</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Vira Essa Boca Pra Cá</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">Letrux feat Nouvella • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Outres de Nós</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">Jesus Lumma • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Carta Marcada</span><span class="modal-item-type">assist. de produção de objeto</span></div>
+                <div class="modal-item-artists">Vitor Kley • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Aranha</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">Letrux • 2024</div>
+                <div class="modal-item-awards">Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Barman</span><span class="modal-item-type">assistência de direção</span></div>
+                <div class="modal-item-artists">Ananda Paixão • 2023</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">No Game</span><span class="modal-item-type">making of</span></div>
+                <div class="modal-item-artists">Ananda Paixão • 2023</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Baião de Dois</span><span class="modal-item-type">direção e direção de arte</span></div>
+                <div class="modal-item-artists">Aretuza Lovi & Getúlio Abelha • 2022</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Bailão</span><span class="modal-item-type">direção de arte</span></div>
+                <div class="modal-item-artists">Gabeu • 2022</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Moços e Moças</span><span class="modal-item-type">direção de arte</span></div>
+                <div class="modal-item-artists">Jesus Lumma • 2020</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Ela Terra</span><span class="modal-item-type">direção e roteiro</span></div>
+                <div class="modal-item-artists">Malu Maria • 2020</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Sugar Daddy</span><span class="modal-item-type">direção de arte</span></div>
+                <div class="modal-item-artists">Gabeu • 2019</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Colapso Invisível</span><span class="modal-item-type">direção de arte</span></div>
+                <div class="modal-item-artists">YMA • 2019</div>
+                <div class="modal-item-awards">Melhor videoclipe - Hits Perdidos 2019</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Arte, Cenografia e Outros -->
+    <div id="cenografiaModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Arte, Cenografia e Outros</h3>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Santo</span><span class="modal-item-type">assist. de arte</span></div>
+                <div class="modal-item-artists">Curta-metragem • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">CERAVE - Pele Sequinha</span><span class="modal-item-type">assist. de produção de objetos</span></div>
+                <div class="modal-item-artists">Publicidade • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Nutren - Eu Me Vejo Pro-Idade</span><span class="modal-item-type">assist. de produção de objetos</span></div>
+                <div class="modal-item-artists">Publicidade • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Voe Azul</span><span class="modal-item-type">assist. de objetos</span></div>
+                <div class="modal-item-artists">Publicidade • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Album - Som do Ale</span><span class="modal-item-type">assist. de arte e cenografia</span></div>
+                <div class="modal-item-artists">Visualizer • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">DIVA - Calma Sao Paulo</span><span class="modal-item-type">assist. de arte</span></div>
+                <div class="modal-item-artists">Editorial • Outros • 2025</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Calma Business - Calma Sao Paulo</span><span class="modal-item-type">assist. de arte</span></div>
+                <div class="modal-item-artists">Editorial • Outros • 2024</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Segue o Baile - E! Channel</span><span class="modal-item-type">making of (still) e operação de câmera PTZ</span></div>
+                <div class="modal-item-artists">Reality show • Outros • 2024</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Maria Homem</span><span class="modal-item-type">direção e criação de conteúdo</span></div>
+                <div class="modal-item-artists">YouTube e Instagram • Outros • 2020 - Atualmente</div>
+            </div>
+            <div class="modal-item">
+                <div><span class="modal-item-title">Parte de Mim</span><span class="modal-item-type">direção</span></div>
+                <div class="modal-item-artists">Videoarte - FUNARTE • Outros • 2021</div>
+                <div class="modal-item-awards">Projeto premiado no Premio RespirArte da FUNARTE</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Redes Sociais</h4>
+                <ul>
+                    <li><a href="https://instagram.com/poffovini" target="_blank">Instagram</a></li>
+                    <li><a href="mailto:projetos@vinipoffo.com">Email</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ANIMAÇÕES GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero animations
+        gsap.fromTo('.hero-content h1', { opacity: 0, transform: 'translateY(-30px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.8, delay: 0.2 
+        });
+        gsap.fromTo('.hero-content p', { opacity: 0, transform: 'translateY(20px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.4
+        });
+
+        // CTA animations
+        gsap.fromTo('.cta-container h2', { opacity: 0, transform: 'translateY(-50px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.8, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.cta-container p', { opacity: 0, transform: 'translateY(20px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.2, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.cta-buttons', { opacity: 0, transform: 'translateY(30px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.4, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+        gsap.fromTo('.contact-info', { opacity: 0, transform: 'translateY(30px)' }, { 
+            opacity: 1, transform: 'translateY(0)', duration: 0.6, delay: 0.6, scrollTrigger: { 
+                trigger: '.section-cta', start: 'top center', toggleActions: 'play reverse play reverse' 
+            } 
+        });
+
+        // MODAL FUNCTIONALITY
+        const flipCards = document.querySelectorAll('.flip-card');
+        const modals = {
+            'quem-sou-eu': null,
+            'premios': document.getElementById('premiosModal'),
+            'filmes': document.getElementById('filmesModal'),
+            'videoclipes': document.getElementById('videoclipesModal'),
+            'cenografia': document.getElementById('cenografiaModal'),
+            'processo': null,
+            'direcao': null,
+            'autoral': null,
+            'projetos': null,
+            'contato': null
+        };
+
+        flipCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.dataset.category;
+                const shouldOpenModal = this.dataset.modal === 'true';
+                const link = this.dataset.link;
+                
+                if (link) {
+                    window.location.href = link;
+                } else if (shouldOpenModal) {
+                    const modal = modals[category];
+                    if (modal) {
+                        modal.classList.add('show');
+                    }
+                }
+            });
+        });
+
+        // FECHAR MODAL
+        document.querySelectorAll('.modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                this.closest('.modal').classList.remove('show');
+            });
+        });
+
+        // FECHAR MODAL AO CLICAR FORA
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        });
+
+        // MENU HAMBURGER
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // FECHAR MENU AO CLICAR EM UM LINK
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
