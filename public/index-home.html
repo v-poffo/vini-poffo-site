@@ -3,11 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vini Poffo - One Page Portfolio</title>
+    <title>Vini Poffo | Cineasta, Diretora Criativa e Artista</title>
+    <meta name="description" content="Portfólio de Vini Poffo, cineasta e diretora criativa focada em cinema autoral, videoclipes e projetos publicitários com estética artesanal e política.">
+    <meta name="keywords" content="Vini Poffo, Cineasta, Diretora Criativa, Cinema Autoral, Videoclipes, Portfólio Audiovisual, Direção de Arte">
+    <meta name="author" content="Vini Poffo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="og:title" content="Vini Poffo | Cineasta e Diretora Criativa">
+    <meta property="og:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
+    <meta property="og:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="twitter:title" content="Vini Poffo | Cineasta e Diretora Criativa">
+    <meta property="twitter:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
+    <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <style>
         :root {
             --font-primary: 'Montserrat', sans-serif;
@@ -162,7 +183,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index-home.html"><img src="assets/logo/logo.avif" alt="Vini Poffo" class="logo-img"></a>
+                <a href="index-home.html"><img src="assets/logo/logo.avif" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img"></a>
             </div>
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-menu">
@@ -177,13 +198,17 @@
         <div class="hero-container">
             <div class="hero-media desktop-only"><video id="heroVideo" autoplay muted loop playsinline></video></div>
             <div class="hero-carousel mobile-only"><div class="carousel-container"><div id="carouselItems" class="carousel-items"></div></div></div>
-            <div class="hero-overlay desktop-only"><div class="hero-titles"><div id="projectsList" class="projects-list"></div></div></div>
+            <div class="hero-overlay desktop-only">
+                <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
+                <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
+            </div>
             <div class="hero-overlay-mobile mobile-only"><div class="hero-title-mobile" id="heroTitleMobile"></div></div>
             <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
         </div>
     </section>
 
     <section class="projects-onepage" id="projects">
+        <h2 style="display:none;">Projetos e Trabalhos</h2>
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="todos">Todos.</button>
             <button class="filter-btn" data-filter="curta-metragem">Curtas.</button>
@@ -195,6 +220,7 @@
     </section>
 
     <section class="about-onepage" id="about">
+        <h2 style="display:none;">Sobre Vini Poffo</h2>
         <div class="cards-wrapper">
             <div class="cards-container" id="aboutGrid"></div>
         </div>
