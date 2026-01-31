@@ -1,10 +1,9 @@
-// Lógica para a página única (One Page)
+// Lógica para a página única (One Page) - Versão Refinada
 document.addEventListener('DOMContentLoaded', function() {
-    const projects = siteData.projects;
-    let currentProjectIndex = 0;
+    const projects = [...siteData.projects];
     let isDesktop = window.innerWidth > 768;
 
-    // --- 1. INICIALIZAÇÃO DA HERO (Baseado no script.js original) ---
+    // --- 1. HERO ---
     function initializeHero() {
         if (isDesktop) {
             renderHeroTitles();
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 0; i < clickedIdx; i++) { projects.push(projects.shift()); }
         renderHeroTitles();
         updateHeroVideo(0);
-        // Animação simples
         gsap.from('.project-title', { opacity: 0, y: 20, stagger: 0.05, duration: 0.3 });
     }
 
@@ -47,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setupMobileHero() {
         const items = document.getElementById('carouselItems');
         if (!items) return;
+        items.innerHTML = '';
         projects.forEach(p => {
             const div = document.createElement('div');
             div.className = 'carousel-item';
@@ -63,22 +62,37 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // --- 2. SEÇÃO PROJETOS (CARROSSEL HORIZONTAL) ---
-    function renderProjectsCarousel() {
+    // --- 2. PROJETOS ---
+    function renderProjectsCarousel(filter = 'todos') {
         const container = document.getElementById('projectsCarousel');
         if (!container) return;
+        container.innerHTML = '';
         
-        projects.forEach((p, i) => {
-            const card = document.createElement('div');
+        const filtered = filter === 'todos' ? siteData.projects : siteData.projects.filter(p => p.type === filter);
+        
+        filtered.forEach((p, i) => {
+            const card = document.createElement('a');
+            card.href = `projeto.html?id=${p.id}`;
             card.className = 'polaroid-card';
-            // Rotação orgânica
             const rot = (i % 2 === 0 ? -1.5 : 1.5) * (Math.random() + 0.5);
             card.style.transform = `rotate(${rot}deg)`;
+            
+            // Construir overlay técnico (como na página original)
+            let overlayHTML = `<h4>${p.title.toUpperCase()}</h4>`;
+            if (p.type === 'curta-metragem') {
+                overlayHTML += `<p><span class="overlay-label">Direção:</span> ${p.credits?.direcao?.join(', ') || 'Vini Poffo'}</p>`;
+                overlayHTML += `<p><span class="overlay-label">Roteiro:</span> ${p.credits?.roteiro?.join(', ') || '-'}</p>`;
+                if (p.credits?.concepcaoArte) overlayHTML += `<p><span class="overlay-label">Arte:</span> ${p.credits.concepcaoArte.join(', ')}</p>`;
+            } else {
+                overlayHTML += `<p><span class="overlay-label">Artista:</span> ${p.artist || '-'}</p>`;
+                overlayHTML += `<p><span class="overlay-label">Direção:</span> Vini Poffo</p>`;
+            }
             
             card.innerHTML = `
                 <div class="polaroid-wrapper">
                     <div class="polaroid-image-container">
                         <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image">
+                        <div class="polaroid-overlay">${overlayHTML}</div>
                     </div>
                     <div class="polaroid-label">
                         <h3 class="polaroid-title">${p.title}</h3>
@@ -86,90 +100,100 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             `;
-            
-            card.onclick = () => {
-                if (p.trailerUrl) window.open(p.trailerUrl, '_blank');
-            };
-            
             container.appendChild(card);
-        });
-
-        // Lógica de Scroll Horizontal com Mouse (Drag)
-        const wrapper = document.getElementById('carouselWrapper');
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        wrapper.addEventListener('mousedown', (e) => {
-            isDown = true;
-            wrapper.classList.add('active');
-            startX = e.pageX - wrapper.offsetLeft;
-            scrollLeft = wrapper.scrollLeft;
-        });
-        wrapper.addEventListener('mouseleave', () => {
-            isDown = false;
-        });
-        wrapper.addEventListener('mouseup', () => {
-            isDown = false;
-        });
-        wrapper.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - wrapper.offsetLeft;
-            const walk = (x - startX) * 2;
-            wrapper.scrollLeft = scrollLeft - walk;
         });
     }
 
-    // --- 3. SEÇÃO SOBRE (MOSAICO) ---
-    function renderAboutMosaic() {
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.onclick = () => {
+            document.querySelector('.filter-btn.active').classList.remove('active');
+            btn.classList.add('active');
+            renderProjectsCarousel(btn.dataset.filter);
+        };
+    });
+
+    // Drag Scroll
+    const wrapper = document.getElementById('carouselWrapper');
+    let isDown = false, startX, scrollLeft;
+    wrapper.onmousedown = (e) => { isDown = true; startX = e.pageX - wrapper.offsetLeft; scrollLeft = wrapper.scrollLeft; };
+    wrapper.onmouseleave = () => isDown = false;
+    wrapper.onmouseup = () => isDown = false;
+    wrapper.onmousemove = (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - wrapper.offsetLeft;
+        const walk = (x - startX) * 2;
+        wrapper.scrollLeft = scrollLeft - walk;
+    };
+
+    // --- 3. SOBRE & MODAIS ---
+    const aboutContent = [
+        { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto.", span: 2 },
+        { id: 2, type: 'modal', color: 'blue', title: "Filmes", text: "Desenvolvo filmes autorais que investigam identidade, memória e território.", modal: 'filmesModal' },
+        { id: 3, type: 'modal', color: 'blue', title: "Prêmios", text: "Reconhecimentos e prêmios conquistados ao longo da trajetória criativa.", modal: 'premiosModal' },
+        { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Me interesso por imagens que carregam tempo. Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê.", span: 2 },
+        { id: 5, type: 'modal', color: 'blue', title: "Videoclipes", text: "Direção e roteiro para diversos artistas da cena nacional.", modal: 'videoclipesModal' },
+        { id: 6, type: 'modal', color: 'blue', title: "Arte & Cenografia", text: "Direção de arte e cenografia para cinema e publicidade.", modal: 'cenografiaModal' },
+        { id: 7, type: 'text', color: 'green', title: "Trajetória", text: "Premiada pela Funarte (2021) e eleita pelo SESC SC (2022) com a melhor obra de Santa Catarina. Meus filmes já percorreram mais de 20 festivais nacionais e internacionais.", span: 2 },
+        { id: 8, type: 'text', color: 'green', title: "Visão", text: "O cinema é uma ferramenta de transformação e escuta. Busco em cada frame a delicadeza e a força do que é humano.", span: 2 },
+        { id: 9, type: 'text', color: 'green', title: "Cinema Autoral", text: "A produção independente como espaço de liberdade e experimentação estética.", span: 3 },
+        { id: 10, type: 'contact', color: 'blue', title: "Vamos Conversar?", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", span: 3 }
+    ];
+
+    function renderAbout() {
         const grid = document.getElementById('aboutGrid');
-        if (!grid) return;
-
-        const aboutData = [
-            { title: "Direção Criativa", text: "Transformando conceitos em experiências visuais memoráveis.", color: "blue" },
-            { title: "Cinema", text: "Narrativas que provocam e emocionam através da lente.", color: "green" },
-            { title: "Cenografia", text: "Espaços que contam histórias e amplificam a performance.", color: "blue" },
-            { title: "Interdisciplinar", text: "A união de artes visuais, política e afeto.", color: "green" },
-            { title: "Premiações", text: "Reconhecido pela Funarte e Mostra SESC de Cinema.", color: "blue" },
-            { title: "Festivais", text: "Exibido em mais de 20 festivais nacionais e internacionais.", color: "green" },
-            { title: "Artesanal", text: "Processo cuidadoso em cada detalhe da produção.", color: "blue" },
-            { title: "Símbolos", text: "Uma linguagem visual rica em significados e metáforas.", color: "green" },
-            { title: "Cinema Autoral", text: "Obras que refletem a identidade e visão de mundo do diretor.", color: "green" },
-            { title: "Vamos Conversar?", text: "Entre em contato para novos projetos e colaborações.", color: "blue" }
-        ];
-
-        aboutData.forEach(d => {
+        grid.innerHTML = '';
+        aboutContent.forEach(c => {
             const card = document.createElement('div');
             card.className = 'flip-card';
+            if (c.span) card.style.gridColumn = `span ${c.span}`;
+            
+            let backContent = `<h4 class="flip-card-back-title">${c.title}</h4><p class="flip-card-back-text">${c.text}</p>`;
+            if (c.type === 'contact') {
+                backContent += `<div class="flip-card-back-cta-buttons">
+                    <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Email</a>
+                    <a href="https://instagram.com/poffovini" target="_blank" class="flip-card-back-cta-btn">Instagram</a>
+                </div>`;
+            }
+
             card.innerHTML = `
                 <div class="flip-card-inner">
                     <div class="flip-card-front"></div>
-                    <div class="flip-card-back ${d.color}">
-                        <h4 class="flip-card-back-title">${d.title}</h4>
-                        <p class="flip-card-back-text">${d.text}</p>
-                    </div>
+                    <div class="flip-card-back ${c.color}">${backContent}</div>
                 </div>
             `;
+            if (c.type === 'modal') card.onclick = () => document.getElementById(c.modal).classList.add('show');
             grid.appendChild(card);
         });
     }
 
-    // Hamburger Menu
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    hamburger.onclick = () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    };
+    // Preencher listas dos modais (Dados simplificados baseados no sobre.html)
+    function fillModals() {
+        const filmes = [
+            { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte" },
+            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista" },
+            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro" }
+        ];
+        document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div></div>`).join('');
+        
+        const premios = ["5 Prêmios de Melhor Filme", "Prêmio Revelação - Transforma", "SESC SC - Melhor Obra"];
+        document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p}</span></div>`).join('');
 
-    // Scroll Indicator
-    document.querySelector('.scroll-indicator').onclick = () => {
-        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-    };
+        const vcs = ["Liniker e Priscila Sena • 2025", "Letrux feat Nouvella • 2025", "Aranha - Letrux • 2024"];
+        document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v}</span></div>`).join('');
+        
+        const ceno = ["CERAVE - Pele Sequinha • 2025", "Nutren - Eu Me Vejo Pro-Idade • 2025", "Voe Azul • 2025"];
+        document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c}</span></div>`).join('');
+    }
 
-    // Iniciar tudo
+    // Fechar modais
+    document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
+    window.onclick = (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); };
+
+    // Iniciar
     initializeHero();
     renderProjectsCarousel();
-    renderAboutMosaic();
+    renderAbout();
+    fillModals();
 });
