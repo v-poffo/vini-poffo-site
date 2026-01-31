@@ -26,7 +26,7 @@
 
         section { width: 100%; position: relative; }
 
-        /* --- PROJETOS: POLAROIDES RETANGULARES --- */
+        /* --- PROJETOS: POLAROIDES ORGÂNICAS --- */
         .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
         .filter-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; padding: 0 2rem; }
         .filter-btn {
@@ -68,7 +68,6 @@
         .flip-card { perspective: 1000px; width: 100%; height: 100%; }
         .flip-card.clickable { cursor: pointer; }
         
-        /* Grid Layout Desktop Original */
         .flip-card:nth-child(1) { grid-column: span 2; }
         .flip-card:nth-child(2) { grid-column: span 1; }
         .flip-card:nth-child(3) { grid-column: span 1; }
@@ -90,36 +89,53 @@
         }
         
         .flip-card-back { transform: rotateY(180deg); padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; color: white; position: relative; overflow: hidden; }
-        .flip-card-back.blue { background: radial-gradient(circle at center, #2d617a 0%, #1f4d5f 40%, #113c51 100%); }
-        .flip-card-back.green { background: radial-gradient(circle at center, #718878 0%, #5a6f6a 40%, #3d5250 100%); }
+        .flip-card-back.blue { background: radial-gradient(circle at center, #2d617a 0%, #1f4d5f 40%, #113c51 100%); text-align: center; align-items: center; }
+        .flip-card-back.green { background: radial-gradient(circle at center, #718878 0%, #5a6f6a 40%, #3d5250 100%); text-align: left; align-items: flex-start; }
 
-        .flip-card-back-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; font-style: italic; letter-spacing: 0.1em; }
-        .flip-card-back-text { font-size: 0.85rem; line-height: 1.7; opacity: 0.95; text-align: justify; }
+        .flip-card-back-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; font-style: italic; letter-spacing: 0.1em; color: #ffffff; }
+        .flip-card-back-text { font-size: 0.85rem; line-height: 1.7; color: #ffffff; text-align: justify; margin: 0; }
+        .flip-card-back.blue .flip-card-back-text { text-align: center; }
 
-        .flip-card-back-cta-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        .flip-card-back-cta-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
         .flip-card-back-cta-btn {
             padding: 0.6rem 1.2rem; font-size: 0.75rem; border: 1px solid white; color: white; text-decoration: none;
             text-transform: uppercase; font-weight: 800; transition: 0.3s;
         }
         .flip-card-back-cta-btn:hover { background: white; color: #113c51; }
 
-        /* MODAL STYLE (Original) */
+        /* MODAL STYLE (Fiel ao sobre.html) */
         .modal { 
             display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0, 0, 0, 0.6); align-items: center; justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3); opacity: 0; transition: opacity 0.3s ease;
         }
-        .modal.show { display: flex; }
+        .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
         .modal-content { 
             background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 3rem; 
             max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; 
+            animation: slideIn 0.3s ease;
         }
-        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #2A4A5A; }
-        .modal-title { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; color: #718878; font-style: italic; }
-        .modal-item { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(42, 74, 90, 0.1); padding-bottom: 1rem; }
-        .modal-item-title { font-weight: 800; color: #2A4A5A; font-size: 1rem; margin-right: 0.6rem; }
-        .modal-item-type { font-size: 0.8rem; color: #718878; font-style: italic; }
-        .modal-item-artists { font-size: 0.85rem; color: #555; margin-top: 0.3rem; }
-        .modal-item-awards { font-size: 0.8rem; color: #718878; margin-top: 0.4rem; line-height: 1.5; }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #2A4A5A; transition: 0.3s; }
+        .modal-close:hover { color: #718878; }
+        .modal-title { 
+            font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em;
+            font-style: italic; position: relative; padding-bottom: 1.5rem; color: #718878; font-family: var(--font-primary);
+        }
+        .modal-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: #2A4A5A; }
+        .modal-item { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid #2A4A5A; }
+        .modal-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .modal-item-title { font-size: 1.1rem; font-weight: 700; color: #718878; font-style: italic; text-transform: uppercase; display: inline; }
+        .modal-item-type { font-size: 0.75rem; color: #2A4A5A; margin-left: 0.5rem; font-weight: 600; text-transform: lowercase; display: inline; }
+        .modal-item-artists { font-size: 0.8rem; color: #111A17; margin-top: 0.3rem; margin-bottom: 0.3rem; }
+        .modal-item-awards { font-size: 0.8rem; color: #111A17; margin-top: 0.8rem; line-height: 1.8; font-weight: 500; }
+
+        /* FOOTER COMPLETO */
+        footer { background-color: #111A17; color: #ffffff; padding: 3rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .footer-section ul { list-style: none; display: flex; gap: 2rem; padding: 0; }
+        .footer-section a { color: #ffffff; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+        .footer-section a:hover { text-decoration: underline; }
+        .footer-bottom { font-size: 0.75rem; color: #888; margin-top: 1rem; }
 
         @media (max-width: 1199px) {
             .cards-wrapper { aspect-ratio: auto; height: auto; }
@@ -179,12 +195,21 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="https://instagram.com/poffovini" target="_blank">Instagram</a>
-                <a href="mailto:projetos@vinipoffo.com">Email</a>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <ul>
+                    <li><a href="#hero">Início.</a></li>
+                    <li><a href="#projects">Projetos.</a></li>
+                    <li><a href="#about">Sobre.</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <a href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a>
+                <a href="https://instagram.com/poffovini" target="_blank">@poffovini</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

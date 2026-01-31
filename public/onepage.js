@@ -1,4 +1,4 @@
-// Lógica para a página única (One Page) - Fidelidade Desktop 100%
+// Lógica para a página única (One Page) - Refinamento Estético Final
 document.addEventListener('DOMContentLoaded', function() {
     const projects = [...siteData.projects];
     let isDesktop = window.innerWidth > 768;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // --- PROJETOS ---
+    // --- PROJETOS (POLAROIDES ORGÂNICAS) ---
     function renderProjectsCarousel(filter = 'todos') {
         const container = document.getElementById('projectsCarousel');
         if (!container) return;
@@ -69,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('a');
             card.href = `projeto.html?id=${p.id}`;
             card.className = 'polaroid-card';
-            const rot = (i % 2 === 0 ? -1.2 : 1.2) * (Math.random() + 0.3);
+            // Aumentando a inclinação para ser mais orgânico (-4 a 4 graus)
+            const rot = (Math.random() * 8 - 4).toFixed(1);
             card.style.transform = `rotate(${rot}deg)`;
             
             let overlayHTML = `<h4>${p.title.toUpperCase()}</h4>`;
@@ -118,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, type: 'modal', color: 'blue', title: "Arte, Cenografia e Outros", text: "Experiências que ampliam meu olhar sobre o set e fortalecem minha capacidade de construir projetos.", modal: 'cenografiaModal' },
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", text: "Acesse a galeria completa de trabalhos.", link: "projetos.html" },
         { id: 8, type: 'text', color: 'green', title: "Direção", text: "Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos." },
-        { id: 9, type: 'text', color: 'green', title: "Cinema Autoral", text: "Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação." },
+        { id: 9, type: 'text', color: 'green', title: "", text: "Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação." },
         { id: 10, type: 'contact', color: 'blue', title: "Vamos Conversar?", text: "Estou aberta a colaborações e novos projetos.<br><br>Se você busca imagens com intenção, sensibilidade e presença, vamos trocar." }
     ];
 
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const card = document.createElement('div');
             card.className = `flip-card ${c.type === 'modal' || c.type === 'contact' ? 'clickable' : ''}`;
             
-            let backContent = `<h4 class="flip-card-back-title">${c.title}</h4><p class="flip-card-back-text">${c.text}</p>`;
+            let backContent = (c.title ? `<h4 class="flip-card-back-title">${c.title}</h4>` : '') + `<p class="flip-card-back-text">${c.text}</p>`;
             if (c.type === 'contact') {
                 backContent = `<h4 class="flip-card-back-title">${c.title}</h4><p class="flip-card-back-text">${c.text}</p>
                 <div class="flip-card-back-cta-buttons">
@@ -146,38 +147,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillModals() {
+        // FILMES
         const filmes = [
             { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema" },
             { t: "O Viajante e a Raposa", y: "2024", d: "direção" },
-            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais" },
-            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Selecionado para mostra SESC de cinema nacional 2023<br>Mais de 15 festivais nacionais e internacionais" },
-            { t: "Debaixo do Guarda-chuva pra ser Resistência", y: "2021", d: "direção e roteiro", a: "Selecionado em mais de 10 festivais" }
+            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Exibição em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema" },
+            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais" },
+            { t: "Debaixo do Guarda-chuva pra ser Resistência", y: "2021", d: "direção e roteiro", a: "Selecionado em mais de 10 festivais nacionais e internacionais" },
+            { t: "Marias", y: "2021", d: "direção" }
         ];
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
+        // PRÊMIOS
         const premios = [
             { t: "5 Prêmios de Melhor Filme", a: "(Sub)Urbana – Festival SESC" },
             { t: "Prêmio Revelação", a: "Transforma Festival" },
             { t: "Curta Fest Brasília 2024", a: "Categoria Aranha" },
             { t: "SESC SC", a: "No Reflexo do Meu Nome – Reconhecimento Nacional" },
-            { t: "Exibições Internacionais", a: "Trabalhos exibidos em festivais internacionais" }
+            { t: "Exibições Internacionais", a: "Trabalhos exibidos em festivais internacionais" },
+            { t: "Lei Paulo Gustavo", a: "Contemplado para desenvolvimento de projetos" }
         ];
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><div class="modal-item-artists">${p.a}</div></div>`).join('');
 
+        // VIDEOCLIPES
         const vcs = [
             { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker e Priscila Sena • 2025" },
             { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025" },
             { t: "Vira Essa Boca Pra Cá", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025" },
-            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024<br>Melhor videoclipe pelo Curta Fest Brasilia 2024" },
-            { t: "Baião de Dois", d: "direção e direção de arte", a: "Aretuza Lovi & Getúlio Abelha • 2022" }
+            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024<br>Convidado pelo MVF para o festival na Argentina e Colômbia<br>Melhor videoclipe pelo Curta Fest Brasilia 2024" },
+            { t: "Baião de Dois", d: "direção e direção de arte", a: "Aretuza Lovi & Getúlio Abelha • 2022" },
+            { t: "Bailão", d: "direção de arte", a: "Gabeu • 2022" }
         ];
         document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div></div>`).join('');
         
+        // CENOGRAFIA
         const ceno = [
             { t: "Santo", d: "assist. de arte", a: "Curta-metragem • 2025" },
             { t: "CERAVE - Pele Sequinha", d: "assist. de produção de objetos", a: "Publicidade • 2025" },
             { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • 2025" },
-            { t: "Album - Som do Ale", d: "assist. de arte e cenografia", a: "Visualizer • 2025" }
+            { t: "Album - Som do Ale", d: "assist. de arte e cenografia", a: "Visualizer • 2025" },
+            { t: "DIVA - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • 2025" }
         ];
         document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
     }
