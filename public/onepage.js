@@ -79,11 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let overlayText = "";
             if (p.type === 'curta-metragem') {
                 const direcao = p.credits?.direcao?.join(' & ') || 'Vini Poffo';
-                const roteiro = p.credits?.roteiro?.join(' & ') || '-';
                 overlayText = `Curta-metragem ${p.title}, direção e roteiro de ${direcao}`;
                 if (p.id === 'debaixo-do-guarda-chuva') overlayText = "Curta-metragem debaixo do guarda-chuva para ser resistência e direção e roteiro de Vini Poffo";
             } else {
-                overlayText = `Videoclipe de ${p.title}, ${p.artist || '-'}, dirigido por Vini Poffo`;
+                const artista = p.artist || '-';
+                overlayText = `Videoclipe de ${p.title}, ${artista}, dirigido por Vini Poffo`;
             }
             
             card.innerHTML = `
@@ -120,6 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Navegação Carrossel Mobile
+    const carouselWrapper = document.getElementById('carouselWrapper');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    if (prevBtn && nextBtn && carouselWrapper) {
+        prevBtn.onclick = () => carouselWrapper.scrollBy({ left: -window.innerWidth, behavior: 'smooth' });
+        nextBtn.onclick = () => carouselWrapper.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+    }
+
     // --- SOBRE ---
     const aboutContent = [
         { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários.", img: "assets/quem-sou-eu/mobile-card-1.png" },
@@ -130,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 6, type: 'modal', color: 'blue', title: "Arte & Outros", modal: 'cenografiaModal', img: "assets/quem-sou-eu/mobile-card-6.png" },
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", link: "projetos.html", img: "assets/quem-sou-eu/mobile-card-7.png" },
         { id: 8, type: 'text', color: 'green', title: "Direção", text: "Cinema como prática coletiva.", img: "assets/quem-sou-eu/mobile-card-8.png" },
-        { id: 9, type: 'text', color: 'green', title: "Cinema Autoral", text: "Imagens com vida própria.", img: "assets/quem-sou-eu/mobile-card-9.png" },
+        { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Para parcerias, orçamentos ou apenas um café.", img: "assets/quem-sou-eu/mobile-card-9.png" },
         { id: 10, type: 'contact', color: 'blue', title: "Contato", img: "" }
     ];
 
@@ -140,15 +149,23 @@ document.addEventListener('DOMContentLoaded', function() {
         grid.innerHTML = '';
         aboutContent.forEach((c, i) => {
             if (!isDesktop && i === 9) return; // Hide card 10 on mobile
+            if (isDesktop && i === 8 && c.title === "Vamos Conversar") {
+                // No desktop o card 9 é Cinema Autoral
+                c.title = "Cinema Autoral";
+                c.text = "Imagens com vida própria.";
+                c.type = "text";
+                c.color = "green";
+            }
+            
             const card = document.createElement('div');
             card.className = `flip-card ${c.type === 'modal' || c.type === 'contact' ? 'clickable' : ''}`;
             
             const frontStyle = !isDesktop ? `style="background-image: url('${c.img}'); background-attachment: scroll;"` : '';
             
             let backContent = `<h4 class="flip-card-back-title">${c.title}</h4>`;
-            if (isDesktop) backContent += `<p class="flip-card-back-text">${c.text || ''}</p>`;
+            if (isDesktop || c.type === 'contact') backContent += `<p class="flip-card-back-text">${c.text || ''}</p>`;
             
-            if (c.type === 'contact' && isDesktop) {
+            if (c.type === 'contact') {
                 backContent += `
                 <div class="flip-card-back-cta-buttons">
                     <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Email</a>
@@ -174,15 +191,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const vcs = [
             { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker • 2025" },
             { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux • 2025" },
-            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024" }
+            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024" },
+            { t: "Colapso Invisível", d: "direção e roteiro", a: "YMA • 2023" },
+            { t: "Vira Essa Boca pra Cá", d: "direção e roteiro", a: "Letrux feat. Novella • 2022" },
+            { t: "Zebulon", d: "direção e roteiro", a: "YMA • 2022" },
+            { t: "Antene-se", d: "direção e roteiro", a: "Letrux • 2021" }
         ];
         document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div></div>`).join('');
 
         const ceno = [
             { t: "Santo", d: "assist. de arte", a: "Curta-metragem • 2025" },
-            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • 2025" }
+            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • 2025" },
+            { t: "CERAVE", d: "assist. de arte", a: "Publicidade • 2024" },
+            { t: "Nutren", d: "assist. de arte", a: "Publicidade • 2024" },
+            { t: "Calma São Paulo", d: "direção de arte", a: "Editorial • 2023" }
         ];
         document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
+        
+        const premios = [
+            { t: "Melhor Filme", y: "2023", d: "Festival de Cinema de Gramado", a: "(Sub)Urbana" },
+            { t: "Melhor Direção", y: "2023", d: "Mostra Sesc de Cinema", a: "(Sub)Urbana" },
+            { t: "Melhor Roteiro", y: "2022", d: "Festival de Cinema de Vitória", a: "No Reflexo do Meu Nome" }
+        ];
+        document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><span class="modal-item-type">${p.d}</span><div class="modal-item-artists">${p.y}</div><div class="modal-item-awards">${p.a}</div></div>`).join('');
     }
 
     document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
