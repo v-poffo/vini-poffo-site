@@ -131,10 +131,12 @@ document.addEventListener('DOMContentLoaded', function() {
             stagger: 0.1,
             ease: "power3.out",
             onStart: () => {
-                // DISPARO IMEDIATO: A revelação começa JUNTO com o movimento
-                document.querySelectorAll('.polaroid-image').forEach(img => {
-                    img.classList.add('revealed');
-                });
+                // Pequeno atraso de 0.5s antes de começar a revelação para um efeito mais natural
+                setTimeout(() => {
+                    document.querySelectorAll('.polaroid-image').forEach(img => {
+                        img.classList.add('revealed');
+                    });
+                }, 500);
             }
         });
     }
