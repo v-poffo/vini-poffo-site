@@ -597,24 +597,23 @@
                 max-width: 100%;
                 margin: 0;
                 aspect-ratio: auto;
-                padding: 2rem 1rem;
+                padding: 0;
             }
 
             .cards-container { 
                 display: grid;
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0;
                 width: 100%;
-                max-width: 500px;
-                margin: 0 auto;
+                margin: 0;
                 height: auto;
             }
 
-            /* RESET GRID SPANS FOR MOBILE */
+            /* RESET GRID SPANS FOR MOBILE - ALL SAME SIZE SQUARES */
             .flip-card {
                 grid-column: span 1 !important;
                 grid-row: span 1 !important;
-                aspect-ratio: 1 / 1.2;
+                aspect-ratio: 1 / 1;
             }
 
             .flip-card-front {
