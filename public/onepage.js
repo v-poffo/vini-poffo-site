@@ -1,4 +1,4 @@
-// Lógica para a página única (One Page) - Versão Final com Animações
+// Lógica para a página única (One Page) - Versão Final Refinada
 document.addEventListener('DOMContentLoaded', function() {
     const projects = [...siteData.projects];
     let isDesktop = window.innerWidth > 768;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // --- PROJETOS (ANIMAÇÃO E OVERLAYS DETALHADOS) ---
+    // --- PROJETOS (ANIMAÇÃO MULTIDIRECIONAL E TEXTOS EXATOS) ---
     function renderProjectsCarousel(filter = 'todos') {
         const container = document.getElementById('projectsCarousel');
         if (!container) return;
@@ -72,14 +72,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const rot = (Math.random() * 8 - 4).toFixed(1);
             card.style.transform = `rotate(${rot}deg)`;
             
-            // Textos Técnicos Detalhados para o Overlay
+            // Textos Técnicos Exatos baseados na página original
             let overlayText = "";
             if (p.type === 'curta-metragem') {
                 const direcao = p.credits?.direcao?.join(' & ') || 'Vini Poffo';
                 const roteiro = p.credits?.roteiro?.join(' & ') || '-';
-                overlayText = `Direção de ${direcao}, roteiro de ${roteiro}`;
+                overlayText = `Curta-metragem ${p.title}, direção e roteiro de ${direcao}`;
+                if (p.credits?.roteiro && p.credits.roteiro.length > 1) overlayText = `Curta-metragem ${p.title}, direção de ${direcao} e roteiro de ${roteiro}`;
                 if (p.credits?.concepcaoArte) overlayText += `, concepção de arte por ${p.credits.concepcaoArte.join(' & ')}`;
                 if (p.awards && p.awards.length > 0) overlayText += `. ${p.awards[0]}`;
+                
+                // Caso específico solicitado
+                if (p.id === 'debaixo-do-guarda-chuva') {
+                    overlayText = "Curta-metragem debaixo do guarda-chuva para ser resistência e direção e roteiro de Vini Poffo";
+                }
             } else {
                 const artista = p.artist || '-';
                 overlayText = `Videoclipe de ${p.title}, ${artista}, dirigido por Vini Poffo`;
@@ -102,17 +108,28 @@ document.addEventListener('DOMContentLoaded', function() {
             container.appendChild(card);
         });
 
-        // Animação de Entrada das Polaroides (GSAP)
+        // Animação de Entrada Multidirecional (GSAP)
         gsap.from(".polaroid-card", {
             scrollTrigger: {
                 trigger: ".projects-onepage",
                 start: "top 80%",
             },
-            y: 50,
+            y: (i) => {
+                const mod = i % 4;
+                if (mod === 0) return 150;  // Vem de baixo
+                if (mod === 1) return -150; // Vem de cima
+                return 0;
+            },
+            x: (i) => {
+                const mod = i % 4;
+                if (mod === 2) return 150;  // Vem da direita
+                if (mod === 3) return -150; // Vem da esquerda
+                return 0;
+            },
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.05,
-            ease: "power2.out"
+            duration: 1.5,
+            stagger: 0.15,
+            ease: "power3.out"
         });
     }
 
