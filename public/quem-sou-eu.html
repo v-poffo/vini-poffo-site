@@ -624,11 +624,12 @@
                 aspect-ratio: auto;
             }
 
-            /* CARD 10 - RETANGULAR (FIM) */
-            .flip-card:nth-child(10) {
+            /* CARD 9 - RETANGULAR (FIM) - FULL HEIGHT */
+            .flip-card:nth-child(9) {
                 grid-column: span 1;
                 grid-row: span 2;
                 aspect-ratio: auto;
+                min-height: 100vh;
             }
 
             .flip-card-front {
@@ -905,25 +906,11 @@
                 </div>
             </div>
 
-            <!-- Card 9: Cinema Autoral (2 cols x 1 row) - NO MODAL (shows text on flip) -->
-            <div class="flip-card card-9" data-category="autoral" data-modal="false">
+            <!-- Card 9: Vamos Conversar? (3 cols x 1 row) - CONTACT -->
+            <div class="flip-card card-9" data-category="contato" data-modal="false">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
-                        <img src="assets/quem-sou-eu/test_card_9.png" alt="Cinema Autoral">
-                    </div>
-                    <div class="flip-card-back green">
-                        <div class="flip-card-back-content spaced">
-                            <div class="flip-card-back-text">Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação. Gosto de estar próxima do processo, acompanhando cada detalhe, porque é ali que a magia acontece.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 10: Vamos Conversar? (3 cols x 1 row) - CONTACT -->
-            <div class="flip-card card-10" data-category="contato" data-modal="false">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <img src="assets/quem-sou-eu/test_card_10.png" alt="Vamos Conversar?">
+                        <img src="assets/quem-sou-eu/mobile-card-9.png" alt="Vamos Conversar?">
                     </div>
                     <div class="flip-card-back blue">
                         <div class="flip-card-back-content flip-card-back-cta">
@@ -1126,7 +1113,32 @@
         </div>
     </div>
 
+    <!-- Modal: Quem Sou Eu -->
+    <div id="quemSouEuModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Quem Sou Eu</h3>
+            <p>Sou Vini Poffo, diretora criativa, cineasta e artista, com foco em cinema, videoclipes e projetos interdisciplinares. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.</p>
+        </div>
+    </div>
 
+    <!-- Modal: Processo Criativo -->
+    <div id="processoModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Processo Criativo</h3>
+            <p>Me interesso por imagens que carregam tempo.<br><br>Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.</p>
+        </div>
+    </div>
+
+    <!-- Modal: Direção -->
+    <div id="direcaoModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">Direção</h3>
+            <p>Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.</p>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -1181,14 +1193,13 @@
         // MODAL FUNCTIONALITY
         const flipCards = document.querySelectorAll('.flip-card');
         const modals = {
-            'quem-sou-eu': null,
-            'premios': document.getElementById('premiosModal'),
             'filmes': document.getElementById('filmesModal'),
+            'premios': document.getElementById('premiosModal'),
             'videoclipes': document.getElementById('videoclipesModal'),
             'cenografia': document.getElementById('cenografiaModal'),
-            'processo': null,
-            'direcao': null,
-            'autoral': null,
+            'quem-sou-eu': document.getElementById('quemSouEuModal'),
+            'processo': document.getElementById('processoModal'),
+            'direcao': document.getElementById('direcaoModal'),
             'projetos': null,
             'contato': null
         };
@@ -1199,10 +1210,11 @@
                 const shouldOpenModal = this.dataset.modal === 'true';
                 const link = this.dataset.link;
                 const isMobile = window.innerWidth <= 1024;
+                const textCategories = ['quem-sou-eu', 'processo', 'direcao'];
                 
                 if (link && !isMobile) {
                     window.location.href = link;
-                } else if (shouldOpenModal || isMobile) {
+                } else if (shouldOpenModal || (isMobile && textCategories.includes(category))) {
                     const modal = modals[category];
                     if (modal) {
                         modal.classList.add('show');
