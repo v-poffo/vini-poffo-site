@@ -108,11 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 trigger: ".projects-onepage",
                 start: "top 80%",
             },
-            y: (i) => (i % 2 === 0 ? 100 : -100), // Entra de cima ou de baixo
-            x: (i) => (i % 3 === 0 ? -50 : 50),   // Entra dos lados
+            y: 50,
             opacity: 0,
-            duration: 1.2,
-            stagger: 0.1,
+            duration: 0.8,
+            stagger: 0.05,
             ease: "power2.out"
         });
     }
