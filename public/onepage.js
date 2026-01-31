@@ -131,15 +131,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- SOBRE ---
     const aboutContent = [
-        { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários.", img: "assets/quem-sou-eu/mobile-card-1.png" },
+        { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Me interesso por imagens que carregam tempo.", modal: 'quemSouEuModal', img: "assets/quem-sou-eu/mobile-card-1.png" },
         { id: 2, type: 'modal', color: 'blue', title: "Filmes", modal: 'filmesModal', img: "assets/quem-sou-eu/mobile-card-2.jpg" },
         { id: 3, type: 'modal', color: 'blue', title: "Prêmios", modal: 'premiosModal', img: "assets/quem-sou-eu/mobile-card-3.png" },
-        { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Me interesso por imagens que carregam tempo.", img: "assets/quem-sou-eu/mobile-card-4.png" },
+        { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê.", modal: 'processoCriativoModal', img: "assets/quem-sou-eu/mobile-card-4.png" },
         { id: 5, type: 'modal', color: 'blue', title: "Videoclipes", modal: 'videoclipesModal', img: "assets/quem-sou-eu/mobile-card-5.png" },
         { id: 6, type: 'modal', color: 'blue', title: "Arte & Outros", modal: 'cenografiaModal', img: "assets/quem-sou-eu/mobile-card-6.png" },
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", link: "projetos.html", img: "assets/quem-sou-eu/mobile-card-7.png" },
-        { id: 8, type: 'text', color: 'green', title: "Direção", text: "Cinema como prática coletiva.", img: "assets/quem-sou-eu/mobile-card-8.png" },
-        { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Para parcerias, orçamentos ou apenas um café.", img: "assets/quem-sou-eu/mobile-card-9.png" },
+        { id: 8, type: 'text', color: 'green', title: "Direção", text: "Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", modal: 'direcaoModal', img: "assets/quem-sou-eu/mobile-card-8.png" },
+        { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", img: "assets/quem-sou-eu/mobile-card-9.png" },
         { id: 10, type: 'contact', color: 'blue', title: "Contato", img: "" }
     ];
 
@@ -148,17 +148,17 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!grid) return;
         grid.innerHTML = '';
         aboutContent.forEach((c, i) => {
-            if (!isDesktop && i === 9) return; // Hide card 10 on mobile
+            if (!isDesktop && i === 9) return;
             if (isDesktop && i === 8 && c.title === "Vamos Conversar") {
-                // No desktop o card 9 é Cinema Autoral
                 c.title = "Cinema Autoral";
-                c.text = "Imagens com vida própria.";
+                c.text = "Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina.";
                 c.type = "text";
                 c.color = "green";
+                delete c.modal;
             }
             
             const card = document.createElement('div');
-            card.className = `flip-card ${c.type === 'modal' || c.type === 'contact' ? 'clickable' : ''}`;
+            card.className = `flip-card clickable`;
             
             const frontStyle = !isDesktop ? `style="background-image: url('${c.img}'); background-attachment: scroll;"` : '';
             
@@ -174,8 +174,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             card.innerHTML = `<div class="flip-card-inner"><div class="flip-card-front" ${frontStyle}></div><div class="flip-card-back ${c.color}">${backContent}</div></div>`;
-            if (c.type === 'modal') card.onclick = () => document.getElementById(c.modal).classList.add('show');
-            if (c.link) card.onclick = () => window.location.href = c.link;
+            
+            card.onclick = () => {
+                if (!isDesktop && c.modal) {
+                    document.getElementById(c.modal).classList.add('show');
+                } else if (c.type === 'modal') {
+                    document.getElementById(c.modal).classList.add('show');
+                } else if (c.link) {
+                    window.location.href = c.link;
+                }
+            };
+            
             grid.appendChild(card);
         });
     }
@@ -183,8 +192,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function fillModals() {
         const filmes = [
             { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025" },
-            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme" },
-            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Circuito Nacional SESC" }
+            { t: "O Viajante e a Raposa", y: "2024", d: "direção", a: "" },
+            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme • Prêmio Revelação – IV Transforma Festival" },
+            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Selecionado para mostra SESC de cinema nacional 2023" },
+            { t: "Debaixo do Guarda-chuva pra ser Resistência", y: "2021", d: "direção e roteiro", a: "Selecionado em mais de 10 festivais" },
+            { t: "Marias", y: "2021", d: "direção", a: "" }
         ];
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
@@ -209,11 +221,18 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
         
         const premios = [
-            { t: "Melhor Filme", y: "2023", d: "Festival de Cinema de Gramado", a: "(Sub)Urbana" },
-            { t: "Melhor Direção", y: "2023", d: "Mostra Sesc de Cinema", a: "(Sub)Urbana" },
-            { t: "Melhor Roteiro", y: "2022", d: "Festival de Cinema de Vitória", a: "No Reflexo do Meu Nome" }
+            { t: "5 Prêmios de Melhor Filme", y: "2023", d: "Festival SESC", a: "(Sub)Urbana" },
+            { t: "Prêmio Revelação", y: "2023", d: "Transforma Festival", a: "(Sub)Urbana" },
+            { t: "Curta Fest Brasília 2024", y: "2024", d: "Categoria Aranha", a: "Aranha" },
+            { t: "Prêmio Catarinense de Cinema", y: "2025", d: "Mostra SESC", a: "Tem Feito Uns Dias Esquisitos" }
         ];
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><span class="modal-item-type">${p.d}</span><div class="modal-item-artists">${p.y}</div><div class="modal-item-awards">${p.a}</div></div>`).join('');
+
+        // Textos Mobile
+        document.getElementById('quemSouEuText').innerHTML = `<p class="modal-item-text-p">Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Me interesso por imagens que carregam tempo.<br><br>Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê.</p>`;
+        document.getElementById('processoCriativoText').innerHTML = `<p class="modal-item-text-p">Me interesso por imagens que carregam tempo. Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.</p>`;
+        document.getElementById('direcaoText').innerHTML = `<p class="modal-item-text-p">Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.</p>`;
+        document.getElementById('cinemaAutoralText').innerHTML = `<p class="modal-item-text-p">Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina.</p>`;
     }
 
     document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));

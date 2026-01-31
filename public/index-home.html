@@ -176,6 +176,7 @@
         .modal-item-type { font-size: 0.75rem; color: #2A4A5A; margin-left: 0.5rem; font-weight: 600; text-transform: lowercase; display: inline; }
         .modal-item-artists { font-size: 0.8rem; color: #111A17; margin-top: 0.3rem; margin-bottom: 0.3rem; }
         .modal-item-awards { font-size: 0.8rem; color: #111A17; margin-top: 0.8rem; line-height: 1.8; font-weight: 500; }
+        .modal-item-text-p { font-size: 0.9rem; line-height: 1.7; color: #111A17; text-align: justify; font-family: var(--font-primary); }
 
         /* FOOTER */
         .footer-onepage { padding: 4rem 0 2rem 0; background-color: #111A17; text-align: center; position: relative; z-index: 5; margin-top: -2px; }
@@ -213,12 +214,14 @@
             
             .carousel-nav-btn {
                 position: absolute; top: 50%; transform: translateY(-50%);
-                background: rgba(255,255,255,0.2); border: none; color: white;
-                font-size: 2rem; padding: 1rem; z-index: 100; cursor: pointer;
+                background: transparent; border: none; color: rgba(255,255,255,0.5);
+                font-size: 2.5rem; padding: 1rem; z-index: 100; cursor: pointer;
                 display: flex; align-items: center; justify-content: center;
+                transition: color 0.3s ease;
             }
-            .nav-prev { left: 0; }
-            .nav-next { right: 0; }
+            .carousel-nav-btn:active { color: rgba(255,255,255,1); }
+            .nav-prev { left: 5px; }
+            .nav-next { right: 5px; }
 
             .filter-buttons { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding-bottom: 1rem; }
             
@@ -293,6 +296,12 @@
     <div id="premiosModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Prêmios</h3><div id="premiosList"></div></div></div>
     <div id="videoclipesModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Videoclipes</h3><div id="videoclipesList"></div></div></div>
     <div id="cenografiaModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Arte, Cenografia e Outros</h3><div id="cenografiaList"></div></div></div>
+    
+    <!-- MODAIS DE TEXTO MOBILE -->
+    <div id="quemSouEuModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Quem Sou Eu</h3><div class="modal-item-text" id="quemSouEuText"></div></div></div>
+    <div id="processoCriativoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Processo Criativo</h3><div class="modal-item-text" id="processoCriativoText"></div></div></div>
+    <div id="direcaoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Direção</h3><div class="modal-item-text" id="direcaoText"></div></div></div>
+    <div id="cinemaAutoralModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Cinema Autoral</h3><div class="modal-item-text" id="cinemaAutoralText"></div></div></div>
 
     <script src="data.js"></script>
     <script src="onepage.js"></script>
