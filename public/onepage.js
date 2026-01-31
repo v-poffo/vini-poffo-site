@@ -131,14 +131,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- SOBRE ---
     const aboutContent = [
-        { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Me interesso por imagens que carregam tempo.", modal: 'quemSouEuModal', img: "assets/quem-sou-eu/mobile-card-1.png" },
+        { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.", modal: 'quemSouEuModal', img: "assets/quem-sou-eu/mobile-card-1.png" },
         { id: 2, type: 'modal', color: 'blue', title: "Filmes", modal: 'filmesModal', img: "assets/quem-sou-eu/mobile-card-2.jpg" },
         { id: 3, type: 'modal', color: 'blue', title: "Prêmios", modal: 'premiosModal', img: "assets/quem-sou-eu/mobile-card-3.png" },
-        { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê.", modal: 'processoCriativoModal', img: "assets/quem-sou-eu/mobile-card-4.png" },
+        { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Me interesso por imagens que carregam tempo. Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.", modal: 'processoCriativoModal', img: "assets/quem-sou-eu/mobile-card-4.png" },
         { id: 5, type: 'modal', color: 'blue', title: "Videoclipes", modal: 'videoclipesModal', img: "assets/quem-sou-eu/mobile-card-5.png" },
         { id: 6, type: 'modal', color: 'blue', title: "Arte & Outros", modal: 'cenografiaModal', img: "assets/quem-sou-eu/mobile-card-6.png" },
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", link: "projetos.html", img: "assets/quem-sou-eu/mobile-card-7.png" },
-        { id: 8, type: 'text', color: 'green', title: "Direção", text: "Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", modal: 'direcaoModal', img: "assets/quem-sou-eu/mobile-card-8.png" },
+        { id: 8, type: 'text', color: 'green', title: "Direção", text: "Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", modal: 'direcaoModal', img: "assets/quem-sou-eu/mobile-card-8.png" },
         { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", img: "assets/quem-sou-eu/mobile-card-9.png" },
         { id: 10, type: 'contact', color: 'blue', title: "Contato", img: "" }
     ];
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isDesktop && i === 9) return;
             if (isDesktop && i === 8 && c.title === "Vamos Conversar") {
                 c.title = "Cinema Autoral";
-                c.text = "Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina.";
+                c.text = "Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação. Gosto de estar próxima do processo, acompanhando cada detalhe, porque é ali que a magia acontece.";
                 c.type = "text";
                 c.color = "green";
                 delete c.modal;
