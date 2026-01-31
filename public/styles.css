@@ -709,7 +709,7 @@ p {
 .footer {
     background-color: var(--primary-black);
     color: var(--primary-white);
-    padding: 3rem 2rem;
+    padding: 0.5rem 2rem;
     text-align: center;
 }
 
@@ -720,21 +720,22 @@ p {
 
 .footer-container p {
     color: var(--primary-white);
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
     font-weight: 300;
+    font-size: 0.8rem;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .social-links a {
     color: var(--primary-white);
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
 }
 
 .social-links a:hover {
