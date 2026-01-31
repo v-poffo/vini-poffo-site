@@ -609,11 +609,26 @@
                 height: auto;
             }
 
-            /* RESET GRID SPANS FOR MOBILE - ALL SAME SIZE SQUARES */
+            /* RESET GRID SPANS FOR MOBILE */
             .flip-card {
                 grid-column: span 1 !important;
                 grid-row: span 1 !important;
                 aspect-ratio: 1 / 1;
+                cursor: pointer;
+            }
+
+            /* CARD 1 - RETANGULAR (INÍCIO) */
+            .flip-card:nth-child(1) {
+                grid-column: span 1;
+                grid-row: span 2;
+                aspect-ratio: auto;
+            }
+
+            /* CARD 10 - RETANGULAR (FIM) */
+            .flip-card:nth-child(10) {
+                grid-column: span 1;
+                grid-row: span 2;
+                aspect-ratio: auto;
             }
 
             .flip-card-front {
@@ -660,11 +675,25 @@
                 display: none;
             }
         }
-
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .cards-container {
                 max-width: 100%;
                 padding: 0 1rem;
+            }
+
+            /* MOBILE - MOSTRAR APENAS TÍTULO NO FLIP */
+            .flip-card-back-text {
+                display: none !important;
+            }
+
+            .flip-card-back-content.spaced {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .flip-card-back-content.centered {
+                justify-content: center;
+                align-items: center;
             }
         }
         .flip-card-back-cta {
@@ -1169,10 +1198,11 @@
                 const category = this.dataset.category;
                 const shouldOpenModal = this.dataset.modal === 'true';
                 const link = this.dataset.link;
+                const isMobile = window.innerWidth <= 1024;
                 
-                if (link) {
+                if (link && !isMobile) {
                     window.location.href = link;
-                } else if (shouldOpenModal) {
+                } else if (shouldOpenModal || isMobile) {
                     const modal = modals[category];
                     if (modal) {
                         modal.classList.add('show');
