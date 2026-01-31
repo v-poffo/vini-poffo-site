@@ -1,4 +1,4 @@
-// Lógica para a página única (One Page) - Refinamento Estético Final
+// Lógica para a página única (One Page) - Versão Final com Animações
 document.addEventListener('DOMContentLoaded', function() {
     const projects = [...siteData.projects];
     let isDesktop = window.innerWidth > 768;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     }
 
-    // --- PROJETOS (POLAROIDES ORGÂNICAS) ---
+    // --- PROJETOS (ANIMAÇÃO E OVERLAYS DETALHADOS) ---
     function renderProjectsCarousel(filter = 'todos') {
         const container = document.getElementById('projectsCarousel');
         if (!container) return;
@@ -72,18 +72,48 @@ document.addEventListener('DOMContentLoaded', function() {
             const rot = (Math.random() * 8 - 4).toFixed(1);
             card.style.transform = `rotate(${rot}deg)`;
             
-            let overlayHTML = `<h4>${p.title.toUpperCase()}</h4>`;
+            // Textos Técnicos Detalhados para o Overlay
+            let overlayText = "";
             if (p.type === 'curta-metragem') {
-                overlayHTML += `<p><span class="overlay-label">Direção:</span> ${p.credits?.direcao?.join(', ') || 'Vini Poffo'}</p>`;
-                overlayHTML += `<p><span class="overlay-label">Roteiro:</span> ${p.credits?.roteiro?.join(', ') || '-'}</p>`;
-                if (p.credits?.concepcaoArte) overlayHTML += `<p><span class="overlay-label">Arte:</span> ${p.credits.concepcaoArte.join(', ')}</p>`;
+                const direcao = p.credits?.direcao?.join(' & ') || 'Vini Poffo';
+                const roteiro = p.credits?.roteiro?.join(' & ') || '-';
+                overlayText = `Direção de ${direcao}, roteiro de ${roteiro}`;
+                if (p.credits?.concepcaoArte) overlayText += `, concepção de arte por ${p.credits.concepcaoArte.join(' & ')}`;
+                if (p.awards && p.awards.length > 0) overlayText += `. ${p.awards[0]}`;
             } else {
-                overlayHTML += `<p><span class="overlay-label">Artista:</span> ${p.artist || '-'}</p>`;
-                overlayHTML += `<p><span class="overlay-label">Direção:</span> Vini Poffo</p>`;
+                const artista = p.artist || '-';
+                overlayText = `Videoclipe de ${p.title}, ${artista}, dirigido por Vini Poffo`;
             }
             
-            card.innerHTML = `<div class="polaroid-wrapper"><div class="polaroid-image-container"><img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image"><div class="polaroid-overlay">${overlayHTML}</div></div><div class="polaroid-label"><h3 class="polaroid-title">${p.title}</h3><p class="polaroid-year">${p.year}</p></div></div>`;
+            card.innerHTML = `
+                <div class="polaroid-wrapper">
+                    <div class="polaroid-image-container">
+                        <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image" onload="this.classList.add('revealed')">
+                        <div class="polaroid-overlay">
+                            <div class="overlay-text">${overlayText}</div>
+                        </div>
+                    </div>
+                    <div class="polaroid-label">
+                        <h3 class="polaroid-title">${p.title}</h3>
+                        <p class="polaroid-year">${p.year}</p>
+                    </div>
+                </div>
+            `;
             container.appendChild(card);
+        });
+
+        // Animação de Entrada das Polaroides (GSAP)
+        gsap.from(".polaroid-card", {
+            scrollTrigger: {
+                trigger: ".projects-onepage",
+                start: "top 80%",
+            },
+            y: (i) => (i % 2 === 0 ? 100 : -100), // Entra de cima ou de baixo
+            x: (i) => (i % 3 === 0 ? -50 : 50),   // Entra dos lados
+            opacity: 0,
+            duration: 1.2,
+            stagger: 0.1,
+            ease: "power2.out"
         });
     }
 
@@ -108,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.scrollLeft = scrollLeft - walk;
     };
 
-    // --- SOBRE (ESTRUTURA DE 10 CARDS DESKTOP) ---
+    // --- SOBRE (10 CARDS DESKTOP) ---
     const aboutContent = [
         { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo." },
         { id: 2, type: 'modal', color: 'blue', title: "Filmes", text: "Desenvolvo filmes autorais que investigam identidade, memória e território.", modal: 'filmesModal' },
@@ -146,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillModals() {
-        // FILMES (COMPLETO)
         const filmes = [
             { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema" },
             { t: "O Viajante e a Raposa", y: "2024", d: "direção" },
@@ -157,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
-        // PRÊMIOS (COMPLETO)
         const premios = [
             { t: "5 Prêmios de Melhor Filme", a: "(Sub)Urbana – Festival SESC" },
             { t: "Prêmio Revelação", a: "Transforma Festival" },
@@ -168,7 +196,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><div class="modal-item-artists">${p.a}</div></div>`).join('');
 
-        // VIDEOCLIPES (COMPLETO - EXTRAÍDO DO ORIGINAL)
         const vcs = [
             { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker e Priscila Sena • 2025" },
             { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025", w: "Lançamento pela Noize" },
@@ -187,7 +214,6 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div>${v.w ? `<div class="modal-item-awards">${v.w}</div>` : ''}</div>`).join('');
         
-        // CENOGRAFIA E OUTROS (COMPLETO - EXTRAÍDO DO ORIGINAL)
         const ceno = [
             { t: "Santo", d: "assist. de arte", a: "Curta-metragem • Outros • 2025" },
             { t: "CERAVE - Pele Sequinha", d: "assist. de produção de objetos", a: "Publicidade • Outros • 2025" },
