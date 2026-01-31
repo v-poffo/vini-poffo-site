@@ -602,7 +602,7 @@
 
             .cards-container { 
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
                 gap: 0;
                 width: 100%;
                 margin: 0;
@@ -617,17 +617,22 @@
                 cursor: pointer;
             }
 
-            /* CARD 1 - RETANGULAR VERTICAL (ESQUERDA) */
+            /* CARD 1 - RETANGULAR VERTICAL (COLUNA 1, 2 LINHAS) */
             .flip-card:nth-child(1) {
                 grid-column: 1;
                 grid-row: 1 / span 2;
                 aspect-ratio: auto;
             }
 
-            /* CARD 9 - RETANGULAR HORIZONTAL (FIM) */
+            /* CARD 9 - RETANGULAR HORIZONTAL (PENÚLTIMA LINHA, 2 COLUNAS) */
             .flip-card:nth-child(9) {
                 grid-column: 1 / -1;
-                grid-row: auto;
+                aspect-ratio: 16 / 9;
+            }
+
+            /* CARD 10 - RETANGULAR HORIZONTAL (ÚLTIMA LINHA, 2 COLUNAS) */
+            .flip-card:nth-child(10) {
+                grid-column: 1 / -1;
                 aspect-ratio: 16 / 9;
             }
 
