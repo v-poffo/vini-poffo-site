@@ -788,12 +788,21 @@
         }
 
         @media (min-width: 769px) {
+            .cards-section {
+                min-height: 100vh !important;
+                height: auto !important;
+            }
+
+            .cards-wrapper {
+                height: calc(100vh - 60px) !important;
+            }
+
             .cards-container {
                 display: grid !important;
                 grid-template-columns: repeat(6, 1fr) !important;
                 grid-auto-rows: 1fr !important;
                 gap: 0 !important;
-                height: 640px !important;
+                height: 100% !important;
                 aspect-ratio: 16/9 !important;
             }
             
