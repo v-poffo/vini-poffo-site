@@ -589,6 +589,85 @@
             transform: scale(1.02);
             transition: transform 0.3s ease;
         }
+
+        /* MOBILE/TABLET RESPONSIVITY - SEPARATE CARDS */
+        @media (max-width: 1024px) {
+            .cards-wrapper {
+                width: 100%;
+                max-width: 100%;
+                margin: 0;
+                aspect-ratio: auto;
+                padding: 2rem 1rem;
+            }
+
+            .cards-container { 
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+                height: auto;
+            }
+
+            /* RESET GRID SPANS FOR MOBILE */
+            .flip-card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                aspect-ratio: 1 / 1.2;
+            }
+
+            .flip-card-front {
+                background-size: cover;
+                background-position: center;
+                background-attachment: scroll;
+            }
+
+            /* INDIVIDUAL CARD IMAGES FOR MOBILE */
+            .flip-card:nth-child(1) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-1.png');
+            }
+            .flip-card:nth-child(2) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-2.jpg');
+            }
+            .flip-card:nth-child(3) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-3.png');
+            }
+            .flip-card:nth-child(4) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-4.png');
+            }
+            .flip-card:nth-child(5) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-5.png');
+            }
+            .flip-card:nth-child(6) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-6.png');
+            }
+            .flip-card:nth-child(7) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-7.png');
+            }
+            .flip-card:nth-child(8) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-8.png');
+            }
+            .flip-card:nth-child(9) .flip-card-front {
+                background-image: url('assets/quem-sou-eu/mobile-card-9.png');
+            }
+            .flip-card:nth-child(10) .flip-card-front {
+                background-image: none;
+                background-color: #1a2622;
+            }
+
+            /* HIDE IMAGES ON MOBILE */
+            .flip-card-front img {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+        }
         .flip-card-back-cta {
             display: flex;
             flex-direction: column;
