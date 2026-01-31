@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `
                 <div class="polaroid-wrapper">
                     <div class="polaroid-image-container">
-                        <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image">
+                        <img src="assets/cartazes/${p.cartazMobile}" class="polaroid-image" loading="lazy">
                         <div class="polaroid-overlay">
                             <div class="overlay-text">${overlayText}</div>
                         </div>

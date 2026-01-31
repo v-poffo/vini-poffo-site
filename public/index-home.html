@@ -23,12 +23,33 @@
     <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
 
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload de ativos críticos -->
+    <link rel="preload" href="assets/logo/logo.avif" as="image">
+    <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Dados Estruturados JSON-LD para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vini Poffo",
+      "url": "https://vini-poffo-site.vercel.app/",
+      "jobTitle": "Cineasta, Diretora Criativa e Artista",
+      "sameAs": [
+        "https://instagram.com/poffovini"
+      ],
+      "description": "Cineasta e diretora criativa focada em cinema autoral, videoclipes e projetos publicitários."
+    }
+    </script>
+    
     <style>
         :root {
             --font-primary: 'Montserrat', sans-serif;
