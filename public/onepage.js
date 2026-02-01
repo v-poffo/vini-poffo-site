@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", link: "projetos.html", img: "assets/quem-sou-eu/mobile-card-7.png" },
         { id: 8, type: 'text', color: 'green', title: "Direção", text: "Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", modal: 'direcaoModal', img: "assets/quem-sou-eu/mobile-card-8.png" },
         { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", img: "assets/quem-sou-eu/mobile-card-9.png" },
-        { id: 10, type: 'contact', color: 'blue', title: "Contato", img: "" }
+        { id: 10, type: 'contact', color: 'blue', title: "VAMOS CONVERSAR?", text: "Estou aberta a colaborações e novos projetos.\n\nSe você busca imagens com intenção, sensibilidade e presença, vamos trocar.", img: "" }
     ];
 
     function renderAbout() {
@@ -158,7 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             const card = document.createElement('div');
-            card.className = `flip-card clickable`;
+            const isClickable = (c.type === 'modal' && c.modal) || c.link;
+            card.className = isClickable ? 'flip-card clickable' : 'flip-card';
             
             const frontStyle = !isDesktop ? `style="background-image: url('${c.img}'); background-attachment: scroll;"` : '';
             
