@@ -132,11 +132,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- SOBRE ---
     const aboutContent = [
         { id: 1, type: 'text', color: 'green', title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.", modal: 'quemSouEuModal', img: "assets/quem-sou-eu/mobile-card-1.png" },
-        { id: 2, type: 'modal', color: 'blue', title: "Filmes", modal: 'filmesModal', img: "assets/quem-sou-eu/mobile-card-2.jpg" },
-        { id: 3, type: 'modal', color: 'blue', title: "Prêmios", modal: 'premiosModal', img: "assets/quem-sou-eu/mobile-card-3.png" },
+        { id: 2, type: 'modal', color: 'blue', title: "Filmes", text: "Desenvolvo filmes autorais que investigam identidade, memória e território.", modal: 'filmesModal', img: "assets/quem-sou-eu/mobile-card-2.jpg" },
+        { id: 3, type: 'modal', color: 'blue', title: "Prêmios", text: "Reconhecimentos e prêmios conquistados ao longo da trajetória criativa.", modal: 'premiosModal', img: "assets/quem-sou-eu/mobile-card-3.png" },
         { id: 4, type: 'text', color: 'green', title: "Processo Criativo", text: "Me interesso por imagens que carregam tempo. Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.", modal: 'processoCriativoModal', img: "assets/quem-sou-eu/mobile-card-4.png" },
-        { id: 5, type: 'modal', color: 'blue', title: "Videoclipes", modal: 'videoclipesModal', img: "assets/quem-sou-eu/mobile-card-5.png" },
-        { id: 6, type: 'modal', color: 'blue', title: "Arte & Outros", modal: 'cenografiaModal', img: "assets/quem-sou-eu/mobile-card-6.png" },
+        { id: 5, type: 'modal', color: 'blue', title: "Videoclipes", text: "Vejo o videoclipe como um espaço de invenção estética, onde imagem, corpo e som constroem narrativas experimentais e com força conceitual.", modal: 'videoclipesModal', img: "assets/quem-sou-eu/mobile-card-5.png" },
+        { id: 6, type: 'modal', color: 'blue', title: "Arte, Cenografia e Outros", text: "Experiências que ampliam meu olhar sobre o set e fortalecem minha capacidade de construir projetos.", modal: 'cenografiaModal', img: "assets/quem-sou-eu/mobile-card-6.png" },
         { id: 7, type: 'modal', color: 'blue', title: "Projetos", link: "projetos.html", img: "assets/quem-sou-eu/mobile-card-7.png" },
         { id: 8, type: 'text', color: 'green', title: "Direção", text: "Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", modal: 'direcaoModal', img: "assets/quem-sou-eu/mobile-card-8.png" },
         { id: 9, type: 'contact', color: 'blue', title: "Vamos Conversar", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", img: "assets/quem-sou-eu/mobile-card-9.png" },
@@ -191,40 +191,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function fillModals() {
         const filmes = [
-            { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025" },
+            { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema" },
             { t: "O Viajante e a Raposa", y: "2024", d: "direção", a: "" },
-            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme • Prêmio Revelação – IV Transforma Festival" },
-            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Selecionado para mostra SESC de cinema nacional 2023" },
-            { t: "Debaixo do Guarda-chuva pra ser Resistência", y: "2021", d: "direção e roteiro", a: "Selecionado em mais de 10 festivais" },
+            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema" },
+            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Selecionado para mostra SESC de cinema nacional 2023, primeiro filme de SC a entrar no circuito<br>Mais de 15 festivais nacionais e internacionais" },
+            { t: "Debaixo do Guarda-chuva pra ser Resistência", y: "2021", d: "direção e roteiro", a: "Selecionado em mais de 10 festivais nacionais e internacionais" },
             { t: "Marias", y: "2021", d: "direção", a: "" }
         ];
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
         const vcs = [
-            { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker • 2025" },
-            { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux • 2025" },
-            { t: "Aranha", d: "direção e roteiro", a: "Letrux • 2024" },
-            { t: "Colapso Invisível", d: "direção e roteiro", a: "YMA • 2023" },
-            { t: "Vira Essa Boca pra Cá", d: "direção e roteiro", a: "Letrux feat. Novella • 2022" },
-            { t: "Zebulon", d: "direção e roteiro", a: "YMA • 2022" },
-            { t: "Antene-se", d: "direção e roteiro", a: "Letrux • 2021" }
+            { t: "Pote de Ouro", d: "assist. prod. executiva", a: "Liniker e Priscilla Alcântara • 2025" },
+            { t: "Dropar Teu Nome", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025<br>Lançamento pela Noize" },
+            { t: "Vira Essa Boca pra Cá", d: "direção e roteiro", a: "Letrux feat Nouvella • 2025" },
+            { t: "Outres de Nós", d: "direção e roteiro", a: "Jesus Lumma • 2025" },
+            { t: "Carta Marcada", d: "assist. de produção de objeto", a: "Vitor Kley • 2025" },
+            { t: "Aranha", d: "direção", a: "Letrux • 2024" },
+            { t: "No Game", d: "making of", a: "Ananda Paixão • 2023" },
+            { t: "Baião de Dois", d: "direção e direção de arte", a: "Aretuza Lovi & Getúlio Abelha • 2022" },
+            { t: "Bailão", d: "direção de arte", a: "Gabeu • 2022" },
+            { t: "Moços e Moças", d: "direção de arte", a: "Jesus Lumma • 2020" },
+            { t: "Ela Terra", d: "direção e roteiro", a: "Malu Maria • 2020" },
+            { t: "Sugar Daddy", d: "direção de arte", a: "Gabeu • 2019" }
         ];
         document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div></div>`).join('');
 
         const ceno = [
-            { t: "Santo", d: "assist. de arte", a: "Curta-metragem • 2025" },
-            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • 2025" },
-            { t: "CERAVE", d: "assist. de arte", a: "Publicidade • 2024" },
-            { t: "Nutren", d: "assist. de arte", a: "Publicidade • 2024" },
-            { t: "Calma São Paulo", d: "direção de arte", a: "Editorial • 2023" }
+            { t: "Santo", d: "assist. de arte", a: "Curta-metragem | Outros • 2025" },
+            { t: "CeraVe - Pele Sequinha", d: "assist. de produção de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Nutren - Eu Me Vejo Pro-Idade", d: "assist. de produção de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Voe Azul", d: "assist. de objetos", a: "Publicidade • Outros • 2025" },
+            { t: "Album - Som do Ale", d: "assist. de arte e cenografia", a: "Visualizer • Outros • 2025" },
+            { t: "Diva - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • Outros • 2025" },
+            { t: "Calma Business - Calma Sao Paulo", d: "assist. de arte", a: "Editorial • Outros • 2024" },
+            { t: "Segue o Baile - E! Channel", d: "making of [still] e operação de câmera ptz", a: "Reality show • Outros • 2024" },
+            { t: "Maria Homem", d: "direção e criação de conteúdo", a: "YouTube e Instagram • Outros • 2020 - Atualmente" },
+            { t: "Parte de Mim", d: "direção", a: "Videoarte • FUNARTE • Outros • 2021<br>Projeto premiado no Prêmio RespirArte da FUNARTE" }
         ];
         document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
         
         const premios = [
-            { t: "5 Prêmios de Melhor Filme", y: "2023", d: "Festival SESC", a: "(Sub)Urbana" },
-            { t: "Prêmio Revelação", y: "2023", d: "Transforma Festival", a: "(Sub)Urbana" },
-            { t: "Curta Fest Brasília 2024", y: "2024", d: "Categoria Aranha", a: "Aranha" },
-            { t: "Prêmio Catarinense de Cinema", y: "2025", d: "Mostra SESC", a: "Tem Feito Uns Dias Esquisitos" }
+            { t: "5 Prêmios de Melhor Filme", y: "2023", d: "(Sub)Urbana – Festival SESC", a: "" },
+            { t: "Prêmio Revelação", y: "2023", d: "Transforma Festival", a: "" },
+            { t: "Curta Fest Brasília 2024", y: "2024", d: "Categoria Aranha", a: "" },
+            { t: "SESC SC", y: "2022", d: "No Reflexo do Meu Nome – Reconhecimento Nacional", a: "" },
+            { t: "Exibições Internacionais", y: "", d: "Trabalhos exibidos em festivais internacionais", a: "" },
+            { t: "Lei Paulo Gustavo", y: "", d: "Contemplado para desenvolvimento de projetos", a: "" }
         ];
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><span class="modal-item-type">${p.d}</span><div class="modal-item-artists">${p.y}</div><div class="modal-item-awards">${p.a}</div></div>`).join('');
 
