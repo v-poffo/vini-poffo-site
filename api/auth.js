@@ -27,22 +27,31 @@ module.exports = async (req, res) => {
 
     // O Decap CMS espera uma mensagem postMessage para fechar a janela e receber o token
     const script = `
+      <!DOCTYPE html>
+      <html>
+      <body>
       <script>
         (function() {
-          function recieveMessage(e) {
-            console.log("Recieved message:", e.data);
-            if (e.data !== "authorizing:github") return;
-            
-            window.opener.postMessage(
-              'authorization:github:success:${JSON.stringify({ token: access_token, provider: 'github' })}',
-              e.origin
-            );
+          const token = "${access_token}";
+          const content = {
+            token: token,
+            provider: "github"
+          };
+          
+          const message = "authorization:github:success:" + JSON.stringify(content);
+          
+          if (window.opener) {
+            window.opener.postMessage(message, window.location.origin);
+            window.close();
+          } else {
+            document.body.innerHTML = "Autenticação concluída! Você já pode fechar esta janela.";
           }
-          window.addEventListener("message", recieveMessage, false);
-          window.opener.postMessage("authorizing:github", "*");
         })()
       </script>
+      </body>
+      </html>
     `;
+    res.setHeader('Content-Type', 'text/html');
     res.send(script);
   } catch (err) {
     console.error(err);
