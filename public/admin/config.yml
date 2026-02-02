@@ -2,7 +2,7 @@ backend:
   name: github
   repo: v-poffo/vini-poffo-site
   branch: main
-  base_url: https://github-os-auth.vercel.app
+  base_url: https://vini-poffo-site.vercel.app
   auth_endpoint: /api/auth
 
 media_folder: "public/assets"
