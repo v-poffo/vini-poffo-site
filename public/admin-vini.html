@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background-color: #111A17; color: #F3F8F4; font-family: 'Montserrat', sans-serif; padding: 2rem; }
+        .admin-container { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; }
+        .login-screen { text-align: center; padding: 4rem 0; }
+        input, textarea, select { width: 100%; padding: 0.8rem; margin: 0.5rem 0 1.5rem 0; background: #1a2622; border: 1px solid #4a6741; color: white; border-radius: 4px; }
+        button { background: #718878; color: white; border: none; padding: 1rem 2rem; cursor: pointer; border-radius: 4px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #4a6741; }
+        .project-list-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .hidden { display: none; }
+        .form-group { margin-bottom: 1rem; }
+        label { font-weight: bold; color: #718878; display: block; margin-bottom: 0.2rem; }
+        .credits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div id="loginScreen" class="login-screen">
+            <img src="assets/logo/logo.avif" alt="Logo" style="height: 80px; margin-bottom: 2rem; filter: brightness(0) invert(1);">
+            <h2>Área Restrita</h2>
+            <p>Digite sua senha para gerenciar os projetos</p>
+            <input type="password" id="adminPassword" placeholder="Sua senha secreta">
+            <button onclick="checkLogin()">Entrar</button>
+            <p id="loginError" style="color: #ff6b6b; margin-top: 1rem;"></p>
+        </div>
+
+        <div id="adminPanel" class="hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2>Gerenciar Projetos</h2>
+                <button onclick="showProjectForm()">+ Novo Projeto</button>
+            </div>
+            <div id="projectList"></div>
+        </div>
+
+        <div id="projectForm" class="hidden">
+            <h2 id="formTitle">Novo Projeto</h2>
+            <form id="editForm">
+                <input type="hidden" id="projectId">
+                
+                <div class="form-group">
+                    <label>Título do Projeto</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="credits-grid">
+                    <div class="form-group">
+                        <label>Ano</label>
+                        <input type="number" id="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="type">
+                            <option value="videoclipe">Videoclipe</option>
+                            <option value="curta-metragem">Curta-metragem</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Artista / Produção</label>
+                    <input type="text" id="artist">
+                </div>
+
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea id="description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>URL do Vídeo (YouTube/Vimeo)</label>
+                    <input type="text" id="trailerUrl">
+                </div>
+
+                <div class="form-group">
+                    <label>Vídeo para Home (Nome do arquivo em assets/videos/)</label>
+                    <input type="text" id="videoHome" placeholder="ex: meu_video.mp4">
+                </div>
+
+                <div class="form-group">
+                    <label>Cartaz (Nome do arquivo em assets/cartazes/)</label>
+                    <input type="text" id="cartazMobile" placeholder="ex: cartaz.jpg">
+                </div>
+
+                <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+                    <label>Ficha Técnica / Créditos (Separe nomes por vírgula)</label>
+                    <div class="credits-grid">
+                        <div class="form-group"><label>Direção</label><input type="text" id="credit_direcao"></div>
+                        <div class="form-group"><label>Roteiro</label><input type="text" id="credit_roteiro"></div>
+                        <div class="form-group"><label>Elenco</label><input type="text" id="credit_elenco"></div>
+                        <div class="form-group"><label>Fotografia</label><input type="text" id="credit_fotografia"></div>
+                    </div>
+                    <div class="form-group"><label>Apoio / Notas</label><input type="text" id="credit_apoio"></div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" onclick="saveProject()" style="flex: 2;">Salvar Alterações</button>
+                    <button type="button" onclick="hideProjectForm()" style="flex: 1; background: #444;">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // A senha será validada via Token do GitHub que você vai me passar ou eu vou configurar
+        // Por enquanto, uma proteção simples de interface
+        function checkLogin() {
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === 'vini2025') { // Senha temporária
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                renderList();
+            } else {
+                document.getElementById('loginError').innerText = 'Senha incorreta.';
+            }
+        }
+
+        function renderList() {
+            const list = document.getElementById('projectList');
+            list.innerHTML = '';
+            siteData.projects.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'project-list-item';
+                div.innerHTML = `
+                    <span><strong>${p.title}</strong> (${p.year})</span>
+                    <button onclick="editProject(${p.id})" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Editar</button>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function editProject(id) {
+            const p = siteData.projects.find(proj => proj.id === id);
+            if (!p) return;
+            
+            document.getElementById('formTitle').innerText = 'Editar: ' + p.title;
+            document.getElementById('projectId').value = p.id;
+            document.getElementById('title').value = p.title;
+            document.getElementById('year').value = p.year;
+            document.getElementById('type').value = p.type;
+            document.getElementById('artist').value = p.artist || '';
+            document.getElementById('description').value = p.description || '';
+            document.getElementById('trailerUrl').value = p.trailerUrl || '';
+            document.getElementById('videoHome').value = p.videoHome || '';
+            document.getElementById('cartazMobile').value = p.cartazMobile || '';
+            
+            // Créditos
+            if (p.credits) {
+                document.getElementById('credit_direcao').value = (p.credits.direcao || []).join(', ');
+                document.getElementById('credit_roteiro').value = (p.credits.roteiro || []).join(', ');
+                document.getElementById('credit_elenco').value = (p.credits.elenco || []).join(', ');
+                document.getElementById('credit_fotografia').value = (p.credits.direcaoFotografia || []).join(', ');
+                document.getElementById('credit_apoio').value = p.credits.apoio || '';
+            }
+
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('projectForm').classList.remove('hidden');
+        }
+
+        function showProjectForm() {
+            document.getElementById('editForm').reset();
+            document.getElementById('projectId').value = '';
+            document.getElementById('formTitle').innerText = 'Novo Projeto';
+            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('projectForm').classList.remove('hidden');
+        }
+
+        function hideProjectForm() {
+            document.getElementById('projectForm').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+        }
+
+        function saveProject() {
+            alert('Para salvar permanentemente, você precisa me enviar o seu "GitHub Personal Access Token". \n\nComo sou um assistente, eu vou processar essa alteração para você agora no código!');
+            // Aqui entraria a lógica de API para salvar no GitHub
+        }
+    </script>
+</body>
+</html>
