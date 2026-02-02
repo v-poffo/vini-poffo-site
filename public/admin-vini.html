@@ -88,14 +88,22 @@
                 </div>
 
                 <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
-                    <label>Ficha Técnica / Créditos (Separe nomes por vírgula)</label>
+                    <label style="color: #fff; font-size: 1.1rem; margin-bottom: 1rem;">Ficha Técnica (Colunas Fixas)</label>
                     <div class="credits-grid">
                         <div class="form-group"><label>Direção</label><input type="text" id="credit_direcao"></div>
                         <div class="form-group"><label>Roteiro</label><input type="text" id="credit_roteiro"></div>
                         <div class="form-group"><label>Elenco</label><input type="text" id="credit_elenco"></div>
-                        <div class="form-group"><label>Fotografia</label><input type="text" id="credit_fotografia"></div>
+                        <div class="form-group"><label>Direção de Fotografia</label><input type="text" id="credit_fotografia"></div>
+                        <div class="form-group"><label>Direção de Arte</label><input type="text" id="credit_arte"></div>
+                        <div class="form-group"><label>Montagem</label><input type="text" id="credit_montagem"></div>
                     </div>
-                    <div class="form-group"><label>Apoio / Notas</label><input type="text" id="credit_apoio"></div>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+                    <label style="color: #fff; font-size: 1.1rem; margin-bottom: 1rem;">Créditos Adicionais (Livre)</label>
+                    <p style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">Adicione outras funções e nomes (ex: Produção Executiva: Nome, Som: Nome...)</p>
+                    <textarea id="credit_extra" rows="5" placeholder="Função: Nome&#10;Função: Nome"></textarea>
+                    <div class="form-group"><label>Apoio / Notas / Festivais</label><textarea id="credit_apoio" rows="3"></textarea></div>
                 </div>
 
                 <div style="display: flex; gap: 1rem;">
