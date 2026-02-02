@@ -26,7 +26,11 @@
             <h2>Área Restrita</h2>
             <p>Digite sua senha para gerenciar os projetos</p>
             <input type="password" id="adminPassword" placeholder="Sua senha secreta">
-            <button onclick="checkLogin()">Entrar</button>
+            <div style="margin-top: 1rem; text-align: left; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px;">
+                <label style="font-size: 0.8rem; color: #888;">GitHub Token (Opcional para salvar automático)</label>
+                <input type="password" id="githubToken" placeholder="ghp_...">
+            </div>
+            <button onclick="checkLogin()" style="margin-top: 1.5rem;">Entrar</button>
             <p id="loginError" style="color: #ff6b6b; margin-top: 1rem;"></p>
         </div>
 
@@ -208,7 +212,54 @@
                 }
             };
 
-            // Opção 1: Download do JSON
+            const token = document.getElementById('githubToken').value;
+            if (token) {
+                try {
+                    const filename = projectData.title.toLowerCase().replace(/\s+/g, '-') + ".json";
+                    const path = `src/projects/${filename}`;
+                    const content = btoa(unescape(encodeURIComponent(JSON.stringify(projectData, null, 2))));
+                    
+                    // Buscar o SHA do arquivo se ele já existir
+                    let sha = "";
+                    try {
+                        const res = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/${path}`, {
+                            headers: { 'Authorization': `token ${token}` }
+                        });
+                        if (res.ok) {
+                            const data = await res.json();
+                            sha = data.sha;
+                        }
+                    } catch (e) {}
+
+                    const saveRes = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/${path}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': `token ${token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: `Update project: ${projectData.title}`,
+                            content: content,
+                            sha: sha
+                        })
+                    });
+
+                    if (saveRes.ok) {
+                        alert('Projeto salvo com sucesso direto no GitHub!');
+                        location.reload();
+                    } else {
+                        throw new Error('Erro ao salvar no GitHub');
+                    }
+                } catch (err) {
+                    alert('Erro ao salvar automaticamente. Baixando arquivo como backup...');
+                    downloadJSON(projectData);
+                }
+            } else {
+                downloadJSON(projectData);
+            }
+        }
+
+        function downloadJSON(projectData) {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
             const downloadAnchorNode = document.createElement('a');
             downloadAnchorNode.setAttribute("href", dataStr);
@@ -216,8 +267,6 @@
             document.body.appendChild(downloadAnchorNode);
             downloadAnchorNode.click();
             downloadAnchorNode.remove();
-
-            alert('Arquivo gerado com sucesso! \n\nPara salvar automaticamente no site, me envie seu "GitHub Token" para eu configurar a conexão final.');
         }
     </script>
 </body>
