@@ -88,7 +88,7 @@ p {
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 50;
+    z-index: 10; /* Reduzido para não bloquear cliques no conteúdo abaixo */
     background-color: transparent;
     padding: 1rem 2rem 2rem 2rem;
 }
