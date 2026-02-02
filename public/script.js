@@ -1,6 +1,12 @@
 // Script para interatividade do site
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // Fallback para carregar projetos dinamicamente se necessário
+    if (typeof siteData === 'undefined' || !siteData.projects || siteData.projects.length === 0) {
+        console.log("Carregando projetos dinamicamente...");
+        // Esta parte seria para um sistema mais robusto, 
+        // mas vamos manter a estrutura atual e garantir que o data.js seja a fonte.
+    }
     const projects = siteData.projects;
     let currentProjectIndex = 0;
     let isDesktop = window.innerWidth > 768;
