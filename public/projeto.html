@@ -611,6 +611,27 @@
                     }
                 }
 
+                if (project.credits.extra) {
+                    const extraLines = project.credits.extra.split('\n');
+                    extraLines.forEach(line => {
+                        if (line.includes(':')) {
+                            const [label, value] = line.split(':');
+                            creditsHTML += `
+                                <div class="credit-item">
+                                    <span class="credit-label">${label.trim()}</span>
+                                    <span class="credit-value">${value.trim()}</span>
+                                </div>
+                            `;
+                        } else if (line.trim()) {
+                            creditsHTML += `
+                                <div class="credit-item">
+                                    <span class="credit-value" style="grid-column: 1 / -1;">${line.trim()}</span>
+                                </div>
+                            `;
+                        }
+                    });
+                }
+
                 if (project.credits.apoio) {
                     creditsHTML += `
                         <div class="credit-item apoio">

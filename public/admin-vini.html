@@ -184,9 +184,40 @@
             document.getElementById('adminPanel').classList.remove('hidden');
         }
 
-        function saveProject() {
-            alert('Para salvar permanentemente, você precisa me enviar o seu "GitHub Personal Access Token". \n\nComo sou um assistente, eu vou processar essa alteração para você agora no código!');
-            // Aqui entraria a lógica de API para salvar no GitHub
+        async function saveProject() {
+            const id = document.getElementById('projectId').value || Date.now();
+            const projectData = {
+                id: parseInt(id),
+                title: document.getElementById('title').value,
+                year: parseInt(document.getElementById('year').value),
+                type: document.getElementById('type').value,
+                artist: document.getElementById('artist').value,
+                description: document.getElementById('description').value,
+                trailerUrl: document.getElementById('trailerUrl').value,
+                videoHome: document.getElementById('videoHome').value,
+                cartazMobile: document.getElementById('cartazMobile').value,
+                credits: {
+                    direcao: document.getElementById('credit_direcao').value.split(',').map(s => s.trim()),
+                    roteiro: document.getElementById('credit_roteiro').value.split(',').map(s => s.trim()),
+                    elenco: document.getElementById('credit_elenco').value.split(',').map(s => s.trim()),
+                    direcaoFotografia: document.getElementById('credit_fotografia').value.split(',').map(s => s.trim()),
+                    direcaoArte: document.getElementById('credit_arte').value.split(',').map(s => s.trim()),
+                    montagem: document.getElementById('credit_montagem').value.split(',').map(s => s.trim()),
+                    extra: document.getElementById('credit_extra').value,
+                    apoio: document.getElementById('credit_apoio').value
+                }
+            };
+
+            // Opção 1: Download do JSON
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", projectData.title.toLowerCase().replace(/\s+/g, '-') + ".json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+
+            alert('Arquivo gerado com sucesso! \n\nPara salvar automaticamente no site, me envie seu "GitHub Token" para eu configurar a conexão final.');
         }
     </script>
 </body>
