@@ -85,12 +85,35 @@ const siteData = {
       description: "Videoclipe de Aranha, dirigido por Sillas H e  Vini Poffo. Melhor videoclipe pelo Curta Fest Brasilia 2024. Convidado pelo MVF para o festival na Argentina e Colômbia"
     },
     {
+      id: 6,
+      title: "(sub)urbana",
+      year: 2023,
+      type: "curta-metragem",
+      artist: "Curta-metragem",
+      videoHome: "suburbana_portfolio_video.mp4",
+      cartazMobile: "suburbana-cartaz.png",
+      trailerUrl: "https://vimeo.com/820330742?fl=pl&fe=sh",
+      description: "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
+    },
+    {
+      id: 7,
+      title: "No reflexo do meu nome",
+      year: 2023,
+      type: "curta-metragem",
+      artist: "Curta-metragem",
+      videoHome: "noreflexo_portfolio_video.mp4",
+      cartazMobile: "reflexo-nome-cartaz.png",
+      trailerUrl: "https://vimeo.com/820329509?fl=pl&fe=sh",
+      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
+    },
+    {
       id: 9,
       title: "Baião de Dois",
       year: 2022,
       type: "videoclipe",
       artist: "Aretuza Lovi feat Getúlio Abelha",
       videoHome: "",
+      heroImage: "baiaodedois-hero.png",
       cartazMobile: "baiaodedois.png",
       trailerUrl: "https://www.youtube.com/watch?v=mghtmrhDQRc",
       description: "Baião de Dois celebra a cultura nordestina com cores vibrantes e estética camp. Direção compartilhada com Sillas H, criando um universo visual que mistura tradição e contemporaneidade.",
@@ -114,12 +137,24 @@ const siteData = {
       }
     },
     {
+      id: 8,
+      title: "De baixo do guarda-chuva pra ser resistência",
+      year: 2021,
+      type: "curta-metragem",
+      artist: "Curta-metragem",
+      videoHome: "debaixo_portfolio_video.mp4",
+      cartazMobile: "guarda-chuva-cartaz.jpg",
+      trailerUrl: "https://youtu.be/AyPNvaZ1kRM",
+      description: "Curta-metragem De Baixo do Guarda-chuva pra Ser Resistência, direção e roteiro de Vini Poffo."
+    },
+    {
       id: 10,
       title: "Ela Terra",
       year: 2020,
       type: "videoclipe",
       artist: "Malu Maria",
       videoHome: "",
+      heroImage: "elaterra-hero.jpg",
       cartazMobile: "elaterra.png",
       trailerUrl: "https://youtu.be/TqI9Gvqxt_k?si=m7Xq4hi90XlYW14P",
       description: "Ela Terra é uma celebração da conexão feminina com a natureza. Direção, roteiro, arte, fotografia e montagem por Vini Poffo e Sillas H, com narração da poeta indígena Marcia Kambeba.",
@@ -143,6 +178,7 @@ const siteData = {
       type: "videoclipe",
       artist: "Gabeu",
       videoHome: "",
+      heroImage: "sugardaddy-hero.jpg",
       cartazMobile: "sugardaddy.jpg",
       trailerUrl: "https://youtu.be/PZVaOifIHAM?si=AlyYmDJxLn7Htkan",
       description: "Videoclipe de Sugar Daddy, de Gabeu. Direção de arte e montagem por Vini Poffo, em colaboração com Sillas H e o Coletivo SUFE. Uma narrativa visual que explora identidade e estética queer.",
@@ -166,6 +202,7 @@ const siteData = {
       type: "videoclipe",
       artist: "YMA",
       videoHome: "",
+      heroImage: "colapsoinvisivel-hero.png",
       cartazMobile: "colapsoinvisivel.png",
       trailerUrl: "https://youtu.be/_Un_DsgNMCc?si=5pbANIlC2DdTSdWF",
       description: "Colapso Invisível explora ansiedade e surrealismo através de cenários oníricos e composições visuais intensas. Direção de arte que transforma o caos interno em estética.",
@@ -183,40 +220,6 @@ const siteData = {
         coreografia: ["Fae Stevan"],
         design: ["Made in Jonny", "Truta Lucas"]
       }
-    },
-    {
-      id: 6,
-      title: "(sub)urbana",
-      year: 2023,
-      type: "curta-metragem",
-      artist: "Curta-metragem",
-      videoHome: "suburbana_portfolio_video.mp4",
-      cartazMobile: "suburbana-cartaz.png",
-      trailerUrl: "https://vimeo.com/820330742?fl=pl&fe=sh",
-      description: "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
-    },
-    {
-      id: 7,
-      title: "No reflexo do meu nome",
-      year: 2023,
-      type: "curta-metragem",
-      artist: "Curta-metragem",
-      videoHome: "noreflexo_portfolio_video.mp4",
-      cartazMobile: "reflexo-nome-cartaz.png",
-      trailerUrl: "https://vimeo.com/820329509?fl=pl&fe=sh",
-      description: "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
-    },
-   
-    {
-      id: 8,
-      title: "De baixo do guarda-chuva pra ser resistência",
-      year: 2021,
-      type: "curta-metragem",
-      artist: "Curta-metragem",
-      videoHome: "debaixo_portfolio_video.mp4",
-      cartazMobile: "guarda-chuva-cartaz.jpg",
-      trailerUrl: "https://youtu.be/AyPNvaZ1kRM",
-      description: "Curta-metragem De Baixo do Guarda-chuva pra Ser Resistência, direção e roteiro de Vini Poffo."
     }
   ]
 };

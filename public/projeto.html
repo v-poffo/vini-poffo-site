@@ -414,6 +414,20 @@
                 video.play().catch(error => {
                     console.log('Autoplay bloqueado:', error);
                 });
+            } else if (project.heroImage) {
+                // Adicionar imagem de fundo ao hero quando não houver vídeo
+                const heroSection = document.querySelector('.projeto-hero');
+                const img = document.createElement('img');
+                img.src = `assets/hero/${project.heroImage}`;
+                img.style.position = 'absolute';
+                img.style.top = '50%';
+                img.style.left = '50%';
+                img.style.transform = 'translate(-50%, -50%)';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.zIndex = '0';
+                heroSection.appendChild(img);
             }
 
             // Renderizar detalhes
