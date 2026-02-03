@@ -48,10 +48,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setupMobileHero() {
-        const titleInside = document.getElementById('heroTitleInsideMobile');
+        const titleItem0 = document.getElementById('titleItem0');
+        const titleItem1 = document.getElementById('titleItem1');
+        const heroTitlesMobile = document.getElementById('heroTitlesMobile');
         
-        if (titleInside && projects[0]) {
-            titleInside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+        if (titleItem0 && projects[0]) {
+            titleItem0.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+            titleItem0.classList.add('active');
+        }
+        
+        if (titleItem1 && projects[1]) {
+            titleItem1.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
+            titleItem1.classList.remove('active');
+        }
+        
+        if (heroTitlesMobile) {
+            heroTitlesMobile.onclick = () => rotateHeroMobile();
         }
         
         updateHeroVideoMobile(0);
