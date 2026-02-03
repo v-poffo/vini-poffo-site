@@ -27,6 +27,8 @@
     <!-- Preload de ativos críticos -->
     <link rel="preload" href="assets/logo/logo.avif" as="image">
     <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
+    <!-- Preload do vídeo do Hero com alta prioridade -->
+    <link rel="preload" href="assets/videos/tem-feito-uns-dias-esquisitos.mp4" as="video" type="video/mp4" fetchpriority="high">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,26 +188,6 @@
         .footer-onepage p { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin: 0; font-family: var(--font-primary); }
 
         /* --- MOBILE ADAPTATIONS (FIEL AOS ORIGINAIS) --- */
-        /* TABLET (768px - 1024px) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            /* Manter títulos visíveis no tablet */
-            .hero-overlay.desktop-only {
-                display: flex !important;
-            }
-            
-            .hero-media.mobile-only {
-                display: none !important;
-            }
-            
-            .hero-media.desktop-only {
-                display: block !important;
-            }
-            
-            .hero-title-outside-mobile.mobile-only {
-                display: none !important;
-            }
-        }
-        
         @media (max-width: 1024px) {
             /* SOBRE MOBILE: Cards Quadrados, menos cards, imagens individuais */
             .about-onepage { padding: 2rem 1rem; }
@@ -251,22 +233,32 @@
             /* MODAL MOBILE SCROLL */
             .modal-content { padding: 2rem 1.5rem; max-height: 85vh; }
             
-            /* HERO MOBILE */
-            .hero-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-            .hero-carousel.mobile-only { height: auto; aspect-ratio: 1 / 1; }
-            .carousel-items { height: auto; aspect-ratio: 1 / 1; }
-            .carousel-item { height: auto; aspect-ratio: 1 / 1; }
-            .hero-overlay-mobile.mobile-only { 
-                position: absolute; 
-                bottom: 0; 
-                left: 0; 
-                width: 100%; 
-                padding: 2rem 1rem 1rem 1rem; 
-                background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-                pointer-events: none;
+            /* HERO MOBILE & TABLET */
+            .hero-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #111A17; }
+            .hero-media.mobile-only { width: 100%; max-width: 500px; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+            .hero-media.mobile-only video { width: 100%; height: 100%; object-fit: cover; }
+            
+            .hero-title-inside-mobile {
+                position: absolute; bottom: 0; left: 0; width: 100%;
+                padding: 1.5rem 1rem 0.8rem 1rem;
+                background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+                color: white; display: flex; align-items: baseline; gap: 0.6rem;
+                pointer-events: none; z-index: 5;
             }
-            .hero-title-mobile .project-title-large { font-size: 1.5rem; margin-bottom: 0.2rem; }
-            .hero-title-mobile .project-year { font-size: 0.75rem; }
+            .hero-title-inside-mobile .title-text { font-size: 1.3rem; font-weight: 600; text-transform: uppercase; font-style: italic; }
+            .hero-title-inside-mobile .title-year { font-size: 0.75rem; opacity: 0.8; }
+
+            .hero-title-outside-mobile {
+                width: 100%; max-width: 500px; padding: 1rem;
+                display: flex; justify-content: space-between; align-items: center;
+                color: white; opacity: 0.6; cursor: pointer;
+            }
+            .hero-title-outside-mobile .title-text { font-size: 1rem; text-transform: uppercase; font-style: italic; }
+            .hero-title-outside-mobile .title-year { font-size: 0.7rem; margin-left: 0.5rem; }
+            .arrow-indicator { font-size: 0.8rem; }
+            
+            /* Manter títulos visíveis no tablet */
+            .hero-overlay.desktop-only { display: flex !important; }
         }
 
         @media (max-width: 480px) {
@@ -292,18 +284,24 @@
 
     <section class="hero" id="hero">
         <div class="hero-container">
-            <div class="hero-media desktop-only"><video id="heroVideo" autoplay muted loop playsinline></video></div>
+            <div class="hero-media desktop-only">
+                <video id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high">
+                    <source src="assets/videos/tem-feito-uns-dias-esquisitos.mp4" type="video/mp4">
+                </video>
+            </div>
             <div class="hero-media mobile-only">
-                <video id="heroVideoMobile" autoplay muted loop playsinline></video>
-                <div class="hero-titles-mobile" id="heroTitlesMobile">
-                    <div class="title-item active" id="titleItem0"></div>
-                    <div class="title-item" id="titleItem1"></div>
-                </div>
-                <div class="hero-arrow-mobile" id="heroArrowMobile">▼</div>
+                <video id="heroVideoMobile" autoplay muted loop playsinline preload="auto" fetchpriority="high">
+                    <source src="assets/videos/tem-feito-uns-dias-esquisitos.mp4" type="video/mp4">
+                </video>
+                <div class="hero-title-inside-mobile" id="heroTitleInsideMobile"></div>
             </div>
             <div class="hero-overlay desktop-only">
                 <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
                 <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
+            </div>
+            <div class="hero-title-outside-mobile mobile-only">
+                <div id="heroTitleOutsideMobile"></div>
+                <div class="arrow-indicator">▼</div>
             </div>
             <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
         </div>
