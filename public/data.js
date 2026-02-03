@@ -524,7 +524,16 @@ const siteData = {
       "videoHome": "debaixo_portfolio_video.mp4",
       "cartazMobile": "guarda-chuva-cartaz.jpg",
       "trailerUrl": "https://youtu.be/AyPNvaZ1kRM",
-      "description": "Curta-metragem De Baixo do Guarda-chuva pra Ser Resistência, direção e roteiro de Vini Poffo."
+      "description": "“Quando você encontra alguém que compactua com os mesmos sentimentos, as mesmas vivências que você, aí sim que você se encontra no mundo”. O documentário apresenta 7 jovens artistas LGBTQIA+ que falam sobrem suas realidades, sonhos e como a arte influência na sua jornada de aceitação e transformação. O curta foi selecionado para diversos festivais, incluindo a Mostra Internacional Audiovisual e o Festival Mix Brasil, Cine PE.",
+      "credits": {
+        "direcao": ["Vini Poffo"],
+        "roteiro": ["Vinicius Poffo"],
+        "producao": ["SUFE"],
+        "montagem": ["Vini Poffo"],
+        "direcaoArte": ["Vini Poffo", "YMA"],
+        "figurino": ["Anita Poffo", "Cássio Jose", "Na__ve"],
+        "elenco": ["Andri Silveira", "Anita Basilio", "Isa Amorim", "Mar Rosa", "Mateus Souza", "Myke Gon", "Wilson Olien"]
+      }
     },
     {
       "id": 10,
