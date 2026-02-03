@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body { background-color: #111A17; color: #F3F8F4; font-family: 'Montserrat', sans-serif; padding: 2rem; }
-        .admin-container { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; }
+        .admin-container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; }
         .login-screen { text-align: center; padding: 4rem 0; }
         input, textarea, select { width: 100%; padding: 0.8rem; margin: 0.5rem 0 1.5rem 0; background: #1a2622; border: 1px solid #4a6741; color: white; border-radius: 4px; }
         button { background: #718878; color: white; border: none; padding: 1rem 2rem; cursor: pointer; border-radius: 4px; font-weight: bold; transition: 0.3s; }
@@ -17,6 +17,11 @@
         .form-group { margin-bottom: 1rem; }
         label { font-weight: bold; color: #718878; display: block; margin-bottom: 0.2rem; }
         .credits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .tabs { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #4a6741; }
+        .tab-btn { padding: 1rem 2rem; border: none; background: transparent; color: #718878; cursor: pointer; font-weight: bold; }
+        .tab-btn.active { color: white; border-bottom: 3px solid #718878; }
+        .modal-editor-item { border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 4px; }
+        .modal-editor-item h4 { margin-top: 0; color: #718878; text-transform: uppercase; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -24,7 +29,7 @@
         <div id="loginScreen" class="login-screen">
             <img src="assets/logo/logo.avif" alt="Logo" style="height: 80px; margin-bottom: 2rem; filter: brightness(0) invert(1);">
             <h2>Área Restrita</h2>
-            <p>Digite sua senha para gerenciar os projetos</p>
+            <p>Digite sua senha para gerenciar o site</p>
             <input type="password" id="adminPassword" placeholder="Sua senha secreta">
             <div style="margin-top: 1rem; text-align: left; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px;">
                 <label style="font-size: 0.8rem; color: #888;">GitHub Token (Opcional para salvar automático)</label>
@@ -34,84 +39,108 @@
             <p id="loginError" style="color: #ff6b6b; margin-top: 1rem;"></p>
         </div>
 
-        <div id="adminPanel" class="hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h2>Gerenciar Projetos</h2>
-                <button onclick="showProjectForm()">+ Novo Projeto</button>
+        <div id="mainInterface" class="hidden">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('projects')">Projetos</button>
+                <button class="tab-btn" onclick="showTab('about')">Editar Sobre</button>
+                <button class="tab-btn" onclick="showTab('config')">Configurações</button>
             </div>
-            <div id="projectList"></div>
+
+            <!-- ABA PROJETOS -->
+            <div id="tab-projects" class="tab-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Gerenciar Projetos</h2>
+                    <button onclick="showProjectForm()">+ Novo Projeto</button>
+                </div>
+                <div id="projectList"></div>
+            </div>
+
+            <!-- ABA SOBRE -->
+            <div id="tab-about" class="tab-content hidden">
+                <h2>Editar Seção Sobre & Modais</h2>
+                <p style="margin-bottom: 2rem; color: #888;">Edite os textos dos cards do mosaico e o conteúdo dos pop-ups.</p>
+                
+                <div id="aboutCardsEditor">
+                    <h3>Cards do Mosaico</h3>
+                    <div id="cardsList"></div>
+                </div>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #4a6741;">
+
+                <div id="modalsEditor">
+                    <h3>Conteúdo dos Pop-ups (Modais)</h3>
+                    
+                    <div class="modal-section">
+                        <h4>Filmes</h4>
+                        <div id="modalFilmesList"></div>
+                        <button onclick="addModalItem('filmes')">+ Adicionar Filme</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Prêmios</h4>
+                        <div id="modalPremiosList"></div>
+                        <button onclick="addModalItem('premios')">+ Adicionar Prêmio</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Videoclipes (Currículo)</h4>
+                        <div id="modalVideoclipesList"></div>
+                        <button onclick="addModalItem('videoclipes')">+ Adicionar Videoclipe</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Arte, Cenografia e Outros</h4>
+                        <div id="modalCenografiaList"></div>
+                        <button onclick="addModalItem('cenografia')">+ Adicionar Item</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(113, 136, 120, 0.1); border-radius: 8px; border: 1px solid #718878;">
+                    <button onclick="saveAboutChanges()" style="width: 100%; padding: 1.5rem; font-size: 1.2rem;">SALVAR ALTERAÇÕES DO SOBRE</button>
+                </div>
+            </div>
+
+            <!-- ABA CONFIG -->
+            <div id="tab-config" class="tab-content hidden">
+                <h2>Configurações</h2>
+                <div class="form-group">
+                    <label>GitHub Personal Access Token</label>
+                    <input type="password" id="configToken" placeholder="ghp_..." onchange="document.getElementById('githubToken').value = this.value">
+                    <p style="font-size: 0.8rem; color: #888;">Este token permite que o painel salve as alterações diretamente no seu GitHub.</p>
+                </div>
+            </div>
         </div>
 
+        <!-- FORMULÁRIO DE PROJETO (MODAL) -->
         <div id="projectForm" class="hidden">
             <h2 id="formTitle">Novo Projeto</h2>
             <form id="editForm">
                 <input type="hidden" id="projectId">
-                
-                <div class="form-group">
-                    <label>Título do Projeto</label>
-                    <input type="text" id="title" required>
-                </div>
-
+                <div class="form-group"><label>Título do Projeto</label><input type="text" id="title" required></div>
                 <div class="credits-grid">
-                    <div class="form-group">
-                        <label>Ano</label>
-                        <input type="number" id="year" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tipo</label>
-                        <select id="type">
-                            <option value="videoclipe">Videoclipe</option>
-                            <option value="curta-metragem">Curta-metragem</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label>Ano</label><input type="number" id="year" required></div>
+                    <div class="form-group"><label>Tipo</label><select id="type"><option value="videoclipe">Videoclipe</option><option value="curta-metragem">Curta-metragem</option></select></div>
                 </div>
-
-                <div class="form-group">
-                    <label>Artista / Produção</label>
-                    <input type="text" id="artist">
-                </div>
-
-                <div class="form-group">
-                    <label>Descrição</label>
-                    <textarea id="description" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>URL do Vídeo (YouTube/Vimeo)</label>
-                    <input type="text" id="trailerUrl">
-                </div>
-
-                <div class="form-group">
-                    <label>Vídeo para Home (Nome do arquivo em assets/videos/)</label>
-                    <input type="text" id="videoHome" placeholder="ex: meu_video.mp4">
-                </div>
-
-                <div class="form-group">
-                    <label>Cartaz (Nome do arquivo em assets/cartazes/)</label>
-                    <input type="text" id="cartazMobile" placeholder="ex: cartaz.jpg">
-                </div>
-
+                <div class="form-group"><label>Artista / Produção</label><input type="text" id="artist"></div>
+                <div class="form-group"><label>Descrição</label><textarea id="description" rows="3"></textarea></div>
+                <div class="form-group"><label>URL do Vídeo (YouTube/Vimeo)</label><input type="text" id="trailerUrl"></div>
+                <div class="form-group"><label>Vídeo para Home</label><input type="text" id="videoHome"></div>
+                <div class="form-group"><label>Cartaz</label><input type="text" id="cartazMobile"></div>
                 <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
-                    <label style="color: #fff; font-size: 1.1rem; margin-bottom: 1rem;">Ficha Técnica (Colunas Fixas)</label>
+                    <label>Ficha Técnica</label>
                     <div class="credits-grid">
                         <div class="form-group"><label>Direção</label><input type="text" id="credit_direcao"></div>
                         <div class="form-group"><label>Roteiro</label><input type="text" id="credit_roteiro"></div>
                         <div class="form-group"><label>Elenco</label><input type="text" id="credit_elenco"></div>
-                        <div class="form-group"><label>Direção de Fotografia</label><input type="text" id="credit_fotografia"></div>
-                        <div class="form-group"><label>Direção de Arte</label><input type="text" id="credit_arte"></div>
+                        <div class="form-group"><label>Fotografia</label><input type="text" id="credit_fotografia"></div>
+                        <div class="form-group"><label>Arte</label><input type="text" id="credit_arte"></div>
                         <div class="form-group"><label>Montagem</label><input type="text" id="credit_montagem"></div>
                     </div>
                 </div>
-
-                <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
-                    <label style="color: #fff; font-size: 1.1rem; margin-bottom: 1rem;">Créditos Adicionais (Livre)</label>
-                    <p style="font-size: 0.8rem; color: #888; margin-bottom: 0.5rem;">Adicione outras funções e nomes (ex: Produção Executiva: Nome, Som: Nome...)</p>
-                    <textarea id="credit_extra" rows="5" placeholder="Função: Nome&#10;Função: Nome"></textarea>
-                    <div class="form-group"><label>Apoio / Notas / Festivais</label><textarea id="credit_apoio" rows="3"></textarea></div>
-                </div>
-
+                <div class="form-group"><label>Créditos Adicionais (Função: Nome)</label><textarea id="credit_extra" rows="5"></textarea></div>
+                <div class="form-group"><label>Apoio / Notas</label><textarea id="credit_apoio" rows="3"></textarea></div>
                 <div style="display: flex; gap: 1rem;">
-                    <button type="button" onclick="saveProject()" style="flex: 2;">Salvar Alterações</button>
+                    <button type="button" onclick="saveProject()" style="flex: 2;">Salvar Projeto</button>
                     <button type="button" onclick="hideProjectForm()" style="flex: 1; background: #444;">Cancelar</button>
                 </div>
             </form>
@@ -120,38 +149,104 @@
 
     <script src="data.js"></script>
     <script>
-        // A senha será validada via Token do GitHub que você vai me passar ou eu vou configurar
-        // Por enquanto, uma proteção simples de interface
         function checkLogin() {
             const pass = document.getElementById('adminPassword').value;
-            if (pass === 'vini2025') { // Senha temporária
+            if (pass === 'vini2025') {
                 document.getElementById('loginScreen').classList.add('hidden');
-                document.getElementById('adminPanel').classList.remove('hidden');
-                renderList();
+                document.getElementById('mainInterface').classList.remove('hidden');
+                renderProjects();
+                renderAboutEditor();
             } else {
                 document.getElementById('loginError').innerText = 'Senha incorreta.';
             }
         }
 
-        function renderList() {
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            event.target.classList.add('active');
+        }
+
+        function renderProjects() {
             const list = document.getElementById('projectList');
             list.innerHTML = '';
             siteData.projects.forEach(p => {
                 const div = document.createElement('div');
                 div.className = 'project-list-item';
-                div.innerHTML = `
-                    <span><strong>${p.title}</strong> (${p.year})</span>
-                    <button onclick="editProject(${p.id})" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Editar</button>
-                `;
+                div.innerHTML = `<span><strong>${p.title}</strong> (${p.year})</span><button onclick="editProject(${p.id})">Editar</button>`;
                 list.appendChild(div);
             });
+        }
+
+        function renderAboutEditor() {
+            const cardsList = document.getElementById('cardsList');
+            cardsList.innerHTML = '';
+            siteData.site.aboutCards.forEach((card, index) => {
+                const div = document.createElement('div');
+                div.className = 'modal-editor-item';
+                div.innerHTML = `
+                    <h4>Card: ${card.title}</h4>
+                    <div class="form-group"><label>Título</label><input type="text" value="${card.title}" onchange="siteData.site.aboutCards[${index}].title = this.value"></div>
+                    <div class="form-group"><label>Texto</label><textarea rows="4" onchange="siteData.site.aboutCards[${index}].text = this.value">${card.text || ''}</textarea></div>
+                `;
+                cardsList.appendChild(div);
+            });
+
+            renderModalSection('filmes', 'modalFilmesList');
+            renderModalSection('premios', 'modalPremiosList');
+            renderModalSection('videoclipes', 'modalVideoclipesList');
+            renderModalSection('cenografia', 'modalCenografiaList');
+        }
+
+        function renderModalSection(type, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            siteData.site.modals[type].forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'modal-editor-item';
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between;"><strong>Item #${index + 1}</strong><button style="color: #ff6b6b; background: none;" onclick="removeModalItem('${type}', ${index})">Remover</button></div>
+                    <div class="form-group"><label>Título/Obra</label><input type="text" value="${item.t}" onchange="siteData.site.modals['${type}'][${index}].t = this.value"></div>
+                    <div class="form-group"><label>Ano</label><input type="text" value="${item.y}" onchange="siteData.site.modals['${type}'][${index}].y = this.value"></div>
+                    <div class="form-group"><label>Função</label><input type="text" value="${item.d}" onchange="siteData.site.modals['${type}'][${index}].d = this.value"></div>
+                    <div class="form-group"><label>Notas/Prêmios</label><input type="text" value="${item.a}" onchange="siteData.site.modals['${type}'][${index}].a = this.value"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function addModalItem(type) {
+            siteData.site.modals[type].push({ t: 'Novo Item', y: '', d: '', a: '' });
+            renderAboutEditor();
+        }
+
+        function removeModalItem(type, index) {
+            if(confirm('Remover este item?')) {
+                siteData.site.modals[type].splice(index, 1);
+                renderAboutEditor();
+            }
+        }
+
+        async function saveAboutChanges() {
+            const token = document.getElementById('githubToken').value;
+            if (!token) { alert('Insira seu GitHub Token nas Configurações.'); showTab('config'); return; }
+            const content = `const siteData = ${JSON.stringify(siteData, null, 2)};\n`;
+            try {
+                const res = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/public/data.js`, { headers: { 'Authorization': `token ${token}` } });
+                const fileData = await res.json();
+                const saveRes = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/public/data.js`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Atualiza Sobre via CMS`, content: btoa(unescape(encodeURIComponent(content))), sha: fileData.sha })
+                });
+                if (saveRes.ok) alert('Atualizado com sucesso!'); else alert('Erro ao salvar.');
+            } catch (e) { alert('Erro: ' + e.message); }
         }
 
         function editProject(id) {
             const p = siteData.projects.find(proj => proj.id === id);
             if (!p) return;
-            
-            document.getElementById('formTitle').innerText = 'Editar: ' + p.title;
             document.getElementById('projectId').value = p.id;
             document.getElementById('title').value = p.title;
             document.getElementById('year').value = p.year;
@@ -161,31 +256,23 @@
             document.getElementById('trailerUrl').value = p.trailerUrl || '';
             document.getElementById('videoHome').value = p.videoHome || '';
             document.getElementById('cartazMobile').value = p.cartazMobile || '';
-            
-            // Créditos
             if (p.credits) {
                 document.getElementById('credit_direcao').value = (p.credits.direcao || []).join(', ');
                 document.getElementById('credit_roteiro').value = (p.credits.roteiro || []).join(', ');
                 document.getElementById('credit_elenco').value = (p.credits.elenco || []).join(', ');
                 document.getElementById('credit_fotografia').value = (p.credits.direcaoFotografia || []).join(', ');
+                document.getElementById('credit_arte').value = (p.credits.direcaoArte || []).join(', ');
+                document.getElementById('credit_montagem').value = (p.credits.montagem || []).join(', ');
+                document.getElementById('credit_extra').value = p.credits.extra || '';
                 document.getElementById('credit_apoio').value = p.credits.apoio || '';
             }
-
-            document.getElementById('adminPanel').classList.add('hidden');
-            document.getElementById('projectForm').classList.remove('hidden');
-        }
-
-        function showProjectForm() {
-            document.getElementById('editForm').reset();
-            document.getElementById('projectId').value = '';
-            document.getElementById('formTitle').innerText = 'Novo Projeto';
-            document.getElementById('adminPanel').classList.add('hidden');
+            document.getElementById('mainInterface').classList.add('hidden');
             document.getElementById('projectForm').classList.remove('hidden');
         }
 
         function hideProjectForm() {
             document.getElementById('projectForm').classList.add('hidden');
-            document.getElementById('adminPanel').classList.remove('hidden');
+            document.getElementById('mainInterface').classList.remove('hidden');
         }
 
         async function saveProject() {
@@ -212,61 +299,14 @@
                 }
             };
 
-            const token = document.getElementById('githubToken').value;
-            if (token) {
-                try {
-                    const filename = projectData.title.toLowerCase().replace(/\s+/g, '-') + ".json";
-                    const path = `src/projects/${filename}`;
-                    const content = btoa(unescape(encodeURIComponent(JSON.stringify(projectData, null, 2))));
-                    
-                    // Buscar o SHA do arquivo se ele já existir
-                    let sha = "";
-                    try {
-                        const res = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/${path}`, {
-                            headers: { 'Authorization': `token ${token}` }
-                        });
-                        if (res.ok) {
-                            const data = await res.json();
-                            sha = data.sha;
-                        }
-                    } catch (e) {}
+            // Atualizar no siteData local
+            const idx = siteData.projects.findIndex(p => p.id === projectData.id);
+            if (idx > -1) siteData.projects[idx] = projectData; else siteData.projects.push(projectData);
 
-                    const saveRes = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/${path}`, {
-                        method: 'PUT',
-                        headers: {
-                            'Authorization': `token ${token}`,
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            message: `Update project: ${projectData.title}`,
-                            content: content,
-                            sha: sha
-                        })
-                    });
-
-                    if (saveRes.ok) {
-                        alert('Projeto salvo com sucesso direto no GitHub!');
-                        location.reload();
-                    } else {
-                        throw new Error('Erro ao salvar no GitHub');
-                    }
-                } catch (err) {
-                    alert('Erro ao salvar automaticamente. Baixando arquivo como backup...');
-                    downloadJSON(projectData);
-                }
-            } else {
-                downloadJSON(projectData);
-            }
-        }
-
-        function downloadJSON(projectData) {
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(projectData, null, 2));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", projectData.title.toLowerCase().replace(/\s+/g, '-') + ".json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
+            // Salvar o data.js completo
+            saveAboutChanges();
+            hideProjectForm();
+            renderProjects();
         }
     </script>
 </body>

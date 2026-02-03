@@ -5,7 +5,49 @@ const siteData = {
     description: "Diretor criativo, cinematógrafo e editor",
     email: "projetos@vinipoffo.com",
     instagram: "pofovini",
-    about: "Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente. Seu processo é artesanal e atravessado por símbolos, política e afeto.\n\nPremiada pela Funarte (2021) com o videoarte Parte de Mim e eleito pelo SESC SC em 2022 com o seu primeiro curta No Reflexo do Meu Nome, melhor obra de Santa Catarina. Seu segundo filme, (Sub)Urbana, percorreu mais de 20 festivais nacionais e internacionais, conquistando cinco prêmios de melhor filme, incluindo o Prêmio Revelação no IV Transforma Festival e atualmente esta disponível pelo Itaú Play. Em 2025 lançou seu curta Tem Feito Uns Dias Esquisitos. Dirigiu mais de 10 videoclipes, incluindo Colapso Invisível de YMA e Aranha de Letrux."
+    about: "Vini Poffo trabalha com direção criativa e cinema. Atua principalmente com videoclipes, filmes autorais, cenografia e projetos interdisciplinares. Já teve trabalhos premiados no Brasil e exibidos internacionalmente. Seu processo é artesanal e atravessado por símbolos, política e afeto.\n\nPremiada pela Funarte (2021) com o videoarte Parte de Mim e eleito pelo SESC SC em 2022 com o seu primeiro curta No Reflexo do Meu Nome, melhor obra de Santa Catarina. Seu segundo filme, (Sub)Urbana, percorreu mais de 20 festivais nacionais e internacionais, conquistando cinco prêmios de melhor filme, incluindo o Prêmio Revelação no IV Transforma Festival e atualmente esta disponível pelo Itaú Play. Em 2025 lançou seu curta Tem Feito Uns Dias Esquisitos. Dirigiu mais de 10 videoclipes, incluindo Colapso Invisível de YMA e Aranha de Letrux.",
+    aboutCards: [
+        { id: 1, title: "Vini Poffo", text: "Sou cineasta, diretora criativa e artista, com foco em cinema, videoclipes e projetos publicitários. Meu trabalho busca questionar narrativas convencionais e criar espaços para novas perspectivas através de uma abordagem artesanal. Cada projeto é atravessado por símbolos, política e afeto. Já tive trabalhos premiados no Brasil e exibidos internacionalmente, sempre mantendo a autenticidade e a profundidade como pilares do processo criativo.", color: "green" },
+        { id: 2, title: "Filmes", text: "Desenvolvo filmes autorais que investigam identidade, memória e território.", color: "blue", modal: "filmesModal" },
+        { id: 3, title: "Prêmios", text: "Reconhecimentos e prêmios conquistados ao longo da trajetória criativa.", color: "blue", modal: "premiosModal" },
+        { id: 4, title: "Processo Criativo", text: "Me interesso por imagens que carregam tempo. Cenários, objetos, corpos e luz estão ali para dizer alguma coisa. Meu processo criativo parte da imagem como sensação. A imagem precisa atravessar o corpo, criar estado e provocar alguma coisa em quem vê. Trabalho com objetos de memória — elementos que carregam vida dentro da obra.", color: "green" },
+        { id: 5, title: "Videoclipes", text: "Vejo o videoclipe como um espaço de invenção estética, onde imagem, corpo e som constroem narrativas experimentais e com força conceitual.", color: "blue", modal: "videoclipesModal" },
+        { id: 6, title: "Arte, Cenografia e Outros", text: "Experiências que ampliam meu olhar sobre o set e fortalecem minha capacidade de construir projetos.", color: "blue", modal: "cenografiaModal" },
+        { id: 7, title: "Projetos", text: "Explore meu portfólio completo.", color: "blue", link: "projetos.html" },
+        { id: 8, title: "Direção", text: "Acredito no cinema e no audiovisual como prática coletiva. Tenho experiência em liderar equipes, dialogar com diferentes departamentos e construir processos colaborativos, respeitando os tempos e as singularidades de cada projeto. Dirigir, pra mim, é estar presente e atenta aos detalhes, articulando para que conceito e execução caminhem juntos.", color: "green" },
+        { id: 9, title: "Vamos Conversar", text: "Estou aberta a colaborações e novos projetos. Se você busca imagens com intenção, sensibilidade e presença, vamos trocar.", color: "blue", type: "contact" }
+    ],
+    modals: {
+        filmes: [
+            { t: "Tem Feito Uns Dias Esquisitos", y: "2025", d: "direção, roteiro e concepção de arte", a: "Mostra SESC de Cinema 2025<br>Prêmio Catarinense de Cinema" },
+            { t: "O Viajante e a Raposa", y: "2024", d: "direção", a: "" },
+            { t: "(Sub)Urbana", y: "2023", d: "direção e co-roteirista", a: "5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema" },
+            { t: "No Reflexo do Meu Nome", y: "2022", d: "direção e roteiro", a: "Melhor obra de Santa Catarina – SESC SC 2022<br>Em mais de 15 festivais nacionais e internacionais" },
+            { t: "De baixo do guarda-chuva pra ser resistência", y: "2021", d: "direção e roteiro", a: "" },
+            { t: "Parte de Mim", y: "2021", d: "direção, roteiro e montagem", a: "Prêmio Respirarte Funarte 2021" }
+        ],
+        premios: [
+            { t: "Prêmio Catarinense de Cinema", y: "2024", d: "Produção de curta-metragem", a: "" },
+            { t: "Mostra SESC de Cinema", y: "2024", d: "Seleção Estadual", a: "" },
+            { t: "IV Transforma Festival", y: "2023", d: "Prêmio Revelação", a: "" },
+            { t: "SESC SC", y: "2022", d: "Melhor Obra de Santa Catarina", a: "" },
+            { t: "Prêmio Respirarte Funarte", y: "2021", d: "Videoarte", a: "" },
+            { t: "Prêmio Catarinense de Cinema", y: "2019", d: "Produção de curta-metragem", a: "" }
+        ],
+        videoclipes: [
+            { t: "Vira essa boca pra cá", y: "2025", d: "Letrux feat Nouvella", a: "" },
+            { t: "Dropar teu nome", y: "2025", d: "Letrux feat Nouvella", a: "" },
+            { t: "Outres de Nós", y: "2025", d: "Jesus Lumma feat Dandara Manoela", a: "" },
+            { t: "Aranha", y: "2024", d: "Letrux", a: "Melhor videoclipe – Curta Fest Brasília 2024<br>MVF Argentina e Colômbia" },
+            { t: "Baião de Dois", y: "2022", d: "Aretuza Lovi feat Getúlio Abelha", a: "" },
+            { t: "Ela Terra", y: "2020", d: "Malu Maria", a: "" },
+            { t: "Sugar Daddy", y: "2019", d: "Gabeu", a: "" },
+            { t: "Colapso Invisível", y: "2019", d: "YMA", a: "" }
+        ],
+        cenografia: [
+            { t: "Cenografia e Direção de Arte", y: "2019-2025", d: "Diversos projetos", a: "Atuação em mais de 15 sets de filmagem" }
+        ]
+    }
   },
   projects: [
     {
