@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (titleOutside && projects[1]) {
-            titleOutside.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
+            titleOutside.innerHTML = `<div class="title-content"><span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span></div>`;
             titleOutside.onclick = () => rotateHeroMobile();
         }
         

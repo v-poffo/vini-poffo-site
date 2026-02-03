@@ -408,6 +408,9 @@ p {
     right: 1.5rem;
     z-index: 10;
     color: var(--primary-white);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
 }
 
 .hero-title-inside-mobile .title-text {
@@ -418,15 +421,16 @@ p {
     letter-spacing: -0.5px;
     line-height: 1.15;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
-    display: block;
-    margin-bottom: 0.3rem;
+    display: inline;
+    margin-bottom: 0;
 }
 
 .hero-title-inside-mobile .title-year {
-    font-size: 0.85rem;
+    font-size: 0.6rem;
     font-weight: 400;
-    opacity: 0.9;
+    opacity: 0.7;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    display: inline;
 }
 
 /* Mobile Title Outside Video */
@@ -444,6 +448,12 @@ p {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+.hero-title-outside-mobile .title-content {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
 .hero-title-outside-mobile .title-text {
     font-size: 1.3rem;
     font-family: var(--font-primary);
@@ -453,15 +463,16 @@ p {
     line-height: 1.15;
     color: var(--primary-white);
     opacity: 0.7;
-    display: block;
-    margin-bottom: 0.2rem;
+    display: inline;
+    margin-bottom: 0;
 }
 
 .hero-title-outside-mobile .title-year {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 400;
     color: var(--primary-white);
     opacity: 0.5;
+    display: inline;
 }
 
 .arrow-indicator {
@@ -814,9 +825,10 @@ p {
 
     /* Vídeo quadrado no mobile */
     .hero-media.mobile-only {
-        width: 100%;
+        width: 70%;
+        margin: 0 auto;
         height: 0;
-        padding-bottom: 100%; /* Aspect ratio 1:1 */
+        padding-bottom: 70%; /* Aspect ratio 1:1 */
         position: relative;
         overflow: hidden;
     }
