@@ -355,6 +355,7 @@
             if (!token) { alert('Insira seu GitHub Token para fazer upload'); return; }
 
             const progressDiv = document.getElementById('uploadProgress');
+            const oldVideoName = document.getElementById('videoHome').value;
             progressDiv.innerText = 'Preparando upload...';
 
             try {
@@ -380,6 +381,31 @@
                         });
 
                         if (res.ok) {
+                            if (oldVideoName && oldVideoName.trim()) {
+                                progressDiv.innerText = 'Deletando arquivo antigo...';
+                                const oldFilePath = 'public/assets/videos/' + oldVideoName;
+                                try {
+                                    const getRes = await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + oldFilePath, {
+                                        headers: { 'Authorization': 'token ' + token }
+                                    });
+                                    if (getRes.ok) {
+                                        const fileData = await getRes.json();
+                                        await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + oldFilePath, {
+                                            method: 'DELETE',
+                                            headers: {
+                                                'Authorization': 'token ' + token,
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                message: 'Deletar video antigo: ' + oldVideoName,
+                                                sha: fileData.sha
+                                            })
+                                        });
+                                    }
+                                } catch (err) {
+                                    console.log('Nao foi possivel deletar arquivo antigo');
+                                }
+                            }
                             document.getElementById('videoHome').value = fileName;
                             progressDiv.innerText = 'Video enviado com sucesso! Nome: ' + fileName;
                             fileInput.value = '';
