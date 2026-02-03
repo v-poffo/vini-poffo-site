@@ -298,33 +298,23 @@ const siteData = {
       "videoHome": "tfde_portfolio_video.mp4",
       "cartazMobile": "dias-esquisitos-cartaz.png",
       "credits": {
-        "direcao": [
-          "Vini Poffo",
-          "Luana Skibinski"
-        ],
-        "roteiro": [
-          "Zalu Amorim",
-          "Vini Poffo"
-        ],
-        "elenco": [
-          "Leonardo Lima",
-          "Rafaella Narciso",
-          "Bernardo Araújo",
-          "Guy Lima",
-          "Tayla Evangelista",
-          "Berna Sant'Anna",
-          "Ana Miranda"
-        ],
-        "direcaoFotografia": [
-          "Jaque Kogus"
-        ],
-        "direcaoArte": [
-          "Matheus De Luca"
-        ],
-        "montagem": [
-          ""
-        ],
-        "extra": "",
+        "direcao": ["Vini Poffo", "Luana Skibinski"],
+        "roteiro": ["Zalu Amorim", "Vini Poffo"],
+        "elenco": ["Leonardo Lima", "Rafaella Narciso", "Bernardo Araújo", "Guy Lima", "Tayla Evangelista", "Berna Sant'Anna", "Ana Miranda"],
+        "preparacaoElenco": ["Mar Rosa"],
+        "direcaoFotografia": ["Jaque Kogus"],
+        "operadoraCamera": ["Millena Rosado"],
+        "concepcaoArte": ["Luan Baeta", "Matheus De Luca", "Vini Poffo"],
+        "direcaoArte": ["Matheus De Luca"],
+        "designer": ["Alice Costa"],
+        "direcaoSomMixagem": ["Gabu"],
+        "trilhaSonoraOriginal": ["YMA", "Fernando Rischbieter"],
+        "producaoExecutiva": ["Ive Machado"],
+        "controller": ["Lari Reimerer"],
+        "direcaoProducao": ["Adriana Perdiz"],
+        "makingOf": ["Anita Poffo"],
+        "fotografiaStill": ["Ligia Ferreira"],
+        "apresentacao": ["Sufe apresenta"],
         "apoio": "Contemplado pela Lei Paulo Gustavo"
       }
     },
@@ -381,7 +371,45 @@ const siteData = {
       "videoHome": "suburbana_portfolio_video.mp4",
       "cartazMobile": "suburbana-cartaz.png",
       "trailerUrl": "https://vimeo.com/820330742?fl=pl&fe=sh",
-      "description": "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play."
+      "description": "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play.",
+      "credits": {
+        "direcao": ["Vini Poffo"],
+        "roteiro": ["Egon Zek", "Vini Poffo"],
+        "elenco": ["Dudazone", "Ana Miranda", "Daniela Gomes", "Patrícia Abelson"],
+        "producaoExecutiva": ["Scheila Alexsandra", "Vini Poffo"],
+        "assistenteProducaoExecutiva": ["Zalu Amorim"],
+        "producao": ["Scheila Alexsandra"],
+        "assistenteProducao1": ["Mar"],
+        "assistenteProducao2": ["Ítalo Ângelo"],
+        "assistenteSet": ["Daniela Gomes", "Talita Dembinski"],
+        "cattering": ["Empresa Sol"],
+        "assistenteDirecao1": ["Sillas H."],
+        "assistenteDirecao2": ["Mar"],
+        "direcaoFotografia": ["Jaq Kogus"],
+        "operadoraCamera": ["Millena Rosado"],
+        "assistenteFotografia1": ["Luana Skibinski"],
+        "assistenteFotografia2Claquete": ["Jessé Rodrigues"],
+        "stillMakingOf": ["Carlos Adriano"],
+        "maquinaria": ["Christian Pires"],
+        "direcaoArte": ["Guilherme Custódio"],
+        "assistenteArte1": ["Júlia Mayer", "Vitória Caroline"],
+        "assistenteArte2": ["Nallan Francisca"],
+        "cenografia": ["Júlia Mayer"],
+        "figurino": ["Anita Poffo", "Camila Petry"],
+        "costureira": ["Rosilene Poffo", "Daniela Gomes"],
+        "maquiagem": ["Dani Machado", "Sui"],
+        "cabelo": ["Sui"],
+        "design": ["Matheus Pesans"],
+        "direcaoElenco": ["Mar"],
+        "direcaoSom": ["Gabriel Guiette Mota"],
+        "somDireto": ["Vitor Trentini"],
+        "assistenteSom": ["Lyandra Galetti"],
+        "montagemEdicao": ["Lucas Richard"],
+        "colorista": ["Maria Cesarotti"],
+        "mixagem": ["Gabriel Guiette Mota"],
+        "libras": ["Nubia Amorim"],
+        "audiodescricao": ["Thiago Santanda"]
+      }
     },
     {
       "id": 7,
@@ -392,7 +420,33 @@ const siteData = {
       "videoHome": "noreflexo_portfolio_video.mp4",
       "cartazMobile": "reflexo-nome-cartaz.png",
       "trailerUrl": "https://vimeo.com/820329509?fl=pl&fe=sh",
-      "description": "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais."
+      "description": "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais.",
+      "credits": {
+        "direcaoRoteiro": ["Vini Poffo", "Sillas H"],
+        "elenco": ["Will Olien", "Ygor Felisbino", "Ana Miranda", "Rô Sales", "Robson Rodrigues", "Dani Pamplona"],
+        "direcaoProducao": ["Scheila Alexsandra"],
+        "producaoExecutiva": ["Scheila Alexsandra", "Vini Poffo"],
+        "controller": ["Jéssica Michels"],
+        "assistenteProducaoExecutiva": ["José Wiemes"],
+        "assistenteProducao": ["Talita Debinski"],
+        "direcaoFotografia": ["Millena Rosado"],
+        "direcaoArte": ["Julia Mayer"],
+        "direcaoSom": ["Ingrid Gonçalves"],
+        "direcaoElenco": ["Mar"],
+        "assistenteCamera1": ["João de Oliveira"],
+        "assistenteCamera2": ["Jessé Rodrigues", "Natan Arndt"],
+        "figurino": ["Anita Poffo", "Camila Petry"],
+        "maquiagem": ["Dani Machado"],
+        "gaffer": ["Flavio Andrade"],
+        "assistenteIluminacao": ["Adriana Perdiz"],
+        "fotografiaStill": ["Jéssica Michels"],
+        "montagemEdicao": ["Lucas Richard"],
+        "colorizacao": ["Maria Cesarotti"],
+        "trilhaSonora": ["YMA", "Fernando Rischbieter"],
+        "designerGrafico": ["Matheus Pesans"],
+        "motorista": ["Andre Hugo K"],
+        "agradecimentos": ["Vidraçaria XV", "AJOTE", "Bolshoi", "Futuro Laboratório"]
+      }
     },
     {
       "id": 9,
