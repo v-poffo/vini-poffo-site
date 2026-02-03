@@ -137,16 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!grid) return;
         grid.innerHTML = '';
         aboutContent.forEach((c, i) => {
-            // Adicionar card 10 (Vamos Conversar Desktop) se for desktop
-            if (isDesktop && i === 8) {
-                // Card 9 vira Cinema Autoral no Desktop
-                c.title = "Cinema Autoral";
-                c.text = "Cada filme ou videoclipe é resultado de referências, vivências, observação de corpos, espaços e gestos cotidianos. O cinema se constrói aos poucos, carrega marcas do processo, do tempo e das pessoas envolvidas. Gosto quando a imagem tem vida própria, quando algo nela continua vibrando depois que termina. Penso o set como um espaço vivo, onde imagem, corpo e tempo estão em constante negociação. Gosto de estar próxima do processo, acompanhando cada detalhe, porque é ali que a magia acontece.";
-                c.type = "text";
-                c.color = "green";
-                delete c.modal;
-            }
-            
             const card = document.createElement('div');
             const isClickable = (c.type === 'modal' && c.modal) || c.link;
             card.className = isClickable ? 'flip-card clickable' : 'flip-card';
