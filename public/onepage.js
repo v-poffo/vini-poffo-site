@@ -168,9 +168,11 @@ document.addEventListener('DOMContentLoaded', function() {
             card.innerHTML = `<div class="flip-card-inner"><div class="flip-card-front" ${frontStyle}></div><div class="flip-card-back ${c.color}">${backContent}</div></div>`;
             
             card.onclick = () => {
-                if (!isDesktop && c.modal) {
+                // No mobile: abrir modais de texto (type="text") e modais normais (type="modal")
+                if (!isDesktop && c.modal && (c.type === 'text' || c.type === 'modal')) {
                     document.getElementById(c.modal).classList.add('show');
-                } else if (c.type === 'modal') {
+                } else if (isDesktop && c.type === 'modal') {
+                    // No desktop: apenas modais normais (não texto)
                     document.getElementById(c.modal).classList.add('show');
                 } else if (c.link) {
                     window.location.href = c.link;
