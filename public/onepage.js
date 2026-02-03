@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const list = document.getElementById('projectsList');
         if (!list) return;
         list.innerHTML = '';
-        projects.slice(0, 4).forEach((p, i) => {
+        projects.slice(0, 3).forEach((p, i) => {
             const div = document.createElement('div');
             div.className = `project-title ${i === 0 ? 'active' : ''}`;
             div.innerHTML = `<span class="title-text">${p.title.toUpperCase()}</span><span class="title-year">${p.year}</span>`;
@@ -295,6 +295,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // --- FILTROS DE PROJETOS ---
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const filter = this.getAttribute('data-filter');
+            renderProjectsCarousel(filter);
+        });
+    });
 
     initializeHero();
     renderProjectsCarousel();
