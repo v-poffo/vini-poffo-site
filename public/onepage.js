@@ -49,15 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function setupMobileHero() {
         const titleInside = document.getElementById('heroTitleInsideMobile');
-        const titleOutside = document.getElementById('heroTitleOutsideMobile');
         
         if (titleInside && projects[0]) {
-            titleInside.innerHTML = '▼'; // Seta apontando para baixo
-        }
-        
-        if (titleOutside && projects[1]) {
-            titleOutside.innerHTML = `<div class="title-content"><span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span></div>`;
-            titleOutside.onclick = () => rotateHeroMobile();
+            titleInside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
         }
         
         updateHeroVideoMobile(0);

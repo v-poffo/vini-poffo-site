@@ -403,59 +403,36 @@ p {
 /* Mobile Title Inside Video */
     .hero-title-inside-mobile {
         position: absolute;
-        bottom: 1rem;
-        right: 1rem;
+        bottom: 1.5rem;
+        left: 1.5rem;
         z-index: 10;
         color: var(--primary-white);
-        font-size: 0.7rem;
-        font-weight: 400;
-        opacity: 0.7;
-    }
-
-    /* Mobile Title Outside Video */
-    .hero-title-outside-mobile {
-        padding: 1rem 1.5rem;
-        background-color: var(--primary-black);
         display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+        align-items: baseline;
+        gap: 0.4rem;
     }
-
-    .hero-title-outside-mobile:active {
-        background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .hero-title-outside-mobile .title-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-    }
-
-    .hero-title-outside-mobile .title-text {
-        font-size: 0.95rem;
-        font-family: var(--font-primary);
+    
+    .hero-title-inside-mobile .title-text {
+        font-size: 1.1rem;
         font-weight: 600;
         font-style: italic;
-        letter-spacing: -0.5px;
         line-height: 1.2;
-        color: var(--primary-white);
-        opacity: 0.9;
-        display: block;
-        margin-bottom: 0;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        display: inline;
+        margin: 0;
     }
-
-    .hero-title-outside-mobile .title-year {
+    
+    .hero-title-inside-mobile .title-year {
         font-size: 0.65rem;
         font-weight: 400;
-        color: var(--primary-white);
-        opacity: 0.6;
-        display: block;
+        opacity: 0.8;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        display: inline;
+    }
+
+    /* Mobile Title Outside Video - Hidden */
+    .hero-title-outside-mobile {
+        display: none;
     }
 
     .arrow-indicator {
