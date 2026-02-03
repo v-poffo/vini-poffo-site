@@ -1,6 +1,7 @@
 // Lógica para a página única (One Page) - Versão Final Otimizada
 document.addEventListener('DOMContentLoaded', function() {
-    const projects = [...siteData.projects];
+    // Filtrar apenas projetos com vídeo de capa
+    const projects = [...siteData.projects].filter(p => p.videoHome && p.videoHome !== '');
     let isDesktop = window.innerWidth > 1024;
 
     // --- HERO ---
