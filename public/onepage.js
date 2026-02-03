@@ -35,28 +35,36 @@ document.addEventListener('DOMContentLoaded', function() {
         const video = document.getElementById('heroVideo');
         if (video && projects[idx]) {
             video.src = `assets/videos/${projects[idx].videoHome}`;
+            video.loop = false; // Desabilitar loop para detectar fim
             video.play();
+            
+            // Auto-rotação quando vídeo terminar
+            video.onended = () => {
+                projects.push(projects.shift());
+                renderHeroTitles();
+                updateHeroVideo(0);
+            };
         }
     }
 
     function setupMobileHero() {
-        const list = document.getElementById('projectsListMobile');
-        if (!list) return;
-        list.innerHTML = '';
-        // Mostrar apenas 3 projetos
-        projects.slice(0, 3).forEach((p, i) => {
-            const div = document.createElement('div');
-            div.className = `project-title-mobile ${i === 0 ? 'active' : ''}`;
-            div.innerHTML = `<span class="title-text">${p.title.toUpperCase()}</span><span class="title-year">${p.year}</span>`;
-            div.onclick = () => rotateHeroMobile(i);
-            list.appendChild(div);
-        });
+        const titleInside = document.getElementById('heroTitleInsideMobile');
+        const titleOutside = document.getElementById('heroTitleOutsideMobile');
+        
+        if (titleInside && projects[0]) {
+            titleInside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+        }
+        
+        if (titleOutside && projects[1]) {
+            titleOutside.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
+            titleOutside.onclick = () => rotateHeroMobile();
+        }
+        
         updateHeroVideoMobile(0);
     }
 
-    function rotateHeroMobile(clickedIdx) {
-        if (clickedIdx === 0) return;
-        for (let i = 0; i < clickedIdx; i++) { projects.push(projects.shift()); }
+    function rotateHeroMobile() {
+        projects.push(projects.shift());
         setupMobileHero();
     }
 
@@ -64,7 +72,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const video = document.getElementById('heroVideoMobile');
         if (video && projects[idx]) {
             video.src = `assets/videos/${projects[idx].videoHome}`;
+            video.loop = false; // Desabilitar loop para detectar fim
             video.play();
+            
+            // Auto-rotação quando vídeo terminar
+            video.onended = () => {
+                rotateHeroMobile();
+            };
         }
     }
 

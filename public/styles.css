@@ -400,57 +400,87 @@ p {
     background-color: var(--primary-black);
 }
 
-/* Mobile Title Overlay */
-.hero-overlay-mobile {
+/* Mobile Title Inside Video */
+.hero-title-inside-mobile {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 100%);
-    display: flex;
-    align-items: flex-end;
-    padding: 3rem 1.5rem 2rem 1.5rem;
-    z-index: 20;
-}
-
-.hero-titles-mobile {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.project-title-mobile {
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-family: var(--font-primary);
-    font-weight: 500;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    z-index: 10;
     color: var(--primary-white);
-    transition: all 0.3s ease;
-    padding: 0.25rem 0;
+}
+
+.hero-title-inside-mobile .title-text {
+    font-size: 1.8rem;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-style: italic;
     letter-spacing: -0.5px;
     line-height: 1.15;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.hero-title-inside-mobile .title-year {
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.9;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Mobile Title Outside Video */
+.hero-title-outside-mobile {
+    padding: 1rem 1.5rem;
+    background-color: var(--primary-black);
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    opacity: 0.7;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.project-title-mobile .title-text {
+.hero-title-outside-mobile:active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hero-title-outside-mobile .title-text {
+    font-size: 1.3rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
     font-style: italic;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    color: var(--primary-white);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.2rem;
 }
 
-.project-title-mobile .title-year {
+.hero-title-outside-mobile .title-year {
     font-size: 0.7rem;
     font-weight: 400;
-    opacity: 0.6;
-    font-style: normal;
+    color: var(--primary-white);
+    opacity: 0.5;
 }
 
-.project-title-mobile.active {
+.arrow-indicator {
+    font-size: 1.2rem;
     color: var(--primary-white);
-    opacity: 1;
-    font-weight: 600;
+    opacity: 0.5;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-5px);
+    }
+    60% {
+        transform: translateY(-3px);
+    }
 }
 
 /* Projects Section */

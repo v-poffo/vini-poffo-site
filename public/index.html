@@ -70,6 +70,9 @@
 
         /* --- PROJETOS: POLAROIDES ORGÂNICAS --- */
         .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
+        @media (max-width: 768px) {
+            .projects-onepage { padding-top: 0; }
+        }
         .filter-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; padding: 0 2rem; }
         .filter-btn {
             padding: 0.6rem 1.2rem; border: 1px solid var(--primary-white); background: transparent; color: var(--primary-white);
@@ -256,13 +259,17 @@
     <section class="hero" id="hero">
         <div class="hero-container">
             <div class="hero-media desktop-only"><video id="heroVideo" autoplay muted loop playsinline></video></div>
-            <div class="hero-media mobile-only"><video id="heroVideoMobile" autoplay muted loop playsinline></video></div>
+            <div class="hero-media mobile-only">
+                <video id="heroVideoMobile" autoplay muted loop playsinline></video>
+                <div class="hero-title-inside-mobile" id="heroTitleInsideMobile"></div>
+            </div>
             <div class="hero-overlay desktop-only">
                 <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
                 <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
             </div>
-            <div class="hero-overlay-mobile mobile-only">
-                <div class="hero-titles-mobile" id="projectsListMobile"></div>
+            <div class="hero-title-outside-mobile mobile-only">
+                <div id="heroTitleOutsideMobile"></div>
+                <div class="arrow-indicator">▼</div>
             </div>
             <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
         </div>
