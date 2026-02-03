@@ -48,22 +48,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setupMobileHero() {
-        const titleItem0 = document.getElementById('titleItem0');
-        const titleItem1 = document.getElementById('titleItem1');
-        const heroTitlesMobile = document.getElementById('heroTitlesMobile');
+        const inside = document.getElementById('heroTitleInsideMobile');
+        const outside = document.getElementById('heroTitleOutsideMobile');
         
-        if (titleItem0 && projects[0]) {
-            titleItem0.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
-            titleItem0.classList.add('active');
+        if (inside && projects[0]) {
+            inside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
         }
         
-        if (titleItem1 && projects[1]) {
-            titleItem1.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
-            titleItem1.classList.remove('active');
+        if (outside && projects[1]) {
+            outside.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
         }
         
-        if (heroTitlesMobile) {
-            heroTitlesMobile.onclick = () => rotateHeroMobile();
+        const outsideContainer = document.querySelector('.hero-title-outside-mobile');
+        if (outsideContainer) {
+            outsideContainer.onclick = () => rotateHeroMobile();
         }
         
         updateHeroVideoMobile(0);
