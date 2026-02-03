@@ -39,24 +39,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setupMobileHero() {
-        const items = document.getElementById('carouselItems');
-        if (!items) return;
-        items.innerHTML = '';
-        projects.forEach(p => {
+        const list = document.getElementById('projectsListMobile');
+        if (!list) return;
+        list.innerHTML = '';
+        // Mostrar apenas 3 projetos
+        projects.slice(0, 3).forEach((p, i) => {
             const div = document.createElement('div');
-            div.className = 'carousel-item';
-            div.innerHTML = `<img src="assets/cartazes/${p.cartazMobile}">`;
-            items.appendChild(div);
+            div.className = `project-title-mobile ${i === 0 ? 'active' : ''}`;
+            div.innerHTML = `<span class="title-text">${p.title.toUpperCase()}</span><span class="title-year">${p.year}</span>`;
+            div.onclick = () => rotateHeroMobile(i);
+            list.appendChild(div);
         });
-        const titleMob = document.getElementById('heroTitleMobile');
-        const container = document.querySelector('.carousel-items');
-        if (container) {
-            container.onscroll = () => {
-                const idx = Math.round(container.scrollTop / container.offsetHeight);
-                if (projects[idx]) {
-                    titleMob.innerHTML = `<div class="project-info"><div class="project-title-large">${projects[idx].title}</div><div class="project-year">${projects[idx].year}</div></div>`;
-                }
-            };
+        updateHeroVideoMobile(0);
+    }
+
+    function rotateHeroMobile(clickedIdx) {
+        if (clickedIdx === 0) return;
+        for (let i = 0; i < clickedIdx; i++) { projects.push(projects.shift()); }
+        setupMobileHero();
+    }
+
+    function updateHeroVideoMobile(idx) {
+        const video = document.getElementById('heroVideoMobile');
+        if (video && projects[idx]) {
+            video.src = `assets/videos/${projects[idx].videoHome}`;
+            video.play();
         }
     }
 
