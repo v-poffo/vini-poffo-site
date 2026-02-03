@@ -171,7 +171,8 @@
         function renderProjects() {
             const list = document.getElementById('projectList');
             list.innerHTML = '';
-            siteData.projects.forEach(p => {
+            const sortedProjects = [...siteData.projects].sort((a, b) => b.year - a.year);
+            sortedProjects.forEach(p => {
                 const div = document.createElement('div');
                 div.className = 'project-list-item';
                 div.innerHTML = `<span><strong>${p.title}</strong> (${p.year})</span><button onclick="editProject(${p.id})">Editar</button>`;
@@ -202,7 +203,8 @@
         function renderModalSection(type, containerId) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
-            siteData.site.modals[type].forEach((item, index) => {
+            const sortedItems = [...siteData.site.modals[type]].sort((a, b) => parseInt(b.y) - parseInt(a.y));
+            sortedItems.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'modal-editor-item';
                 div.innerHTML = `
@@ -266,6 +268,29 @@
                 document.getElementById('credit_extra').value = p.credits.extra || '';
                 document.getElementById('credit_apoio').value = p.credits.apoio || '';
             }
+            document.getElementById('mainInterface').classList.add('hidden');
+            document.getElementById('projectForm').classList.remove('hidden');
+        }
+
+        function showProjectForm() {
+            document.getElementById('projectId').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('year').value = new Date().getFullYear();
+            document.getElementById('type').value = 'videoclipe';
+            document.getElementById('artist').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('trailerUrl').value = '';
+            document.getElementById('videoHome').value = '';
+            document.getElementById('cartazMobile').value = '';
+            document.getElementById('credit_direcao').value = '';
+            document.getElementById('credit_roteiro').value = '';
+            document.getElementById('credit_elenco').value = '';
+            document.getElementById('credit_fotografia').value = '';
+            document.getElementById('credit_arte').value = '';
+            document.getElementById('credit_montagem').value = '';
+            document.getElementById('credit_extra').value = '';
+            document.getElementById('credit_apoio').value = '';
+            document.getElementById('formTitle').innerText = 'Novo Projeto';
             document.getElementById('mainInterface').classList.add('hidden');
             document.getElementById('projectForm').classList.remove('hidden');
         }

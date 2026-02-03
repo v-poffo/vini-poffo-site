@@ -1,7 +1,7 @@
 // Lógica para a página única (One Page) - Versão Final Otimizada
 document.addEventListener('DOMContentLoaded', function() {
-    // Filtrar apenas projetos com vídeo de capa
-    const projects = [...siteData.projects].filter(p => p.videoHome && p.videoHome !== '');
+    // Filtrar apenas projetos com vídeo de capa e ordenar por ano (mais recente primeiro)
+    const projects = [...siteData.projects].filter(p => p.videoHome && p.videoHome !== '').sort((a, b) => b.year - a.year);
     let isDesktop = window.innerWidth > 1024;
 
     // --- HERO ---
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('projectsCarousel');
         if (!container) return;
         container.innerHTML = '';
-        const filtered = filter === 'todos' ? siteData.projects : siteData.projects.filter(p => p.type === filter);
+        const filtered = (filter === 'todos' ? siteData.projects : siteData.projects.filter(p => p.type === filter)).sort((a, b) => b.year - a.year);
         
         filtered.forEach((p, i) => {
             const card = document.createElement('a');
