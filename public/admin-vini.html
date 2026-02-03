@@ -131,7 +131,13 @@
                     <button type="button" onclick="uploadVideoHome()" style="width: 100%; margin-top: 0.5rem; background: #4a6741;">Fazer Upload do Vídeo para Home</button>
                     <div id="uploadProgress" style="margin-top: 0.5rem; color: #718878; font-size: 0.9rem;"></div>
                 </div>
-                <div class="form-group"><label>Cartaz</label><input type="text" id="cartazMobile"></div>
+                <div class="form-group"><label>Cartaz (Imagem)</label><input type="text" id="cartazMobile" placeholder="Nome do arquivo ou URL"></div>
+                <div class="form-group">
+                    <label>Ou Fazer Upload de Cartaz</label>
+                    <input type="file" id="cartazUpload" accept="image/*" style="padding: 0.5rem;">
+                    <button type="button" onclick="uploadCartaz()" style="width: 100%; margin-top: 0.5rem; background: #4a6741;">Fazer Upload do Cartaz</button>
+                    <div id="uploadProgressCartaz" style="margin-top: 0.5rem; color: #718878; font-size: 0.9rem;"></div>
+                </div>
                 <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
                     <label>Ficha Técnica</label>
                     <div class="credits-grid">
@@ -376,6 +382,58 @@
                         if (res.ok) {
                             document.getElementById('videoHome').value = fileName;
                             progressDiv.innerText = 'Video enviado com sucesso! Nome: ' + fileName;
+                            fileInput.value = '';
+                            setTimeout(() => { progressDiv.innerText = ''; }, 3000);
+                        } else {
+                            const error = await res.json();
+                            progressDiv.innerText = 'Erro: ' + error.message;
+                        }
+                    } catch (err) {
+                        progressDiv.innerText = 'Erro ao enviar: ' + err.message;
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) {
+                progressDiv.innerText = 'Erro: ' + err.message;
+            }
+        }
+
+        async function uploadCartaz() {
+            const fileInput = document.getElementById('cartazUpload');
+            const file = fileInput.files[0];
+            if (!file) { alert('Selecione um arquivo de imagem'); return; }
+
+            const token = document.getElementById('githubToken').value;
+            if (!token) { alert('Insira seu GitHub Token para fazer upload'); return; }
+
+            const progressDiv = document.getElementById('uploadProgressCartaz');
+            progressDiv.innerText = 'Preparando upload...';
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const base64Content = e.target.result.split(',')[1];
+                    const fileName = 'cartaz-' + Date.now() + '.' + file.name.split('.').pop();
+                    const filePath = 'public/assets/cartazes/' + fileName;
+
+                    progressDiv.innerText = 'Enviando para GitHub...';
+
+                    try {
+                        const res = await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + filePath, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': 'token ' + token,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: 'Upload de cartaz: ' + fileName,
+                                content: base64Content
+                            })
+                        });
+
+                        if (res.ok) {
+                            document.getElementById('cartazMobile').value = fileName;
+                            progressDiv.innerText = 'Cartaz enviado com sucesso! Nome: ' + fileName;
                             fileInput.value = '';
                             setTimeout(() => { progressDiv.innerText = ''; }, 3000);
                         } else {
