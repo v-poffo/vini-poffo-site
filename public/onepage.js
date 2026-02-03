@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const inside = document.getElementById('heroTitleInsideMobile');
         const outside = document.getElementById('heroTitleOutsideMobile');
         
+        if (inside) inside.innerHTML = '';
+        if (outside) outside.innerHTML = '';
+        
         if (inside && projects[0]) {
             inside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
         }
@@ -61,7 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const outsideContainer = document.querySelector('.hero-title-outside-mobile');
         if (outsideContainer) {
-            outsideContainer.onclick = () => rotateHeroMobile();
+            outsideContainer.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                rotateHeroMobile();
+            };
         }
         
         updateHeroVideoMobile(0);
