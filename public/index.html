@@ -239,44 +239,46 @@
             .hero-media.mobile-only video { width: 100%; height: 100%; object-fit: cover; }
             
             .hero-title-inside-mobile {
-                position: absolute; bottom: 10.5rem; left: 0; width: 100%;
-                padding: 0 1.2rem;
+                position: absolute; bottom: 13.5rem; left: 0; width: 100%;
+                padding: 0 1.5rem;
                 background: transparent;
                 color: white; display: flex; align-items: baseline; gap: 0.5rem;
                 pointer-events: none; z-index: 5;
                 text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+                overflow: hidden;
             }
             .hero-title-inside-mobile .title-text { 
                 font-size: 1.5rem; 
                 font-weight: 700; 
                 text-transform: uppercase; 
                 font-style: italic; 
-                line-height: 1.1;
+                line-height: 1.05;
                 display: block;
                 max-width: 80%;
                 word-break: break-word;
             }
-            .hero-title-inside-mobile .title-year { font-size: 0.8rem; opacity: 0.9; font-weight: 400; }
+            .hero-title-inside-mobile .title-year { font-size: 0.75rem; opacity: 0.8; font-weight: 400; }
 
             .hero-title-outside-mobile {
-                width: 100%; max-width: 500px; padding: 0 1.2rem;
+                width: 100%; max-width: 500px; padding: 0 1.5rem;
                 display: flex; justify-content: flex-start; align-items: baseline; gap: 0.5rem;
-                color: white; opacity: 0.5; cursor: pointer;
-                margin-top: -10.4rem;
+                color: white; opacity: 0.45; cursor: pointer;
+                margin-top: -13.4rem; /* Subir proporcionalmente ao inside-mobile */
                 position: relative;
                 z-index: 10;
                 pointer-events: auto;
+                overflow: hidden;
             }
             .hero-title-outside-mobile .title-text { 
                 font-size: 1.5rem; 
                 font-weight: 400; 
                 text-transform: uppercase; 
                 font-style: italic; 
-                line-height: 1.1;
+                line-height: 1.05;
                 max-width: 80%;
                 word-break: break-word;
             }
-            .hero-title-outside-mobile .title-year { font-size: 0.8rem; opacity: 0.8; font-weight: 400; }
+            .hero-title-outside-mobile .title-year { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
             .arrow-indicator { font-size: 0.8rem; }
             
             /* Manter títulos visíveis no tablet */

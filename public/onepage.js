@@ -51,20 +51,40 @@ document.addEventListener('DOMContentLoaded', function() {
         const inside = document.getElementById('heroTitleInsideMobile');
         const outside = document.getElementById('heroTitleOutsideMobile');
         
-        if (inside) inside.innerHTML = '';
-        if (outside) outside.innerHTML = '';
-        
-        if (inside && projects[0]) {
-            inside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+        // Limpeza agressiva para evitar o bug de acúmulo mostrado na imagem
+        if (inside) {
+            while (inside.firstChild) inside.removeChild(inside.firstChild);
+        }
+        if (outside) {
+            while (outside.firstChild) outside.removeChild(outside.firstChild);
         }
         
+        // Projeto Atual (Ativo)
+        if (inside && projects[0]) {
+            const content = document.createElement('div');
+            content.style.display = 'flex';
+            content.style.alignItems = 'baseline';
+            content.style.gap = '0.5rem';
+            content.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+            inside.appendChild(content);
+        }
+        
+        // Próximo Projeto (Carrossel)
         if (outside && projects[1]) {
-            outside.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
+            const content = document.createElement('div');
+            content.style.display = 'flex';
+            content.style.alignItems = 'baseline';
+            content.style.gap = '0.5rem';
+            content.innerHTML = `<span class="title-text">${projects[1].title.toUpperCase()}</span><span class="title-year">${projects[1].year}</span>`;
+            outside.appendChild(content);
         }
         
         const outsideContainer = document.querySelector('.hero-title-outside-mobile');
         if (outsideContainer) {
-            outsideContainer.onclick = (e) => {
+            // Remover listener antigo para evitar múltiplas execuções
+            const newOutside = outsideContainer.cloneNode(true);
+            outsideContainer.parentNode.replaceChild(newOutside, outsideContainer);
+            newOutside.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 rotateHeroMobile();
