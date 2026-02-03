@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const titleOutside = document.getElementById('heroTitleOutsideMobile');
         
         if (titleInside && projects[0]) {
-            titleInside.innerHTML = `<span class="title-text">${projects[0].title.toUpperCase()}</span><span class="title-year">${projects[0].year}</span>`;
+            titleInside.innerHTML = '▼'; // Seta apontando para baixo
         }
         
         if (titleOutside && projects[1]) {
