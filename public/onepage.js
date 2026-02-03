@@ -136,7 +136,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const grid = document.getElementById('aboutGrid');
         if (!grid) return;
         grid.innerHTML = '';
-        aboutContent.forEach((c, i) => {
+        
+        // No mobile: substituir card 9 (Cinema Autoral) por card 10 (Vamos Conversar)
+        let cardsToRender = aboutContent;
+        if (!isDesktop) {
+            cardsToRender = aboutContent.map((card, idx) => {
+                if (idx === 8) return aboutContent[9]; // Card 9 vira "Vamos Conversar"
+                if (idx === 9) return null; // Card 10 não renderiza
+                return card;
+            }).filter(c => c !== null);
+        }
+        
+        cardsToRender.forEach((c, i) => {
             const card = document.createElement('div');
             const isClickable = (c.type === 'modal' && c.modal) || c.link;
             card.className = isClickable ? 'flip-card clickable' : 'flip-card';
@@ -149,8 +160,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (c.type === 'contact') {
                 backContent += `
                 <div class="flip-card-back-cta-buttons">
-                    <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Email</a>
-                    <a href="https://instagram.com/poffovini" target="_blank" class="flip-card-back-cta-btn">Instagram</a>
+                    <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Me mande um email</a>
+                    <a href="https://instagram.com/poffovini" target="_blank" class="flip-card-back-cta-btn">Me siga no Instagram</a>
                 </div>`;
             }
 
@@ -171,16 +182,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillModals() {
-        const filmes = siteData.site.modals.filmes;
+        // Filmes - ordenar por ano (mais recente primeiro)
+        const filmes = [...siteData.site.modals.filmes].sort((a, b) => parseInt(b.y) - parseInt(a.y));
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
         
-        const vcs = siteData.site.modals.videoclipes;
-        document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.a}</div></div>`).join('');
+        // Videoclipes - ordenar por ano e ajustar formato: Título + Artista, depois Ano + Função
+        const vcs = [...siteData.site.modals.videoclipes].sort((a, b) => parseInt(b.y) - parseInt(a.y));
+        document.getElementById('videoclipesList').innerHTML = vcs.map(v => `<div class="modal-item"><span class="modal-item-title">${v.t}</span><span class="modal-item-type">${v.d}</span><div class="modal-item-artists">${v.y} • direção</div>${v.a ? `<div class="modal-item-awards">${v.a}</div>` : ''}</div>`).join('');
 
-        const ceno = siteData.site.modals.cenografia;
-        document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a}</div></div>`).join('');
+        // Cenografia - ordenar por ano e ajustar formato
+        const ceno = [...siteData.site.modals.cenografia].sort((a, b) => {
+            const yearA = parseInt(a.y.split('-')[0]) || parseInt(a.y);
+            const yearB = parseInt(b.y.split('-')[0]) || parseInt(b.y);
+            return yearB - yearA;
+        });
+        document.getElementById('cenografiaList').innerHTML = ceno.map(c => `<div class="modal-item"><span class="modal-item-title">${c.t}</span><span class="modal-item-type">${c.d}</span><div class="modal-item-artists">${c.a} • ${c.y}</div></div>`).join('');
         
-        const premios = siteData.site.modals.premios;
+        // Prêmios - ordenar por ano (mais recente primeiro)
+        const premios = [...siteData.site.modals.premios].sort((a, b) => parseInt(b.y) - parseInt(a.y));
         document.getElementById('premiosList').innerHTML = premios.map(p => `<div class="modal-item"><span class="modal-item-title">${p.t}</span><span class="modal-item-type">${p.d}</span><div class="modal-item-artists">${p.y}</div><div class="modal-item-awards">${p.a}</div></div>`).join('');
 
         // Textos Mobile
