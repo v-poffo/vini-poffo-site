@@ -651,15 +651,17 @@ const siteData = {
         "direcaoRoteiro": [
           "@poffovini"
         ],
-        "assistenciaDirecao": [
+        "assistenteDirecao1": [
           "@j.s.rodrigues"
         ],
         "direcaoFotografia": [
           "@luskibinski"
         ],
-        "assistenciaCamera": [
-          "@damasiofrancoo (1°)",
-          "@foto_verso (2°)"
+        "assistenteCamera1": [
+          "@damasiofrancoo"
+        ],
+        "assistenteCamera2": [
+          "@foto_verso"
         ],
         "still": [
           "@ferreiranabel"
@@ -667,8 +669,8 @@ const siteData = {
         "direcaoArte": [
           "@eu.matheusdeluca"
         ],
-        "assistenciaArte": [
-          "@anitapoffo (1°)"
+        "assistenteArte1": [
+          "@anitapoffo"
         ],
         "marionetes": [
           "@la__artesania por Laura Abreu",
@@ -724,6 +726,9 @@ const siteData = {
         ],
         "realizacao": [
           "LEI PAULO GUSTAVO / 2024 @ministériodacultura @governodobrasil"
+        ],
+        "direcaoExecutiva": [
+          "@jesuslumma"
         ]
       }
     },
