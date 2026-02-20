@@ -106,25 +106,25 @@ const siteData = {
         {
           "t": "O Viajante e a Raposa",
           "y": "2024",
-          "d": "direção",
+          "d": "Direção",
           "a": ""
         },
         {
           "t": "(Sub)Urbana",
           "y": "2023",
-          "d": "direção e co-roteirista",
+          "d": "Direção e co-roteirista",
           "a": "5 prêmios de melhor filme<br>Prêmio Revelação – V Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema"
         },
         {
           "t": "No Reflexo do Meu Nome",
           "y": "2022",
-          "d": "direção e roteiro",
-          "a": "Melhor obra de Santa Catarina – SESC SC 2022<br>Em mais de 15 festivais nacionais e internacionais"
+          "d": "Direção e roteiro",
+          "a": "Melhor obra de Santa Catarina – Mostra V SESC de Cinema <br>Em mais de 15 festivais nacionais e internacionais"
         },
         {
           "t": "De baixo do guarda-chuva pra ser resistência",
           "y": "2021",
-          "d": "direção e roteiro",
+          "d": "Direção e roteiro",
           "a": ""
         },
         {
@@ -214,12 +214,6 @@ const siteData = {
           "y": "2024",
           "d": "Letrux",
           "a": "Direção - Melhor videoclipe – Curta Fest Brasília 2024<br>MVF Argentina e Colômbia"
-        },
-        {
-          "t": "Baião de Dois",
-          "y": "2022",
-          "d": "Aretuza Lovi feat Getúlio Abelha",
-          "a": "Direção "
         },
         {
           "t": "Ela Terra",
@@ -342,6 +336,12 @@ const siteData = {
           "y": "2021",
           "d": "direção",
           "a": "Videoarte - FUNARTE<br>Projeto premiado no Premio RespirArte da FUNARTE"
+        },
+        {
+          "t": "Carta Marcada - Vitor Kley (videoclipe)",
+          "y": "2025",
+          "d": "Assist Produção Objeto",
+          "a": ""
         }
       ]
     }
