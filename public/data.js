@@ -105,15 +105,15 @@ const siteData = {
         },
         {
           "t": "O Viajante e a Raposa",
-          "y": "2024",
+          "y": "2025",
           "d": "Direção",
-          "a": ""
+          "a": "(em finalização)"
         },
         {
           "t": "(Sub)Urbana",
           "y": "2023",
           "d": "Direção e co-roteirista",
-          "a": "5 prêmios de melhor filme<br>Prêmio Revelação – V Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema"
+          "a": "5 prêmios de melhor filme<br>Prêmio Revelação – V Transforma Festival<br>Best Film - Hollywood World Festival Film <br>Mención Honorifica – Violeta Film Festival <br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema"
         },
         {
           "t": "No Reflexo do Meu Nome",
