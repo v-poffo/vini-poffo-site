@@ -136,13 +136,13 @@ const siteData = {
       ],
       "premios": [
         {
-          "t": "Festival Internacional de Cine LesBiGayTrans Paraguay",
+          "t": "Festival Internacional de Cine LBGT Paraguay",
           "y": "2023",
-          "d": "mejor cortometraje del tema - votacion popular",
+          "d": "Mejor Cortometraje del Tema - votacion popular",
           "a": ""
         },
         {
-          "t": "BEST FILM - Hollywood World Festival Film",
+          "t": "Hollywood World Festival Film",
           "y": "2023",
           "d": "BEST FILM -  (sub)urbana",
           "a": ""
@@ -170,6 +170,12 @@ const siteData = {
           "y": "2021",
           "d": "Produção de curta-metragem",
           "a": "No reflexo do meu nome."
+        },
+        {
+          "t": "Violeta Film Festival  Colômbia",
+          "y": "2023",
+          "d": "Mención Honorifica",
+          "a": ""
         }
       ],
       "videoclipes": [
