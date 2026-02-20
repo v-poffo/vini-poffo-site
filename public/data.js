@@ -1029,43 +1029,17 @@ const siteData = {
       "year": 2020,
       "type": "videoclipe",
       "artist": "Malu Maria",
-      "videoHome": "",
-      "heroImage": "elaterra-hero.jpg",
-      "cartazMobile": "elaterra.png",
-      "trailerUrl": "https://youtu.be/TqI9Gvqxt_k?si=m7Xq4hi90XlYW14P",
       "description": "Ela Terra é uma celebração da conexão feminina com a natureza. Direção, roteiro, arte, fotografia e montagem por Vini Poffo e Sillas H, com narração da poeta indígena Marcia Kambeba.",
+      "trailerUrl": "https://youtu.be/TqI9Gvqxt_k?si=m7Xq4hi90XlYW14P",
+      "videoHome": "",
+      "cartazMobile": "elaterra.png",
       "credits": {
         "direcao": [
-          "Sillas H",
-          "Vini Poffo"
+          "Vini Poffo e Sillas H"
         ],
         "roteiro": [
           "Vini Poffo",
           "Sillas H"
-        ],
-        "arte": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
-        "fotografia": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
-        "montagem": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
-        "producao": [
-          "Isabela Sucher"
-        ],
-        "figurinoNinfas": [
-          "Rosilene Poffo"
-        ],
-        "figurinoSatira": [
-          "Bruna Emme"
-        ],
-        "textoNarracao": [
-          "Marcia Kambeba"
         ],
         "elenco": [
           "Malu Maria",
@@ -1076,7 +1050,19 @@ const siteData = {
           "Thuanny Paes",
           "Giulia Galliano",
           "Paola Polix"
-        ]
+        ],
+        "direcaoFotografia": [
+          ""
+        ],
+        "direcaoArte": [
+          ""
+        ],
+        "montagem": [
+          "Vini Poffo",
+          "Sillas H"
+        ],
+        "extra": "",
+        "apoio": ""
       }
     },
     {
