@@ -195,54 +195,96 @@ const siteData = {
           "t": "Vira essa boca pra cá",
           "y": "2025",
           "d": "Letrux feat Nouvella",
-          "a": ""
+          "a": "Direção"
         },
         {
           "t": "Dropar teu nome",
           "y": "2025",
           "d": "Letrux feat Nouvella",
-          "a": ""
+          "a": "Direção"
         },
         {
           "t": "Outres de Nós",
           "y": "2025",
           "d": "Jesus Lumma feat Dandara Manoela",
-          "a": ""
+          "a": "Direção"
         },
         {
           "t": "Aranha",
           "y": "2024",
           "d": "Letrux",
-          "a": "Melhor videoclipe – Curta Fest Brasília 2024<br>MVF Argentina e Colômbia"
+          "a": "Direção - Melhor videoclipe – Curta Fest Brasília 2024<br>MVF Argentina e Colômbia"
         },
         {
           "t": "Baião de Dois",
           "y": "2022",
           "d": "Aretuza Lovi feat Getúlio Abelha",
-          "a": ""
+          "a": "Direção "
         },
         {
           "t": "Ela Terra",
           "y": "2020",
           "d": "Malu Maria",
-          "a": ""
+          "a": "Direção "
         },
         {
           "t": "Sugar Daddy",
           "y": "2019",
           "d": "Gabeu",
-          "a": ""
+          "a": "Direção de arte"
         },
         {
           "t": "Colapso Invisível",
           "y": "2019",
           "d": "YMA",
-          "a": ""
+          "a": "Direção de arte"
+        },
+        {
+          "t": "Pote de Ouro",
+          "y": "2025",
+          "d": "Liniker feat Pricila Senna",
+          "a": "Assist de Prod. Executiva"
+        },
+        {
+          "t": "Carta Marcada ",
+          "y": "2025",
+          "d": "Vitor Kley",
+          "a": "Assist Produção de objeto"
+        },
+        {
+          "t": "Barman ",
+          "y": "2023",
+          "d": "Ananda Paixão",
+          "a": "Assistência de direção"
+        },
+        {
+          "t": "No Game ",
+          "y": "2023",
+          "d": "Ananda Paixão",
+          "a": "Making of "
+        },
+        {
+          "t": "Moços e Moças",
+          "y": "2020",
+          "d": "Jesus Lumma",
+          "a": "Direção de Arte"
+        },
+        {
+          "t": "Bailão ",
+          "y": "2022",
+          "d": "Gabeu",
+          "a": "Direção de arte"
+        },
+        {
+          "t": "Nuvem Negra",
+          "y": "2026",
+          "d": "Linn Da Quebrada",
+          "a": "Direção"
         }
       ],
       "cenografia": [
         {
-          "t": "Santo",
+          "t": "Santo (curta-metragem)",
           "y": "2025",
           "d": "assist. de arte",
           "a": "Curta-metragem"
