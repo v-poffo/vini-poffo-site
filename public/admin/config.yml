@@ -1,0 +1,59 @@
+backend:
+  name: github
+  repo: v-poffo/vini-poffo-site
+  branch: main
+  base_url: https://vini-poffo-site.vercel.app
+  auth_endpoint: /api/auth
+
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: "settings"
+    label: "Configurações Gerais"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "site"
+        label: "Informações do Site"
+        file: "src/data.json"
+        fields:
+          - { label: "Título do Site", name: "site.title", widget: "string" }
+          - { label: "Descrição Curta", name: "site.description", widget: "string" }
+          - { label: "Email de Contato", name: "site.email", widget: "string" }
+          - { label: "Instagram (usuário)", name: "site.instagram", widget: "string" }
+          - { label: "Sobre (Texto)", name: "site.about", widget: "text" }
+
+  - name: "projects"
+    label: "Projetos"
+    folder: "src/projects"
+    create: true
+    slug: "{{title}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "ID Único (Número)", name: "id", widget: "number", value_type: "int" }
+      - { label: "Título do Projeto", name: "title", widget: "string" }
+      - { label: "Ano", name: "year", widget: "number", value_type: "int" }
+      - { label: "Tipo", name: "type", widget: "select", options: ["videoclipe", "curta-metragem"] }
+      - { label: "Artista / Produção", name: "artist", widget: "string", required: false }
+      - { label: "Mostrar no Hero (Página Inicial)?", name: "showInHero", widget: "boolean", default: false }
+      - { label: "Vídeo para o Hero (Upload)", name: "videoHome", widget: "file", required: false, hint: "Vídeo curto de 15s para a home" }
+      - { label: "Imagem de Fundo (Hero Projeto)", name: "heroImage", widget: "image", required: false, hint: "Usada se não houver vídeo no hero do projeto" }
+      - { label: "Cartaz / Thumbnail", name: "cartazMobile", widget: "image" }
+      - { label: "URL do Vídeo (YouTube/Vimeo)", name: "trailerUrl", widget: "string" }
+      - { label: "Duração", name: "duracao", widget: "string", required: false }
+      - { label: "Descrição Curta", name: "description", widget: "text" }
+      - label: "Créditos"
+        name: "credits"
+        widget: "object"
+        fields:
+          - { label: "Direção", name: "direcao", widget: "list", required: false }
+          - { label: "Roteiro", name: "roteiro", widget: "list", required: false }
+          - { label: "Elenco", name: "elenco", widget: "list", required: false }
+          - { label: "Direção de Fotografia", name: "direcaoFotografia", widget: "list", required: false }
+          - { label: "Direção de Arte", name: "direcaoArte", widget: "list", required: false }
+          - { label: "Montagem", name: "montagem", widget: "list", required: false }
+          - { label: "Produção Executiva", name: "producaoExecutiva", widget: "list", required: false }
+          - { label: "Apoio / Notas", name: "apoio", widget: "string", required: false }

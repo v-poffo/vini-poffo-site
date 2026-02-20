@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vini Poffo | Cineasta, Diretora Criativa e Artista</title>
+    <meta name="description" content="Portfólio de Vini Poffo, cineasta e diretora criativa focada em cinema autoral, videoclipes e projetos publicitários com estética artesanal e política.">
+    <meta name="keywords" content="Vini Poffo, Cineasta, Diretora Criativa, Cinema Autoral, Videoclipes, Portfólio Audiovisual, Direção de Arte">
+    <meta name="author" content="Vini Poffo">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="og:title" content="Vini Poffo | Cineasta e Diretora Criativa">
+    <meta property="og:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
+    <meta property="og:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="twitter:title" content="Vini Poffo | Cineasta e Diretora Criativa">
+    <meta property="twitter:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
+    <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Preload de ativos críticos -->
+    <link rel="preload" href="assets/logo/logo.avif" as="image">
+    <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    
+    <!-- Dados Estruturados JSON-LD para SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vini Poffo",
+      "url": "https://vini-poffo-site.vercel.app/",
+      "jobTitle": "Cineasta, Diretora Criativa e Artista",
+      "sameAs": [
+        "https://instagram.com/poffovini"
+      ],
+      "description": "Cineasta e diretora criativa focada em cinema autoral, videoclipes e projetos publicitários."
+    }
+    </script>
+    
+    <style>
+        :root {
+            --font-primary: 'Montserrat', sans-serif;
+            --primary-black: #111A17;
+            --primary-white: #ffffff;
+            --accent-green-light: #718878;
+        }
+
+        body {
+            background-color: var(--primary-black);
+            overflow-x: hidden;
+            font-family: var(--font-primary);
+            margin: 0;
+            padding: 0;
+        }
+
+        section { width: 100%; position: relative; }
+
+        /* --- PROJETOS: POLAROIDES ORGÂNICAS --- */
+        .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
+        .filter-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; justify-content: center; padding: 0 2rem; }
+        .filter-btn {
+            padding: 0.6rem 1.2rem; border: 1px solid var(--primary-white); background: transparent; color: var(--primary-white);
+            cursor: pointer; font-family: var(--font-primary); font-weight: 700; text-transform: uppercase; font-size: 0.75rem; transition: 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active { background-color: var(--accent-green-light); border-color: var(--accent-green-light); }
+
+        .projects-carousel-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; white-space: nowrap; padding: 2rem 0; cursor: grab; scrollbar-width: none; }
+        .projects-carousel-wrapper::-webkit-scrollbar { display: none; }
+        .projects-carousel-content { display: inline-flex; gap: 3rem; padding: 0 4rem; }
+
+        .polaroid-card {
+            display: inline-block; vertical-align: top; white-space: normal; width: 260px; flex-shrink: 0;
+            text-decoration: none; color: inherit; transition: transform 0.3s ease; position: relative;
+            opacity: 1;
+        }
+        .polaroid-wrapper { background-color: var(--primary-white); padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .polaroid-image-container { width: 100%; aspect-ratio: 2 / 3; overflow: hidden; background-color: #f0f0f0; position: relative; }
+        
+        .polaroid-image { 
+            width: 100%; height: 100%; object-fit: cover; 
+            opacity: 0; transition: opacity 1.5s ease-in-out; 
+        }
+        .polaroid-image.revealed { opacity: 1; }
+
+        .polaroid-overlay {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5);
+            color: var(--primary-white); padding: 1.2rem; display: flex; flex-direction: column; justify-content: flex-end;
+            opacity: 0; transition: opacity 0.3s ease; z-index: 5; font-size: 0.7rem; line-height: 1.4;
+            backdrop-filter: blur(2px);
+        }
+        .polaroid-overlay .overlay-text { font-size: 0.7rem; color: #ffffff; text-align: left; }
+        .polaroid-card:hover .polaroid-overlay { opacity: 1; }
+
+        .polaroid-label { padding: 1rem 0.4rem; text-align: left; }
+        .polaroid-title { font-size: 0.8rem; font-weight: 800; color: var(--primary-black); margin: 0; text-transform: uppercase; }
+        .polaroid-year { font-size: 0.7rem; color: var(--dark-gray); margin-top: 0.2rem; }
+
+        /* --- SOBRE: MOSAICO DESKTOP --- */
+        .about-onepage { background-color: #111A17; padding: 4rem 2rem; position: relative; min-height: 100vh; z-index: 10; }
+        .cards-wrapper { width: 100%; max-width: 1400px; margin: 0 auto; aspect-ratio: 16 / 9; }
+        .cards-container { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 1fr; width: 100%; height: 100%; gap: 0; }
+
+        .flip-card { perspective: 1000px; width: 100%; height: 100%; }
+        .flip-card.clickable { cursor: pointer; }
+        
+        .flip-card:nth-child(1) { grid-column: span 2; }
+        .flip-card:nth-child(2) { grid-column: span 1; }
+        .flip-card:nth-child(3) { grid-column: span 1; }
+        .flip-card:nth-child(4) { grid-column: span 2; }
+        .flip-card:nth-child(5) { grid-column: span 1; }
+        .flip-card:nth-child(6) { grid-column: span 1; }
+        .flip-card:nth-child(7) { grid-column: span 2; }
+        .flip-card:nth-child(8) { grid-column: span 2; }
+        .flip-card:nth-child(9) { grid-column: span 3; }
+        .flip-card:nth-child(10) { grid-column: span 3; }
+
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); transform-style: preserve-3d; }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        
+        .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 8px; }
+        .flip-card-front { 
+            background-image: url('assets/quem-sou-eu/vinisobrewebcineasta.png'); 
+            background-size: cover; background-attachment: fixed; background-position: center; 
+        }
+        
+        .flip-card-back { transform: rotateY(180deg); padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; color: white; position: relative; overflow: hidden; }
+        .flip-card-back.blue { background: radial-gradient(circle at center, #2d617a 0%, #1f4d5f 40%, #113c51 100%); text-align: center; align-items: center; }
+        .flip-card-back.green { background: radial-gradient(circle at center, #718878 0%, #5a6f6a 40%, #3d5250 100%); text-align: left; align-items: flex-start; }
+
+        .flip-card-back-title { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; font-style: italic; letter-spacing: 0.1em; color: #ffffff; }
+        .flip-card-back-text { font-size: 0.85rem; line-height: 1.7; color: #ffffff; text-align: justify; margin: 0; }
+        .flip-card-back.blue .flip-card-back-text { text-align: center; }
+
+        .flip-card-back-cta-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; }
+        .flip-card-back-cta-btn {
+            padding: 0.6rem 1.2rem; font-size: 0.75rem; border: 1px solid white; color: white; text-decoration: none;
+            text-transform: uppercase; font-weight: 800; transition: 0.3s;
+        }
+        .flip-card-back-cta-btn:hover { background: white; color: #113c51; }
+
+        /* MODAL STYLE */
+        .modal { 
+            display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0, 0, 0, 0.3); opacity: 0; transition: opacity 0.3s ease;
+        }
+        .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .modal-content { 
+            background: #F3F8F4; border: 2px solid #2A4A5A; border-radius: 8px; padding: 3rem; 
+            max-width: 700px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative; 
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: #2A4A5A; transition: 0.3s; }
+        .modal-close:hover { color: #718878; }
+        .modal-title { 
+            font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: -0.02em;
+            font-style: italic; position: relative; padding-bottom: 1.5rem; color: #718878; font-family: var(--font-primary);
+        }
+        .modal-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 2px; background: #2A4A5A; }
+        .modal-item { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid #2A4A5A; }
+        .modal-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .modal-item-title { font-size: 1.1rem; font-weight: 700; color: #718878; font-style: italic; text-transform: uppercase; display: inline; }
+        .modal-item-type { font-size: 0.75rem; color: #2A4A5A; margin-left: 0.5rem; font-weight: 600; text-transform: lowercase; display: inline; }
+        .modal-item-artists { font-size: 0.8rem; color: #111A17; margin-top: 0.3rem; margin-bottom: 0.3rem; }
+        .modal-item-awards { font-size: 0.8rem; color: #111A17; margin-top: 0.8rem; line-height: 1.8; font-weight: 500; }
+        .modal-item-text-p { font-size: 0.9rem; line-height: 1.7; color: #111A17; text-align: justify; font-family: var(--font-primary); }
+
+        /* FOOTER */
+        .footer-onepage { padding: 4rem 0 2rem 0; background-color: #111A17; text-align: center; position: relative; z-index: 5; margin-top: -2px; }
+        .footer-onepage p { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin: 0; font-family: var(--font-primary); }
+
+        /* --- MOBILE ADAPTATIONS (FIEL AOS ORIGINAIS) --- */
+        @media (max-width: 1024px) {
+            /* SOBRE MOBILE: Cards Quadrados, menos cards, imagens individuais */
+            .about-onepage { padding: 2rem 1rem; }
+            .cards-wrapper { aspect-ratio: auto; height: auto; }
+            .cards-container { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .flip-card { grid-column: span 1 !important; grid-row: span 1 !important; aspect-ratio: 1 / 1; }
+            .flip-card:nth-child(9) { grid-column: span 2 !important; aspect-ratio: 16 / 9; }
+            .flip-card:nth-child(10) { display: none; }
+            
+            .flip-card-front { background-attachment: scroll; }
+            .flip-card-back-text { display: none !important; }
+            .flip-card-back { padding: 1rem; justify-content: center; align-items: center; text-align: center; }
+            .flip-card-back-title { font-size: 0.85rem; margin-bottom: 0; }
+            
+            /* PROJETOS MOBILE: Carrossel de Item Único com Setas */
+            .projects-carousel-wrapper { 
+                overflow-x: auto; scroll-snap-type: x mandatory; display: flex; 
+                align-items: center; position: relative; padding: 0;
+            }
+            .projects-carousel-content { 
+                display: flex; gap: 0; padding: 0; width: 100%;
+            }
+            .polaroid-card { 
+                width: 100vw; max-width: 100vw; flex-shrink: 0; scroll-snap-align: center;
+                display: flex; justify-content: center; padding: 2rem 0;
+                transform: rotate(0deg) !important; opacity: 1; 
+            }
+            .polaroid-wrapper { width: 80%; max-width: 300px; }
+            
+            .carousel-nav-btn {
+                position: absolute; top: 50%; transform: translateY(-50%);
+                background: transparent; border: none; color: rgba(255,255,255,0.5);
+                font-size: 2.5rem; padding: 1rem; z-index: 100; cursor: pointer;
+                display: flex; align-items: center; justify-content: center;
+                transition: color 0.3s ease;
+            }
+            .carousel-nav-btn:active { color: rgba(255,255,255,1); }
+            .nav-prev { left: 5px; }
+            .nav-next { right: 5px; }
+
+            .filter-buttons { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding-bottom: 1rem; }
+            
+            /* MODAL MOBILE SCROLL */
+            .modal-content { padding: 2rem 1.5rem; max-height: 85vh; }
+            
+            /* HERO MOBILE */
+            .hero-container { height: 100vh; }
+        }
+
+        @media (max-width: 480px) {
+            .cards-container { grid-auto-rows: 150px; }
+            .flip-card-back-title { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-home.html"><img src="assets/logo/logo.avif" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img"></a>
+            </div>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Início.</a></li>
+                <li><a href="#projects">Projetos.</a></li>
+                <li><a href="#about">Sobre.</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-media desktop-only"><video id="heroVideo" autoplay muted loop playsinline></video></div>
+            <div class="hero-carousel mobile-only"><div class="carousel-container"><div id="carouselItems" class="carousel-items"></div></div></div>
+            <div class="hero-overlay desktop-only">
+                <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
+                <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
+            </div>
+            <div class="hero-overlay-mobile mobile-only"><div class="hero-title-mobile" id="heroTitleMobile"></div></div>
+            <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+        </div>
+    </section>
+
+    <section class="projects-onepage" id="projects">
+        <h2 style="display:none;">Projetos e Trabalhos</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="todos">Todos.</button>
+            <button class="filter-btn" data-filter="curta-metragem">Curtas.</button>
+            <button class="filter-btn" data-filter="videoclipe">Videoclipes.</button>
+        </div>
+        <div class="projects-carousel-wrapper" id="carouselWrapper">
+            <button class="carousel-nav-btn nav-prev mobile-only" id="prevBtn">&#10094;</button>
+            <div class="projects-carousel-content" id="projectsCarousel"></div>
+            <button class="carousel-nav-btn nav-next mobile-only" id="nextBtn">&#10095;</button>
+        </div>
+    </section>
+
+    <section class="about-onepage" id="about">
+        <h2 style="display:none;">Sobre Vini Poffo</h2>
+        <div class="cards-wrapper">
+            <div class="cards-container" id="aboutGrid"></div>
+        </div>
+    </section>
+
+    <footer class="footer-onepage">
+        <p>&copy; 2025 Vini Poffo. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- MODAIS -->
+    <div id="filmesModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Filmes</h3><div id="filmesList"></div></div></div>
+    <div id="premiosModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Prêmios</h3><div id="premiosList"></div></div></div>
+    <div id="videoclipesModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Videoclipes</h3><div id="videoclipesList"></div></div></div>
+    <div id="cenografiaModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Arte, Cenografia e Outros</h3><div id="cenografiaList"></div></div></div>
+    
+    <!-- MODAIS DE TEXTO MOBILE -->
+    <div id="quemSouEuModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Quem Sou Eu</h3><div class="modal-item-text" id="quemSouEuText"></div></div></div>
+    <div id="processoCriativoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Processo Criativo</h3><div class="modal-item-text" id="processoCriativoText"></div></div></div>
+    <div id="direcaoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Direção</h3><div class="modal-item-text" id="direcaoText"></div></div></div>
+    <div id="cinemaAutoralModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Cinema Autoral</h3><div class="modal-item-text" id="cinemaAutoralText"></div></div></div>
+
+    <script src="data.js"></script>
+    <script src="onepage.js"></script>
+</body>
+</html>

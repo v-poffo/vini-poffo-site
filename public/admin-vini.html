@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Vini Poffo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background-color: #111A17; color: #F3F8F4; font-family: 'Montserrat', sans-serif; padding: 2rem; }
+        .admin-container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; }
+        .login-screen { text-align: center; padding: 4rem 0; }
+        input, textarea, select { width: 100%; padding: 0.8rem; margin: 0.5rem 0 1.5rem 0; background: #1a2622; border: 1px solid #4a6741; color: white; border-radius: 4px; }
+        button { background: #718878; color: white; border: none; padding: 1rem 2rem; cursor: pointer; border-radius: 4px; font-weight: bold; transition: 0.3s; }
+        button:hover { background: #4a6741; }
+        .project-list-item { display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .hidden { display: none; }
+        .form-group { margin-bottom: 1rem; }
+        label { font-weight: bold; color: #718878; display: block; margin-bottom: 0.2rem; }
+        .credits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .tabs { display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 1px solid #4a6741; }
+        .tab-btn { padding: 1rem 2rem; border: none; background: transparent; color: #718878; cursor: pointer; font-weight: bold; }
+        .tab-btn.active { color: white; border-bottom: 3px solid #718878; }
+        .modal-editor-item { border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.2); border-radius: 4px; }
+        .modal-editor-item h4 { margin-top: 0; color: #718878; text-transform: uppercase; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div id="loginScreen" class="login-screen">
+            <img src="assets/logo/logo.avif" alt="Logo" style="height: 80px; margin-bottom: 2rem; filter: brightness(0) invert(1);">
+            <h2>Área Restrita</h2>
+            <p>Digite sua senha para gerenciar o site</p>
+            <input type="password" id="adminPassword" placeholder="Sua senha secreta">
+            <div style="margin-top: 1rem; text-align: left; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px;">
+                <label style="font-size: 0.8rem; color: #888;">GitHub Token (Opcional para salvar automático)</label>
+                <input type="password" id="githubToken" placeholder="ghp_...">
+            </div>
+            <button onclick="checkLogin()" style="margin-top: 1.5rem;">Entrar</button>
+            <p id="loginError" style="color: #ff6b6b; margin-top: 1rem;"></p>
+        </div>
+
+        <div id="mainInterface" class="hidden">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('projects')">Projetos</button>
+                <button class="tab-btn" onclick="showTab('about')">Editar Sobre</button>
+                <button class="tab-btn" onclick="showTab('config')">Configurações</button>
+            </div>
+
+            <!-- ABA PROJETOS -->
+            <div id="tab-projects" class="tab-content">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Gerenciar Projetos</h2>
+                    <button onclick="showProjectForm()">+ Novo Projeto</button>
+                </div>
+                <div id="projectList"></div>
+            </div>
+
+            <!-- ABA SOBRE -->
+            <div id="tab-about" class="tab-content hidden">
+                <h2>Editar Seção Sobre & Modais</h2>
+                <p style="margin-bottom: 2rem; color: #888;">Edite os textos dos cards do mosaico e o conteúdo dos pop-ups.</p>
+                
+                <div id="aboutCardsEditor">
+                    <h3>Cards do Mosaico</h3>
+                    <div id="cardsList"></div>
+                </div>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #4a6741;">
+
+                <div id="modalsEditor">
+                    <h3>Conteúdo dos Pop-ups (Modais)</h3>
+                    
+                    <div class="modal-section">
+                        <h4>Filmes</h4>
+                        <div id="modalFilmesList"></div>
+                        <button onclick="addModalItem('filmes')">+ Adicionar Filme</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Prêmios</h4>
+                        <div id="modalPremiosList"></div>
+                        <button onclick="addModalItem('premios')">+ Adicionar Prêmio</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Videoclipes (Currículo)</h4>
+                        <div id="modalVideoclipesList"></div>
+                        <button onclick="addModalItem('videoclipes')">+ Adicionar Videoclipe</button>
+                    </div>
+
+                    <div class="modal-section" style="margin-top: 3rem;">
+                        <h4>Arte, Cenografia e Outros</h4>
+                        <div id="modalCenografiaList"></div>
+                        <button onclick="addModalItem('cenografia')">+ Adicionar Item</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 2rem; background: rgba(113, 136, 120, 0.1); border-radius: 8px; border: 1px solid #718878;">
+                    <button onclick="saveAboutChanges()" style="width: 100%; padding: 1.5rem; font-size: 1.2rem;">SALVAR ALTERAÇÕES DO SOBRE</button>
+                </div>
+            </div>
+
+            <!-- ABA CONFIG -->
+            <div id="tab-config" class="tab-content hidden">
+                <h2>Configurações</h2>
+                <div class="form-group">
+                    <label>GitHub Personal Access Token</label>
+                    <input type="password" id="configToken" placeholder="ghp_..." onchange="document.getElementById('githubToken').value = this.value">
+                    <p style="font-size: 0.8rem; color: #888;">Este token permite que o painel salve as alterações diretamente no seu GitHub.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORMULÁRIO DE PROJETO (MODAL) -->
+        <div id="projectForm" class="hidden">
+            <h2 id="formTitle">Novo Projeto</h2>
+            <form id="editForm">
+                <input type="hidden" id="projectId">
+                <div class="form-group"><label>Título do Projeto</label><input type="text" id="title" required></div>
+                <div class="credits-grid">
+                    <div class="form-group"><label>Ano</label><input type="number" id="year" required></div>
+                    <div class="form-group"><label>Tipo</label><select id="type"><option value="videoclipe">Videoclipe</option><option value="curta-metragem">Curta-metragem</option></select></div>
+                </div>
+                <div class="form-group"><label>Artista / Produção</label><input type="text" id="artist"></div>
+                <div class="form-group"><label>Descrição</label><textarea id="description" rows="3"></textarea></div>
+                <div class="form-group"><label>URL do Vídeo (YouTube/Vimeo)</label><input type="text" id="trailerUrl"></div>
+                <div class="form-group"><label>Vídeo para Home (Hero)</label><input type="text" id="videoHome" placeholder="Nome do arquivo ou URL"></div>
+                <div class="form-group">
+                    <label>Ou Fazer Upload de Vídeo</label>
+                    <input type="file" id="videoHomeUpload" accept="video/*" style="padding: 0.5rem;">
+                    <button type="button" onclick="uploadVideoHome()" style="width: 100%; margin-top: 0.5rem; background: #4a6741;">Fazer Upload do Vídeo para Home</button>
+                    <div id="uploadProgress" style="margin-top: 0.5rem; color: #718878; font-size: 0.9rem;"></div>
+                </div>
+                <div class="form-group"><label>Cartaz (Imagem)</label><input type="text" id="cartazMobile" placeholder="Nome do arquivo ou URL"></div>
+                <div class="form-group">
+                    <label>Ou Fazer Upload de Cartaz</label>
+                    <input type="file" id="cartazUpload" accept="image/*" style="padding: 0.5rem;">
+                    <button type="button" onclick="uploadCartaz()" style="width: 100%; margin-top: 0.5rem; background: #4a6741;">Fazer Upload do Cartaz</button>
+                    <div id="uploadProgressCartaz" style="margin-top: 0.5rem; color: #718878; font-size: 0.9rem;"></div>
+                </div>
+                <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+                    <label>Ficha Técnica</label>
+                    <div class="credits-grid">
+                        <div class="form-group"><label>Direção</label><input type="text" id="credit_direcao"></div>
+                        <div class="form-group"><label>Roteiro</label><input type="text" id="credit_roteiro"></div>
+                        <div class="form-group"><label>Elenco</label><input type="text" id="credit_elenco"></div>
+                        <div class="form-group"><label>Fotografia</label><input type="text" id="credit_fotografia"></div>
+                        <div class="form-group"><label>Arte</label><input type="text" id="credit_arte"></div>
+                        <div class="form-group"><label>Montagem</label><input type="text" id="credit_montagem"></div>
+                    </div>
+                </div>
+                <div class="form-group"><label>Créditos Adicionais (Função: Nome)</label><textarea id="credit_extra" rows="5"></textarea></div>
+                <div class="form-group"><label>Apoio / Notas</label><textarea id="credit_apoio" rows="3"></textarea></div>
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" onclick="saveProject()" style="flex: 2;">Salvar Projeto</button>
+                    <button type="button" onclick="hideProjectForm()" style="flex: 1; background: #444;">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        function checkLogin() {
+            const pass = document.getElementById('adminPassword').value;
+            if (pass === 'vini2025') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('mainInterface').classList.remove('hidden');
+                renderProjects();
+                renderAboutEditor();
+            } else {
+                document.getElementById('loginError').innerText = 'Senha incorreta.';
+            }
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            event.target.classList.add('active');
+        }
+
+        function renderProjects() {
+            const list = document.getElementById('projectList');
+            list.innerHTML = '';
+            const sortedProjects = [...siteData.projects].sort((a, b) => b.year - a.year);
+            sortedProjects.forEach(p => {
+                const div = document.createElement('div');
+                div.className = 'project-list-item';
+                div.innerHTML = `<span><strong>${p.title}</strong> (${p.year})</span><button onclick="editProject(${p.id})">Editar</button>`;
+                list.appendChild(div);
+            });
+        }
+
+        function renderAboutEditor() {
+            const cardsList = document.getElementById('cardsList');
+            cardsList.innerHTML = '';
+            siteData.site.aboutCards.forEach((card, index) => {
+                const div = document.createElement('div');
+                div.className = 'modal-editor-item';
+                div.innerHTML = `
+                    <h4>Card: ${card.title}</h4>
+                    <div class="form-group"><label>Título</label><input type="text" value="${card.title}" onchange="siteData.site.aboutCards[${index}].title = this.value"></div>
+                    <div class="form-group"><label>Texto</label><textarea rows="4" onchange="siteData.site.aboutCards[${index}].text = this.value">${card.text || ''}</textarea></div>
+                `;
+                cardsList.appendChild(div);
+            });
+
+            renderModalSection('filmes', 'modalFilmesList');
+            renderModalSection('premios', 'modalPremiosList');
+            renderModalSection('videoclipes', 'modalVideoclipesList');
+            renderModalSection('cenografia', 'modalCenografiaList');
+        }
+
+        function renderModalSection(type, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            const sortedItems = [...siteData.site.modals[type]].sort((a, b) => parseInt(b.y) - parseInt(a.y));
+            sortedItems.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.className = 'modal-editor-item';
+                div.innerHTML = `
+                    <div style="display: flex; justify-content: space-between;"><strong>Item #${index + 1}</strong><button style="color: #ff6b6b; background: none;" onclick="removeModalItem('${type}', ${index})">Remover</button></div>
+                    <div class="form-group"><label>Título/Obra</label><input type="text" value="${item.t}" onchange="siteData.site.modals['${type}'][${index}].t = this.value"></div>
+                    <div class="form-group"><label>Ano</label><input type="text" value="${item.y}" onchange="siteData.site.modals['${type}'][${index}].y = this.value"></div>
+                    <div class="form-group"><label>Função</label><input type="text" value="${item.d}" onchange="siteData.site.modals['${type}'][${index}].d = this.value"></div>
+                    <div class="form-group"><label>Notas/Prêmios</label><input type="text" value="${item.a}" onchange="siteData.site.modals['${type}'][${index}].a = this.value"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function addModalItem(type) {
+            siteData.site.modals[type].push({ t: 'Novo Item', y: '', d: '', a: '' });
+            renderAboutEditor();
+        }
+
+        function removeModalItem(type, index) {
+            if(confirm('Remover este item?')) {
+                siteData.site.modals[type].splice(index, 1);
+                renderAboutEditor();
+            }
+        }
+
+        async function saveAboutChanges() {
+            const token = document.getElementById('githubToken').value;
+            if (!token) { alert('Insira seu GitHub Token nas Configurações.'); showTab('config'); return; }
+            const content = `const siteData = ${JSON.stringify(siteData, null, 2)};\n`;
+            try {
+                const res = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/public/data.js`, { headers: { 'Authorization': `token ${token}` } });
+                const fileData = await res.json();
+                const saveRes = await fetch(`https://api.github.com/repos/v-poffo/vini-poffo-site/contents/public/data.js`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: `Atualiza Sobre via CMS`, content: btoa(unescape(encodeURIComponent(content))), sha: fileData.sha })
+                });
+                if (saveRes.ok) alert('Atualizado com sucesso!'); else alert('Erro ao salvar.');
+            } catch (e) { alert('Erro: ' + e.message); }
+        }
+
+        function editProject(id) {
+            const p = siteData.projects.find(proj => proj.id === id);
+            if (!p) return;
+            document.getElementById('projectId').value = p.id;
+            document.getElementById('title').value = p.title;
+            document.getElementById('year').value = p.year;
+            document.getElementById('type').value = p.type;
+            document.getElementById('artist').value = p.artist || '';
+            document.getElementById('description').value = p.description || '';
+            document.getElementById('trailerUrl').value = p.trailerUrl || '';
+            document.getElementById('videoHome').value = p.videoHome || '';
+            document.getElementById('cartazMobile').value = p.cartazMobile || '';
+            if (p.credits) {
+                document.getElementById('credit_direcao').value = (p.credits.direcao || []).join(', ');
+                document.getElementById('credit_roteiro').value = (p.credits.roteiro || []).join(', ');
+                document.getElementById('credit_elenco').value = (p.credits.elenco || []).join(', ');
+                document.getElementById('credit_fotografia').value = (p.credits.direcaoFotografia || []).join(', ');
+                document.getElementById('credit_arte').value = (p.credits.direcaoArte || []).join(', ');
+                document.getElementById('credit_montagem').value = (p.credits.montagem || []).join(', ');
+                document.getElementById('credit_extra').value = p.credits.extra || '';
+                document.getElementById('credit_apoio').value = p.credits.apoio || '';
+            }
+            document.getElementById('mainInterface').classList.add('hidden');
+            document.getElementById('projectForm').classList.remove('hidden');
+        }
+
+        function showProjectForm() {
+            document.getElementById('projectId').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('year').value = new Date().getFullYear();
+            document.getElementById('type').value = 'videoclipe';
+            document.getElementById('artist').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('trailerUrl').value = '';
+            document.getElementById('videoHome').value = '';
+            document.getElementById('cartazMobile').value = '';
+            document.getElementById('credit_direcao').value = '';
+            document.getElementById('credit_roteiro').value = '';
+            document.getElementById('credit_elenco').value = '';
+            document.getElementById('credit_fotografia').value = '';
+            document.getElementById('credit_arte').value = '';
+            document.getElementById('credit_montagem').value = '';
+            document.getElementById('credit_extra').value = '';
+            document.getElementById('credit_apoio').value = '';
+            document.getElementById('formTitle').innerText = 'Novo Projeto';
+            document.getElementById('mainInterface').classList.add('hidden');
+            document.getElementById('projectForm').classList.remove('hidden');
+        }
+
+        function hideProjectForm() {
+            document.getElementById('projectForm').classList.add('hidden');
+            document.getElementById('mainInterface').classList.remove('hidden');
+        }
+
+        async function saveProject() {
+            const id = document.getElementById('projectId').value || Date.now();
+            const projectData = {
+                id: parseInt(id),
+                title: document.getElementById('title').value,
+                year: parseInt(document.getElementById('year').value),
+                type: document.getElementById('type').value,
+                artist: document.getElementById('artist').value,
+                description: document.getElementById('description').value,
+                trailerUrl: document.getElementById('trailerUrl').value,
+                videoHome: document.getElementById('videoHome').value,
+                cartazMobile: document.getElementById('cartazMobile').value,
+                credits: {
+                    direcao: document.getElementById('credit_direcao').value.split(',').map(s => s.trim()),
+                    roteiro: document.getElementById('credit_roteiro').value.split(',').map(s => s.trim()),
+                    elenco: document.getElementById('credit_elenco').value.split(',').map(s => s.trim()),
+                    direcaoFotografia: document.getElementById('credit_fotografia').value.split(',').map(s => s.trim()),
+                    direcaoArte: document.getElementById('credit_arte').value.split(',').map(s => s.trim()),
+                    montagem: document.getElementById('credit_montagem').value.split(',').map(s => s.trim()),
+                    extra: document.getElementById('credit_extra').value,
+                    apoio: document.getElementById('credit_apoio').value
+                }
+            };
+
+            // Atualizar no siteData local
+            const idx = siteData.projects.findIndex(p => p.id === projectData.id);
+            if (idx > -1) siteData.projects[idx] = projectData; else siteData.projects.push(projectData);
+
+            // Salvar o data.js completo
+            saveAboutChanges();
+            hideProjectForm();
+            renderProjects();
+        }
+
+        async function uploadVideoHome() {
+            const fileInput = document.getElementById('videoHomeUpload');
+            const file = fileInput.files[0];
+            if (!file) { alert('Selecione um arquivo de video'); return; }
+
+            const token = document.getElementById('githubToken').value;
+            if (!token) { alert('Insira seu GitHub Token para fazer upload'); return; }
+
+            const progressDiv = document.getElementById('uploadProgress');
+            const oldVideoName = document.getElementById('videoHome').value;
+            progressDiv.innerText = 'Preparando upload...';
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const base64Content = e.target.result.split(',')[1];
+                    const fileName = 'video-' + Date.now() + '.' + file.name.split('.').pop();
+                    const filePath = 'public/assets/videos/' + fileName;
+
+                    progressDiv.innerText = 'Enviando para GitHub...';
+
+                    try {
+                        const res = await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + filePath, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': 'token ' + token,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: 'Upload de video: ' + fileName,
+                                content: base64Content
+                            })
+                        });
+
+                        if (res.ok) {
+                            if (oldVideoName && oldVideoName.trim()) {
+                                progressDiv.innerText = 'Deletando arquivo antigo...';
+                                const oldFilePath = 'public/assets/videos/' + oldVideoName;
+                                try {
+                                    const getRes = await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + oldFilePath, {
+                                        headers: { 'Authorization': 'token ' + token }
+                                    });
+                                    if (getRes.ok) {
+                                        const fileData = await getRes.json();
+                                        await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + oldFilePath, {
+                                            method: 'DELETE',
+                                            headers: {
+                                                'Authorization': 'token ' + token,
+                                                'Content-Type': 'application/json'
+                                            },
+                                            body: JSON.stringify({
+                                                message: 'Deletar video antigo: ' + oldVideoName,
+                                                sha: fileData.sha
+                                            })
+                                        });
+                                    }
+                                } catch (err) {
+                                    console.log('Nao foi possivel deletar arquivo antigo');
+                                }
+                            }
+                            document.getElementById('videoHome').value = fileName;
+                            progressDiv.innerText = 'Video enviado com sucesso! Nome: ' + fileName;
+                            fileInput.value = '';
+                            setTimeout(() => { progressDiv.innerText = ''; }, 3000);
+                        } else {
+                            const error = await res.json();
+                            progressDiv.innerText = 'Erro: ' + error.message;
+                        }
+                    } catch (err) {
+                        progressDiv.innerText = 'Erro ao enviar: ' + err.message;
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) {
+                progressDiv.innerText = 'Erro: ' + err.message;
+            }
+        }
+
+        async function uploadCartaz() {
+            const fileInput = document.getElementById('cartazUpload');
+            const file = fileInput.files[0];
+            if (!file) { alert('Selecione um arquivo de imagem'); return; }
+
+            const token = document.getElementById('githubToken').value;
+            if (!token) { alert('Insira seu GitHub Token para fazer upload'); return; }
+
+            const progressDiv = document.getElementById('uploadProgressCartaz');
+            progressDiv.innerText = 'Preparando upload...';
+
+            try {
+                const reader = new FileReader();
+                reader.onload = async (e) => {
+                    const base64Content = e.target.result.split(',')[1];
+                    const fileName = 'cartaz-' + Date.now() + '.' + file.name.split('.').pop();
+                    const filePath = 'public/assets/cartazes/' + fileName;
+
+                    progressDiv.innerText = 'Enviando para GitHub...';
+
+                    try {
+                        const res = await fetch('https://api.github.com/repos/v-poffo/vini-poffo-site/contents/' + filePath, {
+                            method: 'PUT',
+                            headers: {
+                                'Authorization': 'token ' + token,
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message: 'Upload de cartaz: ' + fileName,
+                                content: base64Content
+                            })
+                        });
+
+                        if (res.ok) {
+                            document.getElementById('cartazMobile').value = fileName;
+                            progressDiv.innerText = 'Cartaz enviado com sucesso! Nome: ' + fileName;
+                            fileInput.value = '';
+                            setTimeout(() => { progressDiv.innerText = ''; }, 3000);
+                        } else {
+                            const error = await res.json();
+                            progressDiv.innerText = 'Erro: ' + error.message;
+                        }
+                    } catch (err) {
+                        progressDiv.innerText = 'Erro ao enviar: ' + err.message;
+                    }
+                };
+                reader.readAsDataURL(file);
+            } catch (err) {
+                progressDiv.innerText = 'Erro: ' + err.message;
+            }
+        }
+    </script>
+</body>
+</html>

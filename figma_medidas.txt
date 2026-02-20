@@ -1,0 +1,15 @@
+# Medidas extraídas do Figma (vídeo)
+# Artboard: 1000 x 1000 (aproximado do vídeo)
+
+# ELEMENTOS:
+# vini 1 1 (você com câmera, esquerda topo): L=254, T=338, W=111, H=109
+# vini 2_ 1 (set colorido): L=245, T=458, W=257, H=130  
+# vini 3_ 1 (você com boné LIFE vertical): L=?, T=?, W=?, H=?
+# vini 4 1 (você com megafone): L=?, T=?, W=?, H=?
+# vini 5 1 (você grande central com câmera): L=?, T=?, W=?, H=?
+# vinho 4 1 (mergulho): L=374, T=617, W=132, H=139
+# vini 10 1 (você com chapéu vermelho + câmera): R=266, B=305, W=342, H=119
+
+# Quadrados azuis:
+# Quadrado azul 1 (VAMOS CONVERSAR?): L=?, T=?, W=?, H=?
+# Quadrado azul 2 (PROCESSO CRIATIVO + texto): L=?, T=?, W=?, H=?
