@@ -176,6 +176,12 @@ const siteData = {
           "y": "2023",
           "d": "Mención Honorifica",
           "a": ""
+        },
+        {
+          "t": "Festival Internacional de Curta-metragem de Brasília",
+          "y": "2025",
+          "d": "Melhor Videoclipe - Júri Técnico",
+          "a": "Aranha - Letrux"
         }
       ],
       "videoclipes": [
