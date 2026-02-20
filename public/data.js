@@ -181,7 +181,13 @@ const siteData = {
           "t": "Festival Internacional de Curta-metragem de Brasília",
           "y": "2025",
           "d": "Melhor Videoclipe - Júri Técnico",
-          "a": "Aranha - Letrux"
+          "a": ""
+        },
+        {
+          "t": "Prêmio RespirARTE FUNARTE",
+          "y": "2021",
+          "d": "Videoarte",
+          "a": "Parte de Mim"
         }
       ],
       "videoclipes": [
