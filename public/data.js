@@ -113,7 +113,7 @@ const siteData = {
           "t": "(Sub)Urbana",
           "y": "2023",
           "d": "direção e co-roteirista",
-          "a": "5 prêmios de melhor filme<br>Prêmio Revelação – IV Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema"
+          "a": "5 prêmios de melhor filme<br>Prêmio Revelação – V Transforma Festival<br>Em mais de 20 festivais nacionais e internacionais<br>Prêmio Catarinense de Cinema"
         },
         {
           "t": "No Reflexo do Meu Nome",
@@ -139,37 +139,37 @@ const siteData = {
           "t": "Festival Internacional de Cine LBGT Paraguay",
           "y": "2023",
           "d": "Mejor Cortometraje del Tema - votacion popular",
-          "a": ""
+          "a": "(sub)urbana"
         },
         {
           "t": "Hollywood World Festival Film",
           "y": "2023",
-          "d": "BEST FILM -  (sub)urbana",
-          "a": ""
+          "d": "BEST FILM ",
+          "a": "(sub)urbana"
         },
         {
           "t": "V Transforma Festival",
           "y": "2023",
-          "d": "Prêmio Revelação - (sub)urbana",
-          "a": ""
+          "d": "Prêmio Revelação e Prêmio Melhor Atriz",
+          "a": "(sub)urbana"
         },
         {
           "t": "Mostra SESC de Cinema ",
           "y": "2022",
           "d": "Melhor Obra de Santa Catarina - No reflexo do meu nome",
-          "a": ""
+          "a": "(sub)urbana"
         },
         {
-          "t": "Prêmio RespirARTE - FUNARTE  ",
+          "t": "Mostra VI SESC de Cinema ",
           "y": "2021",
-          "d": "Videoarte",
-          "a": ""
+          "d": "Melhor Obra de Santa Catarina ",
+          "a": "No reflexo do meu nome"
         },
         {
           "t": "Prêmio Catarinense de Cinema",
           "y": "2021",
           "d": "Produção de curta-metragem",
-          "a": "No reflexo do meu nome."
+          "a": "Parte de Mim"
         },
         {
           "t": "Violeta Film Festival  Colômbia",
