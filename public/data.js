@@ -741,7 +741,145 @@ const siteData = {
       "videoHome": "aranha_portfolio_video.mp4",
       "cartazMobile": "aranha-cartaz.png",
       "trailerUrl": "https://www.youtube.com/watch?v=b-a2mUsEfOE",
-      "description": "Videoclipe de Aranha, dirigido por Sillas H e  Vini Poffo. Melhor videoclipe pelo Curta Fest Brasilia 2024. Convidado pelo MVF para o festival na Argentina e Colômbia"
+      "description": "Videoclipe de Aranha, dirigido por Sillas H e Vini Poffo. Melhor videoclipe pelo Curta Fest Brasilia 2024. Convidado pelo MVF para o festival na Argentina e Colômbia",
+      "credits": {
+        "direcao": [
+          "Sillas H",
+          "Vini Poffo"
+        ],
+        "assistenciaDirecao": [
+          "Jessé Rodrigues"
+        ],
+        "direcaoProducaoProducaoExecutiva": [
+          "Tati Tanaka"
+        ],
+        "produtorLocal": [
+          "Zalu Amorim"
+        ],
+        "producaoProjeto": [
+          "Carlos Adriano"
+        ],
+        "controller": [
+          "Lari Reimer"
+        ],
+        "plato": [
+          "Paulo Silva"
+        ],
+        "assistenteProducao1": [
+          "Kimie Ishimoto"
+        ],
+        "assistenteProducao2": [
+          "Nicole Leite"
+        ],
+        "direcaoFotografia": [
+          "Millena Rosado"
+        ],
+        "assistenteCamera1": [
+          "Eduardo Guerreiro"
+        ],
+        "assistenteCamera2": [
+          "Luana Skibinski"
+        ],
+        "assistenteCamera3": [
+          "Carlos Adriano"
+        ],
+        "operadorCameraRJ": [
+          "Jonas Vaz"
+        ],
+        "maquinista": [
+          "Luan Franco"
+        ],
+        "eletricistaChefe": [
+          "Neto Primo"
+        ],
+        "still": [
+          "Lígia Triumpho"
+        ],
+        "direcaoArte": [
+          "Erronizar",
+          "Kayque Barros"
+        ],
+        "producaoObjetos": [
+          "Solana Llanes"
+        ],
+        "contrarregra": [
+          "Rodrigo Pacheco"
+        ],
+        "figurino": [
+          "Cacau Francisco",
+          "Anuro"
+        ],
+        "assistenciaFigurino": [
+          "Anita Poffo"
+        ],
+        "caracterizacao": [
+          "Koichi Sonoda"
+        ],
+        "assistenciaCaracterizacao": [
+          "Sui"
+        ],
+        "caracterizacaoBetina": [
+          "Gui Mauad"
+        ],
+        "artesaFlores": [
+          "Mirela Alerim"
+        ],
+        "artesaBonecas": [
+          "Rosilene Poffo"
+        ],
+        "aderecista": [
+          "Beatriz Leandro"
+        ],
+        "coordPosProducao": [
+          "Sillas H"
+        ],
+        "montagem": [
+          "Lucas Richard"
+        ],
+        "posProducao": [
+          "Diego Lomac"
+        ],
+        "designer": [
+          "Vito Ceccon"
+        ],
+        "elencoApoio": [
+          "Juciara Nascimento",
+          "Nicole Leite",
+          "Anita Poffo"
+        ],
+        "direcaoCoreografia": [
+          "Nicole Leite"
+        ],
+        "dancarines": [
+          "Harlem",
+          "Mary Jane",
+          "Will",
+          "Vilson de Souza",
+          "Valentin"
+        ],
+        "agradecimentos": [
+          "Artur Marin",
+          "Cineclube Cortina",
+          "Cinesupport Locações",
+          "Estúdio Pareia",
+          "Leandro Castro",
+          "Oito Locações",
+          "Sesc Joinville",
+          "Sociedade Kênia Clube",
+          "Univille"
+        ],
+        "apoio": [
+          "Bololo Café",
+          "Casa Cubas",
+          "Ru.fino",
+          "Sesc Joinville",
+          "Soma Role",
+          "Misture"
+        ],
+        "participacaoEspecial": [
+          "Betina Polaroid"
+        ]
+      }
     },
     {
       "id": 6,
