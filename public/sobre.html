@@ -1417,8 +1417,12 @@
 
         // FECHAR MODAL
         document.querySelectorAll('.modal-close').forEach(closeBtn => {
-            closeBtn.addEventListener('click', function() {
-                this.closest('.modal').classList.remove('show');
+            closeBtn.addEventListener('click', function(event) {
+                event.stopPropagation(); // Evita conflito com clique fora
+                const modal = this.closest('.modal');
+                if (modal) {
+                    modal.classList.remove('show');
+                }
             });
         });
 
