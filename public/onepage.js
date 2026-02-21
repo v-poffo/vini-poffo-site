@@ -1,15 +1,5 @@
 // Lógica para a página única (One Page) - Versão Final Otimizada
 document.addEventListener('DOMContentLoaded', function() {
-        // Scroll automático para seção ao carregar com hash
-        if (window.location.hash) {
-            const targetId = window.location.hash.replace('#', '');
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                setTimeout(() => {
-                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 400); // Espera renderização
-            }
-        }
     // Filtrar apenas projetos com vídeo de capa e ordenar por ano (mais recente primeiro)
     const projects = [...siteData.projects].filter(p => p.videoHome && p.videoHome !== '').sort((a, b) => b.year - a.year);
     let isDesktop = window.innerWidth > 1024;
