@@ -362,6 +362,29 @@
     <div id="cenografiaModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Arte, Cenografia e Outros</h3><div id="cenografiaList"></div></div></div>
     
     <!-- MODAIS DE TEXTO MOBILE -->
+        <!-- MODAL DE CONTATO -->
+        <div id="contatoModal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close">&times;</button>
+                <h3 class="modal-title">Contato</h3>
+                <form id="contatoForm" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                    <div class="modal-item">
+                        <label for="contatoEmail" class="modal-item-title">Seu email</label>
+                        <input type="email" id="contatoEmail" name="email" required style="padding: 0.7rem; border-radius: 4px; border: 1px solid #2A4A5A; font-size: 1rem;">
+                    </div>
+                    <div class="modal-item">
+                        <label for="contatoAssunto" class="modal-item-title">Assunto</label>
+                        <input type="text" id="contatoAssunto" name="assunto" required style="padding: 0.7rem; border-radius: 4px; border: 1px solid #2A4A5A; font-size: 1rem;">
+                    </div>
+                    <div class="modal-item">
+                        <label for="contatoMensagem" class="modal-item-title">Mensagem</label>
+                        <textarea id="contatoMensagem" name="mensagem" required rows="5" style="padding: 0.7rem; border-radius: 4px; border: 1px solid #2A4A5A; font-size: 1rem;"></textarea>
+                    </div>
+                    <button type="submit" class="modal-close" style="background: #718878; color: #fff; font-weight: 700; font-size: 1rem; border: none; border-radius: 4px; padding: 0.9rem 0; cursor: pointer;">Enviar</button>
+                </form>
+                <div id="contatoStatus" style="margin-top: 1rem; color: #718878; font-weight: 600;"></div>
+            </div>
+        </div>
     <div id="quemSouEuModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Quem Sou Eu</h3><div class="modal-item-text" id="quemSouEuText"></div></div></div>
     <div id="processoCriativoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Processo Criativo</h3><div class="modal-item-text" id="processoCriativoText"></div></div></div>
     <div id="direcaoModal" class="modal"><div class="modal-content"><button class="modal-close">&times;</button><h3 class="modal-title">Direção</h3><div class="modal-item-text" id="direcaoText"></div></div></div>
