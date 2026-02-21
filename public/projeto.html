@@ -388,9 +388,12 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Corrigir busca do id (string/number) e fallback
             const projectId = getUrlParameter('id');
-            const project = siteData.projects.find(p => p.id == projectId);
-
+            let project = null;
+            if (projectId) {
+                project = siteData.projects.find(p => String(p.id) === String(projectId));
+            }
             if (!project) {
                 document.getElementById('projectDetails').innerHTML = '<p>Projeto não encontrado.</p>';
                 return;
@@ -398,14 +401,14 @@
 
             // Renderizar hero
             const heroHTML = `
-                <h1 class="page-title">${project.title}</h1>
+                <h1 class="page-title">${project.title || ''}</h1>
                 <div class="projeto-meta">
-                    <span>${project.year}</span> • 
-                    <span>${project.type}</span>
+                    <span>${project.year || ''}</span> • 
+                    <span>${project.type || ''}</span>
                     ${project.artist ? `<span> • ${project.artist}</span>` : ''}
                 </div>
                 <div class="projeto-description-hero">
-                    <p>${project.description}</p>
+                    <p>${project.description || ''}</p>
                 </div>
             `;
             document.getElementById('projectHero').innerHTML = heroHTML;
@@ -493,8 +496,8 @@
             }
 
             // Renderizar detalhes
-            let videoHTML;
-            if (project.trailerUrl.includes('youtube') || project.trailerUrl.includes('youtu.be')) {
+            let videoHTML = '';
+            if (project.trailerUrl && (project.trailerUrl.includes('youtube') || project.trailerUrl.includes('youtu.be'))) {
                 let videoId;
                 if (project.trailerUrl.includes('youtu.be/')) {
                     videoId = project.trailerUrl.split('youtu.be/')[1].split('?')[0];
@@ -559,7 +562,7 @@
                         closeYouTubeModal();
                     }
                 });
-            } else {
+            } else if (project.trailerUrl && project.trailerUrl.includes('vimeo.com/')) {
                 const embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
                 videoHTML = `
                     <div class="projeto-video">
@@ -613,7 +616,6 @@
                     <div class="projeto-credits">
                         <h3>Créditos</h3>
                 `;
-
                 const creditLabels = {
                     producao: "Produção",
                     elenco: "Elenco",
@@ -791,13 +793,10 @@
                 }
 
                 creditsHTML += `</div>`;
+                }
+                creditsHTML += `</div>`;
             }
-
-            creditsHTML += `
-                    </div>
-                </div>
-            `;
-
+            creditsHTML += `</div></div>`;
             document.getElementById('projectDetails').innerHTML = detailsHTML + creditsHTML;
 
             // Renderizar projetos relacionados
