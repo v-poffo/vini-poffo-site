@@ -222,13 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (c.type === 'contact') {
                 backContent += `
-                <div class="flip-card-back-cta-buttons" style="position:relative;">
-                    <div class="flip-email-btn" style="perspective:600px; display:inline-block;">
-                        <div class="flip-email-inner" style="transition:transform 0.5s; transform-style:preserve-3d;">
-                            <button type="button" class="flip-card-back-cta-btn flip-email-front" style="backface-visibility:hidden;">Me mande um email</button>
-                            <button type="button" class="flip-card-back-cta-btn flip-email-back" style="backface-visibility:hidden; position:absolute; top:0; left:0; width:100%; transform:rotateY(180deg);">projetos@vinipoffo.com</button>
-                        </div>
-                    </div>
+                <div class="flip-card-back-cta-buttons">
+                    <a href="mailto:projetos@vinipoffo.com" class="flip-card-back-cta-btn">Me mande um email</a>
                     <a href="https://instagram.com/poffovini" target="_blank" class="flip-card-back-cta-btn">Me siga no Instagram</a>
                 </div>`;
             }
@@ -248,32 +243,6 @@ document.addEventListener('DOMContentLoaded', function() {
             };
             
             grid.appendChild(card);
-                        // Flip e ação do botão de email
-                        setTimeout(() => {
-                            const flipBtn = document.querySelector('.flip-email-btn');
-                            const flipInner = document.querySelector('.flip-email-inner');
-                            const emailFront = document.querySelector('.flip-email-front');
-                            const emailBack = document.querySelector('.flip-email-back');
-                            if (flipBtn && flipInner && emailFront && emailBack) {
-                                // Flip ao hover/touch
-                                flipBtn.addEventListener('mouseenter', () => { flipInner.style.transform = 'rotateY(180deg)'; });
-                                flipBtn.addEventListener('mouseleave', () => { flipInner.style.transform = 'rotateY(0deg)'; });
-                                flipBtn.addEventListener('touchstart', () => { flipInner.style.transform = 'rotateY(180deg)'; });
-                                flipBtn.addEventListener('touchend', () => { flipInner.style.transform = 'rotateY(0deg)'; });
-                                // Ao clicar, abre email
-                                emailFront.onclick = () => { window.location.href = 'mailto:projetos@vinipoffo.com'; };
-                                emailBack.onclick = () => { window.location.href = 'mailto:projetos@vinipoffo.com'; };
-                            }
-                        }, 100);
-                // Adiciona evento para abrir modal de contato
-                setTimeout(() => {
-                    const contatoBtn = document.getElementById('openContatoModal');
-                    if (contatoBtn) {
-                        contatoBtn.onclick = () => {
-                            document.getElementById('contatoModal').classList.add('show');
-                        };
-                    }
-                }, 100);
         });
         
         if (!isDesktop) {
@@ -297,24 +266,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function fillModals() {
-            // Modal de contato: enviar email
-            const contatoForm = document.getElementById('contatoForm');
-            if (contatoForm) {
-                contatoForm.onsubmit = function(e) {
-                    e.preventDefault();
-                    const email = document.getElementById('contatoEmail').value;
-                    const assunto = document.getElementById('contatoAssunto').value;
-                    const mensagem = document.getElementById('contatoMensagem').value;
-                    const mailto = `mailto:projetos@vinipoffo.com?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent('Email: ' + email + '\n\nMensagem:\n' + mensagem)}`;
-                    window.location.href = mailto;
-                    document.getElementById('contatoStatus').innerText = 'Abrindo seu email...';
-                    setTimeout(() => {
-                        document.getElementById('contatoModal').classList.remove('show');
-                        contatoForm.reset();
-                        document.getElementById('contatoStatus').innerText = '';
-                    }, 2000);
-                };
-            }
         // Filmes - ordenar por ano (mais recente primeiro)
         const filmes = [...siteData.site.modals.filmes].sort((a, b) => parseInt(b.y) - parseInt(a.y));
         document.getElementById('filmesList').innerHTML = filmes.map(f => `<div class="modal-item"><span class="modal-item-title">${f.t}</span><span class="modal-item-type">${f.d}</span><div class="modal-item-artists">${f.y}</div>${f.a ? `<div class="modal-item-awards">${f.a}</div>` : ''}</div>`).join('');
