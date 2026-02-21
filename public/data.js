@@ -1,4 +1,4 @@
-const siteData = {
+window.siteData = {
   "projects": [
     {
       "id": 1,
