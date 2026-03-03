@@ -281,9 +281,11 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('processoCriativoText').innerHTML = `<p class="modal-item-text-p">${siteData.site.aboutCards[3].text}</p>`;
         document.getElementById('direcaoText').innerHTML = `<p class="modal-item-text-p">${siteData.site.aboutCards[7].text}</p>`;
         document.getElementById('cinemaAutoralText').innerHTML = `<p class="modal-item-text-p">${siteData.site.aboutCards[8].text}</p>`;
+
+        // Adicionar listeners de fechamento aqui, após os modais serem preenchidos
+        document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
     }
 
-    document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
     window.onclick = (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); };
 
     // --- MENU HAMBÚRGUER E NAVEGAÇÃO ---
