@@ -282,11 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('direcaoText').innerHTML = `<p class="modal-item-text-p">${siteData.site.aboutCards[7].text}</p>`;
         document.getElementById('cinemaAutoralText').innerHTML = `<p class="modal-item-text-p">${siteData.site.aboutCards[8].text}</p>`;
 
-        // Adicionar listeners de fechamento aqui, após os modais serem preenchidos
-        document.querySelectorAll('.modal-close').forEach(b => b.onclick = () => b.closest('.modal').classList.remove('show'));
     }
-
-    window.onclick = (e) => { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); };
 
     // --- MENU HAMBÚRGUER E NAVEGAÇÃO ---
     function initializeMenu() {
@@ -296,7 +292,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Toggle do menu hambúrguer
         if (hamburger && navMenu) {
-            hamburger.addEventListener('click', () => {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation(); // Impede que o clique se propague
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
@@ -341,6 +338,18 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // --- EVENTOS GLOBAIS (FECHAR MODAL, ETC) ---
+    document.addEventListener('click', (e) => {
+        // Fecha modal clicando no 'X'
+        if (e.target.classList.contains('modal-close')) {
+            e.target.closest('.modal').classList.remove('show');
+        }
+        // Fecha modal clicando fora (no fundo escuro)
+        if (e.target.classList.contains('modal')) {
+            e.target.classList.remove('show');
+        }
+    });
 
     // --- FILTROS DE PROJETOS ---
     document.querySelectorAll('.filter-btn').forEach(btn => {
