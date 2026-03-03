@@ -1,5 +1,16 @@
 // Lógica para a página única (One Page) - Versão Final Otimizada
 document.addEventListener('DOMContentLoaded', function() {
+    // Garantir que todos os botões X fechem o modal (reforço extra)
+    setTimeout(() => {
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const modal = btn.closest('.modal');
+                if (modal) modal.classList.remove('show');
+            });
+        });
+    }, 100);
     // Filtrar apenas projetos com vídeo de capa e ordenar por ano (mais recente primeiro)
     const projects = [...siteData.projects].filter(p => p.videoHome && p.videoHome !== '').sort((a, b) => b.year - a.year);
     let isDesktop = window.innerWidth > 1024;
