@@ -11,6 +11,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <style>
+        @font-face {
+            font-family: 'PP Woodland';
+            src: url('assets/fonts/PPWoodland-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'AOT Serial Mono';
+            src: url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-title: 'PP Woodland', sans-serif;
+            --font-text: 'AOT Serial Mono', monospace;
+        }
         .projetos-hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/hero/todososprojetos.png') center/cover no-repeat;
             color: var(--primary-white);
@@ -24,7 +44,8 @@
         }
 
         .projetos-hero h1.page-title {
-            /* Usando page-title class para estilo */
+            font-family: var(--font-title);
+            font-weight: 700;
         }
 
         .projetos-hero p {
@@ -32,6 +53,8 @@
             font-size: 1.1rem;
             max-width: 600px;
             margin: 0 auto;
+            font-family: var(--font-text);
+            font-weight: 500;
         }
 
         .projetos-container {
@@ -59,8 +82,8 @@
             background-color: var(--primary-black);
             color: var(--primary-white);
             cursor: pointer;
-            font-family: var(--font-primary);
-            font-weight: 600;
+            font-family: var(--font-title);
+            font-weight: 700;
             border-radius: 4px;
             transition: all 0.3s ease;
             text-transform: uppercase;

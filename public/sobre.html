@@ -11,6 +11,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <style>
+        @font-face {
+            font-family: 'PP Woodland';
+            src: url('assets/fonts/PPWoodland-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'AOT Serial Mono';
+            src: url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-title: 'PP Woodland', sans-serif;
+            --font-text: 'AOT Serial Mono', monospace;
+        }
         /* DESIGN PHILOSOPHY: Full Image Mosaic Grid with 3D Flip Cards
            Color Palette: Green #718878, Blue gradients #113c51 to #2d617a
            Layout: CSS Grid covering 100% of the image - seamless mosaic

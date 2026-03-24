@@ -6,6 +6,26 @@
     <title>Projeto - Vini Poffo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        @font-face {
+            font-family: 'PP Woodland';
+            src: url('assets/fonts/PPWoodland-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'AOT Serial Mono';
+            src: url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-title: 'PP Woodland', sans-serif;
+            --font-text: 'AOT Serial Mono', monospace;
+        }
         .projeto-hero {
             background-color: var(--primary-black);
             color: var(--primary-white);
@@ -48,7 +68,8 @@
         }
 
         .projeto-hero h1.page-title {
-            /* Usando page-title class para estilo */
+            font-family: var(--font-title);
+            font-weight: 700;
         }
 
         .projeto-meta {
@@ -93,6 +114,8 @@
             color: var(--primary-white);
             text-align: center; /* Alterado de justify para center para melhor equilíbrio visual */
             margin: 0;
+            font-family: var(--font-text);
+            font-weight: 500;
         }
 
         .projeto-content-columns {
@@ -123,6 +146,8 @@
             border-bottom: 2px solid var(--accent-green);
             padding-bottom: 1rem;
             color: var(--primary-white);
+            font-family: var(--font-title);
+            font-weight: 700;
         }
 
         .ficha-item {
@@ -139,10 +164,13 @@
         .ficha-label {
             font-weight: 600;
             color: var(--primary-white);
+            font-family: var(--font-title);
         }
 
         .ficha-value {
             color: rgba(255, 255, 255, 0.8);
+            font-family: var(--font-text);
+            font-weight: 500;
         }
 
         .back-button {
