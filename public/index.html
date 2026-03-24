@@ -28,7 +28,7 @@
     <link rel="preload" href="assets/logo/logo.avif" as="image">
     <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
     <!-- Preload do vídeo do Hero com alta prioridade -->
-    <link rel="preload" href="assets/videos/tem-feito-uns-dias-esquisitos.mp4" as="video" type="video/mp4" fetchpriority="high">
+    <link rel="preload" href="assets/videos/tfde_portfolio_video.mp4" as="video" type="video/mp4" fetchpriority="high">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,218 @@
 
         section { width: 100%; position: relative; }
 
-        /* --- PROJETOS: POLAROIDES ORGÂNICAS --- */
+        /* =====================================================
+           HERO INTRO — Seção com scroll longo para animação da logo
+           ===================================================== */
+
+        /* Wrapper externo que define a altura total do "scroll de intro" */
+        .hero-intro-wrapper {
+            position: relative;
+            /* Altura total do espaço de scroll da animação.
+               Durante esses pixels, o conteúdo fica "preso" (sticky) */
+            height: 350vh;
+            background-color: var(--primary-black);
+        }
+
+        /* Container sticky: fica fixo na viewport durante o scroll */
+        .hero-intro-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Vídeo de fundo — ocupa 100% do sticky container */
+        .hero-intro-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Overlay escuro suave sobre o vídeo */
+        .hero-intro-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(17, 26, 23, 0.35);
+            z-index: 1;
+        }
+
+        /* Container da logo animada — centralizado, z-index acima do vídeo */
+        #heroLogoContainer {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            will-change: transform, opacity;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* SVG da logo */
+        #heroLogoSvg {
+            width: 70vw;
+            max-width: 900px;
+            min-width: 280px;
+            height: auto;
+            display: block;
+        }
+
+        /* Hint de scroll */
+        #scrollHint {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+            z-index: 20;
+            transition: opacity 0.4s ease;
+        }
+
+        #scrollHint .hint-text {
+            font-size: 9px;
+            color: rgba(255,255,255,0.35);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-family: var(--font-primary);
+        }
+
+        #scrollHint .hint-arrow {
+            color: rgba(255,255,255,0.25);
+            animation: hintBounce 1.6s ease-in-out infinite;
+        }
+
+        @keyframes hintBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Overlay de títulos de projetos no desktop (canto inferior esquerdo) */
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 4rem 2rem 3rem 2rem;
+            z-index: 5;
+        }
+
+        .hero-titles { width: 100%; }
+
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            max-height: 280px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .projects-list::-webkit-scrollbar { display: none; }
+
+        .project-title {
+            cursor: pointer;
+            font-size: 2.2rem;
+            font-family: var(--font-primary);
+            font-weight: 500;
+            color: var(--primary-white);
+            transition: all 0.3s ease;
+            padding: 0.15rem 0;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            height: auto;
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .project-title .title-text { font-style: italic; }
+        .project-title .title-year { font-size: 0.9rem; font-weight: 400; opacity: 0.6; font-style: normal; }
+        .project-title:hover { color: var(--accent-green-light); opacity: 1; }
+        .project-title.active { color: var(--primary-white); opacity: 1; font-weight: 600; }
+
+        /* Mobile hero titles */
+        .hero-title-inside-mobile {
+            position: absolute;
+            bottom: 13.5rem;
+            left: 0;
+            width: 100%;
+            padding: 0 1.5rem;
+            background: transparent;
+            color: white;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            pointer-events: none;
+            z-index: 5;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            overflow: hidden;
+        }
+
+        .hero-title-inside-mobile .title-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-style: italic;
+            line-height: 1.05;
+            display: block;
+            max-width: 80%;
+            word-break: break-word;
+        }
+
+        .hero-title-inside-mobile .title-year { font-size: 0.75rem; opacity: 0.8; font-weight: 400; }
+
+        .hero-title-outside-mobile {
+            width: 100%;
+            max-width: 500px;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: baseline;
+            gap: 0.5rem;
+            color: white;
+            opacity: 0.45;
+            cursor: pointer;
+            margin-top: -13.4rem;
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            overflow: hidden;
+        }
+
+        .hero-title-outside-mobile .title-text {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-style: italic;
+            line-height: 1.05;
+            max-width: 80%;
+            word-break: break-word;
+        }
+
+        .hero-title-outside-mobile .title-year { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
+
+        /* =====================================================
+           PROJETOS: POLAROIDES ORGÂNICAS
+           ===================================================== */
         .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
         @media (max-width: 768px) {
             .projects-onepage { padding: 2rem 0 8rem 0; }
@@ -113,7 +324,9 @@
         .polaroid-title { font-size: 0.8rem; font-weight: 800; color: var(--primary-black); margin: 0; text-transform: uppercase; }
         .polaroid-year { font-size: 0.7rem; color: var(--dark-gray); margin-top: 0.2rem; }
 
-        /* --- SOBRE: MOSAICO DESKTOP --- */
+        /* =====================================================
+           SOBRE: MOSAICO DESKTOP
+           ===================================================== */
         .about-onepage { background-color: #111A17; padding: 4rem 2rem; position: relative; min-height: 100vh; z-index: 10; }
         .cards-wrapper { width: 100%; max-width: 1400px; margin: 0 auto; aspect-ratio: 16 / 9; }
         .cards-container { display: grid; grid-template-columns: repeat(6, 1fr); grid-auto-rows: 1fr; width: 100%; height: 100%; gap: 0; }
@@ -187,9 +400,10 @@
         .footer-onepage { padding: 4rem 0 2rem 0; background-color: #111A17; text-align: center; position: relative; z-index: 5; margin-top: -2px; }
         .footer-onepage p { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin: 0; font-family: var(--font-primary); }
 
-        /* --- MOBILE ADAPTATIONS (FIEL AOS ORIGINAIS) --- */
+        /* =====================================================
+           MOBILE ADAPTATIONS
+           ===================================================== */
         @media (max-width: 1024px) {
-            /* SOBRE MOBILE: Cards Quadrados, menos cards, imagens individuais */
             .about-onepage { padding: 2rem 1rem; }
             .cards-wrapper { aspect-ratio: auto; height: auto; }
             .cards-container { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
@@ -202,7 +416,6 @@
             .flip-card-back { padding: 1rem; justify-content: center; align-items: center; text-align: center; }
             .flip-card-back-title { font-size: 0.85rem; margin-bottom: 0; }
             
-            /* PROJETOS MOBILE: Carrossel de Item Único com Setas */
             .projects-carousel-wrapper { 
                 overflow-x: auto; scroll-snap-type: x mandatory; display: flex; 
                 align-items: center; position: relative; padding: 0;
@@ -230,105 +443,148 @@
 
             .filter-buttons { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding-bottom: 1rem; }
             
-            /* MODAL MOBILE SCROLL */
             .modal-content { padding: 2rem 1.5rem; max-height: 85vh; }
-            
-            /* HERO MOBILE & TABLET */
-            .hero-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #111A17; }
-            .hero-media.mobile-only { width: 100%; max-width: 500px; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
-            .hero-media.mobile-only video { width: 100%; height: 100%; object-fit: cover; }
-            
-            .hero-title-inside-mobile {
-                position: absolute; bottom: 13.5rem; left: 0; width: 100%;
-                padding: 0 1.5rem;
-                background: transparent;
-                color: white; display: flex; align-items: baseline; gap: 0.5rem;
-                pointer-events: none; z-index: 5;
-                text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-                overflow: hidden;
-            }
-            .hero-title-inside-mobile .title-text { 
-                font-size: 1.5rem; 
-                font-weight: 700; 
-                text-transform: uppercase; 
-                font-style: italic; 
-                line-height: 1.05;
-                display: block;
-                max-width: 80%;
-                word-break: break-word;
-            }
-            .hero-title-inside-mobile .title-year { font-size: 0.75rem; opacity: 0.8; font-weight: 400; }
 
-            .hero-title-outside-mobile {
-                width: 100%; max-width: 500px; padding: 0 1.5rem;
-                display: flex; justify-content: flex-start; align-items: baseline; gap: 0.5rem;
-                color: white; opacity: 0.45; cursor: pointer;
-                margin-top: -13.4rem; /* Subir proporcionalmente ao inside-mobile */
-                position: relative;
-                z-index: 10;
-                pointer-events: auto;
-                overflow: hidden;
+            /* Hero mobile: logo menor */
+            #heroLogoSvg {
+                width: 85vw;
             }
-            .hero-title-outside-mobile .title-text { 
-                font-size: 1.5rem; 
-                font-weight: 400; 
-                text-transform: uppercase; 
-                font-style: italic; 
-                line-height: 1.05;
-                max-width: 80%;
-                word-break: break-word;
-            }
-            .hero-title-outside-mobile .title-year { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
-            .arrow-indicator { font-size: 0.8rem; }
-            
-            /* Manter títulos visíveis no tablet */
-            .hero-overlay.desktop-only { display: flex !important; }
         }
 
         @media (max-width: 480px) {
             .cards-container { grid-auto-rows: 150px; }
             .flip-card-back-title { font-size: 0.75rem; }
+            #heroLogoSvg {
+                width: 92vw;
+            }
+        }
+
+        /* =====================================================
+           NAVBAR — fixo no topo, logo oculta inicialmente
+           ===================================================== */
+        /* A logo do navbar fica oculta durante a animação de intro
+           e aparece quando a animação termina */
+        .navbar-logo-hidden .logo-img {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Scroll indicator no hero intro */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary-white);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 20;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        .scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
+    <!-- NAVBAR: fixo no topo, logo oculta inicialmente (será revelada pela animação) -->
+    <nav class="navbar navbar-logo-hidden" id="mainNavbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><img src="assets/logo/logo.avif" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img"></a>
+                <a href="index.html"><img src="assets/logo/logo.avif" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img" id="navLogoImg"></a>
             </div>
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-menu">
-                <li><a href="index.html#hero">Início.</a></li>
+                <li><a href="#hero">Início.</a></li>
                 <li><a href="#projects">Projetos.</a></li>
                 <li><a href="#about">Sobre.</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero" id="hero">
-        <div class="hero-container">
-            <div class="hero-media desktop-only">
-                <video id="heroVideo" autoplay muted loop playsinline preload="auto" fetchpriority="high">
-                    <source src="assets/videos/tem-feito-uns-dias-esquisitos.mp4" type="video/mp4">
-                </video>
+    <!-- HERO INTRO: wrapper com scroll longo para a animação da logo -->
+    <section class="hero-intro-wrapper" id="hero">
+
+        <!-- Container sticky: fica preso na viewport durante o scroll de intro -->
+        <div class="hero-intro-sticky" id="heroIntroSticky">
+
+            <!-- Vídeo de fundo — continua rodando durante toda a animação -->
+            <video
+                id="heroVideo"
+                class="hero-intro-video desktop-only"
+                autoplay muted playsinline preload="auto" fetchpriority="high"
+            >
+                <source src="assets/videos/tfde_portfolio_video.mp4" type="video/mp4">
+            </video>
+            <video
+                id="heroVideoMobile"
+                class="hero-intro-video mobile-only"
+                autoplay muted playsinline preload="auto" fetchpriority="high"
+            >
+                <source src="assets/videos/tfde_portfolio_video.mp4" type="video/mp4">
+            </video>
+
+            <!-- Overlay escuro suave -->
+            <div class="hero-intro-overlay"></div>
+
+            <!-- Logo SVG animada com máscara de vídeo -->
+            <div id="heroLogoContainer">
+                <svg id="heroLogoSvg" viewBox="0 0 1920 1003.74" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <mask id="logoMask">
+                            <g fill="white">
+                                <path d="M441.72,786.21c0,2.75-2.09,4.96-4.82,5.34-11.11,1.54-21.16,8.79-28.16,25.99l-73.28,182.87h-49.63l-73.28-182.87c-3.92-9.63-11.92-18.71-19.06-25.45-4.39-4.15-1.4-11.52,4.64-11.52h125.86c5.04,0,6.04,7.17,1.18,8.52-32.54,9.03-63.81,23.79-43.64,76.64l44.6,111.04,63.95-159.22c7.38-18.14,5.96-25.21-13.16-26.19-2.88-.15-5.16-2.48-5.16-5.36v-.06c0-2.96,2.4-5.36,5.36-5.36h59.22c2.96,0,5.36,2.4,5.36,5.36v.28Z"/>
+                                <path d="M497.68,960.44c0,21.32,4.66,29.31,16.65,29.31v10.66h-79.28v-10.66c11.99,0,16.65-7.99,16.65-29.31v-86.6c0-18.51-3.51-26.97-12.29-28.88-2.56-.56-4.37-2.84-4.37-5.46h0c0-3.11,2.52-5.63,5.63-5.63h16.36c26.98,0,40.64,1.66,40.64,28.98v97.6ZM447.05,797.22c0-10.99,8.99-19.99,24.31-19.99s24.31,9,24.31,19.99c0,11.99-9.32,20.65-24.31,20.65s-24.31-8.66-24.31-20.65Z"/>
+                                <path d="M730.39,1000.41h-78.5v-10.66c11.99,0,16.66-7.99,16.66-29.31v-77.61c0-22.32-7.33-34.98-25.65-34.98-33.97,0-49.3,46.97-49.3,92.6v19.99c0,21.32,4.66,29.31,16.65,29.31v10.66h-79.28v-10.66c11.99,0,16.65-7.99,16.65-29.31v-86.6c0-18.51-3.51-26.97-12.29-28.88-2.56-.56-4.37-2.84-4.37-5.46h0c0-3.11,2.52-5.63,5.63-5.63h29.35c15.27,0,27.65,12.38,27.65,27.65v20.32h3.33c6.99-31.31,26.31-51.3,59.96-51.3s57.63,20.32,57.63,63.62v28.72c-.62,20.69-4.65,48.1,19.76,65.97,4.98,3.65,2.29,11.57-3.89,11.57Z"/>
+                                <path d="M809.78,960.44c0,21.32,4.66,29.31,16.65,29.31v10.66h-79.28v-10.66c11.99,0,16.65-7.99,16.65-29.31v-86.6c0-18.51-3.51-26.97-12.29-28.88-2.56-.56-4.37-2.84-4.37-5.46h0c0-3.11,2.52-5.63,5.63-5.63h16.36c26.98,0,40.64,1.66,40.64,28.98v97.6ZM759.15,797.22c0-10.99,8.99-19.99,24.31-19.99s24.31,9,24.31,19.99c0,11.99-9.32,20.65-24.31,20.65s-24.31-8.66-24.31-20.65Z"/>
+                                <path d="M1125.54,852.51c0,72.28-61.29,71.95-102.59,71.95h-35.31v35.97c0,21.32,4.66,29.31,16.65,29.31v10.66h-79.28v-10.66c11.99,0,16.65-7.99,16.65-29.31v-139.9c0-18.51-3.51-26.97-12.28-28.88-2.56-.56-4.37-2.85-4.37-5.46h0c0-3.11,2.52-5.63,5.63-5.63h92.3c41.3,0,102.59,0,102.59,71.95ZM1079.57,852.51c0-42.64-19.99-54.63-57.29-54.63h-16.59c-9.97,0-18.05,8.08-18.05,18.05v91.2h34.64c37.31,0,57.29-11.99,57.29-54.63Z"/>
+                                <path d="M1232.78,830.53c62.96,0,91.27,41.64,91.27,86.6s-28.31,86.6-91.27,86.6-91.27-41.64-91.27-86.6,28.31-86.6,91.27-86.6ZM1242.11,985.75c31.31-4,40.97-31.98,35.64-74.28-5.33-41.97-21.32-66.95-54.29-62.96-31.31,4-40.97,31.98-35.64,74.28,5.33,41.97,21.32,66.95,54.29,62.96Z"/>
+                                <path d="M1550.9,810.21c-7.6,0-14.02-5.69-14.92-13.23-2.02-16.98-8.44-22.41-20.41-22.41-19.99,0-21.65,24.98-21.65,59.29h52.96c0,10.66,0,17.32-15.99,17.32h-36.97v109.26c0,21.32,4.66,29.31,16.65,29.31v10.66h-79.28v-10.66c11.99,0,16.65-7.99,16.65-29.31v-109.26h-47.3v109.26c0,21.32,4.66,29.31,16.66,29.31v10.66h-79.28v-10.66c11.99,0,16.66-7.99,16.66-29.31v-109.26h-14.66c-4.78,0-8.66-3.88-8.66-8.66h0c0-4.78,3.88-8.66,8.66-8.66h14.66s0-1.33,0-1.33c0-43.97,36.3-61.96,73.28-61.96,12.99,0,24.31,2.67,32.64,6.66,12.99-15.65,33.97-19.99,50.63-19.99,40.08,0,52.86,13.07,54.67,36.94.66,8.66-6.33,16.02-15.01,16.02h0ZM1447.95,819.2c0-10.66,1.67-19.65,4.33-27.31-5-2.33-11.66-4-18.98-4-26.65,0-32.64,20.32-32.64,45.97h47.3v-14.66Z"/>
+                                <path d="M1636.48,830.53c62.96,0,91.27,41.64,91.27,86.6s-28.31,86.6-91.27,86.6-91.27-41.64-91.27-86.6,28.31-86.6,91.27-86.6ZM1645.81,985.75c31.31-4,40.97-31.98,35.64-74.28-5.33-41.97-21.32-66.95-54.29-62.96-31.31,4-40.97,31.98-35.64,74.28,5.33,41.97,21.32,66.95,54.29,62.96Z"/>
+                                <path d="M448.61,697.31c-146.66,0-291.46-91.94-400.79-255.77l-17.71-26.54s-.03-.05-.04-.07c-13.3-19.37-21.86-39.27-25.66-59.01-9.36-40.54-3.84-83.39,16.88-122.13,31.23-58.38,89.41-93.24,155.62-93.24h676.21c5.26,0,10.02,2.7,12.73,7.21,2.7,4.48,2.84,9.92.39,14.52-13.13,24.7-46.72,69.54-124.16,92.42-95.06,28.09-225,14.49-386.22-40.41-155.83-53.07-273.29-13.84-320.57,48.58-21.21,28-28.46,60.16-21.81,92.82,4.58,18.88,12.56,37.21,23.92,54.26.01.02.03.04.04.06,28.13,40.89,84.3,89.1,150.25,128.98,138.02,83.45,266.26,125.83,382.95,126.76,104.13-40.07,193.39-132.13,257.2-267.52,110.09-233.6,282.12-313.15,425.49-334.63,56.03-37.17,116.9-58.25,181.29-62.74,77.45-5.39,157.8,14.49,232.31,57.51,77.6,44.8,146.65,112.04,205.25,199.85l9.19,13.77c3.21,4.34,6.08,8.64,8.59,12.88,36.69,55.06,39.97,122.75,8.76,181.1-31.23,58.39-89.41,93.25-155.62,93.25h-676.49c-5.23,0-9.98-2.67-12.7-7.15-2.7-4.45-2.89-9.86-.49-14.47,12.91-24.84,46.11-69.94,123.42-92.96,94.98-28.29,225.29-14.54,387.3,40.84,162.66,55.6,271.1,13.02,314.53-40.36,35.22-43.28,36.6-99.96,3.77-155.53l-8.12-12.17c-33.89-45.72-109.78-98.85-199.21-138.69-116.8-52.03-244.29-77.71-359.1-72.35-19.22.9-39.35,2.73-60.09,5.8-72.33,48.56-134.54,124.04-182.27,222.99-43.89,90.98-95.37,167.13-153.02,226.34-64.21,65.94-136.46,111.17-214.76,134.43-42,12.48-85.82,18.7-131.33,18.7-.75,0-1.5,0-2.25,0-31.36,11.89-64.05,19.21-97.78,21.71-8.63.64-17.27.96-25.9.96ZM77.34,468.15c111.16,150.4,254,229.94,396.51,219.36,24.99-1.85,49.4-6.42,73.11-13.61-111.88-6.04-233.65-48.58-363.85-127.31-40.64-24.57-76.92-51.6-105.77-78.44ZM1236.43,75.41c-137.2,25.11-296.76,106.34-400.57,326.61-60.59,128.58-143.98,218.75-241.39,263.35,37.56-1.55,73.88-7.52,108.88-17.92,147.58-43.84,269.48-163.65,362.32-356.12,43.41-89.99,98.67-161,164.25-211.05,2.16-1.65,4.33-3.27,6.51-4.87ZM1284.84,439.19c-39.03,0-74.23,4.64-105.47,13.94-74.18,22.09-105.82,64.96-118.08,88.55-.97,1.87-.9,3.98.2,5.79,1.11,1.83,2.98,2.88,5.12,2.88h676.49c62.89,0,118.14-33.11,147.8-88.56,9.34-17.47,15.44-35.83,18.3-54.42-4.86,15.38-12.75,29.95-23.65,43.35-59.57,73.19-186.85,90.13-324.28,43.15-106.52-36.41-199.02-54.68-276.44-54.68ZM176.91,149.41c-62.89,0-118.14,33.11-147.8,88.56-8.05,15.06-13.69,30.77-16.93,46.71,4.1-9.36,9.45-18.45,16.05-27.17,49.2-64.96,170.48-106.12,330.5-51.62,159.44,54.3,287.57,67.86,380.85,40.3,74.34-21.96,106.37-64.61,118.85-88.08.99-1.86.93-3.98-.16-5.8s-3.01-2.91-5.13-2.91H176.91ZM1346.26,56.83c107.88,0,224.72,25.81,332.47,73.81,65.38,29.12,122.49,64.33,162.63,99.26C1729.14,79.25,1582.9-.61,1435.23,9.71c-57.38,3.99-111.67,21.42-161.51,51.2,14.34-1.65,28.33-2.74,41.88-3.37,10.12-.48,20.35-.71,30.66-.71Z"/>
+                            </g>
+                        </mask>
+                    </defs>
+
+                    <!-- Fundo escuro da logo -->
+                    <rect width="1920" height="1003.74" fill="rgba(17,26,23,0)"/>
+                    <!-- Canvas animado dentro da máscara -->
+                    <image id="logoVideoFrame" href="" width="1920" height="1003.74" preserveAspectRatio="xMidYMid slice" mask="url(#logoMask)"/>
+                    <!-- Fallback: logo branca sólida (visível quando canvas não está disponível) -->
+                    <g id="logoSolid" fill="rgba(255,255,255,0.9)" mask="url(#logoMask)">
+                        <rect width="1920" height="1003.74"/>
+                    </g>
+                </svg>
             </div>
-            <div class="hero-media mobile-only">
-                <video id="heroVideoMobile" autoplay muted loop playsinline preload="auto" fetchpriority="high">
-                    <source src="assets/videos/tem-feito-uns-dias-esquisitos.mp4" type="video/mp4">
-                </video>
-                <div class="hero-title-inside-mobile" id="heroTitleInsideMobile"></div>
-            </div>
+
+            <!-- Títulos dos projetos (desktop) -->
             <div class="hero-overlay desktop-only">
                 <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
                 <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
             </div>
+
+            <!-- Título mobile dentro do vídeo -->
+            <div class="hero-title-inside-mobile mobile-only" id="heroTitleInsideMobile"></div>
+
+            <!-- Título mobile fora do vídeo -->
             <div class="hero-title-outside-mobile mobile-only">
                 <div id="heroTitleOutsideMobile"></div>
             </div>
-            <div class="scroll-indicator"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
-        </div>
-    </section>
+
+            <!-- Hint de scroll -->
+            <div id="scrollHint">
+                <span class="hint-text">role para baixo</span>
+                <span class="hint-arrow">↓</span>
+            </div>
+
+        </div><!-- /hero-intro-sticky -->
+    </section><!-- /hero-intro-wrapper -->
 
     <section class="projects-onepage" id="projects">
         <h2 style="display:none;">Projetos e Trabalhos</h2>
@@ -369,5 +625,6 @@
 
     <script src="data.js" defer></script>
     <script src="onepage.js" defer></script>
+    <script src="logo-scroll.js" defer></script>
 </body>
 </html>

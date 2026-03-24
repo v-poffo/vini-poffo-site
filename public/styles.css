@@ -83,14 +83,16 @@ p {
 
 /* Navbar - A24 Style (Transparent Overlay) */
 .navbar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 10; /* Reduzido para não bloquear cliques no conteúdo abaixo */
+    z-index: 100;
     background-color: transparent;
     padding: 1rem 2rem 2rem 2rem;
+    /* Transição suave para quando a logo do navbar aparece */
+    transition: background-color 0.4s ease;
 }
 
 .nav-container {
@@ -119,7 +121,13 @@ p {
     height: 100px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) brightness(0) invert(1);
-    transition: all 0.3s ease;
+    transition: opacity 0.5s ease, all 0.3s ease;
+}
+
+/* Estado: logo do navbar oculta (durante a animação de intro) */
+.navbar-logo-hidden .logo-img {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .nav-menu {
