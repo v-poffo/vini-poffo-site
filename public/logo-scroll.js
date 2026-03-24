@@ -4,11 +4,12 @@
  *
  * Comportamento:
  * 1. Ao carregar a página, a logo fica invisível e o hint de scroll aparece
- * 2. Quando o usuário começa a rolar, a logo aparece grande e centralizada
- * 3. Conforme o scroll avança, a logo diminui e sobe em direção ao navbar
- * 4. Quando a logo chega ao navbar (posição final), a logo do navbar aparece
+ * 2. Quando o usuário começa a rolar, após 80px, a logo aparece grande e centralizada
+ * 3. Um fundo sólido aparece junto com a logo (efeito chroma)
+ * 4. Conforme o scroll avança, a logo diminui e sobe em direção ao navbar
+ * 5. Quando a logo chega ao navbar (posição final), a logo do navbar aparece
  *    e a animação de intro termina — a página continua rolando normalmente
- * 5. O vídeo de fundo continua rodando durante toda a animação
+ * 6. O vídeo de fundo continua rodando durante toda a animação
  */
 
 (function () {
@@ -86,12 +87,14 @@
     var mainNavbar = document.getElementById('mainNavbar');
     var navLogoImg = document.getElementById('navLogoImg');
     var heroIntroWrapper = document.getElementById('hero'); // section.hero-intro-wrapper
+    var heroIntroBackground = document.getElementById('heroIntroBackground');
 
     // Duração do scroll de intro em pixels
     // (deve corresponder ao height da .hero-intro-wrapper menos 100vh)
     // hero-intro-wrapper = 350vh, então o espaço de animação = 250vh
     var SCROLL_DURATION = 0; // calculado dinamicamente
     var NAVBAR_HEIGHT = 0;   // calculado dinamicamente
+    var ANIMATION_START = 80; // pixels de scroll antes de começar a animação
 
     function recalcDimensions() {
         var vh = window.innerHeight;
@@ -131,27 +134,32 @@
         var relativeScroll = scrollY - sectionTop;
 
         // Progresso da animação: 0 = início, 1 = fim
-        var progress = clamp(relativeScroll / SCROLL_DURATION, 0, 1);
+        // Começa após ANIMATION_START pixels
+        var adjustedScroll = Math.max(0, relativeScroll - ANIMATION_START);
+        var progress = clamp(adjustedScroll / SCROLL_DURATION, 0, 1);
         var easedProgress = easeInOut(progress);
 
         // --- Visibilidade ---
-        if (relativeScroll < 5) {
-            // No topo: logo invisível, hint visível
+        if (relativeScroll < ANIMATION_START) {
+            // No topo: logo invisível, hint visível, fundo sólido invisível
             heroLogoContainer.style.opacity = '0';
             if (scrollHint) scrollHint.style.opacity = '1';
+            if (heroIntroBackground) heroIntroBackground.style.opacity = '0';
             isAnimationDone = false;
             // Mostrar logo do navbar ao voltar ao topo
             if (mainNavbar) mainNavbar.classList.add('navbar-logo-hidden');
             return;
         }
 
-        // Logo aparece
-        var logoOpacity = clamp(relativeScroll / 80, 0, 1);
-        heroLogoContainer.style.opacity = String(logoOpacity);
+        // Logo e fundo sólido aparecem com fade in suave
+        var fadeInDuration = 50;
+        var fadeInProgress = clamp((relativeScroll - ANIMATION_START) / fadeInDuration, 0, 1);
+        heroLogoContainer.style.opacity = String(fadeInProgress);
+        if (heroIntroBackground) heroIntroBackground.style.opacity = String(fadeInProgress);
 
         // Hint desaparece
         if (scrollHint) {
-            scrollHint.style.opacity = relativeScroll > 30 ? '0' : '1';
+            scrollHint.style.opacity = relativeScroll > (ANIMATION_START + 20) ? '0' : '1';
         }
 
         // --- Escala ---
@@ -197,6 +205,10 @@
         if (heroLogoContainer) {
             heroLogoContainer.style.opacity = '0';
             heroLogoContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+        }
+
+        if (heroIntroBackground) {
+            heroIntroBackground.style.opacity = '0';
         }
 
         if (mainNavbar) {

@@ -23,6 +23,8 @@
     --border-color: #e0e0e0;
     --font-primary: 'Montserrat', sans-serif;
     --font-secondary: 'Space Mono', monospace;
+    --font-title: 'PP Woodland', sans-serif;
+    --font-text: 'AOT Serial Mono', monospace;
 }
 
 html {
@@ -38,8 +40,8 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
-    font-weight: 500;
+    font-family: var(--font-title);
+    font-weight: 700;
     letter-spacing: -0.5px;
 }
 
@@ -78,7 +80,8 @@ p {
     font-size: 1rem;
     line-height: 1.8;
     color: var(--dark-gray);
-    font-weight: 300;
+    font-weight: 500;
+    font-family: var(--font-text);
 }
 
 /* Navbar - A24 Style (Transparent Overlay) */

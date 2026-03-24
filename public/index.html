@@ -13,19 +13,19 @@
     <meta property="og:url" content="https://vini-poffo-site.vercel.app/">
     <meta property="og:title" content="Vini Poffo | Cineasta e Diretora Criativa">
     <meta property="og:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
-    <meta property="og:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+    <meta property="og:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.svg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://vini-poffo-site.vercel.app/">
     <meta property="twitter:title" content="Vini Poffo | Cineasta e Diretora Criativa">
     <meta property="twitter:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
-    <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.avif">
+    <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.svg">
 
     <link rel="stylesheet" href="styles.css">
     
     <!-- Preload de ativos críticos -->
-    <link rel="preload" href="assets/logo/logo.avif" as="image">
+    <link rel="preload" href="assets/logo/logo.svg" as="image">
     <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
     <!-- Preload do vídeo do Hero com alta prioridade -->
     <link rel="preload" href="assets/videos/tfde_portfolio_video.mp4" as="video" type="video/mp4" fetchpriority="high">
@@ -53,8 +53,26 @@
     </script>
     
     <style>
+        @font-face {
+            font-family: 'PP Woodland';
+            src: url('assets/fonts/PPWoodland-Bold.otf') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'AOT Serial Mono';
+            src: url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
         :root {
             --font-primary: 'Montserrat', sans-serif;
+            --font-title: 'PP Woodland', sans-serif;
+            --font-text: 'AOT Serial Mono', monospace;
             --primary-black: #111A17;
             --primary-white: #ffffff;
             --accent-green-light: #718878;
@@ -108,6 +126,16 @@
             inset: 0;
             background: rgba(17, 26, 23, 0.35);
             z-index: 1;
+        }
+
+        /* Fundo sólido que aparece com a logo (efeito chroma) */
+        .hero-intro-background {
+            position: absolute;
+            inset: 0;
+            background-color: #1a1f1c;
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
         }
 
         /* Container da logo animada — centralizado, z-index acima do vídeo */
@@ -497,7 +525,7 @@
     <nav class="navbar navbar-logo-hidden" id="mainNavbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index.html"><img src="assets/logo/logo.avif" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img" id="navLogoImg"></a>
+                <a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img" id="navLogoImg"></a>
             </div>
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-menu">
@@ -532,6 +560,9 @@
 
             <!-- Overlay escuro suave -->
             <div class="hero-intro-overlay"></div>
+
+            <!-- Fundo sólido que aparece com a logo (efeito chroma) -->
+            <div class="hero-intro-background" id="heroIntroBackground"></div>
 
             <!-- Logo SVG animada com máscara de vídeo -->
             <div id="heroLogoContainer">
