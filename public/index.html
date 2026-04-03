@@ -80,7 +80,8 @@
 
         body {
             background-color: var(--primary-black);
-            overflow-x: hidden;
+            /* overflow-x: hidden removido do body — quebrava position: fixed no iOS Safari.
+               O overflow horizontal é controlado por cada seção individualmente. */
             font-family: var(--font-primary);
             margin: 0;
             padding: 0;
