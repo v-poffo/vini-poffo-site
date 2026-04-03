@@ -80,8 +80,6 @@
 
         body {
             background-color: var(--primary-black);
-            /* overflow-x: hidden removido do body — quebrava position: fixed no iOS Safari.
-               O overflow horizontal é controlado por cada seção individualmente. */
             font-family: var(--font-primary);
             margin: 0;
             padding: 0;
@@ -208,7 +206,6 @@
 
         /* --- MOBILE ADAPTATIONS (FIEL AOS ORIGINAIS) --- */
         @media (max-width: 1024px) {
-            /* SOBRE MOBILE: Cards Quadrados, menos cards, imagens individuais */
             .about-onepage { padding: 2rem 1rem; }
             .cards-wrapper { aspect-ratio: auto; height: auto; }
             .cards-container { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
@@ -221,7 +218,6 @@
             .flip-card-back { padding: 1rem; justify-content: center; align-items: center; text-align: center; }
             .flip-card-back-title { font-size: 0.85rem; margin-bottom: 0; }
             
-            /* PROJETOS MOBILE: Carrossel de Item Único com Setas */
             .projects-carousel-wrapper { 
                 overflow-x: auto; scroll-snap-type: x mandatory; display: flex; 
                 align-items: center; position: relative; padding: 0;
@@ -249,10 +245,8 @@
 
             .filter-buttons { justify-content: flex-start; overflow-x: auto; white-space: nowrap; padding-bottom: 1rem; }
             
-            /* MODAL MOBILE SCROLL */
             .modal-content { padding: 2rem 1.5rem; max-height: 85vh; }
             
-            /* HERO MOBILE & TABLET */
             .hero-container { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #111A17; }
             .hero-media.mobile-only { width: 100%; max-width: 500px; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
             .hero-media.mobile-only video { width: 100%; height: 100%; object-fit: cover; }
@@ -282,7 +276,7 @@
                 width: 100%; max-width: 500px; padding: 0 1.5rem;
                 display: flex; justify-content: flex-start; align-items: baseline; gap: 0.5rem;
                 color: white; opacity: 0.45; cursor: pointer;
-                margin-top: -13.4rem; /* Subir proporcionalmente ao inside-mobile */
+                margin-top: -13.4rem;
                 position: relative;
                 z-index: 10;
                 pointer-events: auto;
@@ -300,7 +294,6 @@
             .hero-title-outside-mobile .title-year { font-size: 0.75rem; opacity: 0.7; font-weight: 400; }
             .arrow-indicator { font-size: 0.8rem; }
             
-            /* Manter títulos visíveis no tablet */
             .hero-overlay.desktop-only { display: flex !important; }
         }
 
@@ -311,11 +304,18 @@
     </style>
 </head>
 <body>
+
+    <!-- LOGO FIXA — elemento independente do navbar para garantir position: fixed cross-browser.
+         O navbar contém apenas o hamburguer. Assim os dois são fixed de forma totalmente separada. -->
+    <div class="logo-fixa">
+        <a href="index.html">
+            <img src="assets/logo/logo.svg" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img">
+        </a>
+    </div>
+
+    <!-- NAVBAR — apenas os 3 riscos do menu -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo - Cineasta e Diretora Criativa" class="logo-img"></a>
-            </div>
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul class="nav-menu">
                 <li><a href="index.html#hero">Início.</a></li>

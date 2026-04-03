@@ -84,9 +84,44 @@ p {
     font-family: var(--font-text);
 }
 
-/* Navbar - A24 Style (Transparent Overlay)
- * ATENÇÃO: position: fixed pode quebrar em iOS Safari se body/html tiver
- * overflow-x: hidden. Esse overflow está sendo controlado por seção agora. */
+/* ==========================================================
+   LOGO FIXA — Elemento completamente independente do navbar.
+   Fica fixada no topo-centro sem depender de nenhum pai.
+   ========================================================== */
+.logo-fixa {
+    position: fixed;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    pointer-events: auto;
+    line-height: 0; /* remove espaço extra abaixo da img */
+}
+
+.logo-fixa a {
+    display: block;
+    text-decoration: none;
+    line-height: 0;
+}
+
+.logo-fixa .logo-img {
+    transition: opacity 0.3s ease;
+}
+
+.logo-fixa a:hover .logo-img {
+    opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+    .logo-fixa {
+        top: 1rem;
+    }
+}
+
+/* ==========================================================
+   NAVBAR — Apenas o hamburguer (3 riscos).
+   Alinhado à direita. Logo não está mais aqui.
+   ========================================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -95,10 +130,8 @@ p {
     width: 100%;
     z-index: 1000;
     background-color: transparent;
-    padding: 1rem 2rem 2rem 2rem;
-    /* Transição suave para quando a logo do navbar aparece */
+    padding: 1.5rem 2rem;
     transition: background-color 0.4s ease;
-    /* Força GPU layer — garante position: fixed cross-browser (iOS Safari fix) */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -109,17 +142,18 @@ p {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* hamburguer à direita */
     align-items: center;
     position: relative;
     padding: 0 2rem;
 }
 
-    .nav-logo {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
+/* .nav-logo mantido para outras páginas que ainda usam a logo dentro do nav */
+.nav-logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
 
 .nav-logo a {
     display: flex;
@@ -128,7 +162,7 @@ p {
 }
 
 .logo-img {
-    height: 100px;
+    height: 80px;
     width: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) brightness(0) invert(1);
     transition: opacity 0.5s ease, all 0.3s ease;
@@ -145,7 +179,7 @@ p {
     list-style: none;
     gap: 0.5rem;
     position: fixed;
-    top: 80px;
+    top: 70px;
     right: 0;
     width: 200px;
     height: auto;
@@ -181,6 +215,7 @@ p {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    /* margin-left: auto garante que vai para a direita mesmo sem nav-logo */
     margin-left: auto;
 }
 
@@ -243,9 +278,7 @@ p {
     display: block;
 }
 
-/* Sem efeito de transição - carregamento direto */
-
-/* Logo Centralizada */
+/* Logo Centralizada (referência legada) */
 .hero-logo-container {
     position: absolute;
     top: 80px;
