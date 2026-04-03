@@ -84,18 +84,25 @@ p {
     font-family: var(--font-text);
 }
 
-/* Navbar - A24 Style (Transparent Overlay) */
+/* Navbar - A24 Style (Transparent Overlay)
+ * ATENÇÃO: position: fixed pode quebrar em iOS Safari se body/html tiver
+ * overflow-x: hidden. Esse overflow está sendo controlado por seção agora. */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     background-color: transparent;
     padding: 1rem 2rem 2rem 2rem;
     /* Transição suave para quando a logo do navbar aparece */
     transition: background-color 0.4s ease;
+    /* Força GPU layer — garante position: fixed cross-browser (iOS Safari fix) */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .nav-container {
@@ -147,7 +154,7 @@ p {
     padding: 2rem 1.5rem;
     border: none;
     box-shadow: -2px 2px 15px rgba(0, 0, 0, 0.1);
-    z-index: 100;
+    z-index: 1000;
     backdrop-filter: blur(10px);
 }
 
