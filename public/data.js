@@ -996,10 +996,10 @@ const siteData = {
       "year": 2023,
       "type": "curta-metragem",
       "artist": "Curta-metragem",
+      "description": "Luara sonha com o mundo do teatro enquanto trabalha como operária em uma fábrica. Atuar até fazer acreditar; tornar o personagem tão ou mais real que a atriz; usar o próprio corpo para falar através da arte, pensa Luara, mas será que a cidade vai deixar ela realizar os seus sonhos?\n",
+      "trailerUrl": "https://vimeo.com/820330742?fl=pl&fe=sh",
       "videoHome": "suburbana_portfolio_video.mp4",
       "cartazMobile": "suburbana-cartaz.png",
-      "trailerUrl": "https://vimeo.com/820330742?fl=pl&fe=sh",
-      "description": "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play.",
       "credits": {
         "direcao": [
           "Vini Poffo"
@@ -1014,111 +1014,17 @@ const siteData = {
           "Daniela Gomes",
           "Patrícia Abelson"
         ],
-        "producaoExecutiva": [
-          "Scheila Alexsandra",
-          "Vini Poffo"
-        ],
-        "assistenteProducaoExecutiva": [
-          "Zalu Amorim"
-        ],
-        "producao": [
-          "Scheila Alexsandra"
-        ],
-        "assistenteProducao1": [
-          "Mar"
-        ],
-        "assistenteProducao2": [
-          "Ítalo Ângelo"
-        ],
-        "assistenteSet": [
-          "Daniela Gomes",
-          "Talita Dembinski"
-        ],
-        "cattering": [
-          "Empresa Sol"
-        ],
-        "assistenteDirecao1": [
-          "Sillas H."
-        ],
-        "assistenteDirecao2": [
-          "Mar"
-        ],
         "direcaoFotografia": [
           "Jaq Kogus"
-        ],
-        "operadoraCamera": [
-          "Millena Rosado"
-        ],
-        "assistenteFotografia1": [
-          "Luana Skibinski"
-        ],
-        "assistenteFotografia2Claquete": [
-          "Jessé Rodrigues"
-        ],
-        "stillMakingOf": [
-          "Carlos Adriano"
-        ],
-        "maquinaria": [
-          "Christian Pires"
         ],
         "direcaoArte": [
           "Guilherme Custódio"
         ],
-        "assistenteArte1": [
-          "Júlia Mayer",
-          "Vitória Caroline"
+        "montagem": [
+          ""
         ],
-        "assistenteArte2": [
-          "Nallan Francisca"
-        ],
-        "cenografia": [
-          "Júlia Mayer"
-        ],
-        "figurino": [
-          "Anita Poffo",
-          "Camila Petry"
-        ],
-        "costureira": [
-          "Rosilene Poffo",
-          "Daniela Gomes"
-        ],
-        "maquiagem": [
-          "Dani Machado",
-          "Sui"
-        ],
-        "cabelo": [
-          "Sui"
-        ],
-        "design": [
-          "Matheus Pesans"
-        ],
-        "direcaoElenco": [
-          "Mar"
-        ],
-        "direcaoSom": [
-          "Gabriel Guiette Mota"
-        ],
-        "somDireto": [
-          "Vitor Trentini"
-        ],
-        "assistenteSom": [
-          "Lyandra Galetti"
-        ],
-        "montagemEdicao": [
-          "Lucas Richard"
-        ],
-        "colorista": [
-          "Maria Cesarotti"
-        ],
-        "mixagem": [
-          "Gabriel Guiette Mota"
-        ],
-        "libras": [
-          "Nubia Amorim"
-        ],
-        "audiodescricao": [
-          "Thiago Santanda"
-        ]
+        "extra": "",
+        "apoio": ""
       }
     },
     {
