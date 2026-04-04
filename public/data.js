@@ -98,6 +98,12 @@ const siteData = {
     "modals": {
       "filmes": [
         {
+          "t": "Não Alimente os Cães",
+          "y": "2026",
+          "d": "direção",
+          "a": "Roteiro Egon Zek. Produção Trinco Produtora."
+        },
+        {
           "t": "Tem Feito Uns Dias Esquisitos",
           "y": "2025",
           "d": "direção, roteiro e concepção de arte",
@@ -348,6 +354,60 @@ const siteData = {
   },
   "projects": [
     {
+      "id": 13,
+      "title": "Não Alimente os Cães",
+      "year": 2026,
+      "type": "curta-metragem",
+      "artist": "TRINCO PRODUTORA",
+      "videoHome": "naoc_vinipoffo.mp4",
+      "cartazMobile": "naoc-cartaz.png",
+      "trailerUrl": "https://vimeo.com/1177970158",
+      "duracao": "24 min",
+      "description": "Num futuro próximo, em uma vila quase deserta à beira-mar, uma família resiste entre a pesca, o artesanato e o desejo de seguir vivendo. Quando uma luz misteriosa surge no horizonte, vinda do mar aberto, ela acaba tentando dizer algo.",
+      "credits": {
+        "roteiro": ["Egon Zek"],
+        "direcao": ["Vini Poffo"],
+        "elenco": ["Anna Luiza Maciel", "Leonardo Goulart", "Lucas Bomfim", "Saravy"],
+        "assistenteDirecao1": ["Heloísa Mazzuchetti"],
+        "assistenteDirecao2": ["Jessé Rodrigues"],
+        "producaoExecutiva": ["Luana Skibinski"],
+        "assistenteProducaoExecutiva": ["Zalu Amorim"],
+        "direcaoProducao": ["Tati Tanaka"],
+        "assistenteProducao": ["Kimie Ishimoto"],
+        "producaoLocacao": ["Renan Bett"],
+        "produtorLocal": ["Scheila Alexsandra"],
+        "direcaoElenco": ["Mar Dias Rosa"],
+        "plato": ["Paulo Silva"],
+        "controller": ["Lari Reimer"],
+        "direcaoFotografia": ["Jaqueline Kogus", "Isa Lanave"],
+        "assistenteCamera1": ["Nica Chaves"],
+        "assistenteCamera2": ["Vitor Sussai"],
+        "fotografiaStill": ["Maria Eduarda Fernandes"],
+        "makingOf": ["Anita Poffo"],
+        "gaffer": ["Luiz Rossi"],
+        "assistenteIluminacao": ["Renan Bett"],
+        "direcaoArte": ["Matheus De Luca"],
+        "assistenteArte1": ["Marcela Antônio"],
+        "assistenteArte2": ["Rafaella Narciso"],
+        "contrarregra": ["Eric Pimentel", "Luiz Fernando Barbosa", "Juan Gonçalves de Lima"],
+        "figurino": ["Ana Hiera"],
+        "maquiagemCabelo": ["Sui Domingues", "Dani Machado"],
+        "direcaoSom": ["Gabu Mota"],
+        "assistenteSom": ["Marilia Rossdeutscher"],
+        "libras": ["Núbia Amorim"],
+        "audiodescricao": ["Núbia Amorim"],
+        "acessibilidade": ["Núbia Amorim"],
+        "trilhaSonora": ["Yma"],
+        "mixagem": ["Gabu Mota"],
+        "design": ["Mapê Santos"],
+        "vfx": ["Diego Lomac"],
+        "montagemEdicao": ["Natália Farias"],
+        "catering": ["Rosilene Poffo", "Graziela"],
+        "extra": "Logger: Vitor Sussai e Luana Skibinski\nEstagiário de Arte: Júlio Gubert\nAssistente de Design: Ana Mps\nAssistente de Edição: Lucas Richard\nFiguração Bar - Afeto: Wellygton Cardoso\nFiguração Bar - Banda: Yma e Gabu Motta\nFiguração Bar: Duda Zone, Anna Luiza Maciel, Luana Skibinski, Vinius Nesi, Maricleia Regina da Rosa Neves, Lorenzo de Moraes Gornicki Nunes, Juliana Burtet",
+        "apoio": "Locação Bar: RU.FINO BAR • Locação de Barcos: Charlleroi Carlos Teodoro e Paulo Henrique Pereira • Locação Casa: Harold Hansen • Locação de Estrutura: Oito Locações • Estadia São Francisco do Sul: Hotel e Restaurante Ribadeijo • Estadia Joinville: Hotel Sabrina • Lixos eletrônicos: Reset lixos eletrônicos • Cestarias: Casa da vó vida"
+      }
+    },
+    {
       "id": 3,
       "title": "Tem feito uns dias esquisitos",
       "year": 2025,
@@ -358,68 +418,23 @@ const siteData = {
       "videoHome": "tfde_portfolio_video.mp4",
       "cartazMobile": "dias-esquisitos-cartaz.png",
       "credits": {
-        "direcao": [
-          "Vini Poffo",
-          "Luana Skibinski"
-        ],
-        "roteiro": [
-          "Zalu Amorim",
-          "Vini Poffo"
-        ],
-        "elenco": [
-          "Leonardo Lima",
-          "Rafaella Narciso",
-          "Bernardo Araújo",
-          "Guy Lima",
-          "Tayla Evangelista",
-          "Berna Sant'Anna",
-          "Ana Miranda"
-        ],
-        "preparacaoElenco": [
-          "Mar Rosa"
-        ],
-        "direcaoFotografia": [
-          "Jaque Kogus"
-        ],
-        "operadoraCamera": [
-          "Millena Rosado"
-        ],
-        "concepcaoArte": [
-          "Luan Baeta",
-          "Matheus De Luca",
-          "Vini Poffo"
-        ],
-        "direcaoArte": [
-          "Matheus De Luca"
-        ],
-        "designer": [
-          "Alice Costa"
-        ],
-        "direcaoSomMixagem": [
-          "Gabu"
-        ],
-        "trilhaSonoraOriginal": [
-          "YMA",
-          "Fernando Rischbieter"
-        ],
-        "producaoExecutiva": [
-          "Ive Machado"
-        ],
-        "controller": [
-          "Lari Reimerer"
-        ],
-        "direcaoProducao": [
-          "Adriana Perdiz"
-        ],
-        "makingOf": [
-          "Anita Poffo"
-        ],
-        "fotografiaStill": [
-          "Ligia Ferreira"
-        ],
-        "apresentacao": [
-          "Sufe apresenta"
-        ],
+        "direcao": ["Vini Poffo", "Luana Skibinski"],
+        "roteiro": ["Zalu Amorim", "Vini Poffo"],
+        "elenco": ["Leonardo Lima", "Rafaella Narciso", "Bernardo Araújo", "Guy Lima", "Tayla Evangelista", "Berna Sant'Anna", "Ana Miranda"],
+        "preparacaoElenco": ["Mar Rosa"],
+        "direcaoFotografia": ["Jaque Kogus"],
+        "operadoraCamera": ["Millena Rosado"],
+        "concepcaoArte": ["Luan Baeta", "Matheus De Luca", "Vini Poffo"],
+        "direcaoArte": ["Matheus De Luca"],
+        "designer": ["Alice Costa"],
+        "direcaoSomMixagem": ["Gabu"],
+        "trilhaSonoraOriginal": ["YMA", "Fernando Rischbieter"],
+        "producaoExecutiva": ["Ive Machado"],
+        "controller": ["Lari Reimerer"],
+        "direcaoProducao": ["Adriana Perdiz"],
+        "makingOf": ["Anita Poffo"],
+        "fotografiaStill": ["Ligia Ferreira"],
+        "apresentacao": ["Sufe apresenta"],
         "apoio": "Contemplado pela Lei Paulo Gustavo"
       }
     },
@@ -434,100 +449,34 @@ const siteData = {
       "trailerUrl": "https://youtu.be/UuH-i5Qx21Y?si=-8I7cTjI7gVP49Bn",
       "description": "Videoclipe de Vira essa boca pra cá - Letrux feat Nouvella, dirigido por Vini Poffo.",
       "credits": {
-        "direcao": [
-          "Vini Poffo"
-        ],
-        "producaoExecutiva": [
-          "Ju Baratieri",
-          "Zalu Amorim"
-        ],
-        "direcaoProducao": [
-          "Zalu Amorim"
-        ],
-        "producaoLocacao": [
-          "Ju Baratieri"
-        ],
-        "producaoElenco": [
-          "Nicole Almeida"
-        ],
-        "direcaoFotografia": [
-          "Sillas H."
-        ],
-        "assistenciaCamera": [
-          "Eduardo Fernandes"
-        ],
-        "gaffer": [
-          "Eduardo Fernandes"
-        ],
-        "direcaoArte": [
-          "Matheus De Luca"
-        ],
-        "assistenciaArte": [
-          "Sofia Helena"
-        ],
-        "figurinista": [
-          "Nina Hoffmann"
-        ],
-        "assistenciaFigurino": [
-          "Felipe Valim",
-          "Luisa Talulah"
-        ],
-        "maquiagem": [
-          "Luiza Voltolini"
-        ],
-        "assistenciaMaquiagem": [
-          "Joana Goulart"
-        ],
-        "assistenciaCabelo": [
-          "Luisa Talulah"
-        ],
-        "contrarregra": [
-          "Sofia Helena"
-        ],
-        "designComunicacao": [
-          "Luisa Talulah"
-        ],
-        "designArtesGraficas": [
-          "Naju Campos"
-        ],
-        "makingOf": [
-          "Maya L. Soares"
-        ],
-        "fotografiaStill": [
-          "Nicole Almeida"
-        ],
-        "vfx": [
-          "Thiago Rebello"
-        ],
-        "colorGrading": [
-          "Sillas H.",
-          "Vini Poffo"
-        ],
-        "edicao": [
-          "Vini Poffo",
-          "Thiago Rebello"
-        ],
-        "elenco": [
-          "Letrux",
-          "Yasmin Zoran",
-          "Jenks",
-          "Luna",
-          "Gabriel Viegas"
-        ],
-        "aluguelCamera": [
-          "Cinesupport"
-        ],
-        "aluguelMaquinaria": [
-          "Cinesupport",
-          "Plural Filmes"
-        ],
-        "catering": [
-          "Gastromina"
-        ],
-        "aluguelAcervoObjetos": [
-          "Acervo Nequesa",
-          "Tenda Brechó"
-        ]
+        "direcao": ["Vini Poffo"],
+        "producaoExecutiva": ["Ju Baratieri", "Zalu Amorim"],
+        "direcaoProducao": ["Zalu Amorim"],
+        "producaoLocacao": ["Ju Baratieri"],
+        "producaoElenco": ["Nicole Almeida"],
+        "direcaoFotografia": ["Sillas H."],
+        "assistenciaCamera": ["Eduardo Fernandes"],
+        "gaffer": ["Eduardo Fernandes"],
+        "direcaoArte": ["Matheus De Luca"],
+        "assistenciaArte": ["Sofia Helena"],
+        "figurinista": ["Nina Hoffmann"],
+        "assistenciaFigurino": ["Felipe Valim", "Luisa Talulah"],
+        "maquiagem": ["Luiza Voltolini"],
+        "assistenciaMaquiagem": ["Joana Goulart"],
+        "assistenciaCabelo": ["Luisa Talulah"],
+        "contrarregra": ["Sofia Helena"],
+        "designComunicacao": ["Luisa Talulah"],
+        "designArtesGraficas": ["Naju Campos"],
+        "makingOf": ["Maya L. Soares"],
+        "fotografiaStill": ["Nicole Almeida"],
+        "vfx": ["Thiago Rebello"],
+        "colorGrading": ["Sillas H.", "Vini Poffo"],
+        "edicao": ["Vini Poffo", "Thiago Rebello"],
+        "elenco": ["Letrux", "Yasmin Zoran", "Jenks", "Luna", "Gabriel Viegas"],
+        "aluguelCamera": ["Cinesupport"],
+        "aluguelMaquinaria": ["Cinesupport", "Plural Filmes"],
+        "catering": ["Gastromina"],
+        "aluguelAcervoObjetos": ["Acervo Nequesa", "Tenda Brechó"]
       }
     },
     {
@@ -541,100 +490,34 @@ const siteData = {
       "trailerUrl": "https://youtu.be/PUFx8Z9AEtU?si=e1YZrPLZMNTh92JV",
       "description": "Videoclipe de Dropar teu nome - Letrux feat Nouvela, dirigido por Vini Poffo. Lançamento pela Noize.",
       "credits": {
-        "direcao": [
-          "Vini Poffo"
-        ],
-        "producaoExecutiva": [
-          "Ju Baratieri",
-          "Zalu Amorim"
-        ],
-        "direcaoProducao": [
-          "Zalu Amorim"
-        ],
-        "producaoLocacao": [
-          "Ju Baratieri"
-        ],
-        "producaoElenco": [
-          "Nicole Almeida"
-        ],
-        "direcaoFotografia": [
-          "Sillas H."
-        ],
-        "assistenciaCamera": [
-          "Eduardo Fernandes"
-        ],
-        "gaffer": [
-          "Eduardo Fernandes"
-        ],
-        "direcaoArte": [
-          "Matheus De Luca"
-        ],
-        "assistenciaArte": [
-          "Sofia Helena"
-        ],
-        "figurinista": [
-          "Nina Hoffmann"
-        ],
-        "assistenciaFigurino": [
-          "Felipe Valim",
-          "Luisa Talulah"
-        ],
-        "maquiagem": [
-          "Luiza Voltolini"
-        ],
-        "assistenciaMaquiagem": [
-          "Joana Goulart"
-        ],
-        "assistenciaCabelo": [
-          "Luisa Talulah"
-        ],
-        "contrarregra": [
-          "Sofia Helena"
-        ],
-        "designComunicacao": [
-          "Luisa Talulah"
-        ],
-        "designArtesGraficas": [
-          "Naju Campos"
-        ],
-        "makingOf": [
-          "Maya L. Soares"
-        ],
-        "fotografiaStill": [
-          "Nicole Almeida"
-        ],
-        "vfx": [
-          "Thiago Rebello"
-        ],
-        "colorGrading": [
-          "Sillas H.",
-          "Vini Poffo"
-        ],
-        "edicao": [
-          "Vini Poffo",
-          "Thiago Rebello"
-        ],
-        "elenco": [
-          "Letrux",
-          "Yasmin Zoran",
-          "Jenks",
-          "Luna",
-          "Gabriel Viegas"
-        ],
-        "aluguelCamera": [
-          "Cinesupport"
-        ],
-        "aluguelMaquinaria": [
-          "Cinesupport",
-          "Plural Filmes"
-        ],
-        "catering": [
-          "Gastromina"
-        ],
-        "aluguelAcervoObjetos": [
-          "Acervo Nequesa",
-          "Tenda Brechó"
-        ]
+        "direcao": ["Vini Poffo"],
+        "producaoExecutiva": ["Ju Baratieri", "Zalu Amorim"],
+        "direcaoProducao": ["Zalu Amorim"],
+        "producaoLocacao": ["Ju Baratieri"],
+        "producaoElenco": ["Nicole Almeida"],
+        "direcaoFotografia": ["Sillas H."],
+        "assistenciaCamera": ["Eduardo Fernandes"],
+        "gaffer": ["Eduardo Fernandes"],
+        "direcaoArte": ["Matheus De Luca"],
+        "assistenciaArte": ["Sofia Helena"],
+        "figurinista": ["Nina Hoffmann"],
+        "assistenciaFigurino": ["Felipe Valim", "Luisa Talulah"],
+        "maquiagem": ["Luiza Voltolini"],
+        "assistenciaMaquiagem": ["Joana Goulart"],
+        "assistenciaCabelo": ["Luisa Talulah"],
+        "contrarregra": ["Sofia Helena"],
+        "designComunicacao": ["Luisa Talulah"],
+        "designArtesGraficas": ["Naju Campos"],
+        "makingOf": ["Maya L. Soares"],
+        "fotografiaStill": ["Nicole Almeida"],
+        "vfx": ["Thiago Rebello"],
+        "colorGrading": ["Sillas H.", "Vini Poffo"],
+        "edicao": ["Vini Poffo", "Thiago Rebello"],
+        "elenco": ["Letrux", "Yasmin Zoran", "Jenks", "Luna", "Gabriel Viegas"],
+        "aluguelCamera": ["Cinesupport"],
+        "aluguelMaquinaria": ["Cinesupport", "Plural Filmes"],
+        "catering": ["Gastromina"],
+        "aluguelAcervoObjetos": ["Acervo Nequesa", "Tenda Brechó"]
       }
     },
     {
@@ -648,88 +531,28 @@ const siteData = {
       "trailerUrl": "https://youtu.be/w2uoe7uvmQQ?si=4vmcp7Dq3mBHq9o_",
       "description": "Videoclipe de Outres de Nós da artista Jesus Lumma feat Dandara Manoela, dirigido por Vini Poffo.",
       "credits": {
-        "direcaoRoteiro": [
-          "@poffovini"
-        ],
-        "assistenteDirecao1": [
-          "@j.s.rodrigues"
-        ],
-        "direcaoFotografia": [
-          "@luskibinski"
-        ],
-        "assistenteCamera1": [
-          "@damasiofrancoo"
-        ],
-        "assistenteCamera2": [
-          "@foto_verso"
-        ],
-        "still": [
-          "@ferreiranabel"
-        ],
-        "direcaoArte": [
-          "@eu.matheusdeluca"
-        ],
-        "assistenteArte1": [
-          "@anitapoffo"
-        ],
-        "marionetes": [
-          "@la__artesania por Laura Abreu",
-          "Rosi Poffo"
-        ],
-        "figurinos": [
-          "Jesus (Carta Tarot): @poffovini",
-          "Dandara (Carta Tarot): @fransommer",
-          "Além e Cartomante: @eu.matheusdeluca"
-        ],
-        "mascarasCartomante": [
-          "Estudantes de Artes Visuais @univille"
-        ],
-        "contrarregragem": [
-          "@jefthex"
-        ],
-        "maquiagemCabelo": [
-          "@sui.domingues",
-          "@fernandapeyerl"
-        ],
-        "producao": [
-          "Direção de Produção e Produção de Set: @alienscheila",
-          "Assistente de Produção: @nicoleleitef",
-          "Direção Executiva: @zalu_amorim | @jesuslumma"
-        ],
-        "posProducao": [
-          "Edição/Montagem/Cor e Finalização: @lucrnf"
-        ],
-        "controller": [
-          "@larireimer"
-        ],
-        "acessibilidade": [
-          "@nubia.amorim.98"
-        ],
-        "elenco": [
-          "Principal: @jesuslumma | @dandaramanoela",
-          "Outres Principais: Estefany Cristine de Moura dos Passos | Zuri @xerebebe_ | @jomarquez__ | @lilizachariapsi | @professora.analuciamartins | @sarmanhovictor"
-        ],
-        "apoio": [
-          "@soma.role",
-          "@casadocapitao",
-          "@casadocapitaojoinville",
-          "@capitaospace",
-          "@professora.analuciamartins",
-          "@vanessadarosajoinville",
-          "@giostrijoinville",
-          "@ru.finofino",
-          "@unisociesc.joinville",
-          "@univille"
-        ],
-        "agradecimentoEspecial": [
-          "Magda De Luca"
-        ],
-        "realizacao": [
-          "LEI PAULO GUSTAVO / 2024 @ministériodacultura @governodobrasil"
-        ],
-        "direcaoExecutiva": [
-          "@jesuslumma"
-        ]
+        "direcaoRoteiro": ["@poffovini"],
+        "assistenteDirecao1": ["@j.s.rodrigues"],
+        "direcaoFotografia": ["@luskibinski"],
+        "assistenteCamera1": ["@damasiofrancoo"],
+        "assistenteCamera2": ["@foto_verso"],
+        "still": ["@ferreiranabel"],
+        "direcaoArte": ["@eu.matheusdeluca"],
+        "assistenteArte1": ["@anitapoffo"],
+        "marionetes": ["@la__artesania por Laura Abreu", "Rosi Poffo"],
+        "figurinos": ["Jesus (Carta Tarot): @poffovini", "Dandara (Carta Tarot): @fransommer", "Além e Cartomante: @eu.matheusdeluca"],
+        "mascarasCartomante": ["Estudantes de Artes Visuais @univille"],
+        "contrarregragem": ["@jefthex"],
+        "maquiagemCabelo": ["@sui.domingues", "@fernandapeyerl"],
+        "producao": ["Direção de Produção e Produção de Set: @alienscheila", "Assistente de Produção: @nicoleleitef", "Direção Executiva: @zalu_amorim | @jesuslumma"],
+        "posProducao": ["Edição/Montagem/Cor e Finalização: @lucrnf"],
+        "controller": ["@larireimer"],
+        "acessibilidade": ["@nubia.amorim.98"],
+        "elenco": ["Principal: @jesuslumma | @dandaramanoela", "Outres Principais: Estefany Cristine de Moura dos Passos | Zuri @xerebebe_ | @jomarquez__ | @lilizachariapsi | @professora.analuciamartins | @sarmanhovictor"],
+        "apoio": ["@soma.role", "@casadocapitao", "@casadocapitaojoinville", "@capitaospace", "@professora.analuciamartins", "@vanessadarosajoinville", "@giostrijoinville", "@ru.finofino", "@unisociesc.joinville", "@univille"],
+        "agradecimentoEspecial": ["Magda De Luca"],
+        "realizacao": ["LEI PAULO GUSTAVO / 2024 @ministériodacultura @governodobrasil"],
+        "direcaoExecutiva": ["@jesuslumma"]
       }
     },
     {
@@ -743,142 +566,44 @@ const siteData = {
       "trailerUrl": "https://www.youtube.com/watch?v=b-a2mUsEfOE",
       "description": "Videoclipe de Aranha, dirigido por Sillas H e Vini Poffo. Melhor videoclipe pelo Curta Fest Brasilia 2024. Convidado pelo MVF para o festival na Argentina e Colômbia",
       "credits": {
-        "direcao": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "assistenciaDirecao": [
-          "Jessé Rodrigues"
-        ],
-        "direcaoProducaoProducaoExecutiva": [
-          "Tati Tanaka"
-        ],
-        "produtorLocal": [
-          "Zalu Amorim"
-        ],
-        "producaoProjeto": [
-          "Carlos Adriano"
-        ],
-        "controller": [
-          "Lari Reimer"
-        ],
-        "plato": [
-          "Paulo Silva"
-        ],
-        "assistenteProducao1": [
-          "Kimie Ishimoto"
-        ],
-        "assistenteProducao2": [
-          "Nicole Leite"
-        ],
-        "direcaoFotografia": [
-          "Millena Rosado"
-        ],
-        "assistenteCamera1": [
-          "Eduardo Guerreiro"
-        ],
-        "assistenteCamera2": [
-          "Luana Skibinski"
-        ],
-        "assistenteCamera3": [
-          "Carlos Adriano"
-        ],
-        "operadorCameraRJ": [
-          "Jonas Vaz"
-        ],
-        "maquinista": [
-          "Luan Franco"
-        ],
-        "eletricistaChefe": [
-          "Neto Primo"
-        ],
-        "still": [
-          "Lígia Triumpho"
-        ],
-        "direcaoArte": [
-          "Erronizar",
-          "Kayque Barros"
-        ],
-        "producaoObjetos": [
-          "Solana Llanes"
-        ],
-        "contrarregra": [
-          "Rodrigo Pacheco"
-        ],
-        "figurino": [
-          "Cacau Francisco",
-          "Anuro"
-        ],
-        "assistenciaFigurino": [
-          "Anita Poffo"
-        ],
-        "caracterizacao": [
-          "Koichi Sonoda"
-        ],
-        "assistenciaCaracterizacao": [
-          "Sui"
-        ],
-        "caracterizacaoBetina": [
-          "Gui Mauad"
-        ],
-        "artesaFlores": [
-          "Mirela Alerim"
-        ],
-        "artesaBonecas": [
-          "Rosilene Poffo"
-        ],
-        "aderecista": [
-          "Beatriz Leandro"
-        ],
-        "coordPosProducao": [
-          "Sillas H"
-        ],
-        "montagem": [
-          "Lucas Richard"
-        ],
-        "posProducao": [
-          "Diego Lomac"
-        ],
-        "designer": [
-          "Vito Ceccon"
-        ],
-        "elencoApoio": [
-          "Juciara Nascimento",
-          "Nicole Leite",
-          "Anita Poffo"
-        ],
-        "direcaoCoreografia": [
-          "Nicole Leite"
-        ],
-        "dancarines": [
-          "Harlem",
-          "Mary Jane",
-          "Will",
-          "Vilson de Souza",
-          "Valentin"
-        ],
-        "agradecimentos": [
-          "Artur Marin",
-          "Cineclube Cortina",
-          "Cinesupport Locações",
-          "Estúdio Pareia",
-          "Leandro Castro",
-          "Oito Locações",
-          "Sesc Joinville",
-          "Sociedade Kênia Clube",
-          "Univille"
-        ],
-        "apoio": [
-          "Bololo Café",
-          "Casa Cubas",
-          "Ru.fino",
-          "Sesc Joinville",
-          "Soma Role",
-          "Misture"
-        ],
-        "participacaoEspecial": [
-          "Betina Polaroid"
-        ]
+        "direcao": ["Sillas H", "Vini Poffo"],
+        "assistenciaDirecao": ["Jessé Rodrigues"],
+        "direcaoProducaoProducaoExecutiva": ["Tati Tanaka"],
+        "produtorLocal": ["Zalu Amorim"],
+        "producaoProjeto": ["Carlos Adriano"],
+        "controller": ["Lari Reimer"],
+        "plato": ["Paulo Silva"],
+        "assistenteProducao1": ["Kimie Ishimoto"],
+        "assistenteProducao2": ["Nicole Leite"],
+        "direcaoFotografia": ["Millena Rosado"],
+        "assistenteCamera1": ["Eduardo Guerreiro"],
+        "assistenteCamera2": ["Luana Skibinski"],
+        "assistenteCamera3": ["Carlos Adriano"],
+        "operadorCameraRJ": ["Jonas Vaz"],
+        "maquinista": ["Luan Franco"],
+        "eletricistaChefe": ["Neto Primo"],
+        "still": ["Lígia Triumpho"],
+        "direcaoArte": ["Erronizar", "Kayque Barros"],
+        "producaoObjetos": ["Solana Llanes"],
+        "contrarregra": ["Rodrigo Pacheco"],
+        "figurino": ["Cacau Francisco", "Anuro"],
+        "assistenciaFigurino": ["Anita Poffo"],
+        "caracterizacao": ["Koichi Sonoda"],
+        "assistenciaCaracterizacao": ["Sui"],
+        "caracterizacaoBetina": ["Gui Mauad"],
+        "artesaFlores": ["Mirela Alerim"],
+        "artesaBonecas": ["Rosilene Poffo"],
+        "aderecista": ["Beatriz Leandro"],
+        "coordPosProducao": ["Sillas H"],
+        "montagem": ["Lucas Richard"],
+        "posProducao": ["Diego Lomac"],
+        "designer": ["Vito Ceccon"],
+        "elencoApoio": ["Juciara Nascimento", "Nicole Leite", "Anita Poffo"],
+        "direcaoCoreografia": ["Nicole Leite"],
+        "dancarines": ["Harlem", "Mary Jane", "Will", "Vilson de Souza", "Valentin"],
+        "agradecimentos": ["Artur Marin", "Cineclube Cortina", "Cinesupport Locações", "Estúdio Pareia", "Leandro Castro", "Oito Locações", "Sesc Joinville", "Sociedade Kênia Clube", "Univille"],
+        "apoio": ["Bololo Café", "Casa Cubas", "Ru.fino", "Sesc Joinville", "Soma Role", "Misture"],
+        "participacaoEspecial": ["Betina Polaroid"]
       }
     },
     {
@@ -892,124 +617,42 @@ const siteData = {
       "trailerUrl": "https://vimeo.com/820330742?fl=pl&fe=sh",
       "description": "Curta-metragem (Sub)Urbana, direção de Vini Poffo, roteiro de Egon Zek. Conquistou 5 prêmios de melhor filme, incluindo Prêmio Revelação no IV Transforma Festival. Percorreu mais de 20 festivais nacionais e internacionais. Disponível no Itaú Play.",
       "credits": {
-        "direcao": [
-          "Vini Poffo"
-        ],
-        "roteiro": [
-          "Egon Zek",
-          "Vini Poffo"
-        ],
-        "elenco": [
-          "Dudazone",
-          "Ana Miranda",
-          "Daniela Gomes",
-          "Patrícia Abelson"
-        ],
-        "producaoExecutiva": [
-          "Scheila Alexsandra",
-          "Vini Poffo"
-        ],
-        "assistenteProducaoExecutiva": [
-          "Zalu Amorim"
-        ],
-        "producao": [
-          "Scheila Alexsandra"
-        ],
-        "assistenteProducao1": [
-          "Mar"
-        ],
-        "assistenteProducao2": [
-          "Ítalo Ângelo"
-        ],
-        "assistenteSet": [
-          "Daniela Gomes",
-          "Talita Dembinski"
-        ],
-        "cattering": [
-          "Empresa Sol"
-        ],
-        "assistenteDirecao1": [
-          "Sillas H."
-        ],
-        "assistenteDirecao2": [
-          "Mar"
-        ],
-        "direcaoFotografia": [
-          "Jaq Kogus"
-        ],
-        "operadoraCamera": [
-          "Millena Rosado"
-        ],
-        "assistenteFotografia1": [
-          "Luana Skibinski"
-        ],
-        "assistenteFotografia2Claquete": [
-          "Jessé Rodrigues"
-        ],
-        "stillMakingOf": [
-          "Carlos Adriano"
-        ],
-        "maquinaria": [
-          "Christian Pires"
-        ],
-        "direcaoArte": [
-          "Guilherme Custódio"
-        ],
-        "assistenteArte1": [
-          "Júlia Mayer",
-          "Vitória Caroline"
-        ],
-        "assistenteArte2": [
-          "Nallan Francisca"
-        ],
-        "cenografia": [
-          "Júlia Mayer"
-        ],
-        "figurino": [
-          "Anita Poffo",
-          "Camila Petry"
-        ],
-        "costureira": [
-          "Rosilene Poffo",
-          "Daniela Gomes"
-        ],
-        "maquiagem": [
-          "Dani Machado",
-          "Sui"
-        ],
-        "cabelo": [
-          "Sui"
-        ],
-        "design": [
-          "Matheus Pesans"
-        ],
-        "direcaoElenco": [
-          "Mar"
-        ],
-        "direcaoSom": [
-          "Gabriel Guiette Mota"
-        ],
-        "somDireto": [
-          "Vitor Trentini"
-        ],
-        "assistenteSom": [
-          "Lyandra Galetti"
-        ],
-        "montagemEdicao": [
-          "Lucas Richard"
-        ],
-        "colorista": [
-          "Maria Cesarotti"
-        ],
-        "mixagem": [
-          "Gabriel Guiette Mota"
-        ],
-        "libras": [
-          "Nubia Amorim"
-        ],
-        "audiodescricao": [
-          "Thiago Santanda"
-        ]
+        "direcao": ["Vini Poffo"],
+        "roteiro": ["Egon Zek", "Vini Poffo"],
+        "elenco": ["Dudazone", "Ana Miranda", "Daniela Gomes", "Patrícia Abelson"],
+        "producaoExecutiva": ["Scheila Alexsandra", "Vini Poffo"],
+        "assistenteProducaoExecutiva": ["Zalu Amorim"],
+        "producao": ["Scheila Alexsandra"],
+        "assistenteProducao1": ["Mar"],
+        "assistenteProducao2": ["Ítalo Ângelo"],
+        "assistenteSet": ["Daniela Gomes", "Talita Dembinski"],
+        "cattering": ["Empresa Sol"],
+        "assistenteDirecao1": ["Sillas H."],
+        "assistenteDirecao2": ["Mar"],
+        "direcaoFotografia": ["Jaq Kogus"],
+        "operadoraCamera": ["Millena Rosado"],
+        "assistenteFotografia1": ["Luana Skibinski"],
+        "assistenteFotografia2Claquete": ["Jessé Rodrigues"],
+        "stillMakingOf": ["Carlos Adriano"],
+        "maquinaria": ["Christian Pires"],
+        "direcaoArte": ["Guilherme Custódio"],
+        "assistenteArte1": ["Júlia Mayer", "Vitória Caroline"],
+        "assistenteArte2": ["Nallan Francisca"],
+        "cenografia": ["Júlia Mayer"],
+        "figurino": ["Anita Poffo", "Camila Petry"],
+        "costureira": ["Rosilene Poffo", "Daniela Gomes"],
+        "maquiagem": ["Dani Machado", "Sui"],
+        "cabelo": ["Sui"],
+        "design": ["Matheus Pesans"],
+        "direcaoElenco": ["Mar"],
+        "direcaoSom": ["Gabriel Guiette Mota"],
+        "somDireto": ["Vitor Trentini"],
+        "assistenteSom": ["Lyandra Galetti"],
+        "montagemEdicao": ["Lucas Richard"],
+        "colorista": ["Maria Cesarotti"],
+        "mixagem": ["Gabriel Guiette Mota"],
+        "libras": ["Nubia Amorim"],
+        "audiodescricao": ["Thiago Santanda"]
       }
     },
     {
@@ -1023,91 +666,30 @@ const siteData = {
       "trailerUrl": "https://vimeo.com/820329509?fl=pl&fe=sh",
       "description": "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais.",
       "credits": {
-        "direcaoRoteiro": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
-        "elenco": [
-          "Will Olien",
-          "Ygor Felisbino",
-          "Ana Miranda",
-          "Rô Sales",
-          "Robson Rodrigues",
-          "Dani Pamplona"
-        ],
-        "direcaoProducao": [
-          "Scheila Alexsandra"
-        ],
-        "producaoExecutiva": [
-          "Scheila Alexsandra",
-          "Vini Poffo"
-        ],
-        "controller": [
-          "Jéssica Michels"
-        ],
-        "assistenteProducaoExecutiva": [
-          "José Wiemes"
-        ],
-        "assistenteProducao": [
-          "Talita Debinski"
-        ],
-        "direcaoFotografia": [
-          "Millena Rosado"
-        ],
-        "direcaoArte": [
-          "Julia Mayer"
-        ],
-        "direcaoSom": [
-          "Ingrid Gonçalves"
-        ],
-        "direcaoElenco": [
-          "Mar"
-        ],
-        "assistenteCamera1": [
-          "João de Oliveira"
-        ],
-        "assistenteCamera2": [
-          "Jessé Rodrigues",
-          "Natan Arndt"
-        ],
-        "figurino": [
-          "Anita Poffo",
-          "Camila Petry"
-        ],
-        "maquiagem": [
-          "Dani Machado"
-        ],
-        "gaffer": [
-          "Flavio Andrade"
-        ],
-        "assistenteIluminacao": [
-          "Adriana Perdiz"
-        ],
-        "fotografiaStill": [
-          "Jéssica Michels"
-        ],
-        "montagemEdicao": [
-          "Lucas Richard"
-        ],
-        "colorizacao": [
-          "Maria Cesarotti"
-        ],
-        "trilhaSonora": [
-          "YMA",
-          "Fernando Rischbieter"
-        ],
-        "designerGrafico": [
-          "Matheus Pesans"
-        ],
-        "motorista": [
-          "Andre Hugo K"
-        ],
-        "agradecimentos": [
-          "Vidraçaria XV",
-          "AJOTE",
-          "Bolshoi",
-          "Futuro Laboratório"
-        ]
+        "direcaoRoteiro": ["Vini Poffo", "Sillas H"],
+        "elenco": ["Will Olien", "Ygor Felisbino", "Ana Miranda", "Rô Sales", "Robson Rodrigues", "Dani Pamplona"],
+        "direcaoProducao": ["Scheila Alexsandra"],
+        "producaoExecutiva": ["Scheila Alexsandra", "Vini Poffo"],
+        "controller": ["Jéssica Michels"],
+        "assistenteProducaoExecutiva": ["José Wiemes"],
+        "assistenteProducao": ["Talita Debinski"],
+        "direcaoFotografia": ["Millena Rosado"],
+        "direcaoArte": ["Julia Mayer"],
+        "direcaoSom": ["Ingrid Gonçalves"],
+        "direcaoElenco": ["Mar"],
+        "assistenteCamera1": ["João de Oliveira"],
+        "assistenteCamera2": ["Jessé Rodrigues", "Natan Arndt"],
+        "figurino": ["Anita Poffo", "Camila Petry"],
+        "maquiagem": ["Dani Machado"],
+        "gaffer": ["Flavio Andrade"],
+        "assistenteIluminacao": ["Adriana Perdiz"],
+        "fotografiaStill": ["Jéssica Michels"],
+        "montagemEdicao": ["Lucas Richard"],
+        "colorizacao": ["Maria Cesarotti"],
+        "trilhaSonora": ["YMA", "Fernando Rischbieter"],
+        "designerGrafico": ["Matheus Pesans"],
+        "motorista": ["Andre Hugo K"],
+        "agradecimentos": ["Vidraçaria XV", "AJOTE", "Bolshoi", "Futuro Laboratório"]
       }
     },
     {
@@ -1122,59 +704,22 @@ const siteData = {
       "trailerUrl": "https://www.youtube.com/watch?v=mghtmrhDQRc",
       "description": "Baião de Dois celebra a cultura nordestina com cores vibrantes e estética camp. Direção compartilhada com Sillas H, criando um universo visual que mistura tradição e contemporaneidade.",
       "credits": {
-        "direcao": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "roteiro": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "direcaoFotografia": [
-          "Millena Rosado"
-        ],
-        "assistenciaProducao": [
-          "Gaba"
-        ],
-        "montagem": [
-          "Diego Lomac"
-        ],
-        "fx": [
-          "Diego Lomac"
-        ],
-        "colorizacao": [
-          "Diego Lomac"
-        ],
-        "beauty": [
-          "Rudson Motta"
-        ],
-        "managerAretuza": [
-          "Paulo Marani"
-        ],
-        "stylistAretuza": [
-          "Paulo Gallo"
-        ],
-        "managerGetulio": [
-          "Gutie"
-        ],
-        "produtoraGetulio": [
-          "Letícia Tomás"
-        ],
-        "stylistGetulio": [
-          "Danton Brandon"
-        ],
-        "composicao": [
-          "Aretuza Lovi",
-          "Keveny"
-        ],
-        "producaoMusical": [
-          "Noize Men",
-          "Rafael Paiola",
-          "Judaz"
-        ],
-        "master": [
-          "Rafael Phyre"
-        ]
+        "direcao": ["Sillas H", "Vini Poffo"],
+        "roteiro": ["Sillas H", "Vini Poffo"],
+        "direcaoFotografia": ["Millena Rosado"],
+        "assistenciaProducao": ["Gaba"],
+        "montagem": ["Diego Lomac"],
+        "fx": ["Diego Lomac"],
+        "colorizacao": ["Diego Lomac"],
+        "beauty": ["Rudson Motta"],
+        "managerAretuza": ["Paulo Marani"],
+        "stylistAretuza": ["Paulo Gallo"],
+        "managerGetulio": ["Gutie"],
+        "produtoraGetulio": ["Letícia Tomás"],
+        "stylistGetulio": ["Danton Brandon"],
+        "composicao": ["Aretuza Lovi", "Keveny"],
+        "producaoMusical": ["Noize Men", "Rafael Paiola", "Judaz"],
+        "master": ["Rafael Phyre"]
       }
     },
     {
@@ -1186,38 +731,15 @@ const siteData = {
       "videoHome": "debaixo_portfolio_video.mp4",
       "cartazMobile": "guarda-chuva-cartaz.jpg",
       "trailerUrl": "https://youtu.be/AyPNvaZ1kRM",
-      "description": "“Quando você encontra alguém que compactua com os mesmos sentimentos, as mesmas vivências que você, aí sim que você se encontra no mundo”. O documentário apresenta 7 jovens artistas LGBTQIA+ que falam sobrem suas realidades, sonhos e como a arte influência na sua jornada de aceitação e transformação. O curta foi selecionado para diversos festivais, incluindo a Mostra Internacional Audiovisual e o Festival Mix Brasil, Cine PE.",
+      "description": ""Quando você encontra alguém que compactua com os mesmos sentimentos, as mesmas vivências que você, aí sim que você se encontra no mundo". O documentário apresenta 7 jovens artistas LGBTQIA+ que falam sobrem suas realidades, sonhos e como a arte influência na sua jornada de aceitação e transformação. O curta foi selecionado para diversos festivais, incluindo a Mostra Internacional Audiovisual e o Festival Mix Brasil, Cine PE.",
       "credits": {
-        "direcao": [
-          "Vini Poffo"
-        ],
-        "roteiro": [
-          "Vinicius Poffo"
-        ],
-        "producao": [
-          "SUFE"
-        ],
-        "montagem": [
-          "Vini Poffo"
-        ],
-        "direcaoArte": [
-          "Vini Poffo",
-          "YMA"
-        ],
-        "figurino": [
-          "Anita Poffo",
-          "Cássio Jose",
-          "Na__ve"
-        ],
-        "elenco": [
-          "Andri Silveira",
-          "Anita Basilio",
-          "Isa Amorim",
-          "Mar Rosa",
-          "Mateus Souza",
-          "Myke Gon",
-          "Wilson Olien"
-        ]
+        "direcao": ["Vini Poffo"],
+        "roteiro": ["Vinicius Poffo"],
+        "producao": ["SUFE"],
+        "montagem": ["Vini Poffo"],
+        "direcaoArte": ["Vini Poffo", "YMA"],
+        "figurino": ["Anita Poffo", "Cássio Jose", "Na__ve"],
+        "elenco": ["Andri Silveira", "Anita Basilio", "Isa Amorim", "Mar Rosa", "Mateus Souza", "Myke Gon", "Wilson Olien"]
       }
     },
     {
@@ -1231,33 +753,12 @@ const siteData = {
       "videoHome": "",
       "cartazMobile": "elaterra.png",
       "credits": {
-        "direcao": [
-          "Vini Poffo e Sillas H"
-        ],
-        "roteiro": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
-        "elenco": [
-          "Malu Maria",
-          "Larrisa Rodrigues",
-          "Polyana Brustolin",
-          "Luiza Mattos",
-          "May Garcilazo",
-          "Thuanny Paes",
-          "Giulia Galliano",
-          "Paola Polix"
-        ],
-        "direcaoFotografia": [
-          ""
-        ],
-        "direcaoArte": [
-          ""
-        ],
-        "montagem": [
-          "Vini Poffo",
-          "Sillas H"
-        ],
+        "direcao": ["Vini Poffo e Sillas H"],
+        "roteiro": ["Vini Poffo", "Sillas H"],
+        "elenco": ["Malu Maria", "Larrisa Rodrigues", "Polyana Brustolin", "Luiza Mattos", "May Garcilazo", "Thuanny Paes", "Giulia Galliano", "Paola Polix"],
+        "direcaoFotografia": [""],
+        "direcaoArte": [""],
+        "montagem": ["Vini Poffo", "Sillas H"],
         "extra": "",
         "apoio": ""
       }
@@ -1274,40 +775,16 @@ const siteData = {
       "trailerUrl": "https://youtu.be/PZVaOifIHAM?si=AlyYmDJxLn7Htkan",
       "description": "Videoclipe de Sugar Daddy, de Gabeu. Direção de arte e montagem por Vini Poffo, em colaboração com Sillas H e o Coletivo SUFE. Uma narrativa visual que explora identidade e estética queer.",
       "credits": {
-        "direcaoGeral": [
-          "Sillas H / Coletivo SUFE"
-        ],
-        "escritoPor": [
-          "Gabeu",
-          "Sillas H",
-          "Welli Navida"
-        ],
-        "assistenciaDirecao": [
-          "Vernieri"
-        ],
-        "direcaoArte": [
-          "Vini Poffo"
-        ],
-        "direcaoFotografia": [
-          "Diego Lomac"
-        ],
-        "montagem": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "colorizacao": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "producao": [
-          "Emy Sigma"
-        ],
-        "assessoria": [
-          "Welli Navida / Nanica Assessoria"
-        ],
-        "beauty": [
-          "Pieles"
-        ]
+        "direcaoGeral": ["Sillas H / Coletivo SUFE"],
+        "escritoPor": ["Gabeu", "Sillas H", "Welli Navida"],
+        "assistenciaDirecao": ["Vernieri"],
+        "direcaoArte": ["Vini Poffo"],
+        "direcaoFotografia": ["Diego Lomac"],
+        "montagem": ["Sillas H", "Vini Poffo"],
+        "colorizacao": ["Sillas H", "Vini Poffo"],
+        "producao": ["Emy Sigma"],
+        "assessoria": ["Welli Navida / Nanica Assessoria"],
+        "beauty": ["Pieles"]
       }
     },
     {
@@ -1322,51 +799,18 @@ const siteData = {
       "trailerUrl": "https://youtu.be/_Un_DsgNMCc?si=5pbANIlC2DdTSdWF",
       "description": "Colapso Invisível explora ansiedade e surrealismo através de cenários oníricos e composições visuais intensas. Direção de arte que transforma o caos interno em estética.",
       "credits": {
-        "direcaoGeral": [
-          "Sillas H",
-          "YMA"
-        ],
-        "roteiro": [
-          "YMA",
-          "Sillas H"
-        ],
-        "direcaoFotografia": [
-          "Gu011",
-          "Diego Lomac"
-        ],
-        "colorizacao": [
-          "SUFE / Olhapina"
-        ],
-        "montagem": [
-          "SUFE / Olhapina"
-        ],
-        "direcaoArte": [
-          "Vini Poffo",
-          "Anuro",
-          "Cacau Francisco"
-        ],
-        "producaoGeral": [
-          "Isabela Sucher",
-          "Emy Sigma"
-        ],
-        "beleza": [
-          "Peca Lderaromua"
-        ],
-        "figurinos": [
-          "Plagio",
-          "Korshi"
-        ],
-        "trilhas": [
-          "Dreg Me",
-          "Instagordo"
-        ],
-        "coreografia": [
-          "Fae Stevan"
-        ],
-        "design": [
-          "Made in Jonny",
-          "Truta Lucas"
-        ]
+        "direcaoGeral": ["Sillas H", "YMA"],
+        "roteiro": ["YMA", "Sillas H"],
+        "direcaoFotografia": ["Gu011", "Diego Lomac"],
+        "colorizacao": ["SUFE / Olhapina"],
+        "montagem": ["SUFE / Olhapina"],
+        "direcaoArte": ["Vini Poffo", "Anuro", "Cacau Francisco"],
+        "producaoGeral": ["Isabela Sucher", "Emy Sigma"],
+        "beleza": ["Peca Lderaromua"],
+        "figurinos": ["Plagio", "Korshi"],
+        "trilhas": ["Dreg Me", "Instagordo"],
+        "coreografia": ["Fae Stevan"],
+        "design": ["Made in Jonny", "Truta Lucas"]
       }
     }
   ]
