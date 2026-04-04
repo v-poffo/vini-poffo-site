@@ -1225,11 +1225,10 @@ const siteData = {
       "year": 2022,
       "type": "videoclipe",
       "artist": "Aretuza Lovi feat Getúlio Abelha",
-      "videoHome": "",
-      "heroImage": "baiaodedois-hero.png",
-      "cartazMobile": "baiaodedois.png",
+      "description": "",
       "trailerUrl": "https://www.youtube.com/watch?v=mghtmrhDQRc",
-      "description": "Baião de Dois celebra a cultura nordestina com cores vibrantes e estética camp. Direção compartilhada com Sillas H, criando um universo visual que mistura tradição e contemporaneidade.",
+      "videoHome": "",
+      "cartazMobile": "baiaodedois.png",
       "credits": {
         "direcao": [
           "Sillas H",
@@ -1239,51 +1238,20 @@ const siteData = {
           "Sillas H",
           "Vini Poffo"
         ],
+        "elenco": [
+          ""
+        ],
         "direcaoFotografia": [
           "Millena Rosado"
         ],
-        "assistenciaProducao": [
-          "Gaba"
+        "direcaoArte": [
+          ""
         ],
         "montagem": [
           "Diego Lomac"
         ],
-        "fx": [
-          "Diego Lomac"
-        ],
-        "colorizacao": [
-          "Diego Lomac"
-        ],
-        "beauty": [
-          "Rudson Motta"
-        ],
-        "managerAretuza": [
-          "Paulo Marani"
-        ],
-        "stylistAretuza": [
-          "Paulo Gallo"
-        ],
-        "managerGetulio": [
-          "Gutie"
-        ],
-        "produtoraGetulio": [
-          "Letícia Tomás"
-        ],
-        "stylistGetulio": [
-          "Danton Brandon"
-        ],
-        "composicao": [
-          "Aretuza Lovi",
-          "Keveny"
-        ],
-        "producaoMusical": [
-          "Noize Men",
-          "Rafael Paiola",
-          "Judaz"
-        ],
-        "master": [
-          "Rafael Phyre"
-        ]
+        "extra": "",
+        "apoio": ""
       }
     },
     {
