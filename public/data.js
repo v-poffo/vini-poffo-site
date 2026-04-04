@@ -1379,57 +1379,35 @@ const siteData = {
       "year": 2019,
       "type": "videoclipe",
       "artist": "YMA",
-      "videoHome": "",
-      "heroImage": "colapsoinvisivel-hero.png",
-      "cartazMobile": "colapsoinvisivel.png",
+      "description": "Colapso Invisível explora ansiedade e surrealismo através de cenários oníricos e composições visuais intensas. ",
       "trailerUrl": "https://youtu.be/_Un_DsgNMCc?si=5pbANIlC2DdTSdWF",
-      "description": "Colapso Invisível explora ansiedade e surrealismo através de cenários oníricos e composições visuais intensas. Direção de arte que transforma o caos interno em estética.",
+      "videoHome": "",
+      "cartazMobile": "colapsoinvisivel.png",
       "credits": {
-        "direcaoGeral": [
-          "Sillas H",
-          "YMA"
+        "direcao": [
+          ""
         ],
         "roteiro": [
           "YMA",
           "Sillas H"
         ],
+        "elenco": [
+          ""
+        ],
         "direcaoFotografia": [
           "Gu011",
           "Diego Lomac"
-        ],
-        "colorizacao": [
-          "SUFE / Olhapina"
-        ],
-        "montagem": [
-          "SUFE / Olhapina"
         ],
         "direcaoArte": [
           "Vini Poffo",
           "Anuro",
           "Cacau Francisco"
         ],
-        "producaoGeral": [
-          "Isabela Sucher",
-          "Emy Sigma"
+        "montagem": [
+          "SUFE / Olhapina"
         ],
-        "beleza": [
-          "Peca Lderaromua"
-        ],
-        "figurinos": [
-          "Plagio",
-          "Korshi"
-        ],
-        "trilhas": [
-          "Dreg Me",
-          "Instagordo"
-        ],
-        "coreografia": [
-          "Fae Stevan"
-        ],
-        "design": [
-          "Made in Jonny",
-          "Truta Lucas"
-        ]
+        "extra": "",
+        "apoio": ""
       }
     }
   ]
