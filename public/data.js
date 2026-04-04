@@ -1345,46 +1345,32 @@ const siteData = {
       "year": 2019,
       "type": "videoclipe",
       "artist": "Gabeu",
-      "videoHome": "",
-      "heroImage": "sugardaddy-hero.jpg",
-      "cartazMobile": "sugardaddy.jpg",
+      "description": "",
       "trailerUrl": "https://youtu.be/PZVaOifIHAM?si=AlyYmDJxLn7Htkan",
-      "description": "Videoclipe de Sugar Daddy, de Gabeu. Direção de arte e montagem por Vini Poffo, em colaboração com Sillas H e o Coletivo SUFE. Uma narrativa visual que explora identidade e estética queer.",
+      "videoHome": "",
+      "cartazMobile": "sugardaddy.jpg",
       "credits": {
-        "direcaoGeral": [
-          "Sillas H / Coletivo SUFE"
+        "direcao": [
+          ""
         ],
-        "escritoPor": [
-          "Gabeu",
-          "Sillas H",
-          "Welli Navida"
+        "roteiro": [
+          ""
         ],
-        "assistenciaDirecao": [
-          "Vernieri"
-        ],
-        "direcaoArte": [
-          "Vini Poffo"
+        "elenco": [
+          ""
         ],
         "direcaoFotografia": [
           "Diego Lomac"
+        ],
+        "direcaoArte": [
+          "Vini Poffo"
         ],
         "montagem": [
           "Sillas H",
           "Vini Poffo"
         ],
-        "colorizacao": [
-          "Sillas H",
-          "Vini Poffo"
-        ],
-        "producao": [
-          "Emy Sigma"
-        ],
-        "assessoria": [
-          "Welli Navida / Nanica Assessoria"
-        ],
-        "beauty": [
-          "Pieles"
-        ]
+        "extra": "",
+        "apoio": ""
       }
     },
     {
