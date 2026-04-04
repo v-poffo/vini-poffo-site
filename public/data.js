@@ -1127,14 +1127,16 @@ const siteData = {
       "year": 2023,
       "type": "curta-metragem",
       "artist": "Curta-metragem",
+      "description": "rancisco é um jovem que ama dançar, mas a vida lhe impôs outras obrigações. Entre cuidar da sua mãe e ser responsável pela vidraçaria da família, ele precisa lidar com as memórias do passado e os dilemas de seguir seu sonho como dançarino. Quando os laços familiares são rompidos, parte rumo a uma trajetória pessoal e artística, redescobrindo na dança o caminho para enfrentar seus traumas e encontrar seu eu. ",
+      "trailerUrl": "https://vimeo.com/820329509?fl=pl&fe=sh",
       "videoHome": "noreflexo_portfolio_video.mp4",
       "cartazMobile": "reflexo-nome-cartaz.png",
-      "trailerUrl": "https://vimeo.com/820329509?fl=pl&fe=sh",
-      "description": "Curta-metragem No Reflexo do Meu Nome, direção e roteiro de Vini Poffo e Sillas H. Eleito pelo SESC SC em 2023 como melhor obra de Santa Catarina e selecionado para mostra nacional. Exibido em mais de 15 festivais nacionais e internacionais.",
       "credits": {
-        "direcaoRoteiro": [
-          "Vini Poffo",
-          "Sillas H"
+        "direcao": [
+          ""
+        ],
+        "roteiro": [
+          ""
         ],
         "elenco": [
           "Will Olien",
@@ -1144,79 +1146,17 @@ const siteData = {
           "Robson Rodrigues",
           "Dani Pamplona"
         ],
-        "direcaoProducao": [
-          "Scheila Alexsandra"
-        ],
-        "producaoExecutiva": [
-          "Scheila Alexsandra",
-          "Vini Poffo"
-        ],
-        "controller": [
-          "Jéssica Michels"
-        ],
-        "assistenteProducaoExecutiva": [
-          "José Wiemes"
-        ],
-        "assistenteProducao": [
-          "Talita Debinski"
-        ],
         "direcaoFotografia": [
           "Millena Rosado"
         ],
         "direcaoArte": [
           "Julia Mayer"
         ],
-        "direcaoSom": [
-          "Ingrid Gonçalves"
+        "montagem": [
+          ""
         ],
-        "direcaoElenco": [
-          "Mar"
-        ],
-        "assistenteCamera1": [
-          "João de Oliveira"
-        ],
-        "assistenteCamera2": [
-          "Jessé Rodrigues",
-          "Natan Arndt"
-        ],
-        "figurino": [
-          "Anita Poffo",
-          "Camila Petry"
-        ],
-        "maquiagem": [
-          "Dani Machado"
-        ],
-        "gaffer": [
-          "Flavio Andrade"
-        ],
-        "assistenteIluminacao": [
-          "Adriana Perdiz"
-        ],
-        "fotografiaStill": [
-          "Jéssica Michels"
-        ],
-        "montagemEdicao": [
-          "Lucas Richard"
-        ],
-        "colorizacao": [
-          "Maria Cesarotti"
-        ],
-        "trilhaSonora": [
-          "YMA",
-          "Fernando Rischbieter"
-        ],
-        "designerGrafico": [
-          "Matheus Pesans"
-        ],
-        "motorista": [
-          "Andre Hugo K"
-        ],
-        "agradecimentos": [
-          "Vidraçaria XV",
-          "AJOTE",
-          "Bolshoi",
-          "Futuro Laboratório"
-        ]
+        "extra": "",
+        "apoio": ""
       }
     },
     {
