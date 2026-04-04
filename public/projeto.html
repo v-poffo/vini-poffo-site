@@ -29,7 +29,7 @@
         .projeto-hero {
             background-color: var(--primary-black);
             color: var(--primary-white);
-            padding: 10rem 2rem 4rem 2rem; /* Aumentado para não ficar sob a logo */
+            padding: 10rem 2rem 4rem 2rem;
             min-height: 500px;
             display: flex;
             align-items: center;
@@ -41,23 +41,23 @@
         .projeto-hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
             z-index: 1;
         }
 
         .projeto-hero video {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             z-index: 0;
+        }
+
+        /* A logo usa z-index 20 (definido em styles.css) — fica acima do ::before (z-index 1) */
+        .projeto-hero .hero-logo-container {
+            z-index: 20;
         }
 
         .projeto-hero-content {
@@ -96,9 +96,7 @@
         }
 
         .projeto-video iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+            width: 100%; height: 100%; border: none;
         }
 
         .projeto-description-hero {
@@ -112,7 +110,7 @@
 
         .projeto-description-hero p {
             color: var(--primary-white);
-            text-align: center; /* Alterado de justify para center para melhor equilíbrio visual */
+            text-align: center;
             margin: 0;
             font-family: var(--font-text);
             font-weight: 500;
@@ -157,9 +155,7 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .ficha-item:last-child {
-            border-bottom: none;
-        }
+        .ficha-item:last-child { border-bottom: none; }
 
         .ficha-label {
             font-weight: 600;
@@ -185,9 +181,7 @@
             transition: all 0.3s ease;
         }
 
-        .back-button:hover {
-            transform: translateX(-5px);
-        }
+        .back-button:hover { transform: translateX(-5px); }
 
         .related-projects {
             margin-top: 6rem;
@@ -207,162 +201,77 @@
         }
 
         .project-card {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            background-color: var(--primary-white);
-            border-radius: 4px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; color: inherit; display: block;
+            background-color: var(--primary-white); border-radius: 4px;
+            overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
 
         .project-card-image {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            background-color: var(--primary-white);
-            min-height: 200px;
+            width: 100%; height: auto; object-fit: contain; display: block;
+            background-color: var(--primary-white); min-height: 200px;
         }
 
-        .project-card-content {
-            padding: 1rem;
-            background-color: var(--primary-white);
-        }
-
-        .project-card-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary-black);
-            margin: 0;
-            line-height: 1.3;
-        }
-
-        .project-card-meta {
-            font-size: 0.8rem;
-            color: var(--dark-gray);
-            margin-top: 0.3rem;
-        }
-
+        .project-card-content { padding: 1rem; background-color: var(--primary-white); }
+        .project-card-title { font-size: 0.95rem; font-weight: 600; color: var(--primary-black); margin: 0; line-height: 1.3; }
+        .project-card-meta { font-size: 0.8rem; color: var(--dark-gray); margin-top: 0.3rem; }
         .project-card-type {
             display: inline-block;
-            background-color: var(--accent-green-light);
-            color: var(--primary-white);
-            padding: 0.3rem 0.8rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-top: 0.5rem;
+            background-color: var(--accent-green-light); color: var(--primary-white);
+            padding: 0.3rem 0.8rem; font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; margin-top: 0.5rem;
         }
 
         .projeto-credits {
             background-color: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 4px;
-            margin-top: 0;
+            padding: 2rem; border-radius: 4px; margin-top: 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .projeto-credits h3 {
-            margin-top: 0;
-            margin-bottom: 1.5rem;
+            margin-top: 0; margin-bottom: 1.5rem;
             border-bottom: 2px solid var(--accent-green);
-            padding-bottom: 1rem;
-            color: var(--primary-white);
+            padding-bottom: 1rem; color: var(--primary-white);
         }
 
         .credit-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 1rem;
-            padding: 0.8rem 0;
+            display: grid; grid-template-columns: 200px 1fr;
+            gap: 1rem; padding: 0.8rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .credit-item:last-child {
-            border-bottom: none;
-        }
+        .credit-item:last-child { border-bottom: none; }
 
         .credit-item.apoio {
-            grid-template-columns: 1fr;
-            text-align: center;
-            padding: 1rem 0;
-            font-style: italic;
-            color: var(--accent-green);
+            grid-template-columns: 1fr; text-align: center;
+            padding: 1rem 0; font-style: italic; color: var(--accent-green);
         }
 
         .credit-label {
-            font-weight: 600;
-            color: var(--primary-white);
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            font-weight: 600; color: var(--primary-white);
+            text-transform: uppercase; font-size: 0.85rem;
         }
 
-        .credit-value {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.5;
-        }
+        .credit-value { color: rgba(255, 255, 255, 0.8); line-height: 1.5; }
 
         @media (max-width: 768px) {
-            .projeto-hero {
-                padding: 3rem 1.5rem;
-                min-height: auto;
-            }
-
-            .projeto-content {
-                padding: 3rem 1.5rem;
-            }
-
-            .projeto-video {
-                width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-                aspect-ratio: 16 / 9;
-            }
-
-            .projeto-ficha {
-                padding: 1.5rem;
-            }
-
-            .ficha-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .related-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .credit-item {
-                grid-template-columns: 1fr;
-                gap: 0.3rem;
-            }
-
-            .credit-label {
-                font-size: 0.75rem;
-            }
-
-            .projeto-content-columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            .projeto-hero { padding: 3rem 1.5rem; min-height: auto; }
+            .projeto-content { padding: 3rem 1.5rem; }
+            .projeto-video { width: 100%; margin-left: auto; margin-right: auto; aspect-ratio: 16 / 9; }
+            .projeto-ficha { padding: 1.5rem; }
+            .ficha-item { flex-direction: column; gap: 0.5rem; }
+            .related-grid { grid-template-columns: 1fr; }
+            .credit-item { grid-template-columns: 1fr; gap: 0.3rem; }
+            .credit-label { font-size: 0.75rem; }
+            .projeto-content-columns { grid-template-columns: 1fr; gap: 2rem; }
         }
     </style>
 </head>
 <body style="background-color: #111A17;">
-    <!-- Navigation -->
+    <!-- Navigation — apenas os 3 riscos -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">
-                    <img src="assets/logo/logo.svg" alt="Vini Poffo" class="logo-img">
-                </a>
-            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -378,6 +287,12 @@
 
     <!-- Projeto Hero -->
     <section class="projeto-hero">
+        <!-- Logo no topo do hero — some ao rolar, igual ao index.html -->
+        <div class="hero-logo-container">
+            <a href="index.html">
+                <img src="assets/logo/logo.svg" alt="Vini Poffo - Cineasta e Diretora Criativa" class="hero-logo">
+            </a>
+        </div>
         <div class="projeto-hero-content">
             <a href="projetos.html" class="back-button">← Voltar aos Projetos</a>
             <div id="projectHero"></div>
@@ -444,24 +359,12 @@
                 video.setAttribute('webkit-playsinline', 'webkit-playsinline');
                 video.setAttribute('x5-playsinline', 'x5-playsinline');
                 heroSection.appendChild(video);
-                
-                // Forçar play no mobile
-                video.play().catch(error => {
-                    console.log('Autoplay bloqueado:', error);
-                });
+                video.play().catch(error => { console.log('Autoplay bloqueado:', error); });
             } else if (project.heroImage) {
-                // Adicionar imagem de fundo ao hero quando não houver vídeo
                 const heroSection = document.querySelector('.projeto-hero');
                 const img = document.createElement('img');
                 img.src = `assets/hero/${project.heroImage}`;
-                img.style.position = 'absolute';
-                img.style.top = '50%';
-                img.style.left = '50%';
-                img.style.transform = 'translate(-50%, -50%)';
-                img.style.width = '100%';
-                img.style.height = '100%';
-                img.style.objectFit = 'cover';
-                img.style.zIndex = '0';
+                img.style.cssText = 'position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;object-fit:cover;z-index:0;';
                 heroSection.appendChild(img);
             }
 
@@ -477,7 +380,6 @@
                     videoId = project.trailerUrl.split('embed/')[1].split('?')[0];
                 }
                 const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                // Detectar se é mobile
                 const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|Windows Phone/i.test(navigator.userAgent);
                 const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
                 const youtubeLink = isMobile ? youtubeUrl : '#';
@@ -496,7 +398,6 @@
                     </div>
                 `;
                 
-                // Adicionar modal ao final da página
                 if (!document.getElementById('youtubeModal')) {
                     const modal = document.createElement('div');
                     modal.id = 'youtubeModal';
@@ -528,9 +429,7 @@
                 
                 window.addEventListener('click', function(event) {
                     const modal = document.getElementById('youtubeModal');
-                    if (event.target === modal) {
-                        closeYouTubeModal();
-                    }
+                    if (event.target === modal) { closeYouTubeModal(); }
                 });
             } else {
                 const embedUrl = project.trailerUrl.replace('vimeo.com/', 'player.vimeo.com/video/');
@@ -543,7 +442,6 @@
 
             const detailsHTML = `
                 ${videoHTML}
-
                 <div class="projeto-content-columns">
                     <div class="projeto-ficha">
                     <h3>Ficha Técnica</h3>
@@ -579,158 +477,18 @@
                     <div class="projeto-credits-column">
             `;
 
-            // Adicionar créditos se existirem
             let creditsHTML = '';
             if (project.credits) {
-                creditsHTML = `
-                    <div class="projeto-credits">
-                        <h3>Créditos</h3>
-                `;
+                creditsHTML = `<div class="projeto-credits"><h3>Créditos</h3>`;
 
                 const creditLabels = {
-                    producao: "Produção",
-                    elenco: "Elenco",
-                    direcao: "Direção",
-                    direcaoGeral: "Direção Geral",
-                    roteiro: "Roteiro",
-                    escritoPor: "Escrito Por",
-                    preparacaoElenco: "Preparação de Elenco",
-                    direcaoFotografia: "Direção de Fotografia",
-                    operadoraCamera: "Operadora de Câmera",
-                    concepcaoArte: "Concepção de Arte",
-                    direcaoArte: "Direção de Arte",
-                    arte: "Arte",
-                    fotografia: "Fotografia",
-                    design: "Design",
-                    direcaoSom: "Direção de Som",
-                    direcaoSomMixagem: "Direção de Som e Mixagem",
-                    trilhaSonora: "Trilha Sonora",
-                    trilhaSonoraOriginal: "Trilha Sonora Original",
-                    trilhas: "Trilhas",
-                    producaoExecutiva: "Produção Executiva",
-                    producaoGeral: "Produção Geral",
-                    controller: "Controller",
-                    direcaoProducao: "Direção de Produção",
-                    makingOf: "Making Of",
-                    fotografiaStill: "Fotografia Still",
-                    assistenciaDirecao: "Assistência de Direção",
-                    assistenciaProducao: "Assistência de Produção",
-                    montagem: "Montagem",
-                    fx: "FX",
-                    colorizacao: "Colorização",
-                    beauty: "Beauty",
-                    beleza: "Beleza",
-                    managerAretuza: "Manager Aretuza Lovi",
-                    stylistAretuza: "Stylist Aretuza Lovi",
-                    managerGetulio: "Manager Getúlio Abelha",
-                    produtoraGetulio: "Produtora Getúlio Abelha",
-                    stylistGetulio: "Stylist Getúlio Abelha",
-                    composicao: "Composição",
-                    producaoMusical: "Produção Musical",
-                    master: "Master",
-                    assessoria: "Assessoria",
-                    figurinos: "Figurinos",
-                    figurinoNinfas: "Figurino Ninfas",
-                    figurinoSatira: "Figurino Sátira",
-                    textoNarracao: "Texto e Narração",
-                    coreografia: "Coreografia",
-                    direcaoRoteiro: "Direção e Roteiro",
-                    assistenteProducaoExecutiva: "Ass. de Produção Executiva",
-                    assistenteProducao: "Ass. de Produção",
-                    assistenteProducao1: "1° Assistente de Produção",
-                    assistenteProducao2: "2° Assistente de Produção",
-                    assistenteSet: "Assistente de Set",
-                    cattering: "Catering",
-                    assistenteDirecao1: "1° Assistente de Direção",
-                    assistenteDirecao2: "2° Assistente de Direção",
-                    assistenteFotografia1: "1° Assistente de Fotografia",
-                    assistenteFotografia2Claquete: "2° Assistente de Fotografia e Claquete",
-                    stillMakingOf: "Still e Making Of",
-                    maquinaria: "Maquinaria",
-                    assistenteArte1: "1° Assistente de Arte",
-                    assistenteArte2: "2° Assistente de Arte",
-                    cenografia: "Cenografia",
-                    figurino: "Figurino",
-                    costureira: "Costureira",
-                    maquiagem: "Maquiagem",
-                    cabelo: "Cabelo",
-                    direcaoElenco: "Direção de Elenco",
-                    somDireto: "Som Direto",
-                    assistenteSom: "Assistente de Som",
-                    montagemEdicao: "Montagem e Edição",
-                    colorista: "Colorista",
-                    mixagem: "Mixagem",
-                    libras: "Libras",
-                    audiodescricao: "Audiodescrição",
-                    assistenteCamera1: "1º Ass. de Câmera",
-                    assistenteCamera2: "2º Ass. de Câmera",
-                    gaffer: "Gaffer",
-                    assistenteIluminacao: "Ass. de Iluminação",
-                    designerGrafico: "Designer Gráfico",
-                    motorista: "Motorista",
-                    agradecimentos: "Agradecimentos",
-                    apresentacao: "Apresentação",
-                    designer: "Designer",
-                    producaoLocacao: "Produção de Locação",
-                    producaoElenco: "Produção de Elenco",
-                    assistenciaCamera: "Assist. de Câmera",
-                    assistenciaArte: "Assist. de Arte",
-                    figurinista: "Figurinista",
-                    assistenciaFigurino: "Assistentes de Figurino",
-                    assistenciaMaquiagem: "Assist. de Maquiagem",
-                    assistenciaCabelo: "Assist. de Cabelo",
-                    contrarregra: "Contrarregra",
-                    designComunicacao: "Design e Comunicação",
-                    designArtesGraficas: "Design e Artes Gráficas",
-                    vfx: "VFX",
-                    colorGrading: "Color Grading",
-                    edicao: "Edição",
-                    aluguelCamera: "Aluguel de Câmera",
-                    aluguelMaquinaria: "Aluguel de Maquinária",
-                    catering: "Catering",
-                    aluguelAcervoObjetos: "Aluguel de Acervo de Objetos",
-                    still: "Still",
-                    marionetes: "Marionetes",
-                    mascarasCartomante: "Máscaras Cartomante",
-                    contrarregragem: "Contrarregragem",
-                    maquiagemCabelo: "Maquiagem e Cabelo",
-                    posProducao: "Pós-Produção",
-                    acessibilidade: "Acessibilidade",
-                    agradecimentoEspecial: "Agradecimento especial",
-                    realizacao: "Realização",
-                    direcaoExecutiva: "Direção Executiva",
-                    direcaoProducaoProducaoExecutiva: "Direção de Produção e Produção Executiva",
-                    produtorLocal: "Produtor Local",
-                    producaoProjeto: "Produção de Projeto",
-                    plato: "Platô",
-                    assistenteCamera3: "3º Ass. de Câmera",
-                    operadorCameraRJ: "Operador de Câmera RJ",
-                    maquinista: "Maquinista",
-                    eletricistaChefe: "Eletricista Chefe",
-                    producaoObjetos: "Produção de Objetos",
-                    caracterizacao: "Caracterização",
-                    assistenciaCaracterizacao: "Assist. de Caracterização",
-                    caracterizacaoBetina: "Caracterização Betina",
-                    artesaFlores: "Artesã Flores",
-                    artesaBonecas: "Artesã Bonecas",
-                    aderecista: "Aderecista",
-                    coordPosProducao: "Coord. de Pós-Produção",
-                    montagem: "Montagem",
-                    elencoApoio: "Elenco de Apoio",
-                    direcaoCoreografia: "Direção de Coreografia",
-                    dancarines: "Dançarines",
-                    participacaoEspecial: "Participação Especial"
+                    producao:"Produção",elenco:"Elenco",direcao:"Direção",direcaoGeral:"Direção Geral",roteiro:"Roteiro",escritoPor:"Escrito Por",preparacaoElenco:"Preparação de Elenco",direcaoFotografia:"Direção de Fotografia",operadoraCamera:"Operadora de Câmera",concepcaoArte:"Concepção de Arte",direcaoArte:"Direção de Arte",arte:"Arte",fotografia:"Fotografia",design:"Design",direcaoSom:"Direção de Som",direcaoSomMixagem:"Direção de Som e Mixagem",trilhaSonora:"Trilha Sonora",trilhaSonoraOriginal:"Trilha Sonora Original",trilhas:"Trilhas",producaoExecutiva:"Produção Executiva",producaoGeral:"Produção Geral",controller:"Controller",direcaoProducao:"Direção de Produção",makingOf:"Making Of",fotografiaStill:"Fotografia Still",assistenciaDirecao:"Assistência de Direção",assistenciaProducao:"Assistência de Produção",montagem:"Montagem",fx:"FX",colorizacao:"Colorização",beauty:"Beauty",beleza:"Beleza",managerAretuza:"Manager Aretuza Lovi",stylistAretuza:"Stylist Aretuza Lovi",managerGetulio:"Manager Getúlio Abelha",produtoraGetulio:"Produtora Getúlio Abelha",stylistGetulio:"Stylist Getúlio Abelha",composicao:"Composição",producaoMusical:"Produção Musical",master:"Master",assessoria:"Assessoria",figurinos:"Figurinos",figurinoNinfas:"Figurino Ninfas",figurinoSatira:"Figurino Sátira",textoNarracao:"Texto e Narração",coreografia:"Coreografia",direcaoRoteiro:"Direção e Roteiro",assistenteProducaoExecutiva:"Ass. de Produção Executiva",assistenteProducao:"Ass. de Produção",assistenteProducao1:"1° Assistente de Produção",assistenteProducao2:"2° Assistente de Produção",assistenteSet:"Assistente de Set",cattering:"Catering",assistenteDirecao1:"1° Assistente de Direção",assistenteDirecao2:"2° Assistente de Direção",assistenteFotografia1:"1° Assistente de Fotografia",assistenteFotografia2Claquete:"2° Assistente de Fotografia e Claquete",stillMakingOf:"Still e Making Of",maquinaria:"Maquinaria",assistenteArte1:"1° Assistente de Arte",assistenteArte2:"2° Assistente de Arte",cenografia:"Cenografia",figurino:"Figurino",costureira:"Costureira",maquiagem:"Maquiagem",cabelo:"Cabelo",direcaoElenco:"Direção de Elenco",somDireto:"Som Direto",assistenteSom:"Assistente de Som",montagemEdicao:"Montagem e Edição",colorista:"Colorista",mixagem:"Mixagem",libras:"Libras",audiodescricao:"Audiodescrição",assistenteCamera1:"1º Ass. de Câmera",assistenteCamera2:"2º Ass. de Câmera",gaffer:"Gaffer",assistenteIluminacao:"Ass. de Iluminação",designerGrafico:"Designer Gráfico",motorista:"Motorista",agradecimentos:"Agradecimentos",apresentacao:"Apresentação",designer:"Designer",producaoLocacao:"Produção de Locação",producaoElenco:"Produção de Elenco",assistenciaCamera:"Assist. de Câmera",assistenciaArte:"Assist. de Arte",figurinista:"Figurinista",assistenciaFigurino:"Assistentes de Figurino",assistenciaMaquiagem:"Assist. de Maquiagem",assistenciaCabelo:"Assist. de Cabelo",contrarregra:"Contrarregra",designComunicacao:"Design e Comunicação",designArtesGraficas:"Design e Artes Gráficas",vfx:"VFX",colorGrading:"Color Grading",edicao:"Edição",aluguelCamera:"Aluguel de Câmera",aluguelMaquinaria:"Aluguel de Maquinária",catering:"Catering",aluguelAcervoObjetos:"Aluguel de Acervo de Objetos",still:"Still",marionetes:"Marionetes",mascarasCartomante:"Máscaras Cartomante",contrarregragem:"Contrarregragem",maquiagemCabelo:"Maquiagem e Cabelo",posProducao:"Pós-Produção",acessibilidade:"Acessibilidade",agradecimentoEspecial:"Agradecimento especial",realizacao:"Realização",direcaoExecutiva:"Direção Executiva",direcaoProducaoProducaoExecutiva:"Direção de Produção e Produção Executiva",produtorLocal:"Produtor Local",producaoProjeto:"Produção de Projeto",plato:"Platô",assistenteCamera3:"3º Ass. de Câmera",operadorCameraRJ:"Operador de Câmera RJ",maquinista:"Maquinista",eletricistaChefe:"Eletricista Chefe",producaoObjetos:"Produção de Objetos",caracterizacao:"Caracterização",assistenciaCaracterizacao:"Assist. de Caracterização",caracterizacaoBetina:"Caracterização Betina",artesaFlores:"Artesã Flores",artesaBonecas:"Artesã Bonecas",aderecista:"Aderecista",coordPosProducao:"Coord. de Pós-Produção",elencoApoio:"Elenco de Apoio",direcaoCoreografia:"Direção de Coreografia",dancarines:"Dançarines",participacaoEspecial:"Participação Especial"
                 };
 
                 for (const [key, label] of Object.entries(creditLabels)) {
                     if (project.credits[key]) {
                         const names = Array.isArray(project.credits[key]) ? project.credits[key].join(", ") : project.credits[key];
-                        creditsHTML += `
-                            <div class="credit-item">
-                                <span class="credit-label">${label}</span>
-                                <span class="credit-value">${names}</span>
-                            </div>
-                        `;
+                        creditsHTML += `<div class="credit-item"><span class="credit-label">${label}</span><span class="credit-value">${names}</span></div>`;
                     }
                 }
 
@@ -739,41 +497,24 @@
                     extraLines.forEach(line => {
                         if (line.includes(':')) {
                             const [label, value] = line.split(':');
-                            creditsHTML += `
-                                <div class="credit-item">
-                                    <span class="credit-label">${label.trim()}</span>
-                                    <span class="credit-value">${value.trim()}</span>
-                                </div>
-                            `;
+                            creditsHTML += `<div class="credit-item"><span class="credit-label">${label.trim()}</span><span class="credit-value">${value.trim()}</span></div>`;
                         } else if (line.trim()) {
-                            creditsHTML += `
-                                <div class="credit-item">
-                                    <span class="credit-value" style="grid-column: 1 / -1;">${line.trim()}</span>
-                                </div>
-                            `;
+                            creditsHTML += `<div class="credit-item"><span class="credit-value" style="grid-column: 1 / -1;">${line.trim()}</span></div>`;
                         }
                     });
                 }
 
                 if (project.credits.apoio) {
-                    creditsHTML += `
-                        <div class="credit-item apoio">
-                            <span class="credit-value">${project.credits.apoio}</span>
-                        </div>
-                    `;
+                    creditsHTML += `<div class="credit-item apoio"><span class="credit-value">${project.credits.apoio}</span></div>`;
                 }
 
                 creditsHTML += `</div>`;
             }
 
-            creditsHTML += `
-                    </div>
-                </div>
-            `;
+            creditsHTML += `</div></div>`;
 
             document.getElementById('projectDetails').innerHTML = detailsHTML + creditsHTML;
 
-            // Renderizar projetos relacionados
             const relatedProjects = siteData.projects.filter(p => p.id != projectId).slice(0, 3);
             let relatedHTML = '';
             relatedProjects.forEach(p => {
