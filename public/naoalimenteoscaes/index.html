@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Não Alimente os Cães — Press Kit</title>
+<meta name="description" content="Press kit do curta-metragem Não Alimente os Cães (2026), direção Vini Poffo.">
+<meta property="og:title" content="Não Alimente os Cães — Don't Feed the Dogs">
+<meta property="og:image" content="Nao%20Alimente%20os%20Caes_banner.png">
+<style>
+
+/* ─── FONTES LOCAIS ───────────────────────────────────────────────── */
+@font-face { font-family: 'noka'; src: url('fonts/fonnts.com-Noka_Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'noka'; src: url('fonts/fonnts.com-Noka_Medium.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'noka'; src: url('fonts/fonnts.com-Noka_Medium.otf') format('opentype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'noka'; src: url('fonts/fonnts.com-Noka_Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-Italic.ttf') format('truetype'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'aktiv-grotesk'; src: url('fonts/AktivGrotesk-LightItalic.ttf') format('truetype'); font-weight: 300; font-style: italic; font-display: swap; }
+
+/* ─── RESET ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:    #050d0f;
+  --bg2:   #070e10;
+  --green: #00FF5E;
+  --amber: #c8924a;
+  --text:  #c8c8c8;
+  --dim:   #555;
+  --white: #f0f0f0;
+  --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "aktiv-grotesk", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+.hidden { display: none !important; }
+
+/* ─── GRAIN ───────────────────────────────────────────────────────── */
+.grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay; opacity: .36; pointer-events: none; z-index: 998;
+  animation: grain 6s steps(7) infinite;
+}
+@keyframes grain {
+  0%,100%{transform:translate(0,0)}14%{transform:translate(-2%,-3%)}28%{transform:translate(3%,2%)}42%{transform:translate(-1%,4%)}56%{transform:translate(2%,-2%)}70%{transform:translate(-3%,1%)}84%{transform:translate(1%,-4%)}
+}
+
+/* ─── NAV ─────────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; padding: 1.5rem 2.5rem;
+}
+.nav-logo {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  font-family: "noka", serif; font-size: .85rem;
+  letter-spacing: .07em; text-transform: uppercase; color: var(--green);
+}
+.lang-btn {
+  margin-left: auto; display: flex; align-items: center; gap: .2rem;
+  border: 1px solid var(--green); border-radius: 2px;
+  padding: .28rem .65rem; font-size: .66rem; letter-spacing: .12em;
+  color: var(--green); transition: background .2s;
+  font-family: "aktiv-grotesk", sans-serif;
+}
+.lang-btn:hover { background: rgba(0,255,94,.06); }
+.lopt { opacity: .35; transition: opacity .2s; }
+.lopt.on { opacity: 1; }
+.lsep { opacity: .3; margin: 0 .15rem; }
+
+/* ─── FIXED VIDEO HERO ────────────────────────────────────────────── */
+.hero-vid { position: fixed; inset: 0; z-index: 0; }
+.hero-vid video { width: 100%; height: 100%; object-fit: cover; }
+.hero-vid::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(5,13,15,.2) 0%, rgba(5,13,15,0) 30%,
+    rgba(5,13,15,.5) 75%, rgba(5,13,15,1) 100%);
+}
+
+/* ─── HERO OVERLAY ────────────────────────────────────────────────── */
+.hero-ov {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  pointer-events: none; will-change: opacity, transform;
+}
+.hero-center {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  opacity: 0; transform: translateY(2.5rem);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+.hero-center.in { opacity: 1; transform: none; }
+.hero-label {
+  font-size: .66rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 1.2rem;
+}
+.hero-title-img {
+  width: auto; max-width: 88vw; max-height: 42vh; object-fit: contain;
+}
+.hero-meta {
+  margin-top: 1.4rem;
+  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; justify-content: center;
+  font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim);
+}
+.hero-meta .s { opacity: .3; }
+.ticker-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid rgba(0,255,94,.14);
+  overflow: hidden; padding: .55rem 0;
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: tick 30s linear infinite;
+}
+.ticker-track span {
+  font-family: "noka", serif; font-size: .7rem;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--green);
+}
+@keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ─── MAIN CONTENT ────────────────────────────────────────────────── */
+#content { position: relative; z-index: 20; margin-top: 100vh; }
+
+/* ─── SCROLL ANIMATIONS ───────────────────────────────────────────── */
+.fade {
+  opacity: 0; transform: translateY(2.5rem) scale(.97);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.fade.in { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .22s; }
+.d3 { transition-delay: .38s; }
+
+/* ─── SHARED ──────────────────────────────────────────────────────── */
+.wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+.label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--green); margin-bottom: 2.2rem; }
+
+/* ─── SINOPSE + TRAILER STICKY ────────────────────────────────────── */
+.st-zone   { height: 360vh; }
+.st-sticky {
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden; background: var(--bg);
+  display: flex; align-items: center;
+}
+.sin-ov {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; padding: 6rem 2.5rem;
+  pointer-events: none;
+}
+.sin-inner { max-width: 820px; }
+.sin-lbl { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--green); margin-bottom: 2rem; }
+.sin-line {
+  font-family: "aktiv-grotesk", sans-serif; font-weight: 300;
+  font-size: clamp(1.3rem, 2.2vw, 2rem); line-height: 1.52; color: var(--white);
+  display: block; will-change: transform, opacity, color;
+}
+.trl-ov {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.trl-box {
+  width: 100vw; height: 100vh;
+  transform-origin: center;
+  transform: scale(.22); opacity: 0;
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+.trl-box iframe {
+  width: 100%; height: 100%; display: block;
+  border: 1px solid rgba(0,255,94,.14);
+}
+
+/* ─── GALLERY ─────────────────────────────────────────────────────── */
+.sec-gallery { background: var(--bg); padding: 5rem 0 4rem; overflow: hidden; }
+.gal-label { padding: 0 2.5rem; margin-bottom: 1.8rem; }
+.gal-scroll {
+  overflow-x: scroll; overflow-y: hidden;
+  cursor: grab; scrollbar-width: none; user-select: none;
+}
+.gal-scroll::-webkit-scrollbar { display: none; }
+.gal-scroll.drag { cursor: grabbing; }
+.gal-track {
+  display: flex; gap: 1rem; padding: .5rem 2.5rem 1.5rem;
+  width: max-content; align-items: center;
+}
+/* Cada imagem mostra em tamanho natural — sem distorção */
+.gi { flex: 0 0 auto; height: 320px; overflow: hidden; }
+.gi img { height: 100%; width: auto; max-width: none; display: block; pointer-events: none; }
+.gal-arrows { display: flex; justify-content: space-between; padding: 1rem 2.5rem 0; }
+.garr {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--green); opacity: .4; transition: opacity .2s;
+}
+.garr:hover { opacity: .9; }
+.garr svg { width: 20px; height: 20px; stroke: var(--green); stroke-width: 1.5; fill: none; }
+
+/* ─── NOTA DA DIREÇÃO (zona sticky — vídeo a 100%, texto revela no scroll) ── */
+.note-zone { height: 280vh; }
+.note-sticky {
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end;
+}
+/* Vídeo do filho boiando — a 100%, sem overlay escuro */
+.note-vid { position: absolute; inset: 0; z-index: 0; }
+.note-vid video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+/* Texto no canto inferior direito — área mais escura do vídeo */
+.note-inner {
+  position: relative; z-index: 1;
+  max-width: 640px; padding: 0 3rem 5vh 2rem;
+  margin-left: auto; margin-right: 0; /* alinha à direita */
+}
+.note-quote {
+  font-family: "noka", serif;
+  font-size: clamp(1.4rem, 2.6vw, 2.3rem);
+  line-height: 1.22; color: transparent;
+  -webkit-text-stroke: 1.4px var(--white);
+  letter-spacing: .01em;
+  margin-bottom: 2.4rem;
+  /* sombra forte para legibilidade */
+  filter: drop-shadow(0 2px 18px rgba(5,13,15,.95)) drop-shadow(0 0 40px rgba(5,13,15,.8));
+}
+.nq-l0, .nq-l1 {
+  display: block;
+  opacity: 0; transform: translateY(1.4rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.nq-l1 { transition-delay: .14s; }
+.nq-l0.show, .nq-l1.show { opacity: 1; transform: none; }
+#noteLbl {
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 1.8rem;
+  opacity: 0; transform: translateY(.8rem);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+#noteLbl.show { opacity: 1; transform: none; }
+.np-0, .np-1, .np-2 {
+  font-weight: 300; line-height: 1.85; color: var(--white);
+  margin-bottom: 1.4rem;
+  opacity: 0; transform: translateY(1.2rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+  /* sombra forte para garantir leitura sobre o vídeo */
+  text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
+}
+.np-0 { font-size: clamp(.88rem, 1.25vw, 1rem); }
+.np-1 { font-size: clamp(.88rem, 1.25vw, 1rem); }
+.np-2 { color: var(--amber) !important; font-style: italic; margin-top: 1.2rem; }
+.np-0.show, .np-1.show, .np-2.show { opacity: 1; transform: none; }
+
+/* ─── ZONA DIREÇÃO + ZENITAL (dir fica presa, zenital sobe por cima) ─────── */
+.dir-zen-zone { position: relative; }
+.sec-dir { background: var(--bg); padding: 8rem 0 2rem; position: sticky; top: 0; z-index: 1; }
+.dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; }
+/* Composição de imagens ocupa a largura do wrapper, centrada na tela */
+.dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0 auto; }
+.dir-img-base { display: block; width: 100%; height: auto; }
+.dir-img-top  { position: absolute; top: 0; left: 0; width: 100%; height: auto; }
+/* Bio absoluta — posicionada no canto superior direito, agora fora do dir-imgs mas dentro do dir-wrap */
+.dir-bio-col {
+  position: absolute; top: -5%; right: 4%; /* Trazendo um pouco mais para o centro (4%) para aproximar da foto */
+  width: 50%; padding: 2rem 0;
+  background: transparent;
+  text-align: justify; /* Texto justificado conforme solicitado */
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+}
+/* Regra removida para visual mais limpo conforme referência */
+.dir-bio {
+  max-width: 620px; /* Ajustando para ~7 linhas com o novo layout */
+  font-weight: 300; font-size: clamp(.88rem, 1.25vw, 1rem); line-height: 1.85; color: var(--white);
+  text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
+}
+
+/* ─── FOTO ZENITAL (sobe por cima da seção de direção) ───────────── */
+.sec-zenital {
+  position: relative; z-index: 2; height: 58vh; min-height: 340px; overflow: hidden;
+}
+.zen-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+}
+.zen-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(5,13,15,.35) 0%, rgba(5,13,15,.7) 100%);
+}
+.zen-txt {
+  position: absolute; bottom: 3rem; left: 2.5rem; z-index: 1;
+  font-size: .6rem; letter-spacing: .24em; text-transform: uppercase; color: var(--dim);
+}
+
+/* ─── ZONA PÔSTER+ELENCO+EQUIPE ───────────────────────────────────── */
+/* O wrapper limita o escopo do sticky: posters ficam presos enquanto
+   elenco e equipe sobem, depois o sticky se solta antes da ficha técnica */
+.post-lift-zone { position: relative; }
+.sec-posters {
+  background: var(--bg); padding: 7rem 0;
+  position: sticky; top: 0; z-index: 1;
+}
+.posters-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.5rem; max-width: 840px; margin: 0 auto;
+}
+.posters-grid img { width: 100%; border: 1px solid rgba(255,255,255,.05); }
+
+/* ─── ELENCO (sobe sobre os pôsteres) ────────────────────────────── */
+.sec-cast { background: var(--bg2); padding: 7rem 0; position: relative; z-index: 2; }
+.cast-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+.cast-card { border-top: 1px solid rgba(0,255,94,.14); padding-top: 1.2rem; }
+.c-role { display: block; font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: var(--green); margin-bottom: .4rem; }
+.c-name {
+  display: block; font-family: "noka", serif; font-size: 1.05rem;
+  color: var(--white); text-transform: uppercase; letter-spacing: .04em;
+  transition: color .25s, text-shadow .25s;
+}
+.cast-card:hover .c-name {
+  color: var(--green);
+  text-shadow: 0 0 14px rgba(0,255,94,.55), 0 0 28px rgba(0,255,94,.24);
+}
+
+/* ─── EQUIPE (sobe sobre os pôsteres) ────────────────────────────── */
+.sec-crew { background: var(--bg); padding: 7rem 0; position: relative; z-index: 2; }
+.crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
+.crew-div { background: rgba(255,255,255,.05); }
+.crew-item {
+  display: flex; flex-direction: column;
+  padding: .78rem 0; border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.cr-role { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .16rem; }
+.cr-name {
+  font-size: .87rem; color: var(--white);
+  transition: color .25s, text-shadow .25s;
+}
+.crew-item:hover .cr-name {
+  color: var(--green);
+  text-shadow: 0 0 12px rgba(0,255,94,.5), 0 0 24px rgba(0,255,94,.22);
+}
+
+/* ─── FICHA TÉCNICA (vídeo hero aparece por baixo) ────────────────── */
+/* Fora do post-lift-zone → sticky se soltou → hero video visível */
+.sec-specs { padding: 7rem 0; background: transparent; position: relative; z-index: 2; }
+.sec-specs::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(5,13,15,.08); z-index: 0; pointer-events: none;
+}
+.sec-specs .wrap { position: relative; z-index: 1; }
+.specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 720px; }
+.spec-item { display: flex; flex-direction: column; padding: .78rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
+.sp-val { font-size: .87rem; color: var(--white); }
+
+/* ─── CONTATO (vídeo hero aparece por baixo) ──────────────────────── */
+.sec-contact { padding: 9rem 0; text-align: center; background: transparent; position: relative; z-index: 2; }
+.sec-contact::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(5,13,15,.08); z-index: 0; pointer-events: none;
+}
+.sec-contact .wrap { position: relative; z-index: 1; }
+.contact-lbl { font-size: .56rem; letter-spacing: .26em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.4rem; }
+.contact-email {
+  font-family: "noka", serif; font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  color: var(--white); letter-spacing: .04em; transition: color .25s, text-shadow .25s;
+}
+.contact-email:hover {
+  color: var(--green);
+  text-shadow: 0 0 18px rgba(0,255,94,.55), 0 0 40px rgba(0,255,94,.25);
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────────────── */
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.6rem 2.5rem; border-top: 1px solid rgba(255,255,255,.06);
+  background: var(--bg); position: relative; z-index: 2;
+  font-size: .6rem; letter-spacing: .1em; color: var(--dim);
+}
+.footer-title { font-family: "noka", serif; color: var(--green); font-size: .82rem; }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .cast-grid { grid-template-columns: repeat(2,1fr); }
+  .crew-grid { grid-template-columns: 1fr; }
+  .crew-div  { display: none; }
+  /* Direção: bio sai do absolute e vem abaixo da foto no mobile */
+  .dir-imgs  { position: static; }
+  .dir-bio-col {
+    position: relative; top: auto; right: auto; width: 100%;
+    background: var(--bg2); padding: 2.5rem 1.5rem;
+  }
+  .specs-grid  { grid-template-columns: 1fr; }
+  .posters-grid { grid-template-columns: 1fr; max-width: 380px; }
+}
+@media (max-width: 600px) {
+  .nav-logo { font-size: .7rem; }
+  .wrap { padding: 0 1.5rem; }
+  .sin-line { font-size: clamp(1.1rem,5vw,1.5rem); }
+  .note-quote { font-size: clamp(1.2rem,5vw,2rem); }
+  .gi { height: 220px; }
+  .footer { padding: 1.4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- GRAIN -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">Não Alimente os Cães</div>
+  <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">
+    <span class="lopt on" id="lPT">PT</span>
+    <span class="lsep">|</span>
+    <span class="lopt" id="lEN">EN</span>
+  </button>
+</nav>
+
+<!-- FIXED VIDEO HERO -->
+<div class="hero-vid" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="naoc_vinipoffo.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- HERO OVERLAY -->
+<div class="hero-ov" id="heroOv" aria-hidden="true">
+  <div class="hero-center" id="heroCenter">
+    <p class="hero-label" data-pt="Um filme de Vini Poffo" data-en="A film by Vini Poffo">Um filme de Vini Poffo</p>
+    <img class="hero-title-img lang-pt" src="NAOC_TITULO_TEXTURA_4K_V2.png" alt="Não Alimente os Cães">
+    <img class="hero-title-img lang-en hidden" src="DFTD_TITULO_TEXTURA_4K_V2.png" alt="Don't Feed the Dogs">
+    <div class="hero-meta">
+      <span>2026</span><span class="s">·</span>
+      <span>24 MIN</span><span class="s">·</span>
+      <span>Brasil</span><span class="s">·</span>
+      <span>DCP &amp; ProRes</span><span class="s">·</span>
+      <span>1.85:1</span>
+    </div>
+  </div>
+  <div class="ticker-bar">
+    <div class="ticker-track lang-pt" id="tickerPT">
+      <span>Não Alimente os Cães&nbsp;&nbsp;·&nbsp;&nbsp;2026&nbsp;&nbsp;·&nbsp;&nbsp;24 Min&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama / Fantasia&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;·&nbsp;&nbsp;Roteiro Egon Zek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Não Alimente os Cães&nbsp;&nbsp;·&nbsp;&nbsp;2026&nbsp;&nbsp;·&nbsp;&nbsp;24 Min&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama / Fantasia&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;·&nbsp;&nbsp;Roteiro Egon Zek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class="ticker-track lang-en hidden" id="tickerEN">
+      <span>Don't Feed the Dogs&nbsp;&nbsp;·&nbsp;&nbsp;2026&nbsp;&nbsp;·&nbsp;&nbsp;24 Min&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama / Fantasy&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;·&nbsp;&nbsp;Screenplay Egon Zek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Don't Feed the Dogs&nbsp;&nbsp;·&nbsp;&nbsp;2026&nbsp;&nbsp;·&nbsp;&nbsp;24 Min&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama / Fantasy&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;·&nbsp;&nbsp;Screenplay Egon Zek&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ MAIN CONTENT ════════════════════ -->
+<main id="content">
+
+  <!-- SINOPSE + TRAILER ─────────────────────────────────────────── -->
+  <div class="st-zone" id="stZone">
+    <div class="st-sticky" id="stSticky">
+      <div class="sin-ov" id="sinOv">
+        <div class="sin-inner">
+          <p class="sin-lbl" data-pt="Sinopse" data-en="Synopsis">Sinopse</p>
+          <span class="sin-line" data-pt="Num futuro próximo," data-en="In the near future,">Num futuro próximo,</span>
+          <span class="sin-line" data-pt="em uma vila quase deserta à beira-mar," data-en="in an almost deserted seaside village,">em uma vila quase deserta à beira-mar,</span>
+          <span class="sin-line" data-pt="uma família sobrevive da pesca, do artesanato" data-en="a family endures through silence,">uma família sobrevive da pesca, do artesanato</span>
+          <span class="sin-line" data-pt="e de uma persistente ânsia de viver." data-en="daily tensions, and the will to keep living.">e de uma persistente ânsia de viver.</span>
+          <span class="sin-line" data-pt="Uma luz vibrante surge no horizonte," data-en="On the horizon, a mysterious light emerges">Uma luz vibrante surge no horizonte,</span>
+          <span class="sin-line" data-pt="como se tentasse lhes dizer algo." data-en="as if trying to tell them something.">como se tentasse lhes dizer algo.</span>
+        </div>
+      </div>
+      <div class="trl-ov">
+        <div class="trl-box" id="trlBox">
+          <iframe id="trlFrame" src="" data-src="https://player.vimeo.com/video/1177970158?color=00FF5E&title=0&byline=0&portrait=0"
+            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+            title="Trailer — Não Alimente os Cães"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERIA DE STILLS ──────────────────────────────────────────── -->
+  <section class="sec-gallery">
+    <p class="label gal-label fade" data-pt="Foto Stills" data-en="Film Stills">Foto Stills</p>
+    <div class="gal-scroll" id="gScroll">
+      <div class="gal-track" id="gTrack">
+        <div class="gi"><img src="NAOC_1.png"                    alt="Filho com óculos VR, luz vermelha no olho"></div>
+        <div class="gi"><img src="print%20cena%20-NAOC_2.png"    alt="Pai no depósito, luz azul"></div>
+        <div class="gi"><img src="print%20cena%20-%20NAOC_3.png" alt="Mãe e Filha no altar com velas"></div>
+        <div class="gi"><img src="print%20cena%20-NAOC_4.png"    alt="Filho submerso"></div>
+        <div class="gi"><img src="NAOC_5.png"                    alt="Mãe de perfil na mata"></div>
+        <div class="gi"><img src="NAOC_6.png"                    alt="Família na mesa de jantar"></div>
+        <div class="gi"><img src="NAOC_7.png"                    alt="Mãe deitada, zenital"></div>
+      </div>
+    </div>
+    <div class="gal-arrows">
+      <button class="garr" id="gLeft"><svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg></button>
+      <button class="garr" id="gRight"><svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- NOTA DA DIREÇÃO (zona sticky) ─────────────────────────────── -->
+  <!-- Vídeo a 100% — filho boiando — texto revela conforme rola    -->
+  <div class="note-zone" id="noteZone" aria-label="Nota da Direção">
+    <div class="note-sticky">
+      <div class="note-vid" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="none">
+          <source src="naoc_.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="note-inner">
+        <blockquote class="note-quote">
+          <span class="nq-l0"
+            data-pt="O mar não é apenas paisagem —"
+            data-en="The sea is not just landscape —">O mar não é apenas paisagem —</span>
+          <span class="nq-l1"
+            data-pt="ele pede alguma coisa."
+            data-en="it asks something of you.">ele pede alguma coisa.</span>
+        </blockquote>
+        <p id="noteLbl" data-pt="Nota da Direção" data-en="Director's Note">Nota da Direção</p>
+        <div class="note-text">
+          <p class="np-0"
+             data-pt="Não Alimente os Cães nasce desse incômodo e do desejo de filmar a família como um território de tensões, cuidado e sobrevivência. As personagens não têm nomes porque o interesse está em olhar para esses papéis que muitas pessoas já habitaram: o pai que sustenta, a mãe que é vínculo, os filhos que tentam existir à sua própria maneira."
+             data-en="Don't Feed the Dogs is born from that unease, and from a desire to film the family as a territory of tension, care, and survival. The characters have no names because what matters is looking at the roles that many people have inhabited: the father who provides, the mother who holds the bonds, the children trying to exist in their own way.">
+            Não Alimente os Cães nasce desse incômodo e do desejo de filmar a família como um território de tensões, cuidado e sobrevivência. As personagens não têm nomes porque o interesse está em olhar para esses papéis que muitas pessoas já habitaram: o pai que sustenta, a mãe que é vínculo, os filhos que tentam existir à sua própria maneira.
+          </p>
+          <p class="np-1"
+             data-pt="A luz que surge do mar, ela provoca escuta, dúvida, movimento. O filme se interessa em construir e observar os gestos, os silêncios e as ausências, e que permaneça no corpo de quem assiste como uma pergunta aberta…"
+             data-en="The light that rises from the sea provokes listening, doubt, movement. The film is interested in building and observing gestures, silences, and absences — and in what remains in the body of the viewer as an open question…">
+            A luz que surge do mar, ela provoca escuta, dúvida, movimento. O filme se interessa em construir e observar os gestos, os silêncios e as ausências, e que permaneça no corpo de quem assiste como uma pergunta aberta…
+          </p>
+          <p class="np-2">— Vini Poffo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZONA: DIREÇÃO (sticky) + ZENITAL (sobe por cima) ──────────── -->
+  <div class="dir-zen-zone">
+
+  <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
+  <section class="sec-dir" aria-label="Sobre a Direção">
+    <div class="dir-wrap">
+      <div class="dir-imgs fade">
+        <!-- vinipoffo_efeitos.png: foto + "VINI POFFO" no mesmo canvas -->
+        <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
+        <!-- direcao_.png: "DIREÇÃO" neon — mesmo canvas, sobreposto -->
+        <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
+      </div>
+      <!-- Bio posicionada no canto superior direito do dir-wrap -->
+      <div class="dir-bio-col fade d1">
+        <p class="dir-bio"
+           data-pt="Vini Poffo é cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
+           data-en="Vini Poffo is a filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
+          Vini Poffo é cineasta, responsável pela direção criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTO ZENITAL ───────────────────────────────────────────────── -->
+  <section class="sec-zenital" aria-hidden="true">
+    <div class="zen-bg" style="background-image:url('NAOC_7.png');"></div>
+    <p class="zen-txt fade"
+       data-pt="Drama / Fantasia · Brasil · 2026"
+       data-en="Drama / Fantasy · Brazil · 2026">Drama / Fantasia · Brasil · 2026</p>
+  </section>
+
+  </div><!-- /dir-zen-zone -->
+
+  <!-- ZONA: PÔSTERES (sticky) + ELENCO + EQUIPE (sobem por cima) ── -->
+  <!-- Depois desta zona a ficha técnica mostra o vídeo hero de fundo -->
+  <div class="post-lift-zone">
+
+    <!-- PÔSTERES -->
+    <section class="sec-posters" aria-label="Pôsteres">
+      <div class="wrap">
+        <p class="label fade" data-pt="Pôsteres" data-en="Posters">Pôsteres</p>
+        <div class="posters-grid fade d1">
+          <div>
+            <img class="lang-pt" src="Nao%20Alimente%20os%20Caes.png" alt="Não Alimente os Cães">
+            <img class="lang-en hidden" src="Dont%20feed%20the%20dogs.png" alt="Don't Feed the Dogs">
+          </div>
+          <div>
+            <img src="NAOC_capa_2.png" alt="Poster com elenco">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ELENCO -->
+    <section class="sec-cast" aria-label="Elenco">
+      <div class="wrap">
+        <p class="label fade" data-pt="Elenco" data-en="Cast">Elenco</p>
+        <div class="cast-grid">
+          <div class="cast-card fade">
+            <span class="c-role" data-pt="Filha" data-en="Daughter">Filha</span>
+            <span class="c-name">Anna Luiza Maciel</span>
+          </div>
+          <div class="cast-card fade d1">
+            <span class="c-role" data-pt="Pai" data-en="Father">Pai</span>
+            <span class="c-name">Leonardo Goulart</span>
+          </div>
+          <div class="cast-card fade d2">
+            <span class="c-role" data-pt="Filho" data-en="Son">Filho</span>
+            <span class="c-name">Lucas Bomfim</span>
+          </div>
+          <div class="cast-card fade d3">
+            <span class="c-role" data-pt="Mãe" data-en="Mother">Mãe</span>
+            <span class="c-name">Saravy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIPE TÉCNICA -->
+    <section class="sec-crew" aria-label="Equipe Técnica">
+      <div class="wrap">
+        <p class="label fade" data-pt="Equipe Técnica" data-en="Crew">Equipe Técnica</p>
+        <div class="crew-grid">
+          <div class="fade d1">
+            <div class="crew-item"><span class="cr-role" data-pt="Direção" data-en="Direction">Direção</span><span class="cr-name">Vini Poffo</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Roteiro" data-en="Screenplay">Roteiro</span><span class="cr-name">Egon Zek</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Assistência de Direção" data-en="Assistant Direction">Assistência de Direção</span><span class="cr-name">Heloísa Mazzuchetti e Jessé Rodrigues</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Direção de Fotografia" data-en="Cinematography">Direção de Fotografia</span><span class="cr-name">Jaqueline Kogus e Isa Lanave</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="1º Assistente de Câmera" data-en="1st Camera Asst.">1º Assistente de Câmera</span><span class="cr-name">Nica Chaves</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Direção de Arte" data-en="Production Design">Direção de Arte</span><span class="cr-name">Matheus De Luca</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Figurino" data-en="Costume Design">Figurino</span><span class="cr-name">Ana Hiera</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Maquiagem e Cabelo" data-en="Makeup &amp; Hair">Maquiagem e Cabelo</span><span class="cr-name">Sui Domingues e Dani Machado</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Diretora de Elenco" data-en="Casting Director">Diretora de Elenco</span><span class="cr-name">Mar Dias Rosa</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Foto Still" data-en="Unit Photography">Foto Still</span><span class="cr-name">Maria Eduarda Fernandes</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Making Of" data-en="Making Of">Making Of</span><span class="cr-name">Anita Poffo</span></div>
+          </div>
+          <div class="crew-div"></div>
+          <div class="fade d2">
+            <div class="crew-item"><span class="cr-role" data-pt="Direção de Som" data-en="Sound Direction">Direção de Som</span><span class="cr-name">Gabu Mota</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">Yma & Fernando Rischbiter</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Mixagem" data-en="Sound Mix">Mixagem</span><span class="cr-name">Gabu Mota</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Montagem e Finalização" data-en="Editing &amp; Post">Montagem e Finalização</span><span class="cr-name">Natália Farias</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Assistente de Edição" data-en="Editing Asst.">Assistente de Edição</span><span class="cr-name">Lucas Richard</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="VFX e Cor" data-en="VFX &amp; Color">VFX e Cor</span><span class="cr-name">Diego Lomac</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Produção Executiva" data-en="Executive Production">Produção Executiva</span><span class="cr-name">Luana Skibinski</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Direção de Produção" data-en="Production Management">Direção de Produção</span><span class="cr-name">Tati Tanaka</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Design" data-en="Design">Design</span><span class="cr-name">Mapê Santos</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Acessibilidade" data-en="Accessibility">Acessibilidade</span><span class="cr-name">Núbia Amorim</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Making Of" data-en="Making Of"></span><span class="cr-name"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /post-lift-zone -->
+
+  <!-- FICHA TÉCNICA ──────────────────────────────────────────────── -->
+  <!-- Fora do post-lift-zone → hero video (naoc_vinipoffo.mp4) visível -->
+  <section class="sec-specs">
+    <div class="wrap">
+      <p class="label fade" data-pt="Ficha Técnica" data-en="Technical Info">Ficha Técnica</p>
+      <div class="specs-grid fade d1">
+        <div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Título" data-en="Title">Título</span><span class="sp-val" data-pt="Não Alimente os Cães" data-en="Don't Feed the Dogs">Não Alimente os Cães</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">24 min</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Formato" data-en="Format">Formato</span><span class="sp-val">DCP &amp; ProRes</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Proporção" data-en="Aspect Ratio">Proporção</span><span class="sp-val">1.85:1</span></div>
+        </div>
+        <div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Idioma" data-en="Language">Idioma</span><span class="sp-val" data-pt="Português Brasileiro" data-en="Brazilian Portuguese">Português Brasileiro</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Legendas" data-en="Subtitles">Legendas</span><span class="sp-val">PT, EN, ES</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="País" data-en="Country">País</span><span class="sp-val">Brasil</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Classificação" data-en="Rating">Classificação</span><span class="sp-val" data-pt="12 anos" data-en="12+">12 anos</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO ────────────────────────────────────────────────────── -->
+  <section class="sec-contact">
+    <div class="wrap">
+      <p class="contact-lbl fade" data-pt="Contato &amp; Imprensa" data-en="Contact &amp; Press">Contato &amp; Imprensa</p>
+      <a href="mailto:projetos@vinipoffo.com" class="contact-email fade d1">projetos@vinipoffo.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© 2026 Vini Poffo</span>
+  <span class="footer-title" data-pt="Não Alimente os Cães" data-en="Don't Feed the Dogs">Não Alimente os Cães</span>
+</footer>
+
+<script>
+(function () {
+'use strict';
+
+/* ── HERO ENTRANCE ──────────────────────────────────────────────── */
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    document.getElementById('heroCenter').classList.add('in');
+  }, 350);
+});
+
+/* ── HERO FADE ON SCROLL ────────────────────────────────────────── */
+var heroOv = document.getElementById('heroOv');
+window.addEventListener('scroll', function () {
+  var p = Math.min(window.scrollY / (window.innerHeight * 0.6), 1);
+  heroOv.style.opacity = 1 - p;
+  heroOv.style.transform = 'translateY(' + (-window.scrollY * 0.14) + 'px)';
+  heroOv.style.pointerEvents = p > 0.5 ? 'none' : '';
+}, { passive: true });
+
+/* ── PT / EN TOGGLE ─────────────────────────────────────────────── */
+var lang = 'pt';
+
+/* ── AUTO LANG (URL hash: /dontfeedthedogs → #en) ──────────────── */
+(function() {
+  if (window.location.hash === '#en' || window.location.search === '?lang=en') {
+    lang = 'en';
+    document.documentElement.lang = 'en';
+    document.getElementById('lPT').classList.remove('on');
+    document.getElementById('lEN').classList.add('on');
+    document.querySelectorAll('[data-pt]').forEach(function(el) {
+      if (el.dataset.en !== undefined) el.textContent = el.dataset.en;
+    });
+    document.querySelectorAll('.lang-pt').forEach(function(el) { el.classList.add('hidden'); });
+    document.querySelectorAll('.lang-en').forEach(function(el) { el.classList.remove('hidden'); });
+    document.getElementById('tickerPT').classList.add('hidden');
+    document.getElementById('tickerEN').classList.remove('hidden');
+  }
+})();
+
+document.getElementById('langBtn').addEventListener('click', function () {
+  lang = lang === 'pt' ? 'en' : 'pt';
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  document.getElementById('lPT').classList.toggle('on', lang === 'pt');
+  document.getElementById('lEN').classList.toggle('on', lang === 'en');
+  document.querySelectorAll('[data-pt]').forEach(function (el) {
+    var v = lang === 'pt' ? el.dataset.pt : el.dataset.en;
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('.lang-pt').forEach(function (el) { el.classList.toggle('hidden', lang !== 'pt'); });
+  document.querySelectorAll('.lang-en').forEach(function (el) { el.classList.toggle('hidden', lang !== 'en'); });
+  document.getElementById('tickerPT').classList.toggle('hidden', lang !== 'pt');
+  document.getElementById('tickerEN').classList.toggle('hidden', lang !== 'en');
+});
+
+/* ── INTERSECTION OBSERVER ──────────────────────────────────────── */
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+
+/* ── SINOPSE + TRAILER SCROLL ───────────────────────────────────── */
+var stZone   = document.getElementById('stZone');
+var sinOv    = document.getElementById('sinOv');
+var sinLines = sinOv.querySelectorAll('.sin-line');
+var trlBox   = document.getElementById('trlBox');
+var trlFrame = document.getElementById('trlFrame');
+var tLoaded  = false;
+
+function updateST() {
+  var rect  = stZone.getBoundingClientRect();
+  var total = stZone.offsetHeight - window.innerHeight;
+  var p     = Math.max(0, Math.min(1, -rect.top / total));
+
+  /* Sinopse: começa a se mover imediatamente, some em p=0.45 */
+  var sP = Math.min(1, p / 0.45);
+  sinOv.style.opacity = 1 - sP;
+
+  /* Plus: cor muda de branco para verde conforme o texto some (sP: 0.5 → 1) */
+  var colorP = Math.max(0, Math.min(1, (sP - 0.5) / 0.5));
+  var r = Math.round(240 * (1 - colorP));           /* 240 → 0   */
+  var g = Math.round(240 + colorP * 15);            /* 240 → 255 */
+  var b = Math.round(240 - colorP * 146);           /* 240 → 94  */
+  var col = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+  sinLines.forEach(function (line, i) {
+    var dir = i % 2 === 0 ? -1 : 1;
+    line.style.transform = 'translateX(' + (sP * 100 * dir) + 'px)';
+    line.style.color = col;
+  });
+
+  /* Trailer: aparece em p=0.3, tela cheia em p=0.95 */
+  var tP    = Math.max(0, Math.min(1, (p - 0.3) / 0.65));
+  var scale = 0.22 + tP * 0.8;
+  trlBox.style.transform = 'scale(' + scale + ')';
+  trlBox.style.opacity   = Math.min(1, tP * 3);
+
+  if (!tLoaded && p > 0.18) {
+    trlFrame.src = trlFrame.dataset.src;
+    tLoaded = true;
+  }
+}
+window.addEventListener('scroll', updateST, { passive: true });
+updateST();
+
+/* ── NOTA DA DIREÇÃO — TEXTO REVELA NO SCROLL ───────────────────── */
+var noteZone = document.getElementById('noteZone');
+var nqL0 = document.querySelector('.nq-l0');
+var nqL1 = document.querySelector('.nq-l1');
+var nLbl = document.getElementById('noteLbl');
+var nP0  = document.querySelector('.np-0');
+var nP1  = document.querySelector('.np-1');
+var nP2  = document.querySelector('.np-2');
+
+var nSteps = [
+  { el: nqL0, t: 0.04 },
+  { el: nqL1, t: 0.17 },
+  { el: nLbl, t: 0.31 },
+  { el: nP0,  t: 0.42 },
+  { el: nP1,  t: 0.60 },
+  { el: nP2,  t: 0.76 },
+];
+
+function updateNote() {
+  if (!noteZone) return;
+  var rect  = noteZone.getBoundingClientRect();
+  var total = noteZone.offsetHeight - window.innerHeight;
+  var p = Math.max(0, Math.min(1, -rect.top / total));
+  /* Adiciona E remove .show — animação funciona nos dois sentidos do scroll */
+  nSteps.forEach(function (s) {
+    if (p >= s.t) {
+      s.el.classList.add('show');
+    } else {
+      s.el.classList.remove('show');
+    }
+  });
+}
+window.addEventListener('scroll', updateNote, { passive: true });
+updateNote();
+
+/* ── GALLERY DRAG + SCROLL PASS-THROUGH ────────────────────────── */
+var gs = document.getElementById('gScroll');
+var isDragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf;
+
+gs.addEventListener('pointerdown', function (e) {
+  isDragging = true;
+  startX = e.clientX; scrollStart = gs.scrollLeft;
+  velX = 0; lastX = e.clientX; lastT = Date.now();
+  gs.setPointerCapture(e.pointerId);
+  gs.classList.add('drag');
+  cancelAnimationFrame(raf);
+});
+gs.addEventListener('pointermove', function (e) {
+  if (!isDragging) return;
+  var now = Date.now();
+  gs.scrollLeft = scrollStart - (e.clientX - startX);
+  velX = (e.clientX - lastX) / Math.max(now - lastT, 1) * 16;
+  lastX = e.clientX; lastT = now;
+});
+function endDrag() {
+  if (!isDragging) return;
+  isDragging = false; gs.classList.remove('drag');
+  (function mom() {
+    if (Math.abs(velX) < 0.5) return;
+    gs.scrollLeft -= velX; velX *= 0.91;
+    raf = requestAnimationFrame(mom);
+  })();
+}
+gs.addEventListener('pointerup',     endDrag);
+gs.addEventListener('pointercancel', endDrag);
+
+gs.addEventListener('wheel', function (e) {
+  var delta    = e.deltaY !== 0 ? e.deltaY : e.deltaX;
+  var atEnd    = gs.scrollLeft >= gs.scrollWidth - gs.clientWidth - 4;
+  var atStart  = gs.scrollLeft <= 4;
+  var goingFwd = delta > 0;
+  if ((goingFwd && atEnd) || (!goingFwd && atStart)) return;
+  e.preventDefault();
+  gs.scrollLeft += delta;
+}, { passive: false });
+
+document.getElementById('gLeft').addEventListener('click', function () {
+  gs.scrollBy({ left: -400, behavior: 'smooth' });
+});
+document.getElementById('gRight').addEventListener('click', function () {
+  gs.scrollBy({ left: 400, behavior: 'smooth' });
+});
+
+})();
+</script>
+</body>
+</html>
