@@ -150,10 +150,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d2 { transition-delay: .22s; }
 .d3 { transition-delay: .38s; }
 
-/* Dir images entram mais rapido */
-.dir-imgs.fade {
-  transition-duration: 0.38s !important;
-}
+/* Foto da diretora entra rápido */
+.dir-imgs.fade { transition-duration: 0.38s !important; }
+/* Bio entra levemente depois, mais suave */
+.dir-bio-col.fade { transition-duration: 0.75s !important; }
 
 /* ─── SHARED ──────────────────────────────────────────────────────── */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
@@ -287,10 +287,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   max-width: 620px;
   font-weight: 300; font-size: clamp(.88rem, 1.25vw, 1rem); line-height: 1.85; color: var(--white);
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
-  opacity: 0; /* JS controla via typewriter */
 }
 
-/* ─── FOTO ZENITAL — agora com vídeo ────────────────────────────── */
+/* ─── FOTO ZENITAL — vídeo ───────────────────────────────────────── */
 .sec-zenital {
   position: relative; z-index: 2; height: 58vh; min-height: 340px; overflow: hidden;
 }
@@ -552,12 +551,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
   <section class="sec-dir" aria-label="Sobre a Direção">
     <div class="dir-wrap">
+      <!-- foto entra rápido -->
       <div class="dir-imgs fade">
         <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
         <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
       </div>
-      <!-- id="dirBioCol" — controlado via typewriter JS -->
-      <div class="dir-bio-col" id="dirBioCol">
+      <!-- bio entra com fade+movimento, levemente depois da foto -->
+      <div class="dir-bio-col fade d2">
         <p class="dir-bio"
            data-pt="Vini Poffo é cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
            data-en="Vini Poffo is a filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
@@ -722,7 +722,6 @@ window.addEventListener('scroll', function () {
 /* ── PT / EN TOGGLE ─────────────────────────────────────────────── */
 var lang = 'pt';
 
-/* ── AUTO LANG (URL hash: #en ou ?lang=en) ──────────────────────── */
 (function() {
   if (window.location.hash === '#en' || window.location.search === '?lang=en') {
     lang = 'en';
@@ -761,37 +760,6 @@ var io = new IntersectionObserver(function (entries) {
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
-
-/* ── DIREÇÃO: TYPEWRITER BIO ────────────────────────────────────── */
-(function () {
-  var dirBioEl  = document.querySelector('.dir-bio');
-  var dirBioCol = document.getElementById('dirBioCol');
-  var bioTyped  = false;
-
-  if (!dirBioEl || !dirBioCol) return;
-
-  var bioObs = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting || bioTyped) return;
-      bioTyped = true;
-      bioObs.disconnect();
-      /* pega o texto na lingua atual */
-      var txt = (lang === 'en' ? dirBioEl.dataset.en : dirBioEl.dataset.pt) || dirBioEl.textContent.trim();
-      dirBioEl.textContent = '';
-      dirBioEl.style.opacity = '1';
-      var i = 0;
-      function tick() {
-        if (i < txt.length) {
-          dirBioEl.textContent += txt.charAt(i++);
-          setTimeout(tick, 6);
-        }
-      }
-      tick();
-    });
-  }, { threshold: 0.25 });
-
-  bioObs.observe(dirBioCol);
-})();
 
 /* ── SINOPSE + TRAILER SCROLL ───────────────────────────────────── */
 var stZone   = document.getElementById('stZone');
