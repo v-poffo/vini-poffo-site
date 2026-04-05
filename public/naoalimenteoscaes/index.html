@@ -62,10 +62,16 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; padding: 1.5rem 2.5rem;
 }
-.nav-logo {
+.nav-logo-link {
   position: absolute; left: 50%; transform: translateX(-50%);
-  font-family: "noka", serif; font-size: .85rem;
-  letter-spacing: .07em; text-transform: uppercase; color: var(--green);
+  display: flex; align-items: center;
+  transition: opacity .2s;
+}
+.nav-logo-link:hover { opacity: .7; }
+.nav-logo-img {
+  height: 22px; width: auto;
+  /* cream SVG (#f8f9de) → #00FF5E */
+  filter: brightness(0) saturate(100%) invert(64%) sepia(93%) saturate(2200%) hue-rotate(100deg) brightness(110%);
 }
 .lang-btn {
   margin-left: auto; display: flex; align-items: center; gap: .2rem;
@@ -144,6 +150,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d2 { transition-delay: .22s; }
 .d3 { transition-delay: .38s; }
 
+/* Dir images entram mais rapido */
+.dir-imgs.fade {
+  transition-duration: 0.38s !important;
+}
+
 /* ─── SHARED ──────────────────────────────────────────────────────── */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
 .label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--green); margin-bottom: 2.2rem; }
@@ -197,7 +208,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   display: flex; gap: 1rem; padding: .5rem 2.5rem 1.5rem;
   width: max-content; align-items: center;
 }
-/* Cada imagem mostra em tamanho natural — sem distorção */
 .gi { flex: 0 0 auto; height: 320px; overflow: hidden; }
 .gi img { height: 100%; width: auto; max-width: none; display: block; pointer-events: none; }
 .gal-arrows { display: flex; justify-content: space-between; padding: 1rem 2.5rem 0; }
@@ -209,20 +219,18 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .garr:hover { opacity: .9; }
 .garr svg { width: 20px; height: 20px; stroke: var(--green); stroke-width: 1.5; fill: none; }
 
-/* ─── NOTA DA DIREÇÃO (zona sticky — vídeo a 100%, texto revela no scroll) ── */
+/* ─── NOTA DA DIREÇÃO ────────────────────────────────────────────── */
 .note-zone { height: 280vh; }
 .note-sticky {
   position: sticky; top: 0; height: 100vh;
   overflow: hidden; display: flex; align-items: flex-end; justify-content: flex-end;
 }
-/* Vídeo do filho boiando — a 100%, sem overlay escuro */
 .note-vid { position: absolute; inset: 0; z-index: 0; }
 .note-vid video { width: 100%; height: 100%; object-fit: cover; opacity: 1; }
-/* Texto no canto inferior direito — área mais escura do vídeo */
 .note-inner {
   position: relative; z-index: 1;
   max-width: 640px; padding: 0 3rem 5vh 2rem;
-  margin-left: auto; margin-right: 0; /* alinha à direita */
+  margin-left: auto; margin-right: 0;
 }
 .note-quote {
   font-family: "noka", serif;
@@ -231,7 +239,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   -webkit-text-stroke: 1.4px var(--white);
   letter-spacing: .01em;
   margin-bottom: 2.4rem;
-  /* sombra forte para legibilidade */
   filter: drop-shadow(0 2px 18px rgba(5,13,15,.95)) drop-shadow(0 0 40px rgba(5,13,15,.8));
 }
 .nq-l0, .nq-l1 {
@@ -253,7 +260,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   margin-bottom: 1.4rem;
   opacity: 0; transform: translateY(1.2rem);
   transition: opacity .75s var(--ease), transform .75s var(--ease);
-  /* sombra forte para garantir leitura sobre o vídeo */
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
 }
 .np-0 { font-size: clamp(.88rem, 1.25vw, 1rem); }
@@ -261,39 +267,38 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .np-2 { color: var(--amber) !important; font-style: italic; margin-top: 1.2rem; }
 .np-0.show, .np-1.show, .np-2.show { opacity: 1; transform: none; }
 
-/* ─── ZONA DIREÇÃO + ZENITAL (dir fica presa, zenital sobe por cima) ─────── */
+/* ─── ZONA DIREÇÃO + ZENITAL ─────────────────────────────────────── */
 .dir-zen-zone { position: relative; }
 .sec-dir { background: var(--bg); padding: 8rem 0 2rem; position: sticky; top: 0; z-index: 1; }
 .dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; }
-/* Composição de imagens ocupa a largura do wrapper, centrada na tela */
 .dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0 auto; }
 .dir-img-base { display: block; width: 100%; height: auto; }
 .dir-img-top  { position: absolute; top: 0; left: 0; width: 100%; height: auto; }
-/* Bio absoluta — posicionada no canto superior direito, agora fora do dir-imgs mas dentro do dir-wrap */
 .dir-bio-col {
-  position: absolute; top: -5%; right: 4%; /* Trazendo um pouco mais para o centro (4%) para aproximar da foto */
+  position: absolute; top: -5%; right: 4%;
   width: 50%; padding: 2rem 0;
   background: transparent;
-  text-align: justify; /* Texto justificado conforme solicitado */
+  text-align: justify;
   display: flex;
   justify-content: flex-end;
   z-index: 10;
 }
-/* Regra removida para visual mais limpo conforme referência */
 .dir-bio {
-  max-width: 620px; /* Ajustando para ~7 linhas com o novo layout */
+  max-width: 620px;
   font-weight: 300; font-size: clamp(.88rem, 1.25vw, 1rem); line-height: 1.85; color: var(--white);
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
+  opacity: 0; /* JS controla via typewriter */
 }
 
-/* ─── FOTO ZENITAL (sobe por cima da seção de direção) ───────────── */
+/* ─── FOTO ZENITAL — agora com vídeo ────────────────────────────── */
 .sec-zenital {
   position: relative; z-index: 2; height: 58vh; min-height: 340px; overflow: hidden;
 }
 .zen-bg {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
+  overflow: hidden;
 }
+.zen-bg video { width: 100%; height: 100%; object-fit: cover; }
 .zen-bg::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom, rgba(5,13,15,.35) 0%, rgba(5,13,15,.7) 100%);
@@ -304,8 +309,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 
 /* ─── ZONA PÔSTER+ELENCO+EQUIPE ───────────────────────────────────── */
-/* O wrapper limita o escopo do sticky: posters ficam presos enquanto
-   elenco e equipe sobem, depois o sticky se solta antes da ficha técnica */
 .post-lift-zone { position: relative; }
 .sec-posters {
   background: var(--bg); padding: 7rem 0;
@@ -317,7 +320,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .posters-grid img { width: 100%; border: 1px solid rgba(255,255,255,.05); }
 
-/* ─── ELENCO (sobe sobre os pôsteres) ────────────────────────────── */
+/* ─── ELENCO ────────────────────────────────────────────────────── */
 .sec-cast { background: var(--bg2); padding: 7rem 0; position: relative; z-index: 2; }
 .cast-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
 .cast-card { border-top: 1px solid rgba(0,255,94,.14); padding-top: 1.2rem; }
@@ -332,7 +335,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   text-shadow: 0 0 14px rgba(0,255,94,.55), 0 0 28px rgba(0,255,94,.24);
 }
 
-/* ─── EQUIPE (sobe sobre os pôsteres) ────────────────────────────── */
+/* ─── EQUIPE ────────────────────────────────────────────────────── */
 .sec-crew { background: var(--bg); padding: 7rem 0; position: relative; z-index: 2; }
 .crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
 .crew-div { background: rgba(255,255,255,.05); }
@@ -350,8 +353,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   text-shadow: 0 0 12px rgba(0,255,94,.5), 0 0 24px rgba(0,255,94,.22);
 }
 
-/* ─── FICHA TÉCNICA (vídeo hero aparece por baixo) ────────────────── */
-/* Fora do post-lift-zone → sticky se soltou → hero video visível */
+/* ─── FICHA TÉCNICA ─────────────────────────────────────────────── */
 .sec-specs { padding: 7rem 0; background: transparent; position: relative; z-index: 2; }
 .sec-specs::before {
   content: ''; position: absolute; inset: 0;
@@ -363,7 +365,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
 .sp-val { font-size: .87rem; color: var(--white); }
 
-/* ─── CONTATO (vídeo hero aparece por baixo) ──────────────────────── */
+/* ─── CONTATO ───────────────────────────────────────────────────── */
 .sec-contact { padding: 9rem 0; text-align: center; background: transparent; position: relative; z-index: 2; }
 .sec-contact::before {
   content: ''; position: absolute; inset: 0;
@@ -380,7 +382,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   text-shadow: 0 0 18px rgba(0,255,94,.55), 0 0 40px rgba(0,255,94,.25);
 }
 
-/* ─── FOOTER ──────────────────────────────────────────────────────── */
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
 .footer {
   display: flex; justify-content: space-between; align-items: center;
   padding: 1.6rem 2.5rem; border-top: 1px solid rgba(255,255,255,.06);
@@ -389,12 +391,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .footer-title { font-family: "noka", serif; color: var(--green); font-size: .82rem; }
 
-/* ─── RESPONSIVE ──────────────────────────────────────────────────── */
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .cast-grid { grid-template-columns: repeat(2,1fr); }
   .crew-grid { grid-template-columns: 1fr; }
   .crew-div  { display: none; }
-  /* Direção: bio sai do absolute e vem abaixo da foto no mobile */
   .dir-imgs  { position: static; }
   .dir-bio-col {
     position: relative; top: auto; right: auto; width: 100%;
@@ -404,7 +405,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   .posters-grid { grid-template-columns: 1fr; max-width: 380px; }
 }
 @media (max-width: 600px) {
-  .nav-logo { font-size: .7rem; }
+  .nav-logo-img { height: 18px; }
   .wrap { padding: 0 1.5rem; }
   .sin-line { font-size: clamp(1.1rem,5vw,1.5rem); }
   .note-quote { font-size: clamp(1.2rem,5vw,2rem); }
@@ -420,7 +421,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">Não Alimente os Cães</div>
+  <a href="https://www.vinipoffo.com" class="nav-logo-link" target="_blank" rel="noopener noreferrer">
+    <img src="../assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-img">
+  </a>
   <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">
     <span class="lopt on" id="lPT">PT</span>
     <span class="lsep">|</span>
@@ -508,8 +511,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </section>
 
-  <!-- NOTA DA DIREÇÃO (zona sticky) ─────────────────────────────── -->
-  <!-- Vídeo a 100% — filho boiando — texto revela conforme rola    -->
+  <!-- NOTA DA DIREÇÃO ────────────────────────────────────────────── -->
   <div class="note-zone" id="noteZone" aria-label="Nota da Direção">
     <div class="note-sticky">
       <div class="note-vid" aria-hidden="true">
@@ -551,13 +553,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <section class="sec-dir" aria-label="Sobre a Direção">
     <div class="dir-wrap">
       <div class="dir-imgs fade">
-        <!-- vinipoffo_efeitos.png: foto + "VINI POFFO" no mesmo canvas -->
         <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
-        <!-- direcao_.png: "DIREÇÃO" neon — mesmo canvas, sobreposto -->
         <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
       </div>
-      <!-- Bio posicionada no canto superior direito do dir-wrap -->
-      <div class="dir-bio-col fade d1">
+      <!-- id="dirBioCol" — controlado via typewriter JS -->
+      <div class="dir-bio-col" id="dirBioCol">
         <p class="dir-bio"
            data-pt="Vini Poffo é cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
            data-en="Vini Poffo is a filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
@@ -567,9 +567,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </section>
 
-  <!-- FOTO ZENITAL ───────────────────────────────────────────────── -->
+  <!-- FOTO ZENITAL — vídeo naoc_mae.mp4 ─────────────────────────── -->
   <section class="sec-zenital" aria-hidden="true">
-    <div class="zen-bg" style="background-image:url('NAOC_7.png');"></div>
+    <div class="zen-bg">
+      <video autoplay muted loop playsinline preload="none">
+        <source src="naoc_mae.mp4" type="video/mp4">
+      </video>
+    </div>
     <p class="zen-txt fade"
        data-pt="Drama / Fantasia · Brasil · 2026"
        data-en="Drama / Fantasy · Brazil · 2026">Drama / Fantasia · Brasil · 2026</p>
@@ -578,7 +582,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   </div><!-- /dir-zen-zone -->
 
   <!-- ZONA: PÔSTERES (sticky) + ELENCO + EQUIPE (sobem por cima) ── -->
-  <!-- Depois desta zona a ficha técnica mostra o vídeo hero de fundo -->
   <div class="post-lift-zone">
 
     <!-- PÔSTERES -->
@@ -661,7 +664,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   </div><!-- /post-lift-zone -->
 
   <!-- FICHA TÉCNICA ──────────────────────────────────────────────── -->
-  <!-- Fora do post-lift-zone → hero video (naoc_vinipoffo.mp4) visível -->
   <section class="sec-specs">
     <div class="wrap">
       <p class="label fade" data-pt="Ficha Técnica" data-en="Technical Info">Ficha Técnica</p>
@@ -720,7 +722,7 @@ window.addEventListener('scroll', function () {
 /* ── PT / EN TOGGLE ─────────────────────────────────────────────── */
 var lang = 'pt';
 
-/* ── AUTO LANG (URL hash: /dontfeedthedogs → #en) ──────────────── */
+/* ── AUTO LANG (URL hash: #en ou ?lang=en) ──────────────────────── */
 (function() {
   if (window.location.hash === '#en' || window.location.search === '?lang=en') {
     lang = 'en';
@@ -760,6 +762,37 @@ var io = new IntersectionObserver(function (entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
 
+/* ── DIREÇÃO: TYPEWRITER BIO ────────────────────────────────────── */
+(function () {
+  var dirBioEl  = document.querySelector('.dir-bio');
+  var dirBioCol = document.getElementById('dirBioCol');
+  var bioTyped  = false;
+
+  if (!dirBioEl || !dirBioCol) return;
+
+  var bioObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting || bioTyped) return;
+      bioTyped = true;
+      bioObs.disconnect();
+      /* pega o texto na lingua atual */
+      var txt = (lang === 'en' ? dirBioEl.dataset.en : dirBioEl.dataset.pt) || dirBioEl.textContent.trim();
+      dirBioEl.textContent = '';
+      dirBioEl.style.opacity = '1';
+      var i = 0;
+      function tick() {
+        if (i < txt.length) {
+          dirBioEl.textContent += txt.charAt(i++);
+          setTimeout(tick, 6);
+        }
+      }
+      tick();
+    });
+  }, { threshold: 0.25 });
+
+  bioObs.observe(dirBioCol);
+})();
+
 /* ── SINOPSE + TRAILER SCROLL ───────────────────────────────────── */
 var stZone   = document.getElementById('stZone');
 var sinOv    = document.getElementById('sinOv');
@@ -773,15 +806,13 @@ function updateST() {
   var total = stZone.offsetHeight - window.innerHeight;
   var p     = Math.max(0, Math.min(1, -rect.top / total));
 
-  /* Sinopse: começa a se mover imediatamente, some em p=0.45 */
   var sP = Math.min(1, p / 0.45);
   sinOv.style.opacity = 1 - sP;
 
-  /* Plus: cor muda de branco para verde conforme o texto some (sP: 0.5 → 1) */
   var colorP = Math.max(0, Math.min(1, (sP - 0.5) / 0.5));
-  var r = Math.round(240 * (1 - colorP));           /* 240 → 0   */
-  var g = Math.round(240 + colorP * 15);            /* 240 → 255 */
-  var b = Math.round(240 - colorP * 146);           /* 240 → 94  */
+  var r = Math.round(240 * (1 - colorP));
+  var g = Math.round(240 + colorP * 15);
+  var b = Math.round(240 - colorP * 146);
   var col = 'rgb(' + r + ',' + g + ',' + b + ')';
 
   sinLines.forEach(function (line, i) {
@@ -790,7 +821,6 @@ function updateST() {
     line.style.color = col;
   });
 
-  /* Trailer: aparece em p=0.3, tela cheia em p=0.95 */
   var tP    = Math.max(0, Math.min(1, (p - 0.3) / 0.65));
   var scale = 0.22 + tP * 0.8;
   trlBox.style.transform = 'scale(' + scale + ')';
@@ -827,19 +857,15 @@ function updateNote() {
   var rect  = noteZone.getBoundingClientRect();
   var total = noteZone.offsetHeight - window.innerHeight;
   var p = Math.max(0, Math.min(1, -rect.top / total));
-  /* Adiciona E remove .show — animação funciona nos dois sentidos do scroll */
   nSteps.forEach(function (s) {
-    if (p >= s.t) {
-      s.el.classList.add('show');
-    } else {
-      s.el.classList.remove('show');
-    }
+    if (p >= s.t) { s.el.classList.add('show'); }
+    else          { s.el.classList.remove('show'); }
   });
 }
 window.addEventListener('scroll', updateNote, { passive: true });
 updateNote();
 
-/* ── GALLERY DRAG + SCROLL PASS-THROUGH ────────────────────────── */
+/* ── GALLERY DRAG + SCROLL ──────────────────────────────────────── */
 var gs = document.getElementById('gScroll');
 var isDragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf;
 

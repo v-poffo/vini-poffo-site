@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/naoalimenteoscaes",
+      "destination": "/naoalimenteoscaes/",
+      "permanent": true
+    }
+  ]
+}
