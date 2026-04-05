@@ -150,8 +150,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d3 { transition-delay: .38s; }
 
 /* ─── DIREÇÃO: 3 camadas animadas, delay via JS ───────────────────── */
-/* direcao_.png  → 0s   (JS)  duração .5s  */
-/* vinipoffo.png → 0.4s (JS)  duração .6s  */
+/* vinipoffo.png → 0s   (JS)  duração .6s  */
+/* direcao_.png  → 0.4s (JS)  duração .5s  */
 /* bio text      → 1s   (JS)  duração .75s */
 .dir-img-top.fade  { transition-duration: 0.5s  !important; }
 .dir-img-base.fade { transition-duration: 0.6s  !important; }
@@ -273,20 +273,22 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .dir-zen-zone { position: relative; }
 .sec-dir { background: var(--bg); padding: 8rem 0 2rem; position: sticky; top: 0; z-index: 1; }
 .dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; }
-.dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0 auto; }
+/* foto alinhada à esquerda */
+.dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0; }
 .dir-img-base { display: block; width: 100%; height: auto; }
 .dir-img-top  { position: absolute; top: 0; left: 0; width: 100%; height: auto; }
+/* bio no canto inferior direito */
 .dir-bio-col {
-  position: absolute; top: -5%; right: 4%;
-  width: 50%; padding: 2rem 0;
+  position: absolute; bottom: 6%; top: auto; right: 4%;
+  width: 42%; padding: 0;
   background: transparent;
-  text-align: justify;
+  text-align: left;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   z-index: 10;
 }
 .dir-bio {
-  max-width: 620px;
+  max-width: 560px;
   font-weight: 300; font-size: clamp(.88rem, 1.25vw, 1rem); line-height: 1.85; color: var(--white);
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
 }
@@ -399,7 +401,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   .crew-div  { display: none; }
   .dir-imgs  { position: static; }
   .dir-bio-col {
-    position: relative; top: auto; right: auto; width: 100%;
+    position: relative; bottom: auto; top: auto; right: auto; width: 100%;
     background: var(--bg2); padding: 2.5rem 1.5rem;
   }
   .specs-grid  { grid-template-columns: 1fr; }
@@ -553,16 +555,17 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
   <section class="sec-dir" aria-label="Sobre a Direção">
     <div class="dir-wrap">
-      <!-- 3 elementos independentes, cada um com seu delay via dirIo -->
+      <!-- foto → 0s | "VINI POFFO" overlay → 0.4s | bio → 1s -->
       <div class="dir-imgs">
         <img class="dir-img-base fade fade-dir" src="vinipoffo_efeitos.png" alt="Vini Poffo">
-        <img class="dir-img-top  fade fade-dir" src="direcao_.png" alt="" aria-hidden="true">
+        <img class="dir-img-top fade fade-dir" src="direcao_.png" alt="" aria-hidden="true">
       </div>
+      <!-- bio posicionada no canto inferior direito -->
       <div class="dir-bio-col fade fade-dir">
         <p class="dir-bio"
-           data-pt="Vini Poffo é cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
-           data-en="Vini Poffo is a filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
-          Vini Poffo é cineasta, responsável pela direção criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.
+           data-pt="Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
+           data-en="Filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
+          Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.
         </p>
       </div>
     </div>
@@ -763,15 +766,15 @@ var io = new IntersectionObserver(function (entries) {
 document.querySelectorAll('.fade:not(.fade-dir)').forEach(function (el) { io.observe(el); });
 
 /* ── DIREÇÃO: observer reversível — 3 camadas em cascata ─────────
-   Entrando → direcao_.png: 0s | vinipoffo.png: 0.4s | bio: 1s
+   Entrando → foto (vinipoffo): 0s | "VINI POFFO" (direcao_): 0.4s | bio: 1s
    Saindo   → todos: 0s (sai rápido, reseta pra próxima passagem)  */
 var dirIo = new IntersectionObserver(function (entries) {
   entries.forEach(function (e) {
     if (e.isIntersecting) {
       var delay = '0s';
       if      (e.target.classList.contains('dir-bio-col'))  delay = '1s';
-      else if (e.target.classList.contains('dir-img-base')) delay = '0.4s';
-      /* dir-img-top (direcao_.png) fica em 0s */
+      else if (e.target.classList.contains('dir-img-top'))  delay = '0.4s';
+      /* dir-img-base (vinipoffo.png) fica em 0s */
       e.target.style.transitionDelay = delay;
       e.target.classList.add('in');
     } else {
