@@ -149,15 +149,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d2 { transition-delay: .22s; }
 .d3 { transition-delay: .38s; }
 
-/* ─── DIREÇÃO: fade reversível — timing controlado por JS ─────────── */
-/* fade-dir usa as mesmas propriedades base do .fade */
-/* transition-delay é setado/zerado via JS dependendo da direção */
-.dir-imgs.fade {
-  transition-duration: 0.38s !important;
-}
-.dir-bio-col.fade {
-  transition-duration: 0.75s !important;
-}
+/* ─── DIREÇÃO: 3 camadas animadas, delay via JS ───────────────────── */
+/* direcao_.png  → 0s   (JS)  duração .5s  */
+/* vinipoffo.png → 0.4s (JS)  duração .6s  */
+/* bio text      → 1s   (JS)  duração .75s */
+.dir-img-top.fade  { transition-duration: 0.5s  !important; }
+.dir-img-base.fade { transition-duration: 0.6s  !important; }
+.dir-bio-col.fade  { transition-duration: 0.75s !important; }
 
 /* ─── SHARED ──────────────────────────────────────────────────────── */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
@@ -555,10 +553,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
   <section class="sec-dir" aria-label="Sobre a Direção">
     <div class="dir-wrap">
-      <!-- fade-dir: observer reversível, delay controlado via JS -->
-      <div class="dir-imgs fade fade-dir">
-        <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
-        <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
+      <!-- 3 elementos independentes, cada um com seu delay via dirIo -->
+      <div class="dir-imgs">
+        <img class="dir-img-base fade fade-dir" src="vinipoffo_efeitos.png" alt="Vini Poffo">
+        <img class="dir-img-top  fade fade-dir" src="direcao_.png" alt="" aria-hidden="true">
       </div>
       <div class="dir-bio-col fade fade-dir">
         <p class="dir-bio"
@@ -764,18 +762,19 @@ var io = new IntersectionObserver(function (entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade:not(.fade-dir)').forEach(function (el) { io.observe(el); });
 
-/* ── DIREÇÃO: observer reversível com delays assimétricos ─────── */
-/* Entrando: foto imediata (0s), bio depois (1.2s)                */
-/* Saindo: ambos somem sem delay (0s) — transição rápida          */
+/* ── DIREÇÃO: observer reversível — 3 camadas em cascata ─────────
+   Entrando → direcao_.png: 0s | vinipoffo.png: 0.4s | bio: 1s
+   Saindo   → todos: 0s (sai rápido, reseta pra próxima passagem)  */
 var dirIo = new IntersectionObserver(function (entries) {
   entries.forEach(function (e) {
-    var isBio = e.target.classList.contains('dir-bio-col');
     if (e.isIntersecting) {
-      /* entrando — aplica delay diferenciado antes de adicionar .in */
-      e.target.style.transitionDelay = isBio ? '1.2s' : '0s';
+      var delay = '0s';
+      if      (e.target.classList.contains('dir-bio-col'))  delay = '1s';
+      else if (e.target.classList.contains('dir-img-base')) delay = '0.4s';
+      /* dir-img-top (direcao_.png) fica em 0s */
+      e.target.style.transitionDelay = delay;
       e.target.classList.add('in');
     } else {
-      /* saindo — zera delay pra sair rápido e resetar para próxima entrada */
       e.target.style.transitionDelay = '0s';
       e.target.classList.remove('in');
     }
