@@ -70,7 +70,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .nav-logo-link:hover { opacity: .7; }
 .nav-logo-img {
   height: 22px; width: auto;
-  /* cream SVG (#f8f9de) → #00FF5E */
   filter: brightness(0) saturate(100%) invert(64%) sepia(93%) saturate(2200%) hue-rotate(100deg) brightness(110%);
 }
 .lang-btn {
@@ -150,10 +149,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d2 { transition-delay: .22s; }
 .d3 { transition-delay: .38s; }
 
-/* Foto da diretora entra rápido */
-.dir-imgs.fade { transition-duration: 0.38s !important; }
-/* Bio entra levemente depois, mais suave */
-.dir-bio-col.fade { transition-duration: 0.75s !important; }
+/* ─── DIREÇÃO: fade reversível — timing controlado por JS ─────────── */
+/* fade-dir usa as mesmas propriedades base do .fade */
+/* transition-delay é setado/zerado via JS dependendo da direção */
+.dir-imgs.fade {
+  transition-duration: 0.38s !important;
+}
+.dir-bio-col.fade {
+  transition-duration: 0.75s !important;
+}
 
 /* ─── SHARED ──────────────────────────────────────────────────────── */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
@@ -551,13 +555,12 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
   <section class="sec-dir" aria-label="Sobre a Direção">
     <div class="dir-wrap">
-      <!-- foto entra rápido -->
-      <div class="dir-imgs fade">
+      <!-- fade-dir: observer reversível, delay controlado via JS -->
+      <div class="dir-imgs fade fade-dir">
         <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
         <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
       </div>
-      <!-- bio entra com fade+movimento, levemente depois da foto -->
-      <div class="dir-bio-col fade d2">
+      <div class="dir-bio-col fade fade-dir">
         <p class="dir-bio"
            data-pt="Vini Poffo é cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
            data-en="Vini Poffo is a filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
@@ -753,13 +756,32 @@ document.getElementById('langBtn').addEventListener('click', function () {
   document.getElementById('tickerEN').classList.toggle('hidden', lang !== 'en');
 });
 
-/* ── INTERSECTION OBSERVER ──────────────────────────────────────── */
+/* ── INTERSECTION OBSERVER — one-shot p/ todos exceto .fade-dir ── */
 var io = new IntersectionObserver(function (entries) {
   entries.forEach(function (e) {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+document.querySelectorAll('.fade:not(.fade-dir)').forEach(function (el) { io.observe(el); });
+
+/* ── DIREÇÃO: observer reversível com delays assimétricos ─────── */
+/* Entrando: foto imediata (0s), bio depois (1.2s)                */
+/* Saindo: ambos somem sem delay (0s) — transição rápida          */
+var dirIo = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    var isBio = e.target.classList.contains('dir-bio-col');
+    if (e.isIntersecting) {
+      /* entrando — aplica delay diferenciado antes de adicionar .in */
+      e.target.style.transitionDelay = isBio ? '1.2s' : '0s';
+      e.target.classList.add('in');
+    } else {
+      /* saindo — zera delay pra sair rápido e resetar para próxima entrada */
+      e.target.style.transitionDelay = '0s';
+      e.target.classList.remove('in');
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-dir').forEach(function (el) { dirIo.observe(el); });
 
 /* ── SINOPSE + TRAILER SCROLL ───────────────────────────────────── */
 var stZone   = document.getElementById('stZone');
