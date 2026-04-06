@@ -790,14 +790,19 @@
         navigator.clipboard.writeText(html).then(function () {
           toast('HTML copiado!');
         }).catch(function () {
-          /* fallback */
+          /* Fallback for browsers without Clipboard API (e.g. insecure contexts).
+             document.execCommand is deprecated but widely supported as a last resort. */
           var ta = document.createElement('textarea');
           ta.value = html;
           document.body.appendChild(ta);
           ta.select();
-          document.execCommand('copy');
+          var ok = document.execCommand('copy');
           document.body.removeChild(ta);
-          toast('HTML copiado!');
+          if (ok) {
+            toast('HTML copiado!');
+          } else {
+            toast('Não foi possível copiar. Selecione o código manualmente.', 'info');
+          }
         });
       };
     }
@@ -817,13 +822,16 @@
       };
     }
 
-    /* open preview in new tab */
+    /* open preview in new tab — note: window.open + document.write is intentional here
+       as srcdoc is limited in cross-origin contexts and we control the HTML content */
     var btnOpen = document.getElementById('btnOpenPreview');
     if (btnOpen) {
       btnOpen.onclick = function () {
-        var w = window.open('', '_blank');
-        w.document.write(html);
-        w.document.close();
+        var blob = new Blob([html], { type: 'text/html' });
+        var url  = URL.createObjectURL(blob);
+        var w    = window.open(url, '_blank');
+        /* release the object URL once the new tab has loaded */
+        if (w) { w.addEventListener('load', function () { URL.revokeObjectURL(url); }); }
       };
     }
   }

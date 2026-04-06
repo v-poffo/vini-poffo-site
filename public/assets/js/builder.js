@@ -9,13 +9,14 @@ window.ProjectBuilder = (function () {
   function esc(str) {
     if (!str) return '';
     return String(str)
-      .replace(/&(?!amp;|lt;|gt;|quot;|#)/g, '&amp;')
+      .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
   }
 
-  /* keep pre-escaped entities like &amp; */
+  /* keep pre-escaped entities like &amp; &lt; intact — use only for trusted/controlled content
+     (e.g. values from projects.json where & was intentionally written as &amp;) */
   function safe(str) {
     return str ? String(str) : '';
   }
@@ -290,7 +291,7 @@ window.ProjectBuilder = (function () {
       var items = col.map(function (m) {
         return [
           '            <div class="crew-item">',
-          '              <span class="cr-role" data-pt="' + safe(m.role_pt) + '" data-en="' + safe(m.role_en) + '">' + safe(m.role_pt) + '</span>',
+          '              <span class="cr-role" data-pt="' + esc(m.role_pt) + '" data-en="' + esc(m.role_en) + '">' + esc(m.role_pt) + '</span>',
           '              <span class="cr-name">' + esc(m.name) + '</span>',
           '            </div>',
         ].join('\n');
