@@ -149,14 +149,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .d2 { transition-delay: .22s; }
 .d3 { transition-delay: .38s; }
 
-/* ─── DIREÇÃO: 3 camadas animadas, delay via JS ───────────────────── */
-/* vinipoffo.png → 0s   (JS)  duração .6s  */
-/* direcao_.png  → 0.4s (JS)  duração .5s  */
-/* bio text      → 1s   (JS)  duração .75s */
-.dir-img-top.fade  { transition-duration: 0.5s  !important; }
-.dir-img-base.fade { transition-duration: 0.6s  !important; }
-.dir-bio-col.fade  { transition-duration: 0.75s !important; }
-
 /* ─── SHARED ──────────────────────────────────────────────────────── */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
 .label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--green); margin-bottom: 2.2rem; }
@@ -271,12 +263,30 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 /* ─── ZONA DIREÇÃO + ZENITAL ─────────────────────────────────────── */
 .dir-zen-zone { position: relative; }
-.sec-dir { background: var(--bg); padding: 8rem 0 2rem; position: sticky; top: 0; z-index: 1; }
-.dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; }
-.dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0; }
-.dir-img-base { display: block; width: 100%; height: auto; }
+
+/* scroll zone — mesma lógica da note-zone */
+.dir-scroll-zone { position: relative; height: 250vh; }
+
+/* sec-dir fica presa durante o scroll da zone */
+.sec-dir {
+  background: var(--bg);
+  height: 100vh; overflow: hidden;
+  position: sticky; top: 0; z-index: 1;
+  display: flex; align-items: center;
+}
+.dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; width: 100%; height: 100%; }
+
+/* foto alinhada à esquerda, contida na altura da viewport */
+.dir-imgs {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  left: 0;
+  display: block; max-width: 1050px;
+  max-height: 90vh;
+}
+.dir-img-base { display: block; width: 100%; height: auto; max-height: 90vh; object-fit: contain; object-position: left top; }
 .dir-img-top  { position: absolute; top: 0; left: 0; width: 100%; height: auto; }
-/* bio no canto direito, 20% do fundo — um pouco mais alto */
+
+/* bio no canto direito, verticalmente centrada */
 .dir-bio-col {
   position: absolute; bottom: 20%; top: auto; right: 4%;
   width: 42%; padding: 0;
@@ -291,6 +301,26 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   font-weight: 300; font-size: clamp(.88rem, 1.25vw, 1rem); line-height: 1.85; color: var(--white);
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
 }
+
+/* ─── DIREÇÃO: scroll-reveal — mesmo padrão da nota da direção ───── */
+.dir-img-base {
+  opacity: 0; transform: translateY(1.8rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.dir-img-top {
+  opacity: 0; transform: translateY(1.4rem);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.dir-bio-col {
+  opacity: 0; transform: translateY(1.2rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.dir-img-base.show, .dir-img-top.show, .dir-bio-col.show {
+  opacity: 1; transform: translateY(-50%);
+}
+/* bio e nome não têm o translateY(-50%) centrado, só zeramos o reveal offset */
+.dir-img-top.show  { transform: none; }
+.dir-bio-col.show  { transform: none; }
 
 /* ─── FOTO ZENITAL — vídeo ───────────────────────────────────────── */
 .sec-zenital {
@@ -398,11 +428,17 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   .cast-grid { grid-template-columns: repeat(2,1fr); }
   .crew-grid { grid-template-columns: 1fr; }
   .crew-div  { display: none; }
-  .dir-imgs  { position: static; }
+  .dir-scroll-zone { height: auto; }
+  .sec-dir { height: auto; position: relative; display: block; padding: 5rem 0 3rem; }
+  .dir-wrap { height: auto; }
+  .dir-imgs { position: static; transform: none; max-height: none; }
+  .dir-img-base { max-height: none; object-position: left; }
   .dir-bio-col {
     position: relative; bottom: auto; top: auto; right: auto; width: 100%;
     background: var(--bg2); padding: 2.5rem 1.5rem;
+    opacity: 1; transform: none;
   }
+  .dir-img-base, .dir-img-top { opacity: 1; transform: none; }
   .specs-grid  { grid-template-columns: 1fr; }
   .posters-grid { grid-template-columns: 1fr; max-width: 380px; }
 }
@@ -548,27 +584,27 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </div>
 
-  <!-- ZONA: DIREÇÃO (sticky) + ZENITAL (sobe por cima) ──────────── -->
+  <!-- ZONA: DIREÇÃO (scroll-reveal) + ZENITAL (sobe por cima) ───── -->
   <div class="dir-zen-zone">
 
-  <!-- SOBRE A DIREÇÃO ────────────────────────────────────────────── -->
-  <section class="sec-dir" aria-label="Sobre a Direção">
-    <div class="dir-wrap">
-      <!-- foto → 0s | "VINI POFFO" overlay → 0.4s | bio → 1s -->
-      <div class="dir-imgs">
-        <img class="dir-img-base fade fade-dir" src="vinipoffo_efeitos.png" alt="Vini Poffo">
-        <img class="dir-img-top fade fade-dir" src="direcao_.png" alt="" aria-hidden="true">
+  <!-- DIREÇÃO — zona de scroll com sticky interno ─────────────────── -->
+  <div class="dir-scroll-zone" id="dirZone">
+    <section class="sec-dir" aria-label="Sobre a Direção">
+      <div class="dir-wrap">
+        <div class="dir-imgs">
+          <img class="dir-img-base" src="vinipoffo_efeitos.png" alt="Vini Poffo">
+          <img class="dir-img-top"  src="direcao_.png" alt="" aria-hidden="true">
+        </div>
+        <div class="dir-bio-col">
+          <p class="dir-bio"
+             data-pt="Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
+             data-en="Filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
+            Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.
+          </p>
+        </div>
       </div>
-      <!-- bio no canto direito, 20% do fundo -->
-      <div class="dir-bio-col fade fade-dir">
-        <p class="dir-bio"
-           data-pt="Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. Entre os destaques estão os curtas No Reflexo do Meu Nome e (Sub)urbana. No campo do videoclipe, teve trabalhos selecionados no Music Video Festival e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães."
-           data-en="Filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. Highlights include the short films No Reflexo do Meu Nome and (Sub)urbana. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs.">
-          Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.
-        </p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div><!-- /dir-scroll-zone -->
 
   <!-- FOTO ZENITAL — vídeo naoc_mae.mp4 ─────────────────────────── -->
   <section class="sec-zenital" aria-hidden="true">
@@ -643,7 +679,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
             <div class="crew-item"><span class="cr-role" data-pt="Figurino" data-en="Costume Design">Figurino</span><span class="cr-name">Ana Hiera</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Maquiagem e Cabelo" data-en="Makeup &amp; Hair">Maquiagem e Cabelo</span><span class="cr-name">Sui Domingues e Dani Machado</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Diretora de Elenco" data-en="Casting Director">Diretora de Elenco</span><span class="cr-name">Mar Dias Rosa</span></div>
-            <div class="crew-item"><span class="cr-role" data-pt="Foto Still" data-en="Unit Photography">Foto Still</span><span class="cr-name">Maria Eduarda Fernandes</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Foto Stills" data-en="Unit Photography">Foto Stills</span><span class="cr-name">Maria Eduarda Fernandes</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Making Of" data-en="Making Of">Making Of</span><span class="cr-name">Anita Poffo</span></div>
           </div>
           <div class="crew-div"></div>
@@ -756,33 +792,40 @@ document.getElementById('langBtn').addEventListener('click', function () {
   document.getElementById('tickerEN').classList.toggle('hidden', lang !== 'en');
 });
 
-/* ── INTERSECTION OBSERVER — one-shot p/ todos exceto .fade-dir ── */
+/* ── INTERSECTION OBSERVER (one-shot p/ .fade) ──────────────────── */
 var io = new IntersectionObserver(function (entries) {
   entries.forEach(function (e) {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade:not(.fade-dir)').forEach(function (el) { io.observe(el); });
+document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
 
-/* ── DIREÇÃO: observer reversível — 3 camadas em cascata ─────────
-   Entrando → foto (vinipoffo): 0s | "VINI POFFO" (direcao_): 0.4s | bio: 1s
-   Saindo   → todos: 0s (sai rápido, reseta pra próxima passagem)  */
-var dirIo = new IntersectionObserver(function (entries) {
-  entries.forEach(function (e) {
-    if (e.isIntersecting) {
-      var delay = '0s';
-      if      (e.target.classList.contains('dir-bio-col'))  delay = '1s';
-      else if (e.target.classList.contains('dir-img-top'))  delay = '0.4s';
-      /* dir-img-base (vinipoffo.png) fica em 0s */
-      e.target.style.transitionDelay = delay;
-      e.target.classList.add('in');
-    } else {
-      e.target.style.transitionDelay = '0s';
-      e.target.classList.remove('in');
-    }
+/* ── DIREÇÃO: scroll-reveal sequencial (igual nota da direção) ────
+   Rola a dir-scroll-zone → sec-dir fica presa → elementos aparecem
+   na sequência: foto → nome VINI POFFO → bio                       */
+var dirZone    = document.getElementById('dirZone');
+var dirImgBase = document.querySelector('.dir-img-base');
+var dirImgTop  = document.querySelector('.dir-img-top');
+var dirBioCol  = document.querySelector('.dir-bio-col');
+
+var dirSteps = [
+  { el: dirImgBase, t: 0.05 },
+  { el: dirImgTop,  t: 0.35 },
+  { el: dirBioCol,  t: 0.62 },
+];
+
+function updateDir() {
+  if (!dirZone) return;
+  var rect  = dirZone.getBoundingClientRect();
+  var total = dirZone.offsetHeight - window.innerHeight;
+  var p = Math.max(0, Math.min(1, -rect.top / total));
+  dirSteps.forEach(function (s) {
+    if (p >= s.t) { s.el.classList.add('show'); }
+    else          { s.el.classList.remove('show'); }
   });
-}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-dir').forEach(function (el) { dirIo.observe(el); });
+}
+window.addEventListener('scroll', updateDir, { passive: true });
+updateDir();
 
 /* ── SINOPSE + TRAILER SCROLL ───────────────────────────────────── */
 var stZone   = document.getElementById('stZone');
