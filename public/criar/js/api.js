@@ -128,6 +128,7 @@ var ProjectsAPI = (function () {
       director: 'Vini Poffo',
       type: 'curta-metragem',
       enabled: true,
+      bilingual: false,
       contact_email: 'projetos@vinipoffo.com',
       og_image: '',
       sections: {

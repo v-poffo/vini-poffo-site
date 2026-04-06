@@ -16,6 +16,7 @@
       "director": "Vini Poffo",
       "type": "curta-metragem",
       "enabled": true,
+      "bilingual": true,
       "contact_email": "projetos@vinipoffo.com",
       "og_image": "https://vinipoffo.com/naoalimenteoscaes/Nao%20Alimente%20os%20Caes_banner.png",
       "sections": {

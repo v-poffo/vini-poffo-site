@@ -386,6 +386,15 @@ window.ProjectBuilder = (function () {
     ].join('\n');
 
     /* ── nav ── */
+    var langBtnHtml = proj.bilingual === true
+      ? [
+          '  <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">',
+          '    <span class="lopt on" id="lPT">PT</span>',
+          '    <span class="lsep">|</span>',
+          '    <span class="lopt" id="lEN">EN</span>',
+          '  </button>',
+        ].join('\n')
+      : '';
     var nav = [
       '<!-- GRAIN -->',
       '<div class="grain" aria-hidden="true"></div>',
@@ -395,11 +404,7 @@ window.ProjectBuilder = (function () {
       '  <a href="' + siteUrl + '" class="nav-logo-link" target="_blank" rel="noopener noreferrer">',
       '    <img src="' + logoPath + '" alt="Vini Poffo" class="nav-logo-img">',
       '  </a>',
-      '  <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">',
-      '    <span class="lopt on" id="lPT">PT</span>',
-      '    <span class="lsep">|</span>',
-      '    <span class="lopt" id="lEN">EN</span>',
-      '  </button>',
+      langBtnHtml,
       '</nav>',
       '',
     ].join('\n');

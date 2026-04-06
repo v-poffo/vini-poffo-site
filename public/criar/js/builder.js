@@ -182,6 +182,7 @@
         frow('Contato / Email', finput('contact_email', proj.contact_email, 'email'))
       ),
       frow('OG Image URL', finput('og_image', proj.og_image, 'url')),
+      frow('Bilíngue (PT / EN)', '<label style="display:flex;align-items:center;gap:.5rem;cursor:pointer"><input type="checkbox" name="bilingual"' + (proj.bilingual ? ' checked' : '') + '> Mostrar botão de troca de idioma (PT ↔ EN)</label>'),
     ].join(''));
   }
 
@@ -623,6 +624,8 @@
     proj.director    = val('director');
     proj.contact_email = val('contact_email');
     proj.og_image    = val('og_image');
+    var bilingualEl  = container.querySelector('[name="bilingual"]');
+    proj.bilingual   = bilingualEl ? bilingualEl.checked : false;
 
     var sec = proj.sections;
 
