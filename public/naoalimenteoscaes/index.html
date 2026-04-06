@@ -264,29 +264,24 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 /* ─── ZONA DIREÇÃO + ZENITAL ─────────────────────────────────────── */
 .dir-zen-zone { position: relative; }
 
-/* scroll zone — mesma lógica da note-zone */
+/* scroll zone dá a altura de rolagem — sec-dir fica presa (sticky) */
 .dir-scroll-zone { position: relative; height: 250vh; }
 
-/* sec-dir fica presa durante o scroll da zone */
+/* sec-dir: tamanho natural do conteúdo, SEM height: 100vh */
 .sec-dir {
   background: var(--bg);
-  height: 100vh; overflow: hidden;
+  padding: 8rem 0 2rem;
+  overflow: hidden;
   position: sticky; top: 0; z-index: 1;
-  display: flex; align-items: center;
 }
-.dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; width: 100%; height: 100%; }
+.dir-wrap { max-width: 1400px; margin: 0 auto; position: relative; }
 
-/* foto alinhada à esquerda, contida na altura da viewport */
-.dir-imgs {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  left: 0;
-  display: block; max-width: 1050px;
-  max-height: 90vh;
-}
-.dir-img-base { display: block; width: 100%; height: auto; max-height: 90vh; object-fit: contain; object-position: left top; }
+/* foto alinhada à esquerda, tamanho natural */
+.dir-imgs { position: relative; display: block; max-width: 1050px; margin: 0; }
+.dir-img-base { display: block; width: 100%; height: auto; }
 .dir-img-top  { position: absolute; top: 0; left: 0; width: 100%; height: auto; }
 
-/* bio no canto direito, verticalmente centrada */
+/* bio no canto inferior direito, dentro do dir-wrap */
 .dir-bio-col {
   position: absolute; bottom: 20%; top: auto; right: 4%;
   width: 42%; padding: 0;
@@ -302,7 +297,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   text-shadow: 0 1px 16px rgba(5,13,15,1), 0 0 40px rgba(5,13,15,.9);
 }
 
-/* ─── DIREÇÃO: scroll-reveal — mesmo padrão da nota da direção ───── */
+/* ─── DIREÇÃO: scroll-reveal ─────────────────────────────────────── */
+/* elementos começam invisíveis e revelam conforme o scroll avança  */
 .dir-img-base {
   opacity: 0; transform: translateY(1.8rem);
   transition: opacity .75s var(--ease), transform .75s var(--ease);
@@ -315,12 +311,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   opacity: 0; transform: translateY(1.2rem);
   transition: opacity .75s var(--ease), transform .75s var(--ease);
 }
-.dir-img-base.show, .dir-img-top.show, .dir-bio-col.show {
-  opacity: 1; transform: translateY(-50%);
-}
-/* bio e nome não têm o translateY(-50%) centrado, só zeramos o reveal offset */
-.dir-img-top.show  { transform: none; }
-.dir-bio-col.show  { transform: none; }
+.dir-img-base.show { opacity: 1; transform: none; }
+.dir-img-top.show  { opacity: 1; transform: none; }
+.dir-bio-col.show  { opacity: 1; transform: none; }
 
 /* ─── FOTO ZENITAL — vídeo ───────────────────────────────────────── */
 .sec-zenital {
@@ -429,10 +422,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   .crew-grid { grid-template-columns: 1fr; }
   .crew-div  { display: none; }
   .dir-scroll-zone { height: auto; }
-  .sec-dir { height: auto; position: relative; display: block; padding: 5rem 0 3rem; }
-  .dir-wrap { height: auto; }
-  .dir-imgs { position: static; transform: none; max-height: none; }
-  .dir-img-base { max-height: none; object-position: left; }
+  .sec-dir { position: relative; padding: 5rem 0 3rem; }
+  .dir-imgs { position: static; }
   .dir-bio-col {
     position: relative; bottom: auto; top: auto; right: auto; width: 100%;
     background: var(--bg2); padding: 2.5rem 1.5rem;
@@ -584,10 +575,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </div>
 
-  <!-- ZONA: DIREÇÃO (scroll-reveal) + ZENITAL (sobe por cima) ───── -->
+  <!-- ZONA: DIREÇÃO (scroll-reveal compacto) + ZENITAL ───────────── -->
   <div class="dir-zen-zone">
 
-  <!-- DIREÇÃO — zona de scroll com sticky interno ─────────────────── -->
+  <!-- dir-scroll-zone dá o espaço de rolagem; sec-dir presa (sticky) -->
   <div class="dir-scroll-zone" id="dirZone">
     <section class="sec-dir" aria-label="Sobre a Direção">
       <div class="dir-wrap">
@@ -800,9 +791,9 @@ var io = new IntersectionObserver(function (entries) {
 }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
 
-/* ── DIREÇÃO: scroll-reveal sequencial (igual nota da direção) ────
-   Rola a dir-scroll-zone → sec-dir fica presa → elementos aparecem
-   na sequência: foto → nome VINI POFFO → bio                       */
+/* ── DIREÇÃO: scroll-reveal sequencial ──────────────────────────────
+   Rola a dir-scroll-zone → sec-dir fica presa → revelação em ordem:
+   foto (t=5%) → nome VINI POFFO (t=35%) → bio (t=62%)              */
 var dirZone    = document.getElementById('dirZone');
 var dirImgBase = document.querySelector('.dir-img-base');
 var dirImgTop  = document.querySelector('.dir-img-top');
