@@ -1,0 +1,146 @@
+{
+  "projects": [
+    {
+      "id": "naoalimenteoscaes",
+      "slug": "naoalimenteoscaes",
+      "title_pt": "Não Alimente os Cães",
+      "title_en": "Don't Feed the Dogs",
+      "year": 2026,
+      "duration": "24 MIN",
+      "country": "Brasil",
+      "country_en": "Brazil",
+      "format": "DCP &amp; ProRes",
+      "aspect_ratio": "1.85:1",
+      "genre": "Drama / Fantasia",
+      "genre_en": "Drama / Fantasy",
+      "director": "Vini Poffo",
+      "type": "curta-metragem",
+      "enabled": true,
+      "contact_email": "projetos@vinipoffo.com",
+      "og_image": "https://vinipoffo.com/naoalimenteoscaes/Nao%20Alimente%20os%20Caes_banner.png",
+      "sections": {
+        "hero": {
+          "enabled": true,
+          "video": "naoc_vinipoffo.mp4",
+          "title_pt": "NAOC_TITULO_TEXTURA_4K_V2.png",
+          "title_en": "DFTD_TITULO_TEXTURA_4K_V2.png",
+          "label_pt": "Um filme de Vini Poffo",
+          "label_en": "A film by Vini Poffo",
+          "ticker_pt": "Não Alimente os Cães  ·  2026  ·  24 Min  ·  Brasil  ·  Drama / Fantasia  ·  Direção Vini Poffo  ·  Roteiro Egon Zek        ",
+          "ticker_en": "Don't Feed the Dogs  ·  2026  ·  24 Min  ·  Brazil  ·  Drama / Fantasy  ·  Direction Vini Poffo  ·  Screenplay Egon Zek        "
+        },
+        "synopsis": {
+          "enabled": true,
+          "lines_pt": [
+            "Num futuro próximo,",
+            "em uma vila quase deserta à beira-mar,",
+            "uma família sobrevive da pesca, do artesanato",
+            "e de uma persistente ânsia de viver.",
+            "Uma luz vibrante surge no horizonte,",
+            "como se tentasse lhes dizer algo."
+          ],
+          "lines_en": [
+            "In the near future,",
+            "in an almost deserted seaside village,",
+            "a family endures through silence,",
+            "daily tensions, and the will to keep living.",
+            "On the horizon, a mysterious light emerges",
+            "as if trying to tell them something."
+          ]
+        },
+        "trailer": {
+          "enabled": true,
+          "url": "https://player.vimeo.com/video/1177970158?color=00FF5E&title=0&byline=0&portrait=0"
+        },
+        "gallery": {
+          "enabled": true,
+          "images": [
+            { "src": "NAOC_1.png", "alt_pt": "Filho com óculos VR, luz vermelha no olho", "alt_en": "Son with VR goggles, red light on eye" },
+            { "src": "print%20cena%20-NAOC_2.png", "alt_pt": "Pai no depósito, luz azul", "alt_en": "Father in storage, blue light" },
+            { "src": "print%20cena%20-%20NAOC_3.png", "alt_pt": "Mãe e Filha no altar com velas", "alt_en": "Mother and Daughter at altar with candles" },
+            { "src": "print%20cena%20-NAOC_4.png", "alt_pt": "Filho submerso", "alt_en": "Son submerged" },
+            { "src": "NAOC_5.png", "alt_pt": "Mãe de perfil na mata", "alt_en": "Mother in profile at the forest" },
+            { "src": "NAOC_6.png", "alt_pt": "Família na mesa de jantar", "alt_en": "Family at the dinner table" },
+            { "src": "NAOC_7.png", "alt_pt": "Mãe deitada, zenital", "alt_en": "Mother lying down, zenithal" }
+          ]
+        },
+        "director_note": {
+          "enabled": true,
+          "quote_pt": ["O mar não é apenas paisagem —", "ele pede alguma coisa."],
+          "quote_en": ["The sea is not just landscape —", "it asks something of you."],
+          "bio_pt": "Não Alimente os Cães nasce desse incômodo e do desejo de filmar a família como um território de tensões, cuidado e sobrevivência. As personagens não têm nomes porque o interesse está em olhar para esses papéis que muitas pessoas já habitaram: o pai que sustenta, a mãe que é vínculo, os filhos que tentam existir à sua própria maneira.\n\nA luz que surge do mar provoca escuta, dúvida, movimento. O filme se interessa em construir e observar os gestos, os silêncios e as ausências, e que permaneça no corpo de quem assiste como uma pergunta aberta…",
+          "bio_en": "Don't Feed the Dogs is born from that unease, and from a desire to film the family as a territory of tension, care, and survival. The characters have no names because what matters is looking at the roles that many people have inhabited: the father who provides, the mother who holds the bonds, the children trying to exist in their own way.\n\nThe light that rises from the sea provokes listening, doubt, movement. The film is interested in building and observing gestures, silences, and absences — and in what remains in the body of the viewer as an open question…",
+          "signature": "— Vini Poffo",
+          "video": "naoc_.mp4"
+        },
+        "director_section": {
+          "enabled": true,
+          "image_base": "vinipoffo_efeitos.png",
+          "image_top": "direcao_.png",
+          "bio_pt": "Cineasta, diretora criativa e artista. Seu trabalho transita entre cinema e videoclipes, com uma abordagem artesanal, simbólica e política, criando imagens atravessadas por afeto, memória e território. Foi premiada pela Funarte no Prêmio RespirArte e soma mais de sete prêmios em festivais, incluindo Direção Revelação e Melhor Filme. Seus filmes já foram exibidos em mais de 60 festivais no Brasil e no exterior. No campo do videoclipe, teve trabalhos selecionados no MVF e premiados como Melhor Videoclipe no Festival de Cinema de Brasília. Em 2026, lança seu mais recente filme, Não Alimente os Cães.",
+          "bio_en": "Filmmaker, creative director, and artist. Her work moves between cinema and music videos with a handcrafted, symbolic, and political approach, creating images rooted in affect, memory, and territory. She was awarded by Funarte at the RespirArte Prize and has received over seven festival awards, including Best New Director and Best Film. Her films have screened at more than 60 festivals in Brazil and internationally. In the music video field, her work has been selected at the Music Video Festival and awarded Best Music Video at the Festival de Cinema de Brasília. In 2026, she releases her latest film, Don't Feed the Dogs."
+        },
+        "zenital": {
+          "enabled": true,
+          "video": "naoc_mae.mp4",
+          "label_pt": "Drama / Fantasia · Brasil · 2026",
+          "label_en": "Drama / Fantasy · Brazil · 2026"
+        },
+        "posters": {
+          "enabled": true,
+          "images": [
+            { "src_pt": "Nao%20Alimente%20os%20Caes.png", "src_en": "Dont%20feed%20the%20dogs.png", "alt_pt": "Não Alimente os Cães", "alt_en": "Don't Feed the Dogs" },
+            { "src": "NAOC_capa_2.png", "alt_pt": "Poster com elenco", "alt_en": "Poster with cast" }
+          ]
+        },
+        "cast": {
+          "enabled": true,
+          "members": [
+            { "role_pt": "Filha", "role_en": "Daughter", "name": "Anna Luiza Maciel" },
+            { "role_pt": "Pai", "role_en": "Father", "name": "Leonardo Goulart" },
+            { "role_pt": "Filho", "role_en": "Son", "name": "Lucas Bomfim" },
+            { "role_pt": "Mãe", "role_en": "Mother", "name": "Saravy" }
+          ]
+        },
+        "crew": {
+          "enabled": true,
+          "columns": [
+            [
+              { "role_pt": "Direção", "role_en": "Direction", "name": "Vini Poffo" },
+              { "role_pt": "Roteiro", "role_en": "Screenplay", "name": "Egon Zek" },
+              { "role_pt": "Assistência de Direção", "role_en": "Assistant Direction", "name": "Mar Dias Rosa" },
+              { "role_pt": "Direção de Fotografia", "role_en": "Cinematography", "name": "Jaqueline Kogus e Isa Lanave" },
+              { "role_pt": "1º Assistente de Câmera", "role_en": "1st Camera Asst.", "name": "Nica Chaves" },
+              { "role_pt": "Direção de Arte", "role_en": "Production Design", "name": "Matheus De Luca" },
+              { "role_pt": "Figurino", "role_en": "Costume Design", "name": "Ana Hiera" },
+              { "role_pt": "Maquiagem e Cabelo", "role_en": "Makeup &amp; Hair", "name": "Sui Domingues e Dani Machado" },
+              { "role_pt": "Diretora de Elenco", "role_en": "Casting Director", "name": "Mar Dias Rosa" },
+              { "role_pt": "Foto Stills", "role_en": "Unit Photography", "name": "Maria Eduarda Fernandes" },
+              { "role_pt": "Making Of", "role_en": "Making Of", "name": "Anita Poffo" }
+            ],
+            [
+              { "role_pt": "Direção de Som", "role_en": "Sound Direction", "name": "Gabu Mota" },
+              { "role_pt": "Trilha Sonora", "role_en": "Original Score", "name": "Yma & Fernando Rischbiter" },
+              { "role_pt": "Mixagem", "role_en": "Sound Mix", "name": "Gabu Mota" },
+              { "role_pt": "Montagem e Finalização", "role_en": "Editing &amp; Post", "name": "Natália Farias" },
+              { "role_pt": "Assistente de Edição", "role_en": "Editing Asst.", "name": "Lucas Richard" },
+              { "role_pt": "VFX e Cor", "role_en": "VFX &amp; Color", "name": "Diego Lomac" },
+              { "role_pt": "Produção Executiva", "role_en": "Executive Production", "name": "Luana Skibinski" },
+              { "role_pt": "Direção de Produção", "role_en": "Production Management", "name": "Tati Tanaka" },
+              { "role_pt": "Design", "role_en": "Design", "name": "Mapê Santos" },
+              { "role_pt": "Acessibilidade", "role_en": "Accessibility", "name": "Núbia Amorim" }
+            ]
+          ]
+        },
+        "specs": {
+          "enabled": true,
+          "language_pt": "Português Brasileiro",
+          "language_en": "Brazilian Portuguese",
+          "subtitles": "PT, EN, ES",
+          "rating_pt": "12 anos",
+          "rating_en": "12+"
+        }
+      }
+    }
+  ]
+}

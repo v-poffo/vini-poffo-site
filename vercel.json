@@ -4,6 +4,16 @@
       "source": "/naoalimenteoscaes",
       "destination": "/naoalimenteoscaes/",
       "permanent": true
+    },
+    {
+      "source": "/projetos/naoalimenteoscaes",
+      "destination": "/projetos/naoalimenteoscaes/",
+      "permanent": true
+    },
+    {
+      "source": "/criar",
+      "destination": "/criar/",
+      "permanent": true
     }
   ]
 }
