@@ -59,8 +59,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 /* ─── NAV ─────────────────────────────────────────────────────────── */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  position: absolute; top: 0; left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; padding: 1.5rem 2.5rem;
+  background: linear-gradient(to bottom, rgba(5,13,15,.55) 0%, transparent 100%);
 }
 .nav-logo-link {
   position: absolute; left: 50%; transform: translateX(-50%);
@@ -83,6 +84,40 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .lopt { opacity: .35; transition: opacity .2s; }
 .lopt.on { opacity: 1; }
 .lsep { opacity: .3; margin: 0 .15rem; }
+
+/* ─── HAMBURGER ──────────────────────────────────────────────────── */
+.hamburger-btn {
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+  z-index: 600; width: 32px; height: 32px; flex-shrink: 0;
+}
+.hamburger-btn span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--text); transition: all .3s var(--ease);
+  transform-origin: center;
+}
+.hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ─── NAV OVERLAY ────────────────────────────────────────────────── */
+.nav-overlay {
+  position: fixed; inset: 0; z-index: 550;
+  background: rgba(5,13,15,.97);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2.8rem;
+  list-style: none; margin: 0; padding: 0;
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-overlay li a {
+  font-family: "noka", serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  color: var(--white); letter-spacing: .06em;
+  text-transform: uppercase; transition: color .25s;
+}
+.nav-overlay li a:hover { color: var(--green); }
 
 /* ─── FIXED VIDEO HERO ────────────────────────────────────────────── */
 .hero-vid { position: fixed; inset: 0; z-index: 0; }
@@ -450,7 +485,10 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="https://www.vinipoffo.com" class="nav-logo-link" target="_blank" rel="noopener noreferrer">
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://www.vinipoffo.com" class="nav-logo-link">
     <img src="../assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-img">
   </a>
   <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">
@@ -459,6 +497,13 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     <span class="lopt" id="lEN">EN</span>
   </button>
 </nav>
+
+<!-- NAV OVERLAY -->
+<ul class="nav-overlay" id="navOverlay">
+  <li><a href="https://vinipoffo.com/">Início.</a></li>
+  <li><a href="https://vinipoffo.com/projetos.html">Projetos.</a></li>
+  <li><a href="https://vinipoffo.com/#about">Sobre.</a></li>
+</ul>
 
 <!-- FIXED VIDEO HERO -->
 <div class="hero-vid" aria-hidden="true">
@@ -676,7 +721,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
           <div class="crew-div"></div>
           <div class="fade d2">
             <div class="crew-item"><span class="cr-role" data-pt="Direção de Som" data-en="Sound Direction">Direção de Som</span><span class="cr-name">Gabu Mota</span></div>
-            <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">Yma & Fernando Rischbiter</span></div>
+            <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">Yma &amp; Fernando Rischbiter</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Mixagem" data-en="Sound Mix">Mixagem</span><span class="cr-name">Gabu Mota</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Montagem e Finalização" data-en="Editing &amp; Post">Montagem e Finalização</span><span class="cr-name">Natália Farias</span></div>
             <div class="crew-item"><span class="cr-role" data-pt="Assistente de Edição" data-en="Editing Asst.">Assistente de Edição</span><span class="cr-name">Lucas Richard</span></div>
@@ -782,6 +827,22 @@ document.getElementById('langBtn').addEventListener('click', function () {
   document.getElementById('tickerPT').classList.toggle('hidden', lang !== 'pt');
   document.getElementById('tickerEN').classList.toggle('hidden', lang !== 'en');
 });
+
+/* ── HAMBURGER ──────────────────────────────────────────────────── */
+var hamburgerBtn = document.getElementById('hamburgerBtn');
+var navOverlay   = document.getElementById('navOverlay');
+if (hamburgerBtn && navOverlay) {
+  hamburgerBtn.addEventListener('click', function () {
+    hamburgerBtn.classList.toggle('open');
+    navOverlay.classList.toggle('open');
+  });
+  navOverlay.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' || e.target === navOverlay) {
+      hamburgerBtn.classList.remove('open');
+      navOverlay.classList.remove('open');
+    }
+  });
+}
 
 /* ── INTERSECTION OBSERVER (one-shot p/ .fade) ──────────────────── */
 var io = new IntersectionObserver(function (entries) {
