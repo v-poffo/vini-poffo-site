@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tem Feito uns Dias Esquisitos — Press Kit</title>
+<meta name="description" content="Press kit do curta-metragem Tem Feito uns Dias Esquisitos, direção Vini Poffo.">
+<meta property="og:title" content="Tem Feito uns Dias Esquisitos">
+<meta property="og:image" content="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/Tem%20feito%20uns%20dias%20esquisitos/Tem%20feito%20uns%20dias%20esquisitos%20-%20cartaz.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,700;1,400&family=Rock+Salt&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   Tem Feito uns Dias Esquisitos — Press Kit
+   public/temfeitounsdias/index.html
+
+   FILES TO ADD TO THIS FOLDER (public/temfeitounsdias/):
+   ─ tfde_portfolio_video.mp4       hero + nota da direção bg
+   ─ TFDE_titulo.png                title card (black bg, mix-blend: screen)
+   ─ TFDE_1.jpg … TFDE_8.jpg       film stills (horizontal gallery)
+   ─ elenco_marcelo.jpg             cast photo — Marcelo
+   ─ elenco_2.jpg … elenco_5.jpg   other cast photos
+   (poster is loaded from raw GitHub URL — no upload needed)
+   ═══════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:    #0a0a0a;
+  --bg2:   #111111;
+  --pink:  #F202BE;
+  --blue:  #003FA3;
+  --mint:  #1FFFC7;
+  --text:  #c8c8c8;
+  --dim:   #555;
+  --white: #f0f0f0;
+  --ease:  cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: auto; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Epilogue", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; }
+a   { color: inherit; text-decoration: none; }
+button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
+.hidden { display: none !important; }
+
+/* ─── GRAIN ───────────────────────────────────────────────────────── */
+.grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay; opacity: .28; pointer-events: none; z-index: 998;
+  animation: grain 6s steps(7) infinite;
+}
+@keyframes grain {
+  0%,100%{transform:translate(0,0)}14%{transform:translate(-2%,-3%)}28%{transform:translate(3%,2%)}42%{transform:translate(-1%,4%)}56%{transform:translate(2%,-2%)}70%{transform:translate(-3%,1%)}84%{transform:translate(1%,-4%)}
+}
+
+/* ─── NAV ─────────────────────────────────────────────────────────── */
+.nav {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; padding: 1.5rem 2.5rem;
+  background: linear-gradient(to bottom, rgba(10,10,10,.6) 0%, transparent 100%);
+}
+.nav-logo-link {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; transition: opacity .2s;
+}
+.nav-logo-link:hover { opacity: .7; }
+.nav-logo-img { height: 22px; width: auto; filter: brightness(0) invert(1); }
+.lang-btn {
+  margin-left: auto; display: flex; align-items: center; gap: .2rem;
+  border: 1px solid var(--mint); border-radius: 2px;
+  padding: .28rem .65rem; font-size: .66rem; letter-spacing: .12em;
+  color: var(--mint); transition: background .2s;
+  font-family: "Epilogue", sans-serif;
+}
+.lang-btn:hover { background: rgba(31,255,199,.06); }
+.lopt { opacity: .35; transition: opacity .2s; }
+.lopt.on { opacity: 1; }
+.lsep { opacity: .3; margin: 0 .15rem; }
+
+/* ─── HAMBURGER ──────────────────────────────────────────────────── */
+.hamburger-btn {
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+  z-index: 600; width: 32px; height: 32px; flex-shrink: 0;
+}
+.hamburger-btn span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--text); transition: all .3s var(--ease);
+  transform-origin: center;
+}
+.hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ─── NAV OVERLAY ────────────────────────────────────────────────── */
+.nav-overlay {
+  position: fixed; top: 70px; right: 0; z-index: 550;
+  width: 200px;
+  background: rgba(10,10,10,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; gap: .5rem;
+  list-style: none; margin: 0; padding: 1.5rem;
+  border-left: 1px solid rgba(31,255,199,.14);
+  border-bottom: 1px solid rgba(31,255,199,.14);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s var(--ease);
+}
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-overlay li a {
+  font-family: "Epilogue", sans-serif; font-size: .95rem;
+  color: var(--white); letter-spacing: .04em;
+  transition: color .25s; display: block; padding: .3rem 0;
+}
+.nav-overlay li a:hover { color: var(--mint); }
+
+/* ─── FIXED VIDEO HERO ────────────────────────────────────────────── */
+.hero-vid { position: fixed; inset: 0; z-index: 0; }
+.hero-vid video { width: 100%; height: 100%; object-fit: cover; }
+.hero-vid::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(10,10,10,.15) 0%, rgba(10,10,10,0) 25%,
+    rgba(10,10,10,.5) 72%, rgba(10,10,10,1) 100%);
+}
+
+/* ─── HERO OVERLAY ────────────────────────────────────────────────── */
+.hero-ov {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  pointer-events: none; will-change: opacity, transform;
+}
+.hero-center {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  opacity: 0; transform: translateY(2.5rem);
+  transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+}
+.hero-center.in { opacity: 1; transform: none; }
+.hero-title-img {
+  width: auto; max-width: 82vw; max-height: 42vh; object-fit: contain;
+  mix-blend-mode: screen;
+}
+.hero-meta {
+  margin-top: 1.5rem;
+  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; justify-content: center;
+  font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim);
+}
+.hero-meta .s { opacity: .3; }
+
+/* ─── TICKER ─────────────────────────────────────────────────────── */
+.ticker-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  border-top: 1px solid rgba(31,255,199,.12);
+  overflow: hidden; padding: .55rem 0;
+}
+.ticker-track {
+  display: flex; white-space: nowrap;
+  animation: tick 32s linear infinite;
+}
+.ticker-track span {
+  font-family: "Rock Salt", cursive; font-size: .55rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--mint);
+}
+@keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+/* ─── MAIN CONTENT ────────────────────────────────────────────────── */
+#content { position: relative; z-index: 20; margin-top: 100vh; }
+
+/* ─── SCROLL ANIMATIONS ───────────────────────────────────────────── */
+.fade {
+  opacity: 0; transform: translateY(2.5rem) scale(.97);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+}
+.fade.in { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .22s; }
+.d3 { transition-delay: .38s; }
+
+/* ─── SHARED ──────────────────────────────────────────────────────── */
+.wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+.label {
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--mint); margin-bottom: 2.2rem;
+}
+
+/* ─── SINOPSE + TRAILER ───────────────────────────────────────────── */
+.st-zone { height: 360vh; }
+.st-sticky {
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden; background: var(--bg);
+  display: flex; align-items: center;
+}
+.sin-ov {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6rem 2.5rem; pointer-events: none;
+}
+.sin-inner { max-width: 760px; text-align: center; }
+.sin-lbl {
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--mint); margin-bottom: 2rem;
+}
+.sin-line {
+  font-family: "Epilogue", sans-serif; font-weight: 400;
+  font-size: clamp(1.3rem, 2.2vw, 2rem); line-height: 1.6; color: var(--white);
+  display: block; will-change: transform, opacity;
+}
+.trl-ov {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.trl-box {
+  width: 100vw; height: 100vh;
+  transform-origin: center; transform: scale(.22); opacity: 0;
+  will-change: transform, opacity; pointer-events: auto;
+}
+.trl-box iframe {
+  width: 100%; height: 100%; display: block;
+  border: 1px solid rgba(31,255,199,.12);
+}
+
+/* ─── GALLERY ─────────────────────────────────────────────────────── */
+.sec-gallery { background: var(--bg); padding: 5rem 0 4rem; overflow: hidden; }
+.gal-label   { padding: 0 2.5rem; margin-bottom: 1.8rem; }
+.gal-scroll  {
+  overflow-x: scroll; overflow-y: hidden;
+  cursor: grab; scrollbar-width: none; user-select: none;
+}
+.gal-scroll::-webkit-scrollbar { display: none; }
+.gal-scroll.drag { cursor: grabbing; }
+.gal-track {
+  display: flex; gap: 1rem; padding: .5rem 2.5rem 1.5rem;
+  width: max-content; align-items: center;
+}
+.gi { flex: 0 0 auto; height: 320px; overflow: hidden; }
+.gi img { height: 100%; width: auto; max-width: none; display: block; pointer-events: none; }
+.gal-arrows { display: flex; justify-content: space-between; padding: 1rem 2.5rem 0; }
+.garr {
+  display: flex; align-items: center; gap: .4rem;
+  font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--mint); opacity: .4; transition: opacity .2s;
+}
+.garr:hover { opacity: .9; }
+.garr svg { width: 20px; height: 20px; stroke: var(--mint); stroke-width: 1.5; fill: none; }
+
+/* ─── NOTA DA DIREÇÃO ────────────────────────────────────────────── */
+.note-zone { height: 280vh; }
+.note-sticky {
+  position: sticky; top: 0; height: 100vh;
+  overflow: hidden; display: flex; align-items: flex-end;
+}
+.note-vid { position: absolute; inset: 0; z-index: 0; }
+.note-vid video { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.note-vid::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(10,10,10,.85) 0%, rgba(10,10,10,.35) 100%);
+}
+.note-inner {
+  position: relative; z-index: 1;
+  max-width: 680px; padding: 0 3rem 6vh 3rem;
+}
+.note-quote {
+  font-family: "Rock Salt", cursive;
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  line-height: 1.4; color: transparent;
+  -webkit-text-stroke: 1.2px var(--white);
+  letter-spacing: .01em; margin-bottom: 2.4rem;
+  filter: drop-shadow(0 2px 18px rgba(10,10,10,.95)) drop-shadow(0 0 40px rgba(10,10,10,.8));
+}
+.nq-l0, .nq-l1 {
+  display: block;
+  opacity: 0; transform: translateY(1.4rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+}
+.nq-l1 { transition-delay: .14s; }
+.nq-l0.show, .nq-l1.show { opacity: 1; transform: none; }
+#noteLbl {
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--mint); margin-bottom: 1.8rem;
+  opacity: 0; transform: translateY(.8rem);
+  transition: opacity .6s var(--ease), transform .6s var(--ease);
+}
+#noteLbl.show { opacity: 1; transform: none; }
+.np-0, .np-1, .np-2 {
+  font-weight: 400; line-height: 1.85; color: var(--white);
+  margin-bottom: 1.4rem;
+  opacity: 0; transform: translateY(1.2rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
+  text-shadow: 0 1px 16px rgba(10,10,10,1), 0 0 40px rgba(10,10,10,.9);
+}
+.np-0, .np-1 { font-size: clamp(.88rem, 1.25vw, 1rem); }
+.np-2 { color: var(--mint) !important; font-style: italic; margin-top: 1.2rem; }
+.np-0.show, .np-1.show, .np-2.show { opacity: 1; transform: none; }
+
+/* ─── PÔSTER ─────────────────────────────────────────────────────── */
+.sec-poster { background: var(--bg); padding: 8rem 0; }
+.poster-center { display: flex; flex-direction: column; align-items: center; }
+.poster-wrap { max-width: 440px; width: 88%; }
+.poster-wrap img { width: 100%; display: block; border: 1px solid rgba(255,255,255,.05); }
+.poster-link {
+  margin-top: 1.2rem;
+  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--mint); opacity: .45; transition: opacity .2s;
+  display: flex; align-items: center; gap: .4rem;
+}
+.poster-link:hover { opacity: 1; }
+.poster-link svg { width: 13px; height: 13px; stroke: var(--mint); fill: none; stroke-width: 1.8; }
+
+/* ─── ELENCO (POLAROID) ──────────────────────────────────────────── */
+.sec-cast { background: var(--bg2); padding: 7rem 0; }
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem; align-items: start;
+}
+.polaroid {
+  background: #f2ede8;
+  padding: .65rem .65rem 1.9rem;
+  box-shadow: 0 6px 28px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.5);
+  transform: rotate(var(--rot, 0deg));
+  transition: transform .35s var(--ease), box-shadow .35s;
+  cursor: default;
+}
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.04) translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0,0,0,.85);
+}
+.polaroid:nth-child(1) { --rot: -1.8deg; }
+.polaroid:nth-child(2) { --rot:  1.4deg; }
+.polaroid:nth-child(3) { --rot: -0.9deg; }
+.polaroid:nth-child(4) { --rot:  2.1deg; }
+.polaroid:nth-child(5) { --rot: -1.2deg; }
+.pol-photo {
+  width: 100%; aspect-ratio: 3/4; overflow: hidden;
+  background: #2a2a2a; margin-bottom: .65rem;
+}
+.pol-photo img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.pol-char {
+  font-family: "Rock Salt", cursive;
+  font-size: clamp(.45rem, 1.1vw, .68rem);
+  color: #111; letter-spacing: .01em; line-height: 1.35;
+  margin-bottom: .3rem; text-align: center;
+}
+.pol-actor {
+  font-family: "Epilogue", sans-serif; font-weight: 500;
+  font-size: clamp(.55rem, .9vw, .68rem);
+  color: #444; letter-spacing: .07em; text-transform: uppercase; text-align: center;
+}
+
+/* ─── CRÉDITOS / EQUIPE ──────────────────────────────────────────── */
+.sec-crew { background: var(--bg); padding: 7rem 0; }
+.crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
+.crew-div  { background: rgba(255,255,255,.05); }
+.crew-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+.cr-role { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .16rem; }
+.cr-name { font-size: .87rem; color: var(--white); transition: color .25s, text-shadow .25s; }
+.crew-item:hover .cr-name { color: var(--mint); text-shadow: 0 0 12px rgba(31,255,199,.5), 0 0 24px rgba(31,255,199,.22); }
+
+/* ─── FICHA TÉCNICA ──────────────────────────────────────────────── */
+.sec-specs { background: var(--bg2); padding: 7rem 0; }
+.specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 720px; }
+.spec-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
+.sp-val { font-size: .87rem; color: var(--white); }
+
+/* ─── CONTATO ────────────────────────────────────────────────────── */
+.sec-contact { padding: 9rem 0; text-align: center; background: var(--bg); }
+.contact-lbl { font-size: .56rem; letter-spacing: .26em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.4rem; }
+.contact-email {
+  font-family: "Rock Salt", cursive;
+  font-size: clamp(.9rem, 1.6vw, 1.3rem);
+  color: var(--white); transition: color .25s, text-shadow .25s;
+}
+.contact-email:hover { color: var(--mint); text-shadow: 0 0 18px rgba(31,255,199,.55), 0 0 40px rgba(31,255,199,.25); }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.6rem 2.5rem; border-top: 1px solid rgba(255,255,255,.06);
+  background: var(--bg); font-size: .6rem; letter-spacing: .1em; color: var(--dim);
+}
+.footer-title { font-family: "Rock Salt", cursive; color: var(--mint); font-size: .55rem; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media (max-width: 1000px) { .cast-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) {
+  .cast-grid  { grid-template-columns: repeat(2, 1fr); }
+  .crew-grid  { grid-template-columns: 1fr; }
+  .crew-div   { display: none; }
+  .specs-grid { grid-template-columns: 1fr; }
+  .note-inner { padding: 0 1.5rem 5vh; }
+}
+@media (max-width: 500px) {
+  .cast-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .wrap { padding: 0 1.5rem; }
+  .gi   { height: 220px; }
+  .footer { padding: 1.4rem 1.5rem; }
+  .polaroid { padding: .5rem .5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="https://www.vinipoffo.com" class="nav-logo-link">
+    <img src="../assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-img">
+  </a>
+  <button class="lang-btn" id="langBtn" aria-label="Trocar idioma">
+    <span class="lopt on" id="lPT">PT</span>
+    <span class="lsep">|</span>
+    <span class="lopt" id="lEN">EN</span>
+  </button>
+</nav>
+
+<ul class="nav-overlay" id="navOverlay">
+  <li><a href="https://vinipoffo.com/">Início.</a></li>
+  <li><a href="https://vinipoffo.com/projetos.html">Projetos.</a></li>
+  <li><a href="https://vinipoffo.com/#about">Sobre.</a></li>
+</ul>
+
+<div class="hero-vid" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="tfde_portfolio_video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="hero-ov" id="heroOv" aria-hidden="true">
+  <div class="hero-center" id="heroCenter">
+    <img class="hero-title-img" src="TFDE_titulo.png" alt="Tem Feito uns Dias Esquisitos">
+    <div class="hero-meta">
+      <span>Brasil</span><span class="s">·</span>
+      <span data-pt="Drama" data-en="Drama">Drama</span><span class="s">·</span>
+      <span data-pt="Slam · Luto · Amizade" data-en="Slam · Grief · Friendship">Slam · Luto · Amizade</span>
+    </div>
+  </div>
+  <div class="ticker-bar">
+    <div class="ticker-track lang-pt" id="tickerPT">
+      <span>Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam&nbsp;&nbsp;·&nbsp;&nbsp;Luto&nbsp;&nbsp;·&nbsp;&nbsp;Amizade&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam&nbsp;&nbsp;·&nbsp;&nbsp;Luto&nbsp;&nbsp;·&nbsp;&nbsp;Amizade&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+    <div class="ticker-track lang-en hidden" id="tickerEN">
+      <span>Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam Poetry&nbsp;&nbsp;·&nbsp;&nbsp;Grief&nbsp;&nbsp;·&nbsp;&nbsp;Friendship&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam Poetry&nbsp;&nbsp;·&nbsp;&nbsp;Grief&nbsp;&nbsp;·&nbsp;&nbsp;Friendship&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+</div>
+
+<main id="content">
+
+  <div class="st-zone" id="stZone">
+    <div class="st-sticky" id="stSticky">
+      <div class="sin-ov" id="sinOv">
+        <div class="sin-inner">
+          <p class="sin-lbl" data-pt="Sinopse" data-en="Synopsis">Sinopse</p>
+          <span class="sin-line" data-pt="Ninguém ensina a viver o luto." data-en="Nobody teaches you how to grieve.">Ninguém ensina a viver o luto.</span>
+          <span class="sin-line" data-pt="Marcelo tenta, entre os amigos," data-en="Marcelo tries. Between his friends,">Marcelo tenta, entre os amigos,</span>
+          <span class="sin-line" data-pt="as noites confusas" data-en="the confusing nights">as noites confusas</span>
+          <span class="sin-line" data-pt="e o palco do slam," data-en="and the slam stage,">e o palco do slam,</span>
+          <span class="sin-line" data-pt="ele atravessa uns dias esquisitos." data-en="he crosses through some strange days.">ele atravessa uns dias esquisitos.</span>
+        </div>
+      </div>
+      <div class="trl-ov">
+        <div class="trl-box" id="trlBox">
+          <iframe id="trlFrame" src=""
+            data-src="https://player.vimeo.com/video/1179396770?color=1FFFC7&title=0&byline=0&portrait=0"
+            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+            title="Trailer — Tem Feito uns Dias Esquisitos"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec-gallery">
+    <p class="label gal-label fade" data-pt="Fotos" data-en="Film Stills">Fotos</p>
+    <div class="gal-scroll" id="gScroll">
+      <div class="gal-track" id="gTrack">
+        <div class="gi"><img src="TFDE_1.jpg" alt="cena 1"></div>
+        <div class="gi"><img src="TFDE_2.jpg" alt="cena 2"></div>
+        <div class="gi"><img src="TFDE_3.jpg" alt="cena 3"></div>
+        <div class="gi"><img src="TFDE_4.jpg" alt="cena 4"></div>
+        <div class="gi"><img src="TFDE_5.jpg" alt="cena 5"></div>
+        <div class="gi"><img src="TFDE_6.jpg" alt="cena 6"></div>
+        <div class="gi"><img src="TFDE_7.jpg" alt="cena 7"></div>
+        <div class="gi"><img src="TFDE_8.jpg" alt="cena 8"></div>
+      </div>
+    </div>
+    <div class="gal-arrows">
+      <button class="garr" id="gLeft" aria-label="Voltar"><svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg></button>
+      <button class="garr" id="gRight" aria-label="Avançar"><svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg></button>
+    </div>
+  </section>
+
+  <div class="note-zone" id="noteZone" aria-label="Nota da Direção">
+    <div class="note-sticky">
+      <div class="note-vid" aria-hidden="true">
+        <video autoplay muted loop playsinline preload="none">
+          <source src="tfde_portfolio_video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="note-inner">
+        <blockquote class="note-quote">
+          <span class="nq-l0" data-pt="Uns dias esquisitos" data-en="Some strange days">Uns dias esquisitos</span>
+          <span class="nq-l1" data-pt="não são um estado — são um território." data-en="are not a feeling — they are a place.">não são um estado — são um território.</span>
+        </blockquote>
+        <p id="noteLbl" data-pt="Nota da Direção" data-en="Director's Note">Nota da Direção</p>
+        <div class="note-text">
+          <p class="np-0"
+             data-pt="[NOTA DA DIREÇÃO — preencha aqui com seu texto sobre o filme]"
+             data-en="[DIRECTOR'S NOTE — fill in here]">
+            [NOTA DA DIREÇÃO — preencha aqui com seu texto sobre o filme]
+          </p>
+          <p class="np-1"
+             data-pt="[Segundo parágrafo — opcional]"
+             data-en="[Second paragraph — optional]">
+            [Segundo parágrafo — opcional]
+          </p>
+          <p class="np-2">— Vini Poffo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="sec-poster" aria-label="Pôster">
+    <div class="wrap poster-center">
+      <p class="label fade" data-pt="Pôster" data-en="Poster">Pôster</p>
+      <div class="poster-wrap fade d1">
+        <img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/Tem%20feito%20uns%20dias%20esquisitos/Tem%20feito%20uns%20dias%20esquisitos%20-%20cartaz.png" alt="Tem Feito uns Dias Esquisitos — Pôster">
+      </div>
+      <a class="poster-link fade d2"
+         href="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/Tem%20feito%20uns%20dias%20esquisitos/Tem%20feito%20uns%20dias%20esquisitos%20-%20cartaz.png"
+         target="_blank" rel="noopener"
+         data-pt="Ver pôster completo" data-en="View full poster">
+        <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver pôster completo
+      </a>
+    </div>
+  </section>
+
+  <section class="sec-cast" aria-label="Elenco">
+    <div class="wrap">
+      <p class="label fade" data-pt="Elenco" data-en="Cast">Elenco</p>
+      <div class="cast-grid">
+        <div class="polaroid fade">
+          <div class="pol-photo"><img src="elenco_marcelo.jpg" alt="Marcelo"></div>
+          <p class="pol-char">Marcelo</p>
+          <p class="pol-actor">[Nome do Ator]</p>
+        </div>
+        <div class="polaroid fade d1">
+          <div class="pol-photo"><img src="elenco_2.jpg" alt=""></div>
+          <p class="pol-char">[Personagem]</p>
+          <p class="pol-actor">[Nome]</p>
+        </div>
+        <div class="polaroid fade d2">
+          <div class="pol-photo"><img src="elenco_3.jpg" alt=""></div>
+          <p class="pol-char">[Personagem]</p>
+          <p class="pol-actor">[Nome]</p>
+        </div>
+        <div class="polaroid fade d3">
+          <div class="pol-photo"><img src="elenco_4.jpg" alt=""></div>
+          <p class="pol-char">[Personagem]</p>
+          <p class="pol-actor">[Nome]</p>
+        </div>
+        <div class="polaroid fade d3">
+          <div class="pol-photo"><img src="elenco_5.jpg" alt=""></div>
+          <p class="pol-char">[Personagem]</p>
+          <p class="pol-actor">[Nome]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-crew" aria-label="Créditos">
+    <div class="wrap">
+      <p class="label fade" data-pt="Créditos" data-en="Credits">Créditos</p>
+      <div class="crew-grid">
+        <div class="fade d1">
+          <div class="crew-item"><span class="cr-role" data-pt="Direção" data-en="Direction">Direção</span><span class="cr-name">Vini Poffo</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Roteiro" data-en="Screenplay">Roteiro</span><span class="cr-name">[Roteirista]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Fotografia" data-en="Cinematography">Direção de Fotografia</span><span class="cr-name">[DF]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Arte" data-en="Production Design">Direção de Arte</span><span class="cr-name">[Arte]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Figurino" data-en="Costume Design">Figurino</span><span class="cr-name">[Figurino]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Maquiagem e Cabelo" data-en="Makeup &amp; Hair">Maquiagem e Cabelo</span><span class="cr-name">[Maquiagem]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Elenco" data-en="Casting">Direção de Elenco</span><span class="cr-name">[Casting]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Foto Stills" data-en="Unit Photography">Foto Stills</span><span class="cr-name">[Fotografia de Cena]</span></div>
+        </div>
+        <div class="crew-div"></div>
+        <div class="fade d2">
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Som" data-en="Sound Direction">Direção de Som</span><span class="cr-name">[Som]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">[Trilha]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Mixagem" data-en="Sound Mix">Mixagem</span><span class="cr-name">[Mixagem]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Montagem" data-en="Editing">Montagem</span><span class="cr-name">[Editor(a)]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="VFX e Cor" data-en="VFX &amp; Color">VFX e Cor</span><span class="cr-name">[VFX / Cor]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Produção Executiva" data-en="Executive Production">Produção Executiva</span><span class="cr-name">[Produção Executiva]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Produção" data-en="Production Management">Direção de Produção</span><span class="cr-name">[Produção]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Design" data-en="Design">Design</span><span class="cr-name">[Design]</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-specs" aria-label="Ficha Técnica">
+    <div class="wrap">
+      <p class="label fade" data-pt="Ficha Técnica" data-en="Technical Info">Ficha Técnica</p>
+      <div class="specs-grid fade d1">
+        <div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Título" data-en="Title">Título</span><span class="sp-val" data-pt="Tem Feito uns Dias Esquisitos" data-en="Some Strange Days">Tem Feito uns Dias Esquisitos</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">[XX] min</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Formato" data-en="Format">Formato</span><span class="sp-val">[DCP / ProRes]</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Proporção" data-en="Aspect Ratio">Proporção</span><span class="sp-val">[1.85:1]</span></div>
+        </div>
+        <div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Idioma" data-en="Language">Idioma</span><span class="sp-val" data-pt="Português Brasileiro" data-en="Brazilian Portuguese">Português Brasileiro</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Legendas" data-en="Subtitles">Legendas</span><span class="sp-val">PT, EN</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="País" data-en="Country">País</span><span class="sp-val">Brasil</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Gênero" data-en="Genre">Gênero</span><span class="sp-val" data-pt="Drama" data-en="Drama">Drama</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-contact">
+    <div class="wrap">
+      <p class="contact-lbl fade" data-pt="Contato &amp; Imprensa" data-en="Contact &amp; Press">Contato &amp; Imprensa</p>
+      <a href="mailto:projetos@vinipoffo.com" class="contact-email fade d1">projetos@vinipoffo.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <span>© Vini Poffo</span>
+  <span class="footer-title" data-pt="Tem Feito uns Dias Esquisitos" data-en="Some Strange Days">Tem Feito uns Dias Esquisitos</span>
+</footer>
+
+<script>
+(function () {
+'use strict';
+
+window.addEventListener('load', function () {
+  setTimeout(function () { document.getElementById('heroCenter').classList.add('in'); }, 350);
+});
+
+var heroOv = document.getElementById('heroOv');
+window.addEventListener('scroll', function () {
+  var p = Math.min(window.scrollY / (window.innerHeight * 0.6), 1);
+  heroOv.style.opacity    = 1 - p;
+  heroOv.style.transform  = 'translateY(' + (-window.scrollY * 0.14) + 'px)';
+  heroOv.style.pointerEvents = p > 0.5 ? 'none' : '';
+}, { passive: true });
+
+var lang = 'pt';
+(function () {
+  if (window.location.hash === '#en' || window.location.search === '?lang=en') {
+    lang = 'en';
+    document.documentElement.lang = 'en';
+    document.getElementById('lPT').classList.remove('on');
+    document.getElementById('lEN').classList.add('on');
+    document.querySelectorAll('[data-pt]').forEach(function (el) { if (el.dataset.en !== undefined) el.textContent = el.dataset.en; });
+    document.querySelectorAll('.lang-pt').forEach(function (el) { el.classList.add('hidden'); });
+    document.querySelectorAll('.lang-en').forEach(function (el) { el.classList.remove('hidden'); });
+    document.getElementById('tickerPT').classList.add('hidden');
+    document.getElementById('tickerEN').classList.remove('hidden');
+  }
+})();
+
+document.getElementById('langBtn').addEventListener('click', function () {
+  lang = lang === 'pt' ? 'en' : 'pt';
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  document.getElementById('lPT').classList.toggle('on', lang === 'pt');
+  document.getElementById('lEN').classList.toggle('on', lang === 'en');
+  document.querySelectorAll('[data-pt]').forEach(function (el) {
+    var v = lang === 'pt' ? el.dataset.pt : el.dataset.en;
+    if (v !== undefined) el.textContent = v;
+  });
+  document.querySelectorAll('.lang-pt').forEach(function (el) { el.classList.toggle('hidden', lang !== 'pt'); });
+  document.querySelectorAll('.lang-en').forEach(function (el) { el.classList.toggle('hidden', lang !== 'en'); });
+  document.getElementById('tickerPT').classList.toggle('hidden', lang !== 'pt');
+  document.getElementById('tickerEN').classList.toggle('hidden', lang !== 'en');
+});
+
+var hamburgerBtn = document.getElementById('hamburgerBtn');
+var navOverlay   = document.getElementById('navOverlay');
+if (hamburgerBtn && navOverlay) {
+  hamburgerBtn.addEventListener('click', function () { hamburgerBtn.classList.toggle('open'); navOverlay.classList.toggle('open'); });
+  navOverlay.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' || e.target === navOverlay) { hamburgerBtn.classList.remove('open'); navOverlay.classList.remove('open'); }
+  });
+}
+
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+
+var stZone   = document.getElementById('stZone');
+var sinOv    = document.getElementById('sinOv');
+var sinLines = sinOv.querySelectorAll('.sin-line');
+var trlBox   = document.getElementById('trlBox');
+var trlFrame = document.getElementById('trlFrame');
+var tLoaded  = false;
+
+function updateST() {
+  var rect  = stZone.getBoundingClientRect();
+  var total = stZone.offsetHeight - window.innerHeight;
+  var p     = Math.max(0, Math.min(1, -rect.top / total));
+  var sP = Math.min(1, p / 0.45);
+  sinOv.style.opacity = 1 - sP;
+  sinLines.forEach(function (line, i) { line.style.transform = 'translateX(' + (sP * 90 * (i % 2 === 0 ? -1 : 1)) + 'px)'; });
+  var tP = Math.max(0, Math.min(1, (p - 0.3) / 0.65));
+  trlBox.style.transform = 'scale(' + (0.22 + tP * 0.8) + ')';
+  trlBox.style.opacity   = Math.min(1, tP * 3);
+  if (!tLoaded && p > 0.18) { trlFrame.src = trlFrame.dataset.src; tLoaded = true; }
+}
+window.addEventListener('scroll', updateST, { passive: true });
+updateST();
+
+var noteZone = document.getElementById('noteZone');
+var nSteps = [
+  { el: document.querySelector('.nq-l0'), t: 0.04 },
+  { el: document.querySelector('.nq-l1'), t: 0.17 },
+  { el: document.getElementById('noteLbl'), t: 0.30 },
+  { el: document.querySelector('.np-0'),  t: 0.42 },
+  { el: document.querySelector('.np-1'),  t: 0.60 },
+  { el: document.querySelector('.np-2'),  t: 0.76 },
+];
+function updateNote() {
+  if (!noteZone) return;
+  var rect  = noteZone.getBoundingClientRect();
+  var total = noteZone.offsetHeight - window.innerHeight;
+  var p = Math.max(0, Math.min(1, -rect.top / total));
+  nSteps.forEach(function (s) { if (s.el) { if (p >= s.t) s.el.classList.add('show'); else s.el.classList.remove('show'); } });
+}
+window.addEventListener('scroll', updateNote, { passive: true });
+updateNote();
+
+var gs = document.getElementById('gScroll');
+var isDragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf;
+gs.addEventListener('pointerdown', function (e) {
+  isDragging = true; startX = e.clientX; scrollStart = gs.scrollLeft;
+  velX = 0; lastX = e.clientX; lastT = Date.now();
+  gs.setPointerCapture(e.pointerId); gs.classList.add('drag'); cancelAnimationFrame(raf);
+});
+gs.addEventListener('pointermove', function (e) {
+  if (!isDragging) return;
+  var now = Date.now();
+  gs.scrollLeft = scrollStart - (e.clientX - startX);
+  velX = (e.clientX - lastX) / Math.max(now - lastT, 1) * 16;
+  lastX = e.clientX; lastT = now;
+});
+function endDrag() {
+  if (!isDragging) return;
+  isDragging = false; gs.classList.remove('drag');
+  (function mom() { if (Math.abs(velX) < 0.5) return; gs.scrollLeft -= velX; velX *= 0.91; raf = requestAnimationFrame(mom); })();
+}
+gs.addEventListener('pointerup', endDrag);
+gs.addEventListener('pointercancel', endDrag);
+gs.addEventListener('wheel', function (e) {
+  var delta = e.deltaY !== 0 ? e.deltaY : e.deltaX;
+  if ((delta > 0 && gs.scrollLeft >= gs.scrollWidth - gs.clientWidth - 4) || (delta < 0 && gs.scrollLeft <= 4)) return;
+  e.preventDefault(); gs.scrollLeft += delta;
+}, { passive: false });
+document.getElementById('gLeft').addEventListener('click',  function () { gs.scrollBy({ left: -400, behavior: 'smooth' }); });
+document.getElementById('gRight').addEventListener('click', function () { gs.scrollBy({ left:  400, behavior: 'smooth' }); });
+
+})();
+</script>
+</body>
+</html>
