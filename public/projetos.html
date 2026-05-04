@@ -381,7 +381,7 @@
                             </div>
                         </div>
                     `;
-                    card.addEventListener('click', () => { window.location.href = `projeto.html?id=${project.id}`; });
+                    card.addEventListener('click', () => { window.location.href = project.customUrl || `projeto.html?id=${project.id}`; });
                     projectsGrid.appendChild(card);
                 });
                 
