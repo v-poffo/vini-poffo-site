@@ -102,20 +102,24 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 /* ─── NAV OVERLAY ────────────────────────────────────────────────── */
 .nav-overlay {
-  position: fixed; inset: 0; z-index: 550;
-  background: rgba(5,13,15,.97);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 2.8rem;
-  list-style: none; margin: 0; padding: 0;
+  position: fixed; top: 70px; left: 0; z-index: 550;
+  width: 200px;
+  background: rgba(5,13,15,.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex; flex-direction: column; gap: .5rem;
+  list-style: none; margin: 0; padding: 1.5rem;
+  border-right: 1px solid rgba(0,255,94,.14);
+  border-bottom: 1px solid rgba(0,255,94,.14);
   opacity: 0; pointer-events: none;
-  transition: opacity .35s var(--ease);
+  transition: opacity .25s var(--ease);
 }
 .nav-overlay.open { opacity: 1; pointer-events: auto; }
 .nav-overlay li a {
-  font-family: "noka", serif;
-  font-size: clamp(1.6rem, 4vw, 2.8rem);
-  color: var(--white); letter-spacing: .06em;
-  text-transform: uppercase; transition: color .25s;
+  font-family: "aktiv-grotesk", sans-serif;
+  font-size: .95rem;
+  color: var(--white); letter-spacing: .04em;
+  transition: color .25s; display: block; padding: .3rem 0;
 }
 .nav-overlay li a:hover { color: var(--green); }
 
