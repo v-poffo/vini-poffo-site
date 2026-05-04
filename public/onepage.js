@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         filtered.forEach((p, i) => {
             const card = document.createElement('a');
-            card.href = `projeto.html?id=${p.id}`;
+            card.href = p.customUrl || `projeto.html?id=${p.id}`;
             card.className = 'polaroid-card';
             if (isDesktop) {
                 const rot = (Math.random() * 8 - 4).toFixed(1);
