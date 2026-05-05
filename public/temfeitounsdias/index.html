@@ -748,6 +748,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </section>
 
+
 </main>
 
 <footer class="footer">
@@ -854,7 +855,7 @@ function updateNote() {
   var p = Math.max(0, Math.min(1, -rect.top / total));
   nSteps.forEach(function (s) { if (s.el) { if (p >= s.t) s.el.classList.add('show'); else s.el.classList.remove('show'); } });
 
-  // Poster: rises in p=0.52→0.78, then stays — sec-cast (z:30) scrolls over it
+  // Poster: rises in p=0.52→0.78, then stays — sec-cast scrolls over it
   if (secPoster) {
     if (p < 0.52) {
       secPoster.style.transform = 'translateY(100vh)';
@@ -875,6 +876,20 @@ function updateNote() {
 }
 window.addEventListener('scroll', updateNote, { passive: true });
 updateNote();
+
+// Fade poster out as sec-specs enters — so the hero video shows through the transparent bg
+var secSpecsEl = document.querySelector('.sec-specs');
+function updatePosterVsSpecs() {
+  if (!secPoster || !secSpecsEl) return;
+  var rect = secSpecsEl.getBoundingClientRect();
+  var vh = window.innerHeight;
+  if (rect.top >= vh) return; // not entering yet — updateNote handles poster
+  var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.55)));
+  secPoster.style.opacity = String(1 - progress);
+  secPoster.style.pointerEvents = 'none';
+}
+window.addEventListener('scroll', updatePosterVsSpecs, { passive: true });
+updatePosterVsSpecs();
 
 var gs = document.getElementById('gScroll');
 var isDragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf;
