@@ -11,19 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,400;0,500;0,700;1,400&family=Rock+Salt&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════════════════════
-   Tem Feito uns Dias Esquisitos — Press Kit
-   public/temfeitounsdias/index.html
-
-   FILES TO ADD TO THIS FOLDER (public/temfeitounsdias/):
-   ─ tfde_portfolio_video.mp4       hero + nota da direção bg
-   ─ TFDE_titulo.png                title card (black bg, mix-blend: screen)
-   ─ TFDE_1.jpg … TFDE_8.jpg       film stills (horizontal gallery)
-   ─ elenco_marcelo.jpg             cast photo — Marcelo
-   ─ elenco_2.jpg … elenco_5.jpg   other cast photos
-   (poster is loaded from raw GitHub URL — no upload needed)
-   ═══════════════════════════════════════════════════════════════ */
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -121,7 +108,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   color: var(--white); letter-spacing: .04em;
   transition: color .25s; display: block; padding: .3rem 0;
 }
-.nav-overlay li a:hover { color: var(--mint); }
+.nav-overlay li a:hover { color: #003FA3; }
 
 /* ─── FIXED VIDEO HERO ────────────────────────────────────────────── */
 .hero-vid { position: fixed; inset: 0; z-index: 0; }
@@ -312,11 +299,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .poster-link {
   margin-top: 1.2rem;
   font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--mint); opacity: .45; transition: opacity .2s;
+  color: var(--mint); opacity: .45; transition: opacity .2s, color .2s;
   display: flex; align-items: center; gap: .4rem;
 }
-.poster-link:hover { opacity: 1; }
-.poster-link svg { width: 13px; height: 13px; stroke: var(--mint); fill: none; stroke-width: 1.8; }
+.poster-link:hover { opacity: 1; color: #003FA3; }
+.poster-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
 /* ─── ELENCO (POLAROID) ──────────────────────────────────────────── */
 .sec-cast { background: var(--bg2); padding: 7rem 0; }
@@ -359,24 +346,56 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   color: #444; letter-spacing: .07em; text-transform: uppercase; text-align: center;
 }
 
+/* ─── ELENCO COMPLETO ────────────────────────────────────────────── */
+.sec-cast-full { background: var(--bg); padding: 5rem 0 6rem; }
+.cast-full-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0 4rem;
+}
+.cast-full-group { margin-bottom: 2.4rem; }
+.cast-full-group-lbl {
+  font-size: .5rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--pink); margin-bottom: .9rem;
+  border-bottom: 1px solid rgba(242,2,190,.18); padding-bottom: .5rem;
+}
+.cast-full-item {
+  display: flex; align-items: baseline; gap: .5rem;
+  padding: .3rem 0; border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.cast-full-char {
+  font-family: "Rock Salt", cursive;
+  font-size: .52rem; color: var(--white); flex-shrink: 0;
+}
+.cast-full-sep { color: var(--dim); font-size: .7rem; flex-shrink: 0; }
+.cast-full-actor {
+  font-size: .8rem; color: var(--text);
+  font-family: "Epilogue", sans-serif; font-weight: 400;
+}
+.cast-full-plain {
+  font-size: .8rem; color: var(--text);
+  font-family: "Epilogue", sans-serif;
+  padding: .25rem 0; border-bottom: 1px solid rgba(255,255,255,.04);
+}
+
 /* ─── CRÉDITOS / EQUIPE ──────────────────────────────────────────── */
-.sec-crew { background: var(--bg); padding: 7rem 0; }
+.sec-crew { background: var(--bg2); padding: 7rem 0; }
 .crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
 .crew-div  { background: rgba(255,255,255,.05); }
 .crew-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
 .cr-role { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .16rem; }
 .cr-name { font-size: .87rem; color: var(--white); transition: color .25s, text-shadow .25s; }
-.crew-item:hover .cr-name { color: var(--mint); text-shadow: 0 0 12px rgba(31,255,199,.5), 0 0 24px rgba(31,255,199,.22); }
+.crew-item:hover .cr-name { color: #F202BE; text-shadow: 0 0 12px rgba(242,2,190,.45), 0 0 24px rgba(242,2,190,.18); }
 
 /* ─── FICHA TÉCNICA ──────────────────────────────────────────────── */
-.sec-specs { background: var(--bg2); padding: 7rem 0; }
+.sec-specs { background: var(--bg); padding: 7rem 0; }
 .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 720px; }
 .spec-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
 .sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
 .sp-val { font-size: .87rem; color: var(--white); }
 
 /* ─── CONTATO ────────────────────────────────────────────────────── */
-.sec-contact { padding: 9rem 0; text-align: center; background: var(--bg); }
+.sec-contact { padding: 9rem 0; text-align: center; background: var(--bg2); }
 .contact-lbl { font-size: .56rem; letter-spacing: .26em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.4rem; }
 .contact-email {
   font-family: "Rock Salt", cursive;
@@ -389,18 +408,22 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .footer {
   display: flex; justify-content: space-between; align-items: center;
   padding: 1.6rem 2.5rem; border-top: 1px solid rgba(255,255,255,.06);
-  background: var(--bg); font-size: .6rem; letter-spacing: .1em; color: var(--dim);
+  background: var(--bg2); font-size: .6rem; letter-spacing: .1em; color: var(--dim);
 }
 .footer-title { font-family: "Rock Salt", cursive; color: var(--mint); font-size: .55rem; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
-@media (max-width: 1000px) { .cast-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 1000px) {
+  .cast-grid { grid-template-columns: repeat(3, 1fr); }
+  .cast-full-grid { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 700px) {
   .cast-grid  { grid-template-columns: repeat(2, 1fr); }
   .crew-grid  { grid-template-columns: 1fr; }
   .crew-div   { display: none; }
   .specs-grid { grid-template-columns: 1fr; }
   .note-inner { padding: 0 1.5rem 5vh; }
+  .cast-full-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 500px) {
   .cast-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -443,7 +466,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 
 <div class="hero-ov" id="heroOv" aria-hidden="true">
   <div class="hero-center" id="heroCenter">
-    <img class="hero-title-img" src="TFDE_titulo.png" alt="Tem Feito uns Dias Esquisitos">
+    <img class="hero-title-img" src="titulo.png" alt="Tem Feito uns Dias Esquisitos">
     <div class="hero-meta">
       <span>Brasil</span><span class="s">·</span>
       <span data-pt="Drama" data-en="Drama">Drama</span><span class="s">·</span>
@@ -491,14 +514,16 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     <p class="label gal-label fade" data-pt="Fotos" data-en="Film Stills">Fotos</p>
     <div class="gal-scroll" id="gScroll">
       <div class="gal-track" id="gTrack">
-        <div class="gi"><img src="TFDE_1.jpg" alt="cena 1"></div>
-        <div class="gi"><img src="TFDE_2.jpg" alt="cena 2"></div>
-        <div class="gi"><img src="TFDE_3.jpg" alt="cena 3"></div>
-        <div class="gi"><img src="TFDE_4.jpg" alt="cena 4"></div>
-        <div class="gi"><img src="TFDE_5.jpg" alt="cena 5"></div>
-        <div class="gi"><img src="TFDE_6.jpg" alt="cena 6"></div>
-        <div class="gi"><img src="TFDE_7.jpg" alt="cena 7"></div>
-        <div class="gi"><img src="TFDE_8.jpg" alt="cena 8"></div>
+        <div class="gi"><img src="FTD%20DIA%201-212.jpg" alt="cena 1"></div>
+        <div class="gi"><img src="FTD%20DIA%201-231%20(1).jpg" alt="cena 2"></div>
+        <div class="gi"><img src="FTD%20DIA%202-253.jpg" alt="cena 3"></div>
+        <div class="gi"><img src="FTD%20DIA%202-289.jpg" alt="cena 4"></div>
+        <div class="gi"><img src="FTD%20DIA%202-487.jpg" alt="cena 5"></div>
+        <div class="gi"><img src="FTD%20DIA%203-234.jpg" alt="cena 6"></div>
+        <div class="gi"><img src="FTD%20DIA%203-348.jpg" alt="cena 7"></div>
+        <div class="gi"><img src="FTD%20DIA%203-470.jpg" alt="cena 8"></div>
+        <div class="gi"><img src="FTD%20DIA%204-203%20(1).jpg" alt="cena 9"></div>
+        <div class="gi"><img src="FTD%20DIA%205-93%20(1).jpg" alt="cena 10"></div>
       </div>
     </div>
     <div class="gal-arrows">
@@ -522,14 +547,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
         <p id="noteLbl" data-pt="Nota da Direção" data-en="Director's Note">Nota da Direção</p>
         <div class="note-text">
           <p class="np-0"
-             data-pt="[NOTA DA DIREÇÃO — preencha aqui com seu texto sobre o filme]"
-             data-en="[DIRECTOR'S NOTE — fill in here]">
-            [NOTA DA DIREÇÃO — preencha aqui com seu texto sobre o filme]
+             data-pt="Tem Feito Uns Dias Esquisitos nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?"
+             data-en="Some Strange Days comes from a desire to face grief without trying to organize what is, in practice, messy. The strange time between one thing and another, between remembering and forgetting, between feeling and not being able to name it. Marcelo moves through this space asking how to exist after loss.">
+            Tem Feito Uns Dias Esquisitos nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?
           </p>
           <p class="np-1"
-             data-pt="[Segundo parágrafo — opcional]"
-             data-en="[Second paragraph — optional]">
-            [Segundo parágrafo — opcional]
+             data-pt="Ao mesmo tempo, o filme é atravessado pelo afeto como força que insiste. Mesmo quando tudo parece vazio, ainda existem gestos, risos, encontros. No fim, o filme não quer responder nada, quer abrir um espaço onde sentir seja possível, e onde, de alguma forma, a gente consiga continuar."
+             data-en="At the same time, the film is crossed by affection as a force that persists. Even when everything seems empty, there are still gestures, laughter, encounters. In the end, the film doesn't want to answer anything — it wants to open a space where feeling is possible, and where, somehow, we can keep going.">
+            Ao mesmo tempo, o filme é atravessado pelo afeto como força que insiste. Mesmo quando tudo parece vazio, ainda existem gestos, risos, encontros. No fim, o filme não quer responder nada, quer abrir um espaço onde sentir seja possível, e onde, de alguma forma, a gente consiga continuar.
           </p>
           <p class="np-2">— Vini Poffo</p>
         </div>
@@ -553,34 +578,90 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </section>
 
-  <section class="sec-cast" aria-label="Elenco">
+  <section class="sec-cast" aria-label="Elenco Principal">
     <div class="wrap">
       <p class="label fade" data-pt="Elenco" data-en="Cast">Elenco</p>
       <div class="cast-grid">
         <div class="polaroid fade">
-          <div class="pol-photo"><img src="elenco_marcelo.jpg" alt="Marcelo"></div>
+          <div class="pol-photo"><img src="Marcelo.jpg" alt="Marcelo"></div>
           <p class="pol-char">Marcelo</p>
-          <p class="pol-actor">[Nome do Ator]</p>
+          <p class="pol-actor">Leonardo Lima</p>
         </div>
         <div class="polaroid fade d1">
-          <div class="pol-photo"><img src="elenco_2.jpg" alt=""></div>
-          <p class="pol-char">[Personagem]</p>
-          <p class="pol-actor">[Nome]</p>
+          <div class="pol-photo"><img src="Pamela.jpg" alt="Pamela"></div>
+          <p class="pol-char">Pamela</p>
+          <p class="pol-actor">Rafaella Narciso</p>
         </div>
         <div class="polaroid fade d2">
-          <div class="pol-photo"><img src="elenco_3.jpg" alt=""></div>
-          <p class="pol-char">[Personagem]</p>
-          <p class="pol-actor">[Nome]</p>
+          <div class="pol-photo"><img src="Luke.jpg" alt="Luke"></div>
+          <p class="pol-char">Luke</p>
+          <p class="pol-actor">Araís Bernado</p>
         </div>
         <div class="polaroid fade d3">
-          <div class="pol-photo"><img src="elenco_4.jpg" alt=""></div>
-          <p class="pol-char">[Personagem]</p>
-          <p class="pol-actor">[Nome]</p>
+          <div class="pol-photo"><img src="Cris.jpg" alt="Cris"></div>
+          <p class="pol-char">Cris</p>
+          <p class="pol-actor">Diadorim Lima</p>
         </div>
         <div class="polaroid fade d3">
-          <div class="pol-photo"><img src="elenco_5.jpg" alt=""></div>
-          <p class="pol-char">[Personagem]</p>
-          <p class="pol-actor">[Nome]</p>
+          <div class="pol-photo"><img src="Ariel.jpg" alt="Ariel"></div>
+          <p class="pol-char">Ariel</p>
+          <p class="pol-actor">Tayla Evangelista</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-cast-full">
+    <div class="wrap">
+      <p class="label fade" data-pt="Elenco Completo" data-en="Full Cast">Elenco Completo</p>
+      <div class="cast-full-grid fade d1">
+        <div>
+          <div class="cast-full-group">
+            <p class="cast-full-group-lbl" data-pt="Protagonistas" data-en="Lead Cast">Protagonistas</p>
+            <div class="cast-full-item"><span class="cast-full-char">Marcelo</span><span class="cast-full-sep">·</span><span class="cast-full-actor">Leonardo Lima</span></div>
+            <div class="cast-full-item"><span class="cast-full-char">Pamela</span><span class="cast-full-sep">·</span><span class="cast-full-actor">Rafaella Narciso</span></div>
+            <div class="cast-full-item"><span class="cast-full-char">Luke</span><span class="cast-full-sep">·</span><span class="cast-full-actor">Araís Bernado</span></div>
+            <div class="cast-full-item"><span class="cast-full-char">Cris</span><span class="cast-full-sep">·</span><span class="cast-full-actor">Diadorim Lima</span></div>
+            <div class="cast-full-item"><span class="cast-full-char">Ariel</span><span class="cast-full-sep">·</span><span class="cast-full-actor">Tayla Evangelista</span></div>
+          </div>
+          <div class="cast-full-group">
+            <p class="cast-full-group-lbl" data-pt="Elenco de Apoio" data-en="Supporting Cast">Elenco de Apoio</p>
+            <div class="cast-full-plain">Berna Sant'Anna</div>
+            <div class="cast-full-plain">Ana Miranda</div>
+            <div class="cast-full-plain">Venus MVHS</div>
+            <div class="cast-full-plain">Zalu Amorim</div>
+            <div class="cast-full-plain">Emilly Silva</div>
+          </div>
+        </div>
+        <div>
+          <div class="cast-full-group">
+            <p class="cast-full-group-lbl" data-pt="Poetas" data-en="Slam Poets">Poetas</p>
+            <div class="cast-full-plain">Yuri Skrosk</div>
+            <div class="cast-full-plain">Suellen Romano</div>
+            <div class="cast-full-plain">Evellyn Silva</div>
+          </div>
+          <div class="cast-full-group">
+            <p class="cast-full-group-lbl" data-pt="Figuração Slam" data-en="Slam Extras">Figuração Slam</p>
+            <div class="cast-full-plain">Maria Luiza Matsushita</div>
+            <div class="cast-full-plain">Isabel Lima</div>
+            <div class="cast-full-plain">Ana Júlia Vieira</div>
+            <div class="cast-full-plain">Maria Eduarda L. Melo</div>
+            <div class="cast-full-plain">Helena Marcelo Souza</div>
+            <div class="cast-full-plain">Ivan Maia</div>
+            <div class="cast-full-plain">Nathália Duarte</div>
+          </div>
+        </div>
+        <div>
+          <div class="cast-full-group">
+            <p class="cast-full-group-lbl" data-pt="Figuração Slam (cont.)" data-en="Slam Extras (cont.)">Figuração Slam (cont.)</p>
+            <div class="cast-full-plain">Evellyn Silva</div>
+            <div class="cast-full-plain">Emilly Silva</div>
+            <div class="cast-full-plain">Olien Wilson</div>
+            <div class="cast-full-plain">Mary Jane</div>
+            <div class="cast-full-plain">Luan Ricardo</div>
+            <div class="cast-full-plain">João Gabriel</div>
+            <div class="cast-full-plain">Gabriel Alves</div>
+          </div>
         </div>
       </div>
     </div>
@@ -591,25 +672,51 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
       <p class="label fade" data-pt="Créditos" data-en="Credits">Créditos</p>
       <div class="crew-grid">
         <div class="fade d1">
-          <div class="crew-item"><span class="cr-role" data-pt="Direção" data-en="Direction">Direção</span><span class="cr-name">Vini Poffo</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Roteiro" data-en="Screenplay">Roteiro</span><span class="cr-name">[Roteirista]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Direção de Fotografia" data-en="Cinematography">Direção de Fotografia</span><span class="cr-name">[DF]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Direção de Arte" data-en="Production Design">Direção de Arte</span><span class="cr-name">[Arte]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Figurino" data-en="Costume Design">Figurino</span><span class="cr-name">[Figurino]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Maquiagem e Cabelo" data-en="Makeup &amp; Hair">Maquiagem e Cabelo</span><span class="cr-name">[Maquiagem]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Direção de Elenco" data-en="Casting">Direção de Elenco</span><span class="cr-name">[Casting]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Foto Stills" data-en="Unit Photography">Foto Stills</span><span class="cr-name">[Fotografia de Cena]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Roteiro" data-en="Screenplay">Roteiro</span><span class="cr-name">Zalu Amorim · Vini Poffo</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção" data-en="Direction">Direção</span><span class="cr-name">Vini Poffo · Luana Skibinski</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="1ª Assist. de Direção" data-en="1st AD">1ª Assist. de Direção</span><span class="cr-name">Sillas H</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Preparadora de Elenco" data-en="Casting Coach">Preparadora de Elenco</span><span class="cr-name">Mar Rosa</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Produção Executiva" data-en="Executive Production">Produção Executiva</span><span class="cr-name">Ive Machado</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Assist. Prod. Executiva" data-en="Asst. Exec. Producer">Assist. Prod. Executiva</span><span class="cr-name">Vee Ortiz</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Controller" data-en="Controller">Controller</span><span class="cr-name">Lari Reimer</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Produção" data-en="Production Management">Direção de Produção</span><span class="cr-name">Adriana Perdiz</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Produção de Logística" data-en="Logistics">Produção de Logística</span><span class="cr-name">Jéssica Michels · Zalu Amorim</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Produção de Pós" data-en="Post Production">Produção de Pós</span><span class="cr-name">Zalu Amorim</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Catering" data-en="Catering">Catering</span><span class="cr-name">Talita de Aguiar</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Making off" data-en="Behind the Scenes">Making off</span><span class="cr-name">Anita Poffo</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Foto Stills" data-en="Unit Photography">Foto Stills</span><span class="cr-name">Ligia Triumpho</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Direção de Fotografia" data-en="Cinematography">Direção de Fotografia</span><span class="cr-name">Jaqueline Kogus</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Operadora de Câmera" data-en="Camera Operator">Operadora de Câmera</span><span class="cr-name">Millena Rosado</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="1ª Assist. de Câmera" data-en="1st AC">1ª Assist. de Câmera</span><span class="cr-name">Vivian Rocha</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="2º Assist. de Câmera" data-en="2nd AC">2º Assist. de Câmera</span><span class="cr-name">Carlos Adriano dos Santos</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Foquista" data-en="Focus Puller">Foquista</span><span class="cr-name">Vivian Badofszky</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Gaffer e Maquinária" data-en="Gaffer">Gaffer e Maquinária</span><span class="cr-name">Christian Pires</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Operador de Grua" data-en="Crane Operator">Operador de Grua</span><span class="cr-name">Marcos Macambyra</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Operador de Drone" data-en="Drone Operator">Operador de Drone</span><span class="cr-name">Ive Machado</span></div>
         </div>
         <div class="crew-div"></div>
         <div class="fade d2">
-          <div class="crew-item"><span class="cr-role" data-pt="Direção de Som" data-en="Sound Direction">Direção de Som</span><span class="cr-name">[Som]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">[Trilha]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Mixagem" data-en="Sound Mix">Mixagem</span><span class="cr-name">[Mixagem]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Montagem" data-en="Editing">Montagem</span><span class="cr-name">[Editor(a)]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="VFX e Cor" data-en="VFX &amp; Color">VFX e Cor</span><span class="cr-name">[VFX / Cor]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Produção Executiva" data-en="Executive Production">Produção Executiva</span><span class="cr-name">[Produção Executiva]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Direção de Produção" data-en="Production Management">Direção de Produção</span><span class="cr-name">[Produção]</span></div>
-          <div class="crew-item"><span class="cr-role" data-pt="Design" data-en="Design">Design</span><span class="cr-name">[Design]</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Conceito de Arte" data-en="Art Concept">Conceito de Arte</span><span class="cr-name">Matheus De Luca · Luan Baeta · Vini Poffo</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Diretor de Arte" data-en="Production Designer">Diretor de Arte</span><span class="cr-name">Matheus De Luca</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="1ª Assist. de Arte" data-en="Art Assistant">1ª Assist. de Arte</span><span class="cr-name">Vitória · Caroline</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Produtora de Objetos" data-en="Props">Produtora de Objetos</span><span class="cr-name">Júlia Golinski</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Figurino" data-en="Costume Design">Figurino</span><span class="cr-name">Isa Dourado</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Chefe de Maquiagem" data-en="Head of Makeup">Chefe de Maquiagem</span><span class="cr-name">Pedro Calderaro</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Assist. de Maquiagem" data-en="Makeup Assistant">Assist. de Maquiagem</span><span class="cr-name">Dani Machado</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Designer" data-en="Designer">Designer</span><span class="cr-name">Alice Costa</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Operador de Som" data-en="Sound Recordist">Operador de Som</span><span class="cr-name">Gabu</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Assist. de Som" data-en="Sound Assistant">Assist. de Som</span><span class="cr-name">Marília Rossdeutscher</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Edição" data-en="Editing">Edição</span><span class="cr-name">Lucas Richard</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Sound Design" data-en="Sound Design">Sound Design</span><span class="cr-name">Gabu Mota</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Trilha Sonora" data-en="Original Score">Trilha Sonora</span><span class="cr-name">YMA · Fernando Rischbieter</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Correção de Cor" data-en="Color Grading">Correção de Cor</span><span class="cr-name">Diego Lomarc</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Mixagem" data-en="Sound Mix">Mixagem</span><span class="cr-name">Gabu Mota</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Acessibilidades" data-en="Accessibility">Acessibilidades</span><span class="cr-name">Núbia Amorim</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Motorista de Produção" data-en="Production Driver">Motorista de Produção</span><span class="cr-name">Robson Rodrigues · Rosi Poffo</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Hospedagem" data-en="Accommodation">Hospedagem</span><span class="cr-name">Gajah Hostel</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Apoio" data-en="Support">Apoio</span><span class="cr-name">SOMA+ · Mercado Zomer Mattei · Estúdio Cubi</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Equipamentos" data-en="Equipment Rental">Equipamentos</span><span class="cr-name">Locadora dos Marios · Lua Santos</span></div>
+          <div class="crew-item"><span class="cr-role" data-pt="Agradecimentos" data-en="Special Thanks">Agradecimentos</span><span class="cr-name">SOMA+ · Rufino Bar · Rosi Poffo · SESC Joinville · Mercado Zomer Mattei</span></div>
         </div>
       </div>
     </div>
@@ -621,15 +728,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
       <div class="specs-grid fade d1">
         <div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Título" data-en="Title">Título</span><span class="sp-val" data-pt="Tem Feito uns Dias Esquisitos" data-en="Some Strange Days">Tem Feito uns Dias Esquisitos</span></div>
-          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">[XX] min</span></div>
-          <div class="spec-item"><span class="sp-lbl" data-pt="Formato" data-en="Format">Formato</span><span class="sp-val">[DCP / ProRes]</span></div>
-          <div class="spec-item"><span class="sp-lbl" data-pt="Proporção" data-en="Aspect Ratio">Proporção</span><span class="sp-val">[1.85:1]</span></div>
-        </div>
-        <div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Idioma" data-en="Language">Idioma</span><span class="sp-val" data-pt="Português Brasileiro" data-en="Brazilian Portuguese">Português Brasileiro</span></div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Legendas" data-en="Subtitles">Legendas</span><span class="sp-val">PT, EN</span></div>
           <div class="spec-item"><span class="sp-lbl" data-pt="País" data-en="Country">País</span><span class="sp-val">Brasil</span></div>
+        </div>
+        <div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Gênero" data-en="Genre">Gênero</span><span class="sp-val" data-pt="Drama" data-en="Drama">Drama</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">[XX] min</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Formato" data-en="Format">Formato</span><span class="sp-val">[DCP / ProRes]</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Proporção" data-en="Aspect Ratio">Proporção</span><span class="sp-val">[1.85:1]</span></div>
         </div>
       </div>
     </div>
