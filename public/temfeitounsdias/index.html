@@ -135,7 +135,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .hero-center.in { opacity: 1; transform: none; }
 .hero-title-img {
-  width: auto; max-width: 82vw; max-height: 42vh; object-fit: contain;
+  width: auto; max-width: 72vw; max-height: 34vh; object-fit: contain;
   mix-blend-mode: screen;
 }
 .hero-meta {
@@ -243,7 +243,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .garr svg { width: 20px; height: 20px; stroke: var(--mint); stroke-width: 1.5; fill: none; }
 
 /* ─── NOTA DA DIREÇÃO ────────────────────────────────────────────── */
-.note-zone { height: 280vh; }
+.note-zone { height: 500vh; }
 .note-sticky {
   position: sticky; top: 0; height: 100vh;
   overflow: hidden; display: flex; align-items: flex-end;
@@ -292,7 +292,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .np-0.show, .np-1.show, .np-2.show { opacity: 1; transform: none; }
 
 /* ─── PÔSTER ─────────────────────────────────────────────────────── */
-.sec-poster { background: var(--bg); padding: 8rem 0; }
+.sec-poster {
+  position: fixed; inset: 0; z-index: 26;
+  background: var(--bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transform: translateY(100vh); opacity: 0; pointer-events: none;
+  will-change: transform, opacity;
+}
+.sec-poster .fade { opacity: 1 !important; transform: none !important; }
 .poster-center { display: flex; flex-direction: column; align-items: center; }
 .poster-wrap { max-width: 440px; width: 88%; }
 .poster-wrap img { width: 100%; display: block; border: 1px solid rgba(255,255,255,.05); }
@@ -306,7 +314,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .poster-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
 /* ─── ELENCO (POLAROID) ──────────────────────────────────────────── */
-.sec-cast { background: var(--bg2); padding: 7rem 0; }
+.sec-cast { background: #003FA3; padding: 7rem 0; }
 .cast-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -388,7 +396,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .crew-item:hover .cr-name { color: #F202BE; text-shadow: 0 0 12px rgba(242,2,190,.45), 0 0 24px rgba(242,2,190,.18); }
 
 /* ─── FICHA TÉCNICA ──────────────────────────────────────────────── */
-.sec-specs { background: var(--bg); padding: 7rem 0; }
+.sec-specs { background: rgba(10,10,10,0.08); padding: 7rem 0; }
 .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 720px; }
 .spec-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
 .sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
@@ -470,17 +478,19 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     <div class="hero-meta">
       <span>Brasil</span><span class="s">·</span>
       <span data-pt="Drama" data-en="Drama">Drama</span><span class="s">·</span>
-      <span data-pt="Slam · Luto · Amizade" data-en="Slam · Grief · Friendship">Slam · Luto · Amizade</span>
+      <span data-pt="Curta-metragem" data-en="Short Film">Curta-metragem</span><span class="s">·</span>
+      <span data-pt="Direção Vini Poffo e Luana Skibinski" data-en="Direction Vini Poffo and Luana Skibinski">Direção Vini Poffo e Luana Skibinski</span><span class="s">·</span>
+      <span data-pt="Roteiro Zalu Amorim e Vini Poffo" data-en="Screenplay Zalu Amorim and Vini Poffo">Roteiro Zalu Amorim e Vini Poffo</span>
     </div>
   </div>
   <div class="ticker-bar">
     <div class="ticker-track lang-pt" id="tickerPT">
-      <span>Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam&nbsp;&nbsp;·&nbsp;&nbsp;Luto&nbsp;&nbsp;·&nbsp;&nbsp;Amizade&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span aria-hidden="true">Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam&nbsp;&nbsp;·&nbsp;&nbsp;Luto&nbsp;&nbsp;·&nbsp;&nbsp;Amizade&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo e Luana Skibinski&nbsp;&nbsp;·&nbsp;&nbsp;Roteiro Zalu Amorim e Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Tem Feito uns Dias Esquisitos&nbsp;&nbsp;·&nbsp;&nbsp;Brasil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;·&nbsp;&nbsp;Direção Vini Poffo e Luana Skibinski&nbsp;&nbsp;·&nbsp;&nbsp;Roteiro Zalu Amorim e Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
     <div class="ticker-track lang-en hidden" id="tickerEN">
-      <span>Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam Poetry&nbsp;&nbsp;·&nbsp;&nbsp;Grief&nbsp;&nbsp;·&nbsp;&nbsp;Friendship&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span aria-hidden="true">Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Slam Poetry&nbsp;&nbsp;·&nbsp;&nbsp;Grief&nbsp;&nbsp;·&nbsp;&nbsp;Friendship&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Short Film&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo and Luana Skibinski&nbsp;&nbsp;·&nbsp;&nbsp;Screenplay Zalu Amorim and Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">Some Strange Days&nbsp;&nbsp;·&nbsp;&nbsp;Brazil&nbsp;&nbsp;·&nbsp;&nbsp;Drama&nbsp;&nbsp;·&nbsp;&nbsp;Short Film&nbsp;&nbsp;·&nbsp;&nbsp;Direction Vini Poffo and Luana Skibinski&nbsp;&nbsp;·&nbsp;&nbsp;Screenplay Zalu Amorim and Vini Poffo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
   </div>
 </div>
@@ -541,15 +551,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
       </div>
       <div class="note-inner">
         <blockquote class="note-quote">
-          <span class="nq-l0" data-pt="Uns dias esquisitos" data-en="Some strange days">Uns dias esquisitos</span>
-          <span class="nq-l1" data-pt="não são um estado — são um território." data-en="are not a feeling — they are a place.">não são um estado — são um território.</span>
+          <span class="nq-l0" data-pt="Tem feito uns" data-en="Some strange">Tem feito uns</span>
+          <span class="nq-l1" data-pt="dias esquisitos." data-en="days.">dias esquisitos.</span>
         </blockquote>
         <p id="noteLbl" data-pt="Nota da Direção" data-en="Director's Note">Nota da Direção</p>
         <div class="note-text">
           <p class="np-0"
-             data-pt="Tem Feito Uns Dias Esquisitos nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?"
-             data-en="Some Strange Days comes from a desire to face grief without trying to organize what is, in practice, messy. The strange time between one thing and another, between remembering and forgetting, between feeling and not being able to name it. Marcelo moves through this space asking how to exist after loss.">
-            Tem Feito Uns Dias Esquisitos nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?
+             data-pt="O filme nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?"
+             data-en="The film comes from a desire to face grief without trying to organize what is, in practice, messy. The strange time between one thing and another, between remembering and forgetting, between feeling and not being able to name it. Marcelo moves through this space asking how to exist after loss.">
+            O filme nasce de um desejo de encarar o luto sem tentar organizar demais o que, na prática, é confuso. O tempo estranho entre uma coisa e outra, entre lembrar e esquecer, entre sentir e não conseguir nomear. Marcelo atravessa esse espaço onde se pergunta como existir depois da perda?
           </p>
           <p class="np-1"
              data-pt="Ao mesmo tempo, o filme é atravessado pelo afeto como força que insiste. Mesmo quando tudo parece vazio, ainda existem gestos, risos, encontros. No fim, o filme não quer responder nada, quer abrir um espaço onde sentir seja possível, e onde, de alguma forma, a gente consiga continuar."
@@ -839,13 +849,14 @@ window.addEventListener('scroll', updateST, { passive: true });
 updateST();
 
 var noteZone = document.getElementById('noteZone');
+var secPoster = document.querySelector('.sec-poster');
 var nSteps = [
-  { el: document.querySelector('.nq-l0'), t: 0.04 },
-  { el: document.querySelector('.nq-l1'), t: 0.17 },
-  { el: document.getElementById('noteLbl'), t: 0.30 },
-  { el: document.querySelector('.np-0'),  t: 0.42 },
-  { el: document.querySelector('.np-1'),  t: 0.60 },
-  { el: document.querySelector('.np-2'),  t: 0.76 },
+  { el: document.querySelector('.nq-l0'), t: 0.03 },
+  { el: document.querySelector('.nq-l1'), t: 0.08 },
+  { el: document.getElementById('noteLbl'), t: 0.13 },
+  { el: document.querySelector('.np-0'),  t: 0.18 },
+  { el: document.querySelector('.np-1'),  t: 0.25 },
+  { el: document.querySelector('.np-2'),  t: 0.32 },
 ];
 function updateNote() {
   if (!noteZone) return;
@@ -853,6 +864,33 @@ function updateNote() {
   var total = noteZone.offsetHeight - window.innerHeight;
   var p = Math.max(0, Math.min(1, -rect.top / total));
   nSteps.forEach(function (s) { if (s.el) { if (p >= s.t) s.el.classList.add('show'); else s.el.classList.remove('show'); } });
+
+  // Poster: rises in p=0.44→0.62, holds 0.62→0.78, fades out 0.78→0.96
+  if (secPoster) {
+    if (p < 0.44) {
+      secPoster.style.transform = 'translateY(100vh)';
+      secPoster.style.opacity = '0';
+      secPoster.style.pointerEvents = 'none';
+    } else if (p < 0.62) {
+      var pp = (p - 0.44) / 0.18;
+      secPoster.style.transform = 'translateY(' + ((1 - pp) * 100) + 'vh)';
+      secPoster.style.opacity = String(Math.min(1, pp * 2.2));
+      secPoster.style.pointerEvents = pp > 0.5 ? 'auto' : 'none';
+    } else if (p < 0.78) {
+      secPoster.style.transform = 'translateY(0)';
+      secPoster.style.opacity = '1';
+      secPoster.style.pointerEvents = 'auto';
+    } else if (p < 0.96) {
+      var pp2 = (p - 0.78) / 0.18;
+      secPoster.style.transform = 'translateY(' + (-pp2 * 22) + 'vh)';
+      secPoster.style.opacity = String(1 - pp2);
+      secPoster.style.pointerEvents = 'none';
+    } else {
+      secPoster.style.transform = 'translateY(-22vh)';
+      secPoster.style.opacity = '0';
+      secPoster.style.pointerEvents = 'none';
+    }
+  }
 }
 window.addEventListener('scroll', updateNote, { passive: true });
 updateNote();
