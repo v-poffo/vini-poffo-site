@@ -243,7 +243,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .garr svg { width: 20px; height: 20px; stroke: var(--mint); stroke-width: 1.5; fill: none; }
 
 /* ─── NOTA DA DIREÇÃO ────────────────────────────────────────────── */
-.note-zone { height: 500vh; }
+.note-zone { height: 320vh; }
 .note-sticky {
   position: sticky; top: 0; height: 100vh;
   overflow: hidden; display: flex; align-items: flex-end;
@@ -314,7 +314,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .poster-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
 /* ─── ELENCO (POLAROID) ──────────────────────────────────────────── */
-.sec-cast { background: #003FA3; padding: 7rem 0; }
+.sec-cast { background: var(--bg2); padding: 7rem 0; position: relative; z-index: 30; }
 .cast-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -355,7 +355,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 
 /* ─── ELENCO COMPLETO ────────────────────────────────────────────── */
-.sec-cast-full { background: var(--bg); padding: 5rem 0 6rem; }
+.sec-cast-full { background: var(--bg); padding: 5rem 0 6rem; position: relative; z-index: 30; }
 .cast-full-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -387,7 +387,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 
 /* ─── CRÉDITOS / EQUIPE ──────────────────────────────────────────── */
-.sec-crew { background: var(--bg2); padding: 7rem 0; }
+.sec-crew { background: var(--bg2); padding: 7rem 0; position: relative; z-index: 30; }
 .crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
 .crew-div  { background: rgba(255,255,255,.05); }
 .crew-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
@@ -396,21 +396,17 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .crew-item:hover .cr-name { color: #F202BE; text-shadow: 0 0 12px rgba(242,2,190,.45), 0 0 24px rgba(242,2,190,.18); }
 
 /* ─── FICHA TÉCNICA ──────────────────────────────────────────────── */
-.sec-specs { background: rgba(10,10,10,0.08); padding: 7rem 0; }
+.sec-specs {
+  background: rgba(10,10,10,0.08);
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 7rem 0;
+  position: relative; z-index: 30;
+}
 .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; max-width: 720px; }
 .spec-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
 .sp-lbl { font-size: .54rem; letter-spacing: .17em; text-transform: uppercase; color: var(--dim); margin-bottom: .14rem; }
 .sp-val { font-size: .87rem; color: var(--white); }
-
-/* ─── CONTATO ────────────────────────────────────────────────────── */
-.sec-contact { padding: 9rem 0; text-align: center; background: var(--bg2); }
-.contact-lbl { font-size: .56rem; letter-spacing: .26em; text-transform: uppercase; color: var(--dim); margin-bottom: 1.4rem; }
-.contact-email {
-  font-family: "Rock Salt", cursive;
-  font-size: clamp(.9rem, 1.6vw, 1.3rem);
-  color: var(--white); transition: color .25s, text-shadow .25s;
-}
-.contact-email:hover { color: var(--mint); text-shadow: 0 0 18px rgba(31,255,199,.55), 0 0 40px rgba(31,255,199,.25); }
 
 /* ─── FOOTER ─────────────────────────────────────────────────────── */
 .footer {
@@ -744,18 +740,11 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
         </div>
         <div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Gênero" data-en="Genre">Gênero</span><span class="sp-val" data-pt="Drama" data-en="Drama">Drama</span></div>
-          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">[XX] min</span></div>
+          <div class="spec-item"><span class="sp-lbl" data-pt="Duração" data-en="Runtime">Duração</span><span class="sp-val">24 min</span></div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Formato" data-en="Format">Formato</span><span class="sp-val">[DCP / ProRes]</span></div>
           <div class="spec-item"><span class="sp-lbl" data-pt="Proporção" data-en="Aspect Ratio">Proporção</span><span class="sp-val">[1.85:1]</span></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="sec-contact">
-    <div class="wrap">
-      <p class="contact-lbl fade" data-pt="Contato &amp; Imprensa" data-en="Contact &amp; Press">Contato &amp; Imprensa</p>
-      <a href="mailto:projetos@vinipoffo.com" class="contact-email fade d1">projetos@vinipoffo.com</a>
     </div>
   </section>
 
@@ -851,12 +840,12 @@ updateST();
 var noteZone = document.getElementById('noteZone');
 var secPoster = document.querySelector('.sec-poster');
 var nSteps = [
-  { el: document.querySelector('.nq-l0'), t: 0.03 },
-  { el: document.querySelector('.nq-l1'), t: 0.08 },
-  { el: document.getElementById('noteLbl'), t: 0.13 },
-  { el: document.querySelector('.np-0'),  t: 0.18 },
-  { el: document.querySelector('.np-1'),  t: 0.25 },
-  { el: document.querySelector('.np-2'),  t: 0.32 },
+  { el: document.querySelector('.nq-l0'), t: 0.04 },
+  { el: document.querySelector('.nq-l1'), t: 0.10 },
+  { el: document.getElementById('noteLbl'), t: 0.17 },
+  { el: document.querySelector('.np-0'),  t: 0.24 },
+  { el: document.querySelector('.np-1'),  t: 0.33 },
+  { el: document.querySelector('.np-2'),  t: 0.42 },
 ];
 function updateNote() {
   if (!noteZone) return;
@@ -865,30 +854,22 @@ function updateNote() {
   var p = Math.max(0, Math.min(1, -rect.top / total));
   nSteps.forEach(function (s) { if (s.el) { if (p >= s.t) s.el.classList.add('show'); else s.el.classList.remove('show'); } });
 
-  // Poster: rises in p=0.44→0.62, holds 0.62→0.78, fades out 0.78→0.96
+  // Poster: rises in p=0.52→0.78, then stays — sec-cast (z:30) scrolls over it
   if (secPoster) {
-    if (p < 0.44) {
+    if (p < 0.52) {
       secPoster.style.transform = 'translateY(100vh)';
       secPoster.style.opacity = '0';
       secPoster.style.pointerEvents = 'none';
-    } else if (p < 0.62) {
-      var pp = (p - 0.44) / 0.18;
-      secPoster.style.transform = 'translateY(' + ((1 - pp) * 100) + 'vh)';
-      secPoster.style.opacity = String(Math.min(1, pp * 2.2));
-      secPoster.style.pointerEvents = pp > 0.5 ? 'auto' : 'none';
     } else if (p < 0.78) {
+      var pp = (p - 0.52) / 0.26;
+      secPoster.style.transform = 'translateY(' + ((1 - pp) * 100) + 'vh)';
+      secPoster.style.opacity = String(Math.min(1, pp * 2));
+      secPoster.style.pointerEvents = pp > 0.5 ? 'auto' : 'none';
+    } else {
+      // fully visible — stays until sec-cast scrolls over it
       secPoster.style.transform = 'translateY(0)';
       secPoster.style.opacity = '1';
       secPoster.style.pointerEvents = 'auto';
-    } else if (p < 0.96) {
-      var pp2 = (p - 0.78) / 0.18;
-      secPoster.style.transform = 'translateY(' + (-pp2 * 22) + 'vh)';
-      secPoster.style.opacity = String(1 - pp2);
-      secPoster.style.pointerEvents = 'none';
-    } else {
-      secPoster.style.transform = 'translateY(-22vh)';
-      secPoster.style.opacity = '0';
-      secPoster.style.pointerEvents = 'none';
     }
   }
 }
