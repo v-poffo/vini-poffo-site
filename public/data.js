@@ -494,6 +494,7 @@ const siteData = {
     },
     {
       "id": 3,
+      "customUrl": "/temfeitounsdias/",
       "title": "Tem feito uns dias esquisitos",
       "year": 2025,
       "type": "curta-metragem",
@@ -1110,7 +1111,7 @@ const siteData = {
       "videoHome": "debaixo_portfolio_video.mp4",
       "cartazMobile": "guarda-chuva-cartaz.jpg",
       "trailerUrl": "https://youtu.be/AyPNvaZ1kRM",
-      "description": "“Quando você encontra alguém que compactua com os mesmos sentimentos, as mesmas vivências que você, aí sim que você se encontra no mundo\". O documentário apresenta 7 jovens artistas LGBTQIA+ que falam sobrem suas realidades, sonhos e como a arte influência na sua jornada de aceitação e transformação. O curta foi selecionado para diversos festivais, incluindo a Mostra Internacional Audiovisual e o Festival Mix Brasil, Cine PE.",
+      "description": ""Quando você encontra alguém que compactua com os mesmos sentimentos, as mesmas vivências que você, aí sim que você se encontra no mundo\". O documentário apresenta 7 jovens artistas LGBTQIA+ que falam sobrem suas realidades, sonhos e como a arte influência na sua jornada de aceitação e transformação. O curta foi selecionado para diversos festivais, incluindo a Mostra Internacional Audiovisual e o Festival Mix Brasil, Cine PE.",
       "credits": {
         "direcao": [
           "Vini Poffo"
