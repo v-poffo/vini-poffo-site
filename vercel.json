@@ -14,6 +14,18 @@
       "source": "/criar",
       "destination": "/criar/",
       "permanent": true
+    },
+    {
+      "source": "/projeto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "3"
+        }
+      ],
+      "destination": "/temfeitounsdias/",
+      "permanent": false
     }
   ]
 }
