@@ -26,6 +26,18 @@
       ],
       "destination": "/temfeitounsdias/",
       "permanent": false
+    },
+    {
+      "source": "/projeto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "id",
+          "value": "6"
+        }
+      ],
+      "destination": "/suburbana/",
+      "permanent": false
     }
   ]
 }
