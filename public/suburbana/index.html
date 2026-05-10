@@ -6,11 +6,10 @@
 <title>(sub)urbana &mdash; Vini Poffo</title>
 <meta name="description" content="(sub)urbana, curta-metragem de Vini Poffo. Drama. Brasil, 2023.">
 <meta property="og:title" content="(sub)urbana">
-<meta property="og:description" content="Luara sonha com o mundo do teatro enquanto trabalha como opera&#769;ria em uma fa&#769;brica.">
 <meta property="og:image" content="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana%20poster.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,600&family=Epilogue:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400;1,6..96,600&family=Epilogue:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,13 +35,12 @@ body {
 img { display: block; max-width: 100%; }
 a   { color: inherit; text-decoration: none; }
 button { background: none; border: none; cursor: pointer; font: inherit; color: inherit; }
-.hidden { display: none !important; }
 
 /* GRAIN */
 .grain {
   position: fixed; inset: -50%; width: 200%; height: 200%;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay; opacity: .2; pointer-events: none; z-index: 998;
+  mix-blend-mode: overlay; opacity: .18; pointer-events: none; z-index: 998;
   animation: grain 6s steps(7) infinite;
 }
 @keyframes grain {
@@ -53,7 +51,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 .nav {
   position: absolute; top: 0; left: 0; right: 0; z-index: 500;
   display: flex; align-items: center; padding: 1.5rem 2.5rem;
-  background: linear-gradient(to bottom, rgba(13,3,4,.7) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(13,3,4,.65) 0%, transparent 100%);
 }
 .nav-logo-link {
   position: absolute; left: 50%; transform: translateX(-50%);
@@ -61,8 +59,6 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .nav-logo-link:hover { opacity: .7; }
 .nav-logo-img { height: 22px; width: auto; filter: brightness(0) invert(1); }
-
-/* HAMBURGER */
 .hamburger-btn {
   display: flex; flex-direction: column; justify-content: center; gap: 5px;
   cursor: pointer; background: none; border: none; padding: 4px;
@@ -70,26 +66,19 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .hamburger-btn span {
   display: block; width: 22px; height: 1.5px;
-  background: var(--white); transition: all .3s var(--ease);
-  transform-origin: center;
+  background: var(--white); transition: all .3s var(--ease); transform-origin: center;
 }
 .hamburger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger-btn.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* NAV OVERLAY */
 .nav-overlay {
-  position: fixed; top: 70px; right: 0; z-index: 550;
-  width: 200px;
-  background: rgba(13,3,4,.94);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  position: fixed; top: 70px; right: 0; z-index: 550; width: 200px;
+  background: rgba(13,3,4,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   display: flex; flex-direction: column; gap: .5rem;
   list-style: none; margin: 0; padding: 1.5rem;
   border-left: 1px solid rgba(212,184,150,.14);
   border-bottom: 1px solid rgba(212,184,150,.14);
-  opacity: 0; pointer-events: none;
-  transition: opacity .25s var(--ease);
+  opacity: 0; pointer-events: none; transition: opacity .25s var(--ease);
 }
 .nav-overlay.open { opacity: 1; pointer-events: auto; }
 .nav-overlay li a {
@@ -99,14 +88,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 }
 .nav-overlay li a:hover { color: var(--cream); }
 
-/* HERO VIDEO */
+/* HERO VIDEO — fixed behind everything */
 .hero-vid { position: fixed; inset: 0; z-index: 0; }
 .hero-vid video { width: 100%; height: 100%; object-fit: cover; }
 .hero-vid::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to bottom,
-    rgba(13,3,4,.25) 0%, rgba(13,3,4,0) 20%,
-    rgba(13,3,4,.55) 72%, rgba(13,3,4,1) 100%);
+    rgba(13,3,4,.2) 0%, rgba(13,3,4,0) 18%,
+    rgba(13,3,4,.5) 70%, rgba(13,3,4,1) 100%);
 }
 
 /* HERO OVERLAY */
@@ -114,226 +103,193 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   position: fixed; inset: 0; z-index: 10;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  pointer-events: none; will-change: opacity, transform;
+  pointer-events: none;
 }
 .hero-center {
-  display: flex; flex-direction: column;
-  align-items: center; text-align: center;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
   opacity: 0; transform: translateY(2.5rem);
   transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
 }
 .hero-center.in { opacity: 1; transform: none; }
+
+/* Title: screen blend — integrates naturally with video, no shadow box */
 .hero-title-img {
-  width: auto; max-width: 62vw; max-height: 38vh; object-fit: contain;
-  box-shadow: 0 0 100px 55px rgba(13,3,4,.92);
+  width: auto; max-width: 60vw; max-height: 40vh; object-fit: contain;
+  mix-blend-mode: screen;
 }
 .hero-meta {
-  margin-top: 1.6rem;
-  display: flex; align-items: center; gap: .55rem; flex-wrap: wrap; justify-content: center;
-  font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim);
+  margin-top: 1.4rem;
+  display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; justify-content: center;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--dim);
 }
-.hero-meta .s { opacity: .3; }
+.hero-meta .s { opacity: .28; }
 
 /* TICKER */
 .ticker-bar {
   position: absolute; bottom: 0; left: 0; right: 0;
-  border-top: 1px solid rgba(212,184,150,.1);
-  overflow: hidden; padding: .55rem 0;
+  border-top: 1px solid rgba(212,184,150,.09); overflow: hidden; padding: .5rem 0;
 }
-.ticker-track {
-  display: flex; white-space: nowrap;
-  animation: tick 38s linear infinite;
-}
+.ticker-track { display: flex; white-space: nowrap; animation: tick 40s linear infinite; }
 .ticker-track span {
-  font-family: "Epilogue", sans-serif; font-size: .57rem;
-  letter-spacing: .15em; text-transform: uppercase; color: var(--cream);
-  font-weight: 500;
+  font-size: .56rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--cream); font-weight: 500;
 }
 @keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
-/* MAIN CONTENT */
+/* MAIN */
 #content { position: relative; z-index: 20; margin-top: 100vh; }
 
-/* SCROLL ANIMATIONS */
 .fade {
-  opacity: 0; transform: translateY(2.5rem) scale(.97);
-  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  opacity: 0; transform: translateY(2rem);
+  transition: opacity .85s var(--ease), transform .85s var(--ease);
 }
 .fade.in { opacity: 1; transform: none; }
 .d1 { transition-delay: .1s; }
 .d2 { transition-delay: .22s; }
-.d3 { transition-delay: .38s; }
 
-/* SHARED */
 .wrap  { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
-.label {
-  font-size: .57rem; letter-spacing: .24em; text-transform: uppercase;
-  color: var(--cream); margin-bottom: 2.2rem;
-}
+.label { font-size: .56rem; letter-spacing: .24em; text-transform: uppercase; color: var(--cream); margin-bottom: 2rem; }
 
 /* SINOPSE + TRAILER */
-.st-zone { height: 360vh; }
+.st-zone { height: 340vh; }
 .st-sticky {
   position: sticky; top: 0; height: 100vh;
-  overflow: hidden; background: var(--bg);
-  display: flex; align-items: center;
+  overflow: hidden; background: var(--bg); display: flex; align-items: center;
 }
 .sin-ov {
   position: absolute; inset: 0; z-index: 2;
   display: flex; align-items: center; justify-content: center;
-  padding: 6rem 2.5rem; pointer-events: none;
+  padding: 5rem 2.5rem; pointer-events: none;
 }
-.sin-inner { max-width: 780px; text-align: center; }
+.sin-inner { max-width: 760px; text-align: center; }
 .sin-lbl {
-  font-size: .57rem; letter-spacing: .24em; text-transform: uppercase;
-  color: var(--cream); margin-bottom: 2.2rem;
+  font-size: .56rem; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--cream); margin-bottom: 1.8rem;
 }
 .sin-line {
   font-family: "Epilogue", sans-serif; font-weight: 300; font-style: italic;
-  font-size: clamp(1.25rem, 2.1vw, 1.9rem); line-height: 1.7; color: var(--white);
-  display: block; will-change: transform, opacity;
+  font-size: clamp(1.1rem, 1.9vw, 1.75rem); line-height: 1.75; color: var(--white);
+  display: block;
 }
 .trl-ov {
   position: absolute; inset: 0; z-index: 3;
-  display: flex; align-items: center; justify-content: center;
-  pointer-events: none;
+  display: flex; align-items: center; justify-content: center; pointer-events: none;
 }
 .trl-box {
   width: 100vw; height: 100vh;
-  transform-origin: center; transform: scale(.22); opacity: 0;
-  will-change: transform, opacity; pointer-events: auto;
+  transform-origin: center; transform: scale(.22); opacity: 0; pointer-events: auto;
 }
-.trl-box iframe {
-  width: 100%; height: 100%; display: block;
-  border: 1px solid rgba(212,184,150,.1);
-}
+.trl-box iframe { width: 100%; height: 100%; display: block; border: 1px solid rgba(212,184,150,.1); }
 
 /* GALLERY */
-.sec-gallery { background: var(--bg); padding: 5rem 0 4rem; overflow: hidden; }
-.gal-label   { padding: 0 2.5rem; margin-bottom: 1.8rem; }
-.gal-scroll  {
-  overflow-x: scroll; overflow-y: hidden;
-  cursor: grab; scrollbar-width: none; user-select: none;
-}
+.sec-gallery { background: var(--bg); padding: 5rem 0 3.5rem; overflow: hidden; }
+.gal-label { padding: 0 2.5rem; margin-bottom: 1.6rem; }
+.gal-scroll { overflow-x: scroll; overflow-y: hidden; cursor: grab; scrollbar-width: none; user-select: none; }
 .gal-scroll::-webkit-scrollbar { display: none; }
 .gal-scroll.drag { cursor: grabbing; }
-.gal-track {
-  display: flex; gap: 1.2rem; padding: .5rem 2.5rem 1.5rem;
-  width: max-content; align-items: center;
-}
-.gi { flex: 0 0 auto; height: 340px; overflow: hidden; }
+.gal-track { display: flex; gap: 1rem; padding: .5rem 2.5rem 1.2rem; width: max-content; align-items: center; }
+.gi { flex: 0 0 auto; height: 320px; overflow: hidden; }
 .gi img { height: 100%; width: auto; max-width: none; display: block; pointer-events: none; }
-.gal-arrows { display: flex; justify-content: space-between; padding: 1rem 2.5rem 0; }
+.gal-arrows { display: flex; justify-content: space-between; padding: .8rem 2.5rem 0; }
 .garr {
-  display: flex; align-items: center; gap: .4rem;
-  font-size: .57rem; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--cream); opacity: .4; transition: opacity .2s;
+  display: flex; align-items: center; gap: .35rem;
+  font-size: .56rem; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--cream); opacity: .38; transition: opacity .2s;
 }
-.garr:hover { opacity: .9; }
-.garr svg { width: 20px; height: 20px; stroke: var(--cream); stroke-width: 1.5; fill: none; }
+.garr:hover { opacity: .85; }
+.garr svg { width: 18px; height: 18px; stroke: var(--cream); stroke-width: 1.5; fill: none; }
 
-/* NOTA DA DIRECAO */
-.note-zone { height: 340vh; }
+/* NOTA DA DIRECAO — static bg, no second video */
+.note-zone { height: 300vh; }
 .note-sticky {
-  position: sticky; top: 0; height: 100vh;
-  overflow: hidden; display: flex; align-items: flex-end;
+  position: sticky; top: 0; height: 100vh; overflow: hidden;
+  display: flex; align-items: flex-end;
+  background: var(--bg);
 }
-.note-vid { position: absolute; inset: 0; z-index: 0; }
-.note-vid video { width: 100%; height: 100%; object-fit: cover; opacity: .35; }
-.note-vid::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(140deg, rgba(13,3,4,.92) 0%, rgba(13,3,4,.38) 100%);
+/* Subtle burgundy glow in bottom-left */
+.note-sticky::before {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 10% 90%, rgba(90,12,15,.5) 0%, transparent 65%);
 }
 .note-inner {
   position: relative; z-index: 1;
-  max-width: 700px; padding: 0 3rem 6vh 3rem;
+  max-width: 660px; padding: 0 3rem 7vh 3rem;
 }
 .note-quote {
   font-family: "Bodoni Moda", serif;
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  font-style: italic; font-weight: 400; opsz: 96;
+  font-size: clamp(2.4rem, 5.5vw, 5rem);
+  font-style: italic; font-weight: 400;
   line-height: 1; color: var(--cream);
-  letter-spacing: -.02em; margin-bottom: 2.8rem;
+  letter-spacing: -.02em; margin-bottom: 2.2rem;
 }
 .nq-l0, .nq-l1 {
-  display: block;
-  opacity: 0; transform: translateY(1.6rem);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  display: block; opacity: 0; transform: translateY(1.4rem);
+  transition: opacity .75s var(--ease), transform .75s var(--ease);
 }
-.nq-l1 { transition-delay: .16s; }
+.nq-l1 { transition-delay: .14s; }
 .nq-l0.show, .nq-l1.show { opacity: 1; transform: none; }
 #noteLbl {
-  font-size: .57rem; letter-spacing: .24em; text-transform: uppercase;
-  color: var(--cream); margin-bottom: 1.8rem;
-  opacity: 0; transform: translateY(.8rem);
+  font-size: .56rem; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--cream); margin-bottom: 1.5rem;
+  opacity: 0; transform: translateY(.7rem);
   transition: opacity .6s var(--ease), transform .6s var(--ease);
 }
 #noteLbl.show { opacity: 1; transform: none; }
 .np-0, .np-1, .np-2 {
-  font-weight: 300; line-height: 1.9; color: var(--white);
-  margin-bottom: 1.4rem;
-  opacity: 0; transform: translateY(1.2rem);
-  transition: opacity .75s var(--ease), transform .75s var(--ease);
-  text-shadow: 0 1px 18px rgba(13,3,4,1), 0 0 40px rgba(13,3,4,.9);
+  font-weight: 300; line-height: 1.85; color: var(--white); margin-bottom: 1.2rem;
+  opacity: 0; transform: translateY(1rem);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
 }
-.np-0, .np-1 { font-size: clamp(.86rem, 1.2vw, 1rem); }
-.np-2 { color: var(--cream) !important; font-style: italic; margin-top: 1.2rem; font-family: "Bodoni Moda", serif; font-size: 1rem; }
+.np-0, .np-1 { font-size: clamp(.84rem, 1.15vw, .97rem); }
+.np-2 { color: var(--cream) !important; font-style: italic; font-family: "Bodoni Moda", serif; font-size: .95rem; margin-top: 1rem; }
 .np-0.show, .np-1.show, .np-2.show { opacity: 1; transform: none; }
 
 /* POSTER */
 .sec-poster {
-  position: fixed; inset: 0; z-index: 26;
-  background: var(--bg);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  position: fixed; inset: 0; z-index: 26; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   transform: translateY(100vh); opacity: 0; pointer-events: none;
-  will-change: transform, opacity;
 }
 .sec-poster .fade { opacity: 1 !important; transform: none !important; }
 .poster-center { display: flex; flex-direction: column; align-items: center; }
-.poster-wrap { max-width: 400px; width: 80%; }
+.poster-wrap { max-width: 390px; width: 78%; }
 .poster-wrap img { width: 100%; display: block; border: 1px solid rgba(255,255,255,.04); }
 .poster-link {
-  margin-top: 1.2rem;
-  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--cream); opacity: .45; transition: opacity .2s, color .2s;
-  display: flex; align-items: center; gap: .4rem;
+  margin-top: 1.1rem; font-size: .57rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--cream); opacity: .42; transition: opacity .2s;
+  display: flex; align-items: center; gap: .35rem;
 }
-.poster-link:hover { opacity: 1; color: var(--burg); }
-.poster-link svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.poster-link:hover { opacity: 1; }
+.poster-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
 /* CREDITOS */
-.sec-crew { background: var(--bg2); padding: 7rem 0; position: relative; z-index: 30; }
+.sec-crew { background: var(--bg2); padding: 6.5rem 0; position: relative; z-index: 30; }
 .crew-grid { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 3rem; }
 .crew-div  { background: rgba(255,255,255,.04); }
-.crew-item { display: flex; flex-direction: column; padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
-.cr-role { font-size: .52rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: .18rem; }
-.cr-name { font-size: .87rem; color: var(--white); transition: color .25s; }
+.crew-item { display: flex; flex-direction: column; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+.cr-role { font-size: .51rem; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: .15rem; }
+.cr-name { font-size: .85rem; color: var(--white); transition: color .22s; }
 .crew-item:hover .cr-name { color: var(--cream); }
 
 /* FOOTER */
 .footer {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.6rem 2.5rem; border-top: 1px solid rgba(255,255,255,.05);
-  background: var(--bg2); font-size: .6rem; letter-spacing: .1em; color: var(--dim);
+  padding: 1.5rem 2.5rem; border-top: 1px solid rgba(255,255,255,.05);
+  background: var(--bg2); font-size: .58rem; letter-spacing: .1em; color: var(--dim);
 }
-.footer-title {
-  font-family: "Bodoni Moda", serif; font-style: italic;
-  color: var(--cream); font-size: .88rem; letter-spacing: 0;
-}
+.footer-title { font-family: "Bodoni Moda", serif; font-style: italic; color: var(--cream); font-size: .85rem; letter-spacing: 0; }
 
 /* RESPONSIVE */
 @media (max-width: 700px) {
   .crew-grid { grid-template-columns: 1fr; }
   .crew-div  { display: none; }
   .note-inner { padding: 0 1.5rem 5vh; }
-  .hero-title-img { max-width: 85vw; max-height: 32vh; }
+  .hero-title-img { max-width: 88vw; max-height: 30vh; }
 }
 @media (max-width: 500px) {
   .wrap { padding: 0 1.5rem; }
-  .gi   { height: 240px; }
-  .footer { padding: 1.4rem 1.5rem; }
-  .note-quote { font-size: clamp(2rem, 10vw, 3rem); }
+  .gi   { height: 230px; }
+  .footer { padding: 1.3rem 1.5rem; }
 }
 </style>
 </head>
@@ -356,13 +312,14 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <li><a href="https://vinipoffo.com/#about">Sobre.</a></li>
 </ul>
 
+<!-- Single fixed video — used only for hero, no duplicate -->
 <div class="hero-vid" aria-hidden="true">
-  <video autoplay muted loop playsinline preload="auto">
+  <video autoplay muted loop playsinline preload="metadata">
     <source src="../assets/videos/suburbana_portfolio_video.mp4" type="video/mp4">
   </video>
 </div>
 
-<div class="hero-ov" id="heroOv" aria-hidden="true">
+<div class="hero-ov" id="heroOv">
   <div class="hero-center" id="heroCenter">
     <img class="hero-title-img"
          src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana%20titulo.png"
@@ -377,8 +334,8 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   </div>
   <div class="ticker-bar">
     <div class="ticker-track">
-      <span>(sub)urbana&nbsp;&nbsp;&middot;&nbsp;&nbsp;Brasil&nbsp;&nbsp;&middot;&nbsp;&nbsp;Drama&nbsp;&nbsp;&middot;&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;&middot;&nbsp;&nbsp;Vini Poffo&nbsp;&nbsp;&middot;&nbsp;&nbsp;5 pr&ecirc;mios de melhor filme&nbsp;&nbsp;&middot;&nbsp;&nbsp;mais de 20 festivais nacionais e internacionais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span aria-hidden="true">(sub)urbana&nbsp;&nbsp;&middot;&nbsp;&nbsp;Brasil&nbsp;&nbsp;&middot;&nbsp;&nbsp;Drama&nbsp;&nbsp;&middot;&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;&middot;&nbsp;&nbsp;Vini Poffo&nbsp;&nbsp;&middot;&nbsp;&nbsp;5 pr&ecirc;mios de melhor filme&nbsp;&nbsp;&middot;&nbsp;&nbsp;mais de 20 festivais nacionais e internacionais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span>(sub)urbana&nbsp;&nbsp;&middot;&nbsp;&nbsp;Brasil&nbsp;&nbsp;&middot;&nbsp;&nbsp;Drama&nbsp;&nbsp;&middot;&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;&middot;&nbsp;&nbsp;Vini Poffo&nbsp;&nbsp;&middot;&nbsp;&nbsp;5 pr&ecirc;mios de melhor filme&nbsp;&nbsp;&middot;&nbsp;&nbsp;mais de 20 festivais nacionais e internacionais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span aria-hidden="true">(sub)urbana&nbsp;&nbsp;&middot;&nbsp;&nbsp;Brasil&nbsp;&nbsp;&middot;&nbsp;&nbsp;Drama&nbsp;&nbsp;&middot;&nbsp;&nbsp;Curta-metragem&nbsp;&nbsp;&nbsp;&middot;&nbsp;&nbsp;Vini Poffo&nbsp;&nbsp;&middot;&nbsp;&nbsp;5 pr&ecirc;mios de melhor filme&nbsp;&nbsp;&middot;&nbsp;&nbsp;mais de 20 festivais nacionais e internacionais&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
   </div>
 </div>
@@ -386,7 +343,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 <main id="content">
 
   <div class="st-zone" id="stZone">
-    <div class="st-sticky" id="stSticky">
+    <div class="st-sticky">
       <div class="sin-ov" id="sinOv">
         <div class="sin-inner">
           <p class="sin-lbl">Sinopse</p>
@@ -411,12 +368,12 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
   <section class="sec-gallery">
     <p class="label gal-label fade">Fotos</p>
     <div class="gal-scroll" id="gScroll">
-      <div class="gal-track" id="gTrack">
-        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana1.png" alt="(sub)urbana cena 1" loading="lazy"></div>
-        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana2.png" alt="(sub)urbana cena 2" loading="lazy"></div>
-        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana3.jpg" alt="(sub)urbana cena 3" loading="lazy"></div>
-        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana4.png" alt="(sub)urbana cena 4" loading="lazy"></div>
-        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana5.png" alt="(sub)urbana cena 5" loading="lazy"></div>
+      <div class="gal-track">
+        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana1.png" alt="cena 1" loading="lazy"></div>
+        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana2.png" alt="cena 2" loading="lazy"></div>
+        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana3.jpg" alt="cena 3" loading="lazy"></div>
+        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana4.png" alt="cena 4" loading="lazy"></div>
+        <div class="gi"><img src="https://raw.githubusercontent.com/v-poffo/vini-poffo-site/main/portfolio%20/(sub)urbana/(sub)urbana5.png" alt="cena 5" loading="lazy"></div>
       </div>
     </div>
     <div class="gal-arrows">
@@ -425,13 +382,9 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
     </div>
   </section>
 
+  <!-- Nota — sem vídeo duplicado; hero video aparece pelo fundo via z-index -->
   <div class="note-zone" id="noteZone">
     <div class="note-sticky">
-      <div class="note-vid" aria-hidden="true">
-        <video autoplay muted loop playsinline preload="none">
-          <source src="../assets/videos/suburbana_portfolio_video.mp4" type="video/mp4">
-        </video>
-      </div>
       <div class="note-inner">
         <blockquote class="note-quote">
           <span class="nq-l0">(sub)</span>
@@ -439,15 +392,15 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
         </blockquote>
         <p id="noteLbl">Nota da Dire&ccedil;&atilde;o</p>
         <div class="note-text">
-          <p class="np-0">(sub)urbana foi constru&iacute;do como um filme de passagem, entre cidade, mem&oacute;ria e imagina&ccedil;&atilde;o. Luara caminha pelos espa&ccedil;os tentando existir entre os ru&iacute;dos da cidade, os pr&oacute;prios desejos e as estruturas que insistem em limitar certos corpos. O surrealismo aparece justamente a&iacute;, como uma maneira de revelar camadas emocionais que a realidade sozinha n&atilde;o consegue alcan&ccedil;ar. A performance, o teatro e a dan&ccedil;a ajudam a transformar o interior da personagem em mat&eacute;ria vis&iacute;vel.</p>
-          <p class="np-1">O filme tamb&eacute;m parte de uma vontade de enxergar corpos negros e trans para al&eacute;m das narrativas de dor. Existe for&ccedil;a na vulnerabilidade, no afeto, no direito de sonhar e imaginar futuros mesmo em territ&oacute;rios marcados pela exclus&atilde;o. Em (sub)urbana, a arte aparece como espa&ccedil;o de transforma&ccedil;&atilde;o e presen&ccedil;a, um lugar onde a personagem pode se reconstruir constantemente.</p>
+          <p class="np-0">(sub)urbana &eacute; um filme de passagem &mdash; entre cidade, mem&oacute;ria e imagina&ccedil;&atilde;o. O surrealismo surge como forma de revelar camadas emocionais que a realidade sozinha n&atilde;o alcan&ccedil;a. A performance e a dan&ccedil;a transformam o interior da personagem em mat&eacute;ria vis&iacute;vel.</p>
+          <p class="np-1">Existe for&ccedil;a na vulnerabilidade, no afeto, no direito de sonhar em territ&oacute;rios marcados pela exclus&atilde;o. Em (sub)urbana, a arte &eacute; espa&ccedil;o de transforma&ccedil;&atilde;o &mdash; onde a personagem se reconstr&oacute;i constantemente.</p>
           <p class="np-2">&mdash; Vini Poffo</p>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="sec-poster" aria-label="P&ocirc;ster">
+  <section class="sec-poster" id="secPoster">
     <div class="wrap poster-center">
       <p class="label fade">P&ocirc;ster</p>
       <div class="poster-wrap fade d1">
@@ -493,7 +446,7 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 </main>
 
 <footer class="footer">
-  <a href="https://vinipoffo.com" style="opacity:.5;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.5">&larr; Vini Poffo</a>
+  <a href="https://vinipoffo.com" style="opacity:.45;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.45">&larr; Vini Poffo</a>
   <span class="footer-title">(sub)urbana</span>
 </footer>
 
@@ -501,139 +454,156 @@ button { background: none; border: none; cursor: pointer; font: inherit; color: 
 (function () {
 'use strict';
 
+/* ── INIT ─────────────────────────────────────────── */
 window.addEventListener('load', function () {
-  setTimeout(function () { document.getElementById('heroCenter').classList.add('in'); }, 350);
+  setTimeout(function () { document.getElementById('heroCenter').classList.add('in'); }, 300);
 });
 
-var heroOv = document.getElementById('heroOv');
-window.addEventListener('scroll', function () {
-  var p = Math.min(window.scrollY / (window.innerHeight * 0.6), 1);
-  heroOv.style.opacity    = 1 - p;
-  heroOv.style.transform  = 'translateY(' + (-window.scrollY * 0.14) + 'px)';
-  heroOv.style.pointerEvents = p > 0.5 ? 'none' : '';
-}, { passive: true });
-
-var hamburgerBtn = document.getElementById('hamburgerBtn');
-var navOverlay   = document.getElementById('navOverlay');
-if (hamburgerBtn && navOverlay) {
-  hamburgerBtn.addEventListener('click', function () { hamburgerBtn.classList.toggle('open'); navOverlay.classList.toggle('open'); });
-  navOverlay.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A' || e.target === navOverlay) { hamburgerBtn.classList.remove('open'); navOverlay.classList.remove('open'); }
-  });
-}
-
-var io = new IntersectionObserver(function (entries) {
-  entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
-
+/* ── CACHED DOM REFS ──────────────────────────────── */
+var heroOv   = document.getElementById('heroOv');
 var stZone   = document.getElementById('stZone');
 var sinOv    = document.getElementById('sinOv');
 var sinLines = sinOv.querySelectorAll('.sin-line');
 var trlBox   = document.getElementById('trlBox');
 var trlFrame = document.getElementById('trlFrame');
-var tLoaded  = false;
+var noteZone = document.getElementById('noteZone');
+var secPoster = document.getElementById('secPoster');
+var secCrew  = document.querySelector('.sec-crew');
+var nSteps   = [
+  { el: document.querySelector('.nq-l0'), t: 0.05 },
+  { el: document.querySelector('.nq-l1'), t: 0.12 },
+  { el: document.getElementById('noteLbl'), t: 0.19 },
+  { el: document.querySelector('.np-0'),  t: 0.26 },
+  { el: document.querySelector('.np-1'),  t: 0.37 },
+  { el: document.querySelector('.np-2'),  t: 0.46 },
+];
+var tLoaded = false;
 
-function updateST() {
-  var rect  = stZone.getBoundingClientRect();
-  var total = stZone.offsetHeight - window.innerHeight;
-  var p     = Math.max(0, Math.min(1, -rect.top / total));
-  var sP = Math.min(1, p / 0.45);
+/* ── SINGLE SCROLL HANDLER via RAF ───────────────── */
+var ticking = false;
+function runAll() {
+  var sy = window.scrollY;
+  var vh = window.innerHeight;
+
+  /* hero fade */
+  var hp = Math.min(sy / (vh * 0.6), 1);
+  heroOv.style.opacity   = 1 - hp;
+  heroOv.style.transform = 'translateY(' + (-sy * 0.12) + 'px)';
+  heroOv.style.pointerEvents = hp > 0.5 ? 'none' : '';
+
+  /* sinopse + trailer */
+  var stRect  = stZone.getBoundingClientRect();
+  var stTotal = stZone.offsetHeight - vh;
+  var stP     = Math.max(0, Math.min(1, -stRect.top / stTotal));
+  var sP = Math.min(1, stP / 0.45);
   sinOv.style.opacity = 1 - sP;
-  sinLines.forEach(function (line, i) {
-    line.style.transform = 'translateX(' + (sP * 90 * (i % 2 === 0 ? -1 : 1)) + 'px)';
-  });
-  var tP = Math.max(0, Math.min(1, (p - 0.3) / 0.65));
+  for (var i = 0; i < sinLines.length; i++) {
+    sinLines[i].style.transform = 'translateX(' + (sP * 80 * (i % 2 === 0 ? -1 : 1)) + 'px)';
+  }
+  var tP = Math.max(0, Math.min(1, (stP - 0.3) / 0.65));
   trlBox.style.transform = 'scale(' + (0.22 + tP * 0.8) + ')';
   trlBox.style.opacity   = Math.min(1, tP * 3);
-  if (!tLoaded && p > 0.18) { trlFrame.src = trlFrame.dataset.src; tLoaded = true; }
-}
-window.addEventListener('scroll', updateST, { passive: true });
-updateST();
+  if (!tLoaded && stP > 0.18) { trlFrame.src = trlFrame.dataset.src; tLoaded = true; }
 
-var noteZone  = document.getElementById('noteZone');
-var secPoster = document.querySelector('.sec-poster');
-var nSteps = [
-  { el: document.querySelector('.nq-l0'),       t: 0.04 },
-  { el: document.querySelector('.nq-l1'),       t: 0.11 },
-  { el: document.getElementById('noteLbl'),     t: 0.18 },
-  { el: document.querySelector('.np-0'),        t: 0.25 },
-  { el: document.querySelector('.np-1'),        t: 0.35 },
-  { el: document.querySelector('.np-2'),        t: 0.44 },
-];
-function updateNote() {
-  if (!noteZone) return;
-  var rect  = noteZone.getBoundingClientRect();
-  var total = noteZone.offsetHeight - window.innerHeight;
-  var p = Math.max(0, Math.min(1, -rect.top / total));
-  nSteps.forEach(function (s) {
-    if (s.el) { if (p >= s.t) s.el.classList.add('show'); else s.el.classList.remove('show'); }
-  });
+  /* nota */
+  var nRect  = noteZone.getBoundingClientRect();
+  var nTotal = noteZone.offsetHeight - vh;
+  var nP     = Math.max(0, Math.min(1, -nRect.top / nTotal));
+  for (var j = 0; j < nSteps.length; j++) {
+    var s = nSteps[j];
+    if (s.el) { s.el.classList.toggle('show', nP >= s.t); }
+  }
+
+  /* poster rise */
   if (secPoster) {
-    if (p < 0.54) {
+    if (nP < 0.54) {
       secPoster.style.transform = 'translateY(100vh)';
       secPoster.style.opacity = '0';
       secPoster.style.pointerEvents = 'none';
-    } else if (p < 0.80) {
-      var pp = (p - 0.54) / 0.26;
+    } else if (nP < 0.80) {
+      var pp = (nP - 0.54) / 0.26;
       secPoster.style.transform = 'translateY(' + ((1 - pp) * 100) + 'vh)';
-      secPoster.style.opacity = String(Math.min(1, pp * 2));
+      secPoster.style.opacity   = String(Math.min(1, pp * 2));
       secPoster.style.pointerEvents = pp > 0.5 ? 'auto' : 'none';
     } else {
       secPoster.style.transform = 'translateY(0)';
-      secPoster.style.opacity = '1';
+      secPoster.style.opacity   = '1';
       secPoster.style.pointerEvents = 'auto';
     }
   }
-}
-window.addEventListener('scroll', updateNote, { passive: true });
-updateNote();
 
-var secCrewEl = document.querySelector('.sec-crew');
-function updatePosterVsCrew() {
-  if (!secPoster || !secCrewEl) return;
-  var rect = secCrewEl.getBoundingClientRect();
-  var vh = window.innerHeight;
-  if (rect.top >= vh) return;
-  var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.55)));
-  secPoster.style.opacity = String(1 - progress);
-  secPoster.style.pointerEvents = 'none';
-}
-window.addEventListener('scroll', updatePosterVsCrew, { passive: true });
-updatePosterVsCrew();
+  /* poster fade as crew enters */
+  if (secPoster && secCrew) {
+    var cRect = secCrew.getBoundingClientRect();
+    if (cRect.top < vh) {
+      var cp = Math.max(0, Math.min(1, (vh - cRect.top) / (vh * 0.5)));
+      secPoster.style.opacity = String(1 - cp);
+      secPoster.style.pointerEvents = 'none';
+    }
+  }
 
+  ticking = false;
+}
+
+window.addEventListener('scroll', function () {
+  if (!ticking) { requestAnimationFrame(runAll); ticking = true; }
+}, { passive: true });
+runAll();
+
+/* ── NAV ─────────────────────────────────────────── */
+var hamburgerBtn = document.getElementById('hamburgerBtn');
+var navOverlay   = document.getElementById('navOverlay');
+hamburgerBtn.addEventListener('click', function () {
+  hamburgerBtn.classList.toggle('open');
+  navOverlay.classList.toggle('open');
+});
+navOverlay.addEventListener('click', function (e) {
+  if (e.target.tagName === 'A' || e.target === navOverlay) {
+    hamburgerBtn.classList.remove('open');
+    navOverlay.classList.remove('open');
+  }
+});
+
+/* ── INTERSECTION OBSERVER for .fade ─────────────── */
+var io = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade').forEach(function (el) { io.observe(el); });
+
+/* ── GALLERY DRAG + SCROLL ────────────────────────── */
 var gs = document.getElementById('gScroll');
-var isDragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf;
+var dragging = false, startX = 0, scrollStart = 0, velX = 0, lastX = 0, lastT = 0, raf2;
 gs.addEventListener('pointerdown', function (e) {
-  isDragging = true; startX = e.clientX; scrollStart = gs.scrollLeft;
+  dragging = true; startX = e.clientX; scrollStart = gs.scrollLeft;
   velX = 0; lastX = e.clientX; lastT = Date.now();
-  gs.setPointerCapture(e.pointerId); gs.classList.add('drag'); cancelAnimationFrame(raf);
+  gs.setPointerCapture(e.pointerId); gs.classList.add('drag'); cancelAnimationFrame(raf2);
 });
 gs.addEventListener('pointermove', function (e) {
-  if (!isDragging) return;
+  if (!dragging) return;
   var now = Date.now();
   gs.scrollLeft = scrollStart - (e.clientX - startX);
   velX = (e.clientX - lastX) / Math.max(now - lastT, 1) * 16;
   lastX = e.clientX; lastT = now;
 });
 function endDrag() {
-  if (!isDragging) return;
-  isDragging = false; gs.classList.remove('drag');
+  if (!dragging) return;
+  dragging = false; gs.classList.remove('drag');
   (function mom() {
-    if (Math.abs(velX) < 0.5) return;
-    gs.scrollLeft -= velX; velX *= 0.91; raf = requestAnimationFrame(mom);
+    if (Math.abs(velX) < 0.4) return;
+    gs.scrollLeft -= velX; velX *= 0.9; raf2 = requestAnimationFrame(mom);
   })();
 }
 gs.addEventListener('pointerup', endDrag);
 gs.addEventListener('pointercancel', endDrag);
 gs.addEventListener('wheel', function (e) {
-  var delta = e.deltaY !== 0 ? e.deltaY : e.deltaX;
-  if ((delta > 0 && gs.scrollLeft >= gs.scrollWidth - gs.clientWidth - 4) ||
-      (delta < 0 && gs.scrollLeft <= 4)) return;
-  e.preventDefault(); gs.scrollLeft += delta;
+  var d = e.deltaY || e.deltaX;
+  if ((d > 0 && gs.scrollLeft >= gs.scrollWidth - gs.clientWidth - 4) || (d < 0 && gs.scrollLeft <= 4)) return;
+  e.preventDefault(); gs.scrollLeft += d;
 }, { passive: false });
-document.getElementById('gLeft').addEventListener('click',  function () { gs.scrollBy({ left: -420, behavior: 'smooth' }); });
-document.getElementById('gRight').addEventListener('click', function () { gs.scrollBy({ left:  420, behavior: 'smooth' }); });
+document.getElementById('gLeft').addEventListener('click',  function () { gs.scrollBy({ left: -400, behavior: 'smooth' }); });
+document.getElementById('gRight').addEventListener('click', function () { gs.scrollBy({ left:  400, behavior: 'smooth' }); });
 
 })();
 </script>
