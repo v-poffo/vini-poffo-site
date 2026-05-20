@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trabalhos — Vini Poffo</title>
+  <meta name="description" content="Trabalhos de Vini Poffo — cineasta e artista." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;0,800;1,700&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'PP Woodland'; src: url('assets/fonts/PPWoodland-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'AOT Serial Mono'; src: url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+    :root { --black:#111A17; --white:#F3F8F4; --gray:#8a9490; --gray-dim:#4a5450; --border:rgba(243,248,244,0.08); --font-title:'PP Woodland','Montserrat',sans-serif; --font-mono:'AOT Serial Mono','Montserrat',monospace; --font-ui:'Montserrat',sans-serif; }
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--black); color:var(--white); font-family:var(--font-mono); font-weight:500; -webkit-font-smoothing:antialiased; }
+    .navbar { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.5rem 2rem; }
+    .nav-container { max-width:1200px; margin:0 auto; display:flex; justify-content:flex-end; padding:0 2rem; }
+    .hamburger { display:flex; flex-direction:column; cursor:pointer; gap:5px; }
+    .hamburger span { width:25px; height:2px; background-color:var(--white); transition:all 0.3s ease; filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5)); display:block; }
+    .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(8px,8px); }
+    .hamburger.active span:nth-child(2) { opacity:0; }
+    .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(7px,-7px); }
+    .nav-menu { display:none; list-style:none; flex-direction:column; gap:0.5rem; position:fixed; top:70px; right:0; width:200px; background-color:rgba(243,248,244,0.6); padding:2rem 1.5rem; box-shadow:-2px 2px 15px rgba(0,0,0,0.1); z-index:1000; backdrop-filter:blur(10px); }
+    .nav-menu.active { display:flex; }
+    .nav-menu a { text-decoration:none; color:var(--black); font-family:var(--font-ui); font-weight:400; font-size:0.95rem; transition:color 0.3s; }
+    .nav-menu a:hover { color:#718878; }
+    .nav-menu a.active { font-weight:700; }
+    .cv-logo { position:absolute; top:2rem; left:50%; transform:translateX(-50%); z-index:20; line-height:0; }
+    .cv-logo img { height:70px; width:auto; filter:brightness(0) invert(1); opacity:0.9; }
+    main { max-width:800px; margin:0 auto; padding:120px 48px 100px; }
+    .cv-header { margin-bottom:48px; animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) 0.05s both; }
+    .cv-name { font-family:var(--font-title); font-size:clamp(22px,3.5vw,38px); font-weight:700; font-style:italic; color:var(--white); margin-bottom:4px; line-height:1.1; }
+    .cv-label { font-family:var(--font-ui); font-size:0.6rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--gray-dim); }
+    .cv-section-label { font-family:var(--font-ui); font-size:0.6rem; font-weight:700; letter-spacing:0.25em; text-transform:lowercase; color:var(--gray-dim); margin-bottom:24px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .cv-item { display:grid; grid-template-columns:1fr 56px; gap:20px; align-items:start; padding:16px 0; border-bottom:1px solid var(--border); }
+    .cv-item:last-child { border-bottom:none; }
+    .cv-item-title { font-family:var(--font-mono); font-size:0.88rem; font-weight:500; color:var(--white); margin-bottom:3px; }
+    .cv-item-title::before { content:'_'; color:var(--gray-dim); }
+    .cv-item-artist { color:var(--gray); }
+    .cv-item-meta { font-size:0.75rem; color:var(--gray-dim); margin-bottom:2px; }
+    .cv-item-role { font-size:0.78rem; color:var(--gray); font-style:italic; }
+    .cv-item-year { font-family:var(--font-ui); font-size:0.68rem; font-weight:600; color:var(--gray-dim); text-align:right; letter-spacing:0.04em; padding-top:2px; }
+    .cv-awards { margin-top:6px; display:flex; flex-direction:column; gap:2px; }
+    .cv-award { font-size:0.7rem; color:var(--gray); display:flex; align-items:baseline; gap:6px; }
+    .cv-award::before { content:'◆'; font-size:0.4rem; color:var(--gray-dim); flex-shrink:0; }
+    footer { padding:24px 48px; max-width:800px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); }
+    .footer-copy { font-size:0.65rem; color:var(--gray-dim); font-family:var(--font-ui); }
+    .footer-back { font-family:var(--font-ui); font-size:0.65rem; font-weight:600; letter-spacing:0.1em; text-transform:lowercase; color:var(--gray-dim); text-decoration:none; transition:color 0.2s; }
+    .footer-back:hover { color:var(--white); }
+    .reveal { opacity:0; transform:translateY(12px); transition:opacity 0.45s ease,transform 0.45s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .cv-list>.cv-item.reveal:nth-child(1){transition-delay:0.00s}.cv-list>.cv-item.reveal:nth-child(2){transition-delay:0.04s}.cv-list>.cv-item.reveal:nth-child(3){transition-delay:0.08s}.cv-list>.cv-item.reveal:nth-child(4){transition-delay:0.12s}.cv-list>.cv-item.reveal:nth-child(5){transition-delay:0.16s}.cv-list>.cv-item.reveal:nth-child(6){transition-delay:0.20s}.cv-list>.cv-item.reveal:nth-child(7){transition-delay:0.24s}.cv-list>.cv-item.reveal:nth-child(8){transition-delay:0.28s}.cv-list>.cv-item.reveal:nth-child(9){transition-delay:0.32s}.cv-list>.cv-item.reveal:nth-child(10){transition-delay:0.36s}.cv-list>.cv-item.reveal:nth-child(11){transition-delay:0.40s}.cv-list>.cv-item.reveal:nth-child(12){transition-delay:0.44s}.cv-list>.cv-item.reveal:nth-child(13){transition-delay:0.48s}.cv-list>.cv-item.reveal:nth-child(14){transition-delay:0.52s}.cv-list>.cv-item.reveal:nth-child(15){transition-delay:0.56s}.cv-list>.cv-item.reveal:nth-child(16){transition-delay:0.60s}.cv-list>.cv-item.reveal:nth-child(17){transition-delay:0.64s}.cv-list>.cv-item.reveal:nth-child(18){transition-delay:0.68s}.cv-list>.cv-item.reveal:nth-child(19){transition-delay:0.72s}.cv-list>.cv-item.reveal:nth-child(20){transition-delay:0.76s}.cv-list>.cv-item.reveal:nth-child(21){transition-delay:0.80s}.cv-list>.cv-item.reveal:nth-child(22){transition-delay:0.84s}.cv-list>.cv-item.reveal:nth-child(23){transition-delay:0.88s}.cv-list>.cv-item.reveal:nth-child(24){transition-delay:0.92s}.cv-list>.cv-item.reveal:nth-child(25){transition-delay:0.96s}.cv-list>.cv-item.reveal:nth-child(26){transition-delay:1.00s}.cv-list>.cv-item.reveal:nth-child(27){transition-delay:1.04s}.cv-list>.cv-item.reveal:nth-child(28){transition-delay:1.08s}
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+    @media(max-width:640px){.navbar{padding:1.5rem}.nav-container{padding:0}.cv-logo img{height:44px}main{padding:100px 24px 80px}.cv-item{grid-template-columns:1fr;gap:4px}.cv-item-year{text-align:left}footer{padding:20px 24px;flex-direction:column;gap:10px;text-align:center}}
+  </style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="index.html#hero">Início.</a></li>
+      <li><a href="index.html#projects">Projetos.</a></li>
+      <li><a href="index.html#about">Sobre.</a></li>
+      <li><a href="trabalhos.html" class="active">Trabalhos.</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="cv-logo"><a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo" onerror="this.style.display='none'" /></a></div>
+<main>
+  <header class="cv-header">
+    <h1 class="cv-name">Vini Poffo</h1>
+    <p class="cv-label">cineasta</p>
+  </header>
+  <div class="cv-section-label reveal">trabalhos</div>
+  <div class="cv-list">
+    <div class="cv-item reveal"><div><div class="cv-item-title">nuvem negra <span class="cv-item-artist">// linn da quebrada</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div><div class="cv-awards"><span class="cv-award">em estreia</span></div></div><div class="cv-item-year">2026</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">não alimente os cães</div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">direção</div><div class="cv-awards"><span class="cv-award">em estreia</span></div></div><div class="cv-item-year">2026</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">pote de ouro <span class="cv-item-artist">// liniker feat. priscila senna</span></div><div class="cv-item-meta">videoclipe · breu entertainment, trinco + sufe</div><div class="cv-item-role">assistente de produção executiva</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">santo <span class="cv-item-artist">// malu alves</span></div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">assistente de arte</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">som do ale <span class="cv-item-artist">// álbum</span></div><div class="cv-item-meta">visualizer</div><div class="cv-item-role">assistente de arte e cenografia</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">vira essa boca pra cá <span class="cv-item-artist">// letrux feat. nouvella</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">dropar teu nome <span class="cv-item-artist">// letrux feat. nouvella</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">tem feito uns dias esquisitos</div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">direção, roteiro e concepção de arte</div><div class="cv-awards"><span class="cv-award">mostra sesc de cinema — 2025</span><span class="cv-award">prêmio catarinense de cinema — 2025</span></div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">cerave — pele sequinha</div><div class="cv-item-meta">publicidade</div><div class="cv-item-role">assistente de produção de objetos</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">nutren — eu me vejo pro-idade</div><div class="cv-item-meta">publicidade</div><div class="cv-item-role">assistente de produção de objetos</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">voe azul</div><div class="cv-item-meta">publicidade</div><div class="cv-item-role">assistente de objetos</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">outres de nós <span class="cv-item-artist">// jesus lumma feat. dandara manoela</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">aranha <span class="cv-item-artist">// letrux</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div><div class="cv-awards"><span class="cv-award">festival internacional de curta-metragem de brasília — melhor videoclipe (júri técnico), 2025</span></div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">diva <span class="cv-item-artist">// calma são paulo</span></div><div class="cv-item-meta">editorial</div><div class="cv-item-role">assistente de arte</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">carta marcada <span class="cv-item-artist">// vitor kley</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">assistente de produção de objetos</div></div><div class="cv-item-year">2025</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">segue o baile <span class="cv-item-artist">// e! channel</span></div><div class="cv-item-meta">reality show</div><div class="cv-item-role">making of (still) e operação de câmera ptz</div></div><div class="cv-item-year">2024</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">calma business <span class="cv-item-artist">// calma são paulo</span></div><div class="cv-item-meta">editorial</div><div class="cv-item-role">assistente de arte</div></div><div class="cv-item-year">2024</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">(sub)urbana</div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">direção e co-roteiro</div><div class="cv-awards"><span class="cv-award">hollywood world film festival — best film, 2023</span><span class="cv-award">v transforma festival — prêmio revelação + melhor atriz, 2023</span><span class="cv-award">festival internacional de cine lgbt paraguay — votação popular, 2023</span><span class="cv-award">violeta film festival (colômbia) — mención honorífica, 2023</span><span class="cv-award">prêmio catarinense de cinema — 2023</span></div></div><div class="cv-item-year">2023</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">barman <span class="cv-item-artist">// ananda paixão</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">assistência de direção</div></div><div class="cv-item-year">2023</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">no reflexo do meu nome</div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">direção e roteiro</div><div class="cv-awards"><span class="cv-award">mostra sesc de cinema — melhor obra de santa catarina, 2022</span></div></div><div class="cv-item-year">2022</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">bailão <span class="cv-item-artist">// gabeu</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção de arte</div></div><div class="cv-item-year">2022</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">de baixo do guarda-chuva pra ser resistência</div><div class="cv-item-meta">curta-metragem</div><div class="cv-item-role">direção e roteiro</div></div><div class="cv-item-year">2021</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">parte de mim</div><div class="cv-item-meta">videoarte</div><div class="cv-item-role">direção, roteiro e montagem</div><div class="cv-awards"><span class="cv-award">prêmio respirarte funarte — videoarte, 2021</span></div></div><div class="cv-item-year">2021</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">ela terra <span class="cv-item-artist">// malu maria</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção</div></div><div class="cv-item-year">2020</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">moços e moças <span class="cv-item-artist">// jesus lumma</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção de arte</div></div><div class="cv-item-year">2020</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">maria homem</div><div class="cv-item-meta">conteúdo digital · youtube e instagram</div><div class="cv-item-role">direção e criação de conteúdo</div></div><div class="cv-item-year">2020–</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">sugar daddy <span class="cv-item-artist">// gabeu</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção de arte</div></div><div class="cv-item-year">2019</div></div>
+    <div class="cv-item reveal"><div><div class="cv-item-title">colapso invisível <span class="cv-item-artist">// yma</span></div><div class="cv-item-meta">videoclipe</div><div class="cv-item-role">direção de arte</div></div><div class="cv-item-year">2019</div></div>
+  </div>
+</main>
+<footer>
+  <span class="footer-copy">© 2025 vini poffo</span>
+  <a class="footer-back" href="index.html">← portfólio</a>
+</footer>
+<script>
+  const hamburger=document.getElementById('hamburger'),navMenu=document.getElementById('navMenu');
+  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navMenu.classList.toggle('active');});
+  document.addEventListener('click',(e)=>{if(!hamburger.contains(e.target)&&!navMenu.contains(e.target)){hamburger.classList.remove('active');navMenu.classList.remove('active');}});
+  const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.05,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
