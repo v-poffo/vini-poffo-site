@@ -1256,6 +1256,40 @@ const siteData = {
         "extra": "",
         "apoio": ""
       }
+    },
+    {
+      "id": 1782334595427,
+      "title": "Nuvem Negra",
+      "year": 2026,
+      "type": "videoclipe",
+      "artist": "Linn da Quebrada",
+      "description": "Passa nuvem negra, larga o dia e vê se leva o mal que me arrasou",
+      "trailerUrl": "https://www.youtube.com/watch?v=es0Mf2msRzA",
+      "videoHome": "video-1782334396691.mov",
+      "cartazMobile": "cartaz-1782334392670.jpg",
+      "credits": {
+        "direcao": [
+          "Vini Poffo"
+        ],
+        "roteiro": [
+          "Vini Poffo",
+          "Linn da Quebrada"
+        ],
+        "elenco": [
+          "Linn da Quebrada"
+        ],
+        "direcaoFotografia": [
+          "Millena Rosado"
+        ],
+        "direcaoArte": [
+          ""
+        ],
+        "montagem": [
+          "Natália Faria"
+        ],
+        "extra": "Produção Executiva: Zalu Amorim\nDireção de Produção: Amangelo Prateado\nAssistência de Direção: Sillas H\nDireção de Fotografia: Millena Rosado\n1ª Assistência de Câmera: Rica Ramajo\n2ª Assistência de Câmera: Luana Skibinski\nGaffer: Lucas Roman Bulgarão\nAssistência de Elétrica: João Pedro Jacomin\nEquipamentos: Telescope Locadora\nDireção de Arte: Matheus De Luca\nAssistência de Arte: Naju Campos\nContra-regra: Milton Junior\nIdentidade Visual: Naju Campos\nPirofagia (Efeitos com Fogo): Matheus Abner\nStyling: Isac Leite e Katriel Monte\nAssistência de Figurino: Natalia Haiat\nBeleza: Raphaela Cruz\nDireção de Movimento e Preparação Corporal: Ira Dorsey e Zaila\nMontagem: Natália Farias\nColor Grading e VFX: Diego Lomac",
+        "apoio": ""
+      }
     }
   ]
 };
