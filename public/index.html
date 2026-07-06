@@ -7,22 +7,23 @@
     <meta name="description" content="Explore o portfólio de Vini Poffo, cineasta e diretora criativa. Especialista em cinema autoral, videoclipes premiados e projetos audiovisuais com estética artesanal e política.">
     <meta name="keywords" content="Vini Poffo, Cineasta, Diretora Criativa, Cinema Autoral, Videoclipes, Portfólio Audiovisual, Direção de Arte, Cinema Brasileiro, Letrux Aranha, (Sub)Urbana Filme">
     <meta name="author" content="Vini Poffo">
+    <link rel="canonical" href="https://vinipoffo.com/">
+    <link rel="icon" type="image/svg+xml" href="assets/logo/logo.svg">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="og:url" content="https://vinipoffo.com/">
     <meta property="og:title" content="Vini Poffo | Cineasta e Diretora Criativa">
     <meta property="og:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
-    <meta property="og:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.svg">
+    <meta property="og:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://vini-poffo-site.vercel.app/">
+    <meta property="twitter:url" content="https://vinipoffo.com/">
     <meta property="twitter:title" content="Vini Poffo | Cineasta e Diretora Criativa">
     <meta property="twitter:description" content="Explore o universo visual de Vini Poffo. Cinema, videoclipes e arte com alma e propósito.">
-    <meta property="twitter:image" content="https://vini-poffo-site.vercel.app/assets/logo/logo.svg">
+    <meta property="twitter:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
 
     <link rel="stylesheet" href="styles.css">
     <link rel="preload" href="assets/logo/logo.svg" as="image">
     <link rel="preload" href="assets/quem-sou-eu/vinisobrewebcineasta.png" as="image">
-    <link rel="preload" href="assets/videos/tfde_portfolio_video.mp4" as="video" type="video/mp4" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -34,7 +35,7 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Vini Poffo",
-      "url": "https://vini-poffo-site.vercel.app/",
+      "url": "https://vinipoffo.com/",
       "jobTitle": "Cineasta, Diretora Criativa e Artista",
       "sameAs": ["https://instagram.com/poffovini"],
       "description": "Cineasta e diretora criativa focada em cinema autoral, videoclipes e projetos publicitários."
@@ -66,6 +67,7 @@
             margin: 0; padding: 0;
         }
         section { width: 100%; position: relative; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
         /* --- PROJETOS --- */
         .projects-onepage { padding: 4rem 0 8rem 0; background-color: var(--primary-black); overflow: hidden; }
@@ -222,7 +224,7 @@
                 <div class="hero-title-inside-mobile" id="heroTitleInsideMobile"></div>
             </div>
             <div class="hero-overlay desktop-only">
-                <h1 style="display:none;">Vini Poffo - Cineasta e Diretora Criativa</h1>
+                <h1 class="sr-only">Vini Poffo - Cineasta e Diretora Criativa</h1>
                 <div class="hero-titles"><div id="projectsList" class="projects-list"></div></div>
             </div>
             <div class="hero-title-outside-mobile mobile-only">
@@ -233,7 +235,7 @@
     </section>
 
     <section class="projects-onepage" id="projects">
-        <h2 style="display:none;">Projetos e Trabalhos</h2>
+        <h2 class="sr-only">Projetos e Trabalhos</h2>
         <div class="filter-buttons">
             <button class="filter-btn active" data-filter="todos">Todos.</button>
             <button class="filter-btn" data-filter="curta-metragem">Curtas.</button>
@@ -247,7 +249,7 @@
     </section>
 
     <section class="about-onepage" id="about">
-        <h2 style="display:none;">Sobre Vini Poffo</h2>
+        <h2 class="sr-only">Sobre Vini Poffo</h2>
         <div class="cards-wrapper">
             <div class="cards-container" id="aboutGrid"></div>
         </div>
