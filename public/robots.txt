@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /admin-vini.html
+Disallow: /index-seguranca-original.html
+Disallow: /sobre-antigo.html
 
-Sitemap: https://vini-poffo-site.vercel.app/sitemap.xml
+Sitemap: https://vinipoffo.com/sitemap.xml
