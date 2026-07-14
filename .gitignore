@@ -1,0 +1,12 @@
+# Arquivos de sistema do macOS
+.DS_Store
+**/.DS_Store
+
+# Dependências
+node_modules/
+
+# Vercel
+.vercel
+
+# Logs
+*.log
