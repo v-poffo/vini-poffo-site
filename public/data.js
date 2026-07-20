@@ -1199,7 +1199,7 @@ const siteData = {
       "cartazMobile": "sugardaddy.jpg",
       "credits": {
         "direcao": [
-          ""
+          "Sillas H"
         ],
         "roteiro": [
           ""
