@@ -1233,7 +1233,7 @@ const siteData = {
       "cartazMobile": "colapsoinvisivel.png",
       "credits": {
         "direcao": [
-          ""
+          "Sillas H"
         ],
         "roteiro": [
           "YMA",
