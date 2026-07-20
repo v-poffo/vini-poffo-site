@@ -1040,7 +1040,8 @@ const siteData = {
       "cartazMobile": "reflexo-nome-cartaz.png",
       "credits": {
         "direcao": [
-          ""
+          "Vini Poffo",
+          "Sillas H"
         ],
         "roteiro": [
           ""
