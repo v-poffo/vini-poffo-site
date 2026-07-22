@@ -106,20 +106,7 @@ section{position:relative;padding:8rem 6vw}
 .botao.cheio{background:var(--verde);border-color:var(--verde);color:var(--tinta)}.botao.cheio:hover{background:var(--papel)}
 .rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
 [data-reveal]{opacity:0;transform:translateY(42px)}
-@media(max-width:860px){
-  section{padding:5rem 6vw}
-  .celulares{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:4vw;padding:0 6vw;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .celulares::-webkit-scrollbar{display:none}
-  .cel{width:clamp(160px,42vw,200px);scroll-snap-align:center}
-  .cel-nav{display:flex;justify-content:center;gap:.8rem;padding-top:1.2rem}
-  .cel-nav button{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.8rem;padding:.4rem;cursor:pointer;transition:.3s}
-  .cel-nav button:active{color:#fff}
-  .numeros{grid-template-columns:repeat(2,1fr);gap:2rem}
-  .kit-grade{grid-template-columns:1fr}
-  .grade-olhar{grid-template-columns:repeat(2,1fr)}
-  .grade-overlay{opacity:1}
-  .case-bloco{padding:5rem 6vw;min-height:auto}
-}
+@media(max-width:860px){section{padding:5rem 6vw}.celulares{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:4vw;padding:0 6vw;-webkit-overflow-scrolling:touch;scrollbar-width:none}.celulares::-webkit-scrollbar{display:none}.cel{width:clamp(160px,42vw,200px);scroll-snap-align:center}.cel-nav{display:flex;justify-content:center;gap:.8rem;padding-top:1.2rem}.cel-nav button{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.8rem;padding:.4rem;cursor:pointer;transition:.3s}.cel-nav button:active{color:#fff}.numeros{grid-template-columns:repeat(2,1fr);gap:2rem}.kit-grade{grid-template-columns:1fr}.grade-olhar{grid-template-columns:repeat(2,1fr)}.grade-overlay{opacity:1}.case-bloco{padding:5rem 6vw;min-height:auto}}
 @media(prefers-reduced-motion:reduce){[data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-scroll{animation:none}.hero-frase .p{opacity:1!important;transform:none!important}}
 </style>
 </head>
@@ -229,6 +216,6 @@ hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.togg
 document.addEventListener('click',e=>{if(!hb.contains(e.target)&&!nm.contains(e.target)){hb.classList.remove('active');nm.classList.remove('active')}});
 const cc=document.getElementById('celCarousel'),cp=document.getElementById('celPrev'),cn=document.getElementById('celNext');
 if(cp&&cn){const scrollCel=(dir)=>{const w=cc.querySelector('.cel').offsetWidth+16;cc.scrollBy({left:dir*w,behavior:'smooth'})};cp.addEventListener('click',()=>scrollCel(-1));cn.addEventListener('click',()=>scrollCel(1))}
-<\/script>
+</script>
 </body>
 </html>
