@@ -53,8 +53,8 @@ section{position:relative;padding:8rem 6vw}
 .hero-frase .p{display:inline-block;opacity:.08;transform:translateY(.4em)}
 .hero-sub{max-width:52ch}
 .hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.85}
-.hero-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.4;animation:pisca 2.4s ease-in-out infinite}
-@keyframes pisca{0%,100%{opacity:.2}50%{opacity:.7}}
+
+}
 .letreiro{overflow:hidden;white-space:nowrap;padding:1.3rem 0;border-top:1px solid;border-bottom:1px solid}
 .letreiro.e{border-color:rgba(243,248,244,.15)}.letreiro.c{border-color:rgba(17,26,23,.2)}
 .letreiro-faixa{display:inline-block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2.4rem);will-change:transform;animation:corre 28s linear infinite}
@@ -108,7 +108,7 @@ section{position:relative;padding:8rem 6vw}
 .rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
 [data-reveal]{opacity:0;transform:translateY(42px)}
 @media(max-width:860px){section{padding:5rem 6vw}.celulares{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:4vw;padding:0 6vw;-webkit-overflow-scrolling:touch;scrollbar-width:none}.celulares::-webkit-scrollbar{display:none}.cel{width:clamp(160px,42vw,200px);scroll-snap-align:center}.cel-nav{display:flex;justify-content:center;gap:.8rem;padding-top:1.2rem}.cel-nav button{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.8rem;padding:.4rem;cursor:pointer;transition:.3s}.cel-nav button:active{color:#fff}.numeros{grid-template-columns:repeat(2,1fr);gap:2rem}.kit-grade{grid-template-columns:1fr}.grade-olhar{grid-template-columns:repeat(2,1fr)}.grade-overlay{opacity:1}.case-bloco{padding:5rem 6vw;min-height:auto}}
-@media(prefers-reduced-motion:reduce){[data-reveal],[data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-scroll{animation:none}.hero-frase .p{opacity:1!important;transform:none!important}}
+@media(prefers-reduced-motion:reduce){[data-reveal],[data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-frase .p{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -117,9 +117,8 @@ section{position:relative;padding:8rem 6vw}
 <header class="hero escuro">
   <div class="hero-bg"><video muted loop playsinline autoplay preload="auto"><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video></div>
   <p class="tag">Conteúdo &amp; Campanhas</p>
-  <h1 class="hero-frase" id="heroFrase">Seu</em>conteúdo<em> com <em>olhar</em> de <em>cinema</em>.</h1>
+  <h1 class="hero-frase" id="heroFrase">Seu <em>conteúdo</em> com <em>olhar</em> de <em>cinema</em>.</h1>
   <div class="hero-sub"><p class="hero-desc">Produção audiovisual completa para campanhas, conteúdo digital e redes sociais. Captação, edição e entrega rápida — com equipamento próprio de cinema e mais de 7 anos criando conteúdo que conecta.</p></div>
-  <span class="hero-scroll"></span>
 </header>
 <div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO DIGITAL <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO DIGITAL <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> </div></div>
 <section class="escuro">
@@ -127,9 +126,9 @@ section{position:relative;padding:8rem 6vw}
   <div class="celulares-wrap">
     <div class="celulares" id="celCarousel">
       <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/lirous.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Lirous</strong><span>campanha política</span></div></div>
-      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div><div class="cel-legenda"><strong>Campanha na rua</strong><span>campanha eleitoral</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div><div class="cel-legenda"><strong>Jéssica Michels</strong><span>Campanha Política</span></div></div>
       <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Umbro</strong><span>Instagram</span></div></div>
-      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/Maria Homem 600mil seguidores .mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · YouTube</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/Maria Homem 600mil seguidores .mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · redes sociais</span></div></div>
       <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="auto" data-autoplay><source src="assets/videos/Maria Homem respondendo pergunta.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Conteúdo recorrente</strong><span>Maria Homem · redes</span></div></div>
     </div>
     <div class="cel-nav"><button id="celPrev">&#10094;</button><button id="celNext">&#10095;</button></div>
@@ -159,29 +158,29 @@ section{position:relative;padding:8rem 6vw}
   <div class="kit-grade">
     <div class="kit-card"><h4>Conteúdo para campanhas</h4><p>Criação diária de vídeos para redes: falas da candidata, cobertura de agenda, jingles visuais, stories de bastidores. Do roteiro à publicação, no ritmo de campanha.</p></div>
     <div class="kit-card"><h4>Produção recorrente</h4><p>Rotina completa de conteúdo para YouTube, Instagram e TikTok. Captação, edição, cortes e publicação com consistência e identidade visual — como faço há 5 anos no canal Maria Homem.</p></div>
-    <div class="kit-card"><h4>Kit próprio de cinema</h4><p>Blackmagic 6K, Sony FX30, lentes, iluminação e gravadores de áudio. Não dependo de aluguel de equipamento — é marcar e gravar. Edição em Premiere e DaVinci Resolve.</p></div>
+    <div class="kit-card"><h4>Kit próprio de cinema</h4><p>Blackmagic 6K, Sony FX30, lentes, iluminação, gravadores de áudio e microfones. Kit completo para autonomia do trabalho para captação e edição do conteúdo.</p></div>
   </div>
 </section>
 <section class="escuro" style="padding:5rem 0">
   <div style="padding:0 6vw"><p class="tag" data-reveal>De onde vem o olhar</p></div>
   <div class="grade-olhar">
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/naoc_vinipoffo.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Não Alimente os Cães</p><p class="g-tipo">curta-metragem · 2026</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/video-1782334396691.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Nuvem Negra</p><p class="g-tipo">videoclipe · Linn da Quebrada</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/aranha_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Aranha</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/noreflexo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/tfde_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/outres_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/MH_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/suburbana_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/dropar_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/debaixo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Umbro</p><p class="g-tipo">Instagram</p></div></div></div>
-    <div class="grade-item" data-reveal><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Campanhas Políticas</p><p class="g-tipo">conteúdo eleitoral</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/naoc_vinipoffo.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Não Alimente os Cães</p><p class="g-tipo">curta-metragem · 2026</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/video-1782334396691.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Nuvem Negra</p><p class="g-tipo">videoclipe · Linn da Quebrada</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/aranha_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Aranha</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/noreflexo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/tfde_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/outres_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/MH_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/suburbana_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/dropar_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/debaixo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Umbro</p><p class="g-tipo">Instagram</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Campanhas Políticas</p><p class="g-tipo">conteúdo eleitoral</p></div></div></div>
   </div>
 </section>
 <section class="escuro" style="padding:5rem 6vw;text-align:center">
   <p data-reveal style="font-size:1rem;line-height:1.8;opacity:.85;max-width:54ch;margin:0 auto 2rem">A qualidade do conteúdo vem de quem faz cinema. Curtas premiados, videoclipes para Letrux e Linn da Quebrada, e um olhar treinado em festivais e sets de publicidade.</p>
-  <a class="botao e" href="https://vinipoffo.com/portfolio.html" target="_blank" data-reveal data-reveal style="display:inline-flex">Ver portfólio completo →</a>
+  <a class="botao e" href="https://www.vinipoffo.com" target="_blank" data-reveal data-reveal style="display:inline-flex">Ver portfólio completo →</a>
 </section>
 <section class="cta-final escuro">
   <p class="tag" data-reveal>Vamos conversar</p>
