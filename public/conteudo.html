@@ -3,117 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vini Poffo — Conteúdo & Campanhas</title>
+<title>Vini Poffo — Conteúdo &amp; Campanhas</title>
 <meta name="description" content="Produção audiovisual para campanhas políticas, conteúdo digital e redes sociais. Captação, edição e entrega rápida. Vini Poffo — cineasta com equipamento próprio e portfólio premiado.">
 <link rel="icon" type="image/svg+xml" href="assets/logo/logo.svg">
 <link rel="canonical" href="https://vinipoffo.com/conteudo.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vinipoffo.com/conteudo.html">
-<meta property="og:title" content="Vini Poffo — Conteúdo & Campanhas">
+<meta property="og:title" content="Vini Poffo — Conteúdo &amp; Campanhas">
 <meta property="og:description" content="Produção audiovisual para campanhas, conteúdo e redes. Kit próprio, entrega rápida, olhar de cinema.">
 <meta property="og:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="Vini Poffo — Conteúdo & Campanhas">
+<meta property="twitter:title" content="Vini Poffo — Conteúdo &amp; Campanhas">
 <meta property="twitter:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <style>
 @font-face{font-family:'PP Woodland';src:url('assets/fonts/PPWoodland-Bold.otf') format('opentype');font-weight:700;font-display:swap}
 @font-face{font-family:'AOT Serial Mono';src:url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
-:root{--tinta:#111A17;--papel:#F3F8F4;--verde:#718878;--azul:#2A4A5A;
-  --f-display:'PP Woodland',serif;--f-mono:'AOT Serial Mono',monospace;--f-corpo:'Montserrat',sans-serif}
+:root{--tinta:#111A17;--papel:#F3F8F4;--verde:#718878;--azul:#2A4A5A;--f-display:'PP Woodland',serif;--f-mono:'AOT Serial Mono',monospace;--f-corpo:'Montserrat',sans-serif}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--tinta);color:var(--papel);font-family:var(--f-corpo);overflow-x:hidden}
 ::selection{background:var(--verde);color:var(--tinta)}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.04;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
 #progresso{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--verde);transform-origin:left;transform:scaleX(0);z-index:9500}
 .tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2.4rem}
 .tag::before{content:'';display:inline-block;width:2rem;height:1px;background:currentColor}
 section{position:relative;padding:8rem 6vw}
-.escuro{background:var(--tinta);color:var(--papel)}
-.claro{background:var(--papel);color:var(--tinta)}
-
-/* HERO */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5rem 6vw 2rem}
-.hero-frase{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9.5vw,8.5rem);line-height:.9;margin-bottom:3rem}
-.hero-frase em{font-style:normal;color:var(--verde)}
-.hero-frase .p{display:inline-block;opacity:.08;transform:translateY(.4em)}
-.hero-sub{max-width:52ch}
-.hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.85}
-.hero-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.4;animation:pisca 2.4s ease-in-out infinite}
-@keyframes pisca{0%,100%{opacity:.2}50%{opacity:.7}}
-
-/* LETREIRO */
-.letreiro{overflow:hidden;white-space:nowrap;padding:1.3rem 0;border-top:1px solid;border-bottom:1px solid}
-.letreiro.e{border-color:rgba(243,248,244,.15)}.letreiro.c{border-color:rgba(17,26,23,.2)}
-.letreiro-faixa{display:inline-block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2.4rem);will-change:transform;animation:corre 28s linear infinite}
-.letreiro.inv .letreiro-faixa{animation-direction:reverse}
-@keyframes corre{to{transform:translateX(-50%)}}
-.letreiro-faixa em{font-style:normal;color:var(--verde);margin:0 .5em}
-
-/* CELULARES */
-.celulares{display:flex;gap:3vw;justify-content:center;align-items:center;flex-wrap:wrap;padding:4rem 4vw}
-.cel{width:clamp(180px,20vw,260px);position:relative}
-.cel-moldura{border:3px solid rgba(243,248,244,.35);border-radius:24px;overflow:hidden;aspect-ratio:9/16;position:relative;background:#000}
-.cel-moldura video{width:100%;height:100%;object-fit:cover;display:block}
-.cel-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38%;height:18px;background:var(--tinta);border-radius:0 0 12px 12px;z-index:3}
-.cel-legenda{margin-top:1rem;text-align:center}
-.cel-legenda strong{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
-.cel-legenda span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
-.cel:nth-child(odd){transform:rotate(-1.5deg)}.cel:nth-child(even){transform:rotate(1.5deg)}
-
-/* CASE COM VÍDEO DE FUNDO */
-.case-bloco{position:relative;overflow:hidden;padding:7rem 6vw;min-height:70svh;display:flex;align-items:center}
-.case-bg{position:absolute;inset:0;z-index:0}
-.case-bg video{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.35) saturate(.85)}
-.case-conteudo{position:relative;z-index:2;max-width:620px;color:var(--papel)}
-.case-conteudo h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:.95;margin-bottom:1.6rem}
-.case-conteudo p{font-size:.95rem;line-height:1.8;margin-bottom:1.2rem;opacity:.92;max-width:48ch}
-.case-conteudo .detalhe{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;opacity:.75}
-.case-conteudo .detalhe b{color:var(--verde);font-weight:500}
-
-/* NUMEROS */
-.numeros{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6rem;margin-bottom:5rem}
-.num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.8rem,7vw,6rem);line-height:1;color:var(--verde)}
-.num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
-
-/* KIT */
-.kit-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.kit-card{padding:2.4rem;border:1px solid rgba(17,26,23,.2);border-radius:6px;transition:.3s}
-.kit-card:hover{border-color:var(--verde);transform:translateY(-4px)}
-.kit-card h4{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem;line-height:1.1}
-.kit-card p{font-size:.88rem;line-height:1.8;opacity:.8}
-
-/* GRADE DE OLHAR */
-.grade-olhar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-.grade-item{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;cursor:default}
-.grade-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
-.grade-item:hover video{transform:scale(1.06)}
-.grade-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;
-  background:linear-gradient(transparent 40%,rgba(17,26,23,.75));opacity:0;transition:opacity .35s}
-.grade-item:hover .grade-overlay{opacity:1}
-.grade-overlay .g-titulo{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(.8rem,1.4vw,1.15rem);line-height:1.1;color:var(--papel)}
-.grade-overlay .g-tipo{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--verde);margin-top:.35rem}
-
-/* CTA FINAL */
-.cta-final{min-height:85svh;display:flex;flex-direction:column;justify-content:center;text-align:center}
-.cta-final h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.92;margin-bottom:3rem}
-.cta-final h3 em{font-style:normal;color:var(--verde)}
-.botoes{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
-.botao{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.95rem 1.8rem;border:1px solid;text-decoration:none;transition:.3s;display:inline-flex;align-items:center;gap:.6rem}
-.botao.e{border-color:var(--papel);color:var(--papel)}.botao.e:hover{background:var(--papel);color:var(--tinta)}
-.botao.cheio{background:var(--verde);border-color:var(--verde);color:var(--tinta)}.botao.cheio:hover{background:var(--papel)}
-.rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
-
-
-/* NAVBAR (do site principal) */
+.escuro{background:var(--tinta);color:var(--papel)}.claro{background:var(--papel);color:var(--tinta)}
 .navbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:8000;background-color:transparent;padding:1.5rem 2rem;transition:background-color .4s ease}
 .nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
 .nav-logo-mini{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.8;transition:.3s}
 .nav-logo-mini:hover{opacity:1}
-.nav-menu{display:none;list-style:none;gap:.5rem;position:fixed;top:70px;right:0;width:200px;height:auto;
-  background-color:rgba(243,248,244,.6);flex-direction:column;padding:2rem 1.5rem;box-shadow:-2px 2px 15px rgba(0,0,0,.1);z-index:8000;backdrop-filter:blur(10px)}
+.nav-menu{display:none;list-style:none;gap:.5rem;position:fixed;top:70px;right:0;width:200px;height:auto;background-color:rgba(243,248,244,.6);flex-direction:column;padding:2rem 1.5rem;box-shadow:-2px 2px 15px rgba(0,0,0,.1);z-index:8000;backdrop-filter:blur(10px)}
 .nav-menu.active{display:flex}
 .nav-menu a{text-decoration:none;color:var(--tinta);font-weight:400;font-size:.95rem;transition:color .3s}
 .nav-menu a:hover{color:var(--verde)}
@@ -123,92 +44,94 @@ section{position:relative;padding:8rem 6vw}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
-
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5rem 6vw 2rem}
+.hero-frase{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9.5vw,8.5rem);line-height:.9;margin-bottom:3rem}
+.hero-frase em{font-style:normal;color:var(--verde)}
+.hero-frase .p{display:inline-block;opacity:.08;transform:translateY(.4em)}
+.hero-sub{max-width:52ch}
+.hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.85}
+.hero-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.4;animation:pisca 2.4s ease-in-out infinite}
+@keyframes pisca{0%,100%{opacity:.2}50%{opacity:.7}}
+.letreiro{overflow:hidden;white-space:nowrap;padding:1.3rem 0;border-top:1px solid;border-bottom:1px solid}
+.letreiro.e{border-color:rgba(243,248,244,.15)}.letreiro.c{border-color:rgba(17,26,23,.2)}
+.letreiro-faixa{display:inline-block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2.4rem);will-change:transform;animation:corre 28s linear infinite}
+.letreiro.inv .letreiro-faixa{animation-direction:reverse}
+@keyframes corre{to{transform:translateX(-50%)}}
+.letreiro-faixa em{font-style:normal;color:var(--verde);margin:0 .5em}
+.celulares{display:flex;gap:3vw;justify-content:center;align-items:center;flex-wrap:wrap;padding:4rem 4vw}
+.cel{width:clamp(180px,20vw,260px);position:relative}
+.cel-moldura{border:3px solid rgba(243,248,244,.35);border-radius:24px;overflow:hidden;aspect-ratio:9/16;position:relative;background:#000}
+.cel-moldura video{width:100%;height:100%;object-fit:cover;display:block}
+.cel-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38%;height:18px;background:var(--tinta);border-radius:0 0 12px 12px;z-index:3}
+.cel-legenda{margin-top:1rem;text-align:center}
+.cel-legenda strong{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
+.cel-legenda span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.cel:nth-child(odd){transform:rotate(-1.5deg)}.cel:nth-child(even){transform:rotate(1.5deg)}
+.case-bloco{position:relative;overflow:hidden;padding:7rem 6vw;min-height:70svh;display:flex;align-items:center}
+.case-bg{position:absolute;inset:0;z-index:0}
+.case-bg video{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.35) saturate(.85)}
+.case-conteudo{position:relative;z-index:2;max-width:620px;color:var(--papel)}
+.case-conteudo h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:.95;margin-bottom:1.6rem}
+.case-conteudo p{font-size:.95rem;line-height:1.8;margin-bottom:1.2rem;opacity:.92;max-width:48ch}
+.case-conteudo .detalhe{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;opacity:.75}
+.case-conteudo .detalhe b{color:var(--verde);font-weight:500}
+.numeros{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6rem;margin-bottom:5rem}
+.num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.8rem,7vw,6rem);line-height:1;color:var(--verde)}
+.num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
+.kit-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.kit-card{padding:2.4rem;border:1px solid rgba(17,26,23,.2);border-radius:6px;transition:.3s}
+.kit-card:hover{border-color:var(--verde);transform:translateY(-4px)}
+.kit-card h4{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:1.15rem;margin-bottom:1rem;line-height:1.1}
+.kit-card p{font-size:.88rem;line-height:1.8;opacity:.8}
+.grade-olhar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.grade-item{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;cursor:default}
+.grade-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.grade-item:hover video{transform:scale(1.06)}
+.grade-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;background:linear-gradient(transparent 40%,rgba(17,26,23,.75));opacity:0;transition:opacity .35s}
+.grade-item:hover .grade-overlay{opacity:1}
+.grade-overlay .g-titulo{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(.8rem,1.4vw,1.15rem);line-height:1.1;color:var(--papel)}
+.grade-overlay .g-tipo{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--verde);margin-top:.35rem}
+.cta-final{min-height:85svh;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.cta-final h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.92;margin-bottom:3rem}
+.cta-final h3 em{font-style:normal;color:var(--verde)}
+.botoes{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.botao{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.95rem 1.8rem;border:1px solid;text-decoration:none;transition:.3s;display:inline-flex;align-items:center;gap:.6rem}
+.botao.e{border-color:var(--papel);color:var(--papel)}.botao.e:hover{background:var(--papel);color:var(--tinta)}
+.botao.cheio{background:var(--verde);border-color:var(--verde);color:var(--tinta)}.botao.cheio:hover{background:var(--papel)}
+.rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
 [data-reveal]{opacity:0;transform:translateY(42px)}
-
-@media(max-width:860px){
-  section{padding:5rem 6vw}
-  .celulares{gap:5vw}.cel{width:clamp(140px,38vw,200px)}
-  .numeros{grid-template-columns:repeat(2,1fr);gap:2rem}
-  .kit-grade{grid-template-columns:1fr}
-  .grade-olhar{grid-template-columns:repeat(2,1fr)}
-  .grade-overlay{opacity:1}
-  .case-bloco{padding:5rem 6vw;min-height:auto}
-}
-@media(prefers-reduced-motion:reduce){
-  [data-reveal]{opacity:1!important;transform:none!important}
-  .letreiro-faixa{animation:none!important}
-  .hero-scroll{animation:none}
-  .hero-frase .p{opacity:1!important;transform:none!important}
-}
+@media(max-width:860px){section{padding:5rem 6vw}.celulares{gap:5vw}.cel{width:clamp(140px,38vw,200px)}.numeros{grid-template-columns:repeat(2,1fr);gap:2rem}.kit-grade{grid-template-columns:1fr}.grade-olhar{grid-template-columns:repeat(2,1fr)}.grade-overlay{opacity:1}.case-bloco{padding:5rem 6vw;min-height:auto}}
+@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-scroll{animation:none}.hero-frase .p{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-mini"></a>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="index.html">Início.</a></li>
-      <li><a href="index.html#projects">Projetos.</a></li>
-      <li><a href="index.html#about">Sobre.</a></li>
-      <li><a href="trabalhos.html">Trabalhos.</a></li>
-    </ul>
-  </div>
-</nav>
-
+<nav class="navbar"><div class="nav-container"><a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-mini"></a><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><ul class="nav-menu" id="navMenu"><li><a href="index.html">Início.</a></li><li><a href="index.html#projects">Projetos.</a></li><li><a href="index.html#about">Sobre.</a></li><li><a href="trabalhos.html">Trabalhos.</a></li></ul></div></nav>
 <div id="progresso"></div>
-
-<!-- HERO -->
 <header class="hero escuro">
-  <p class="tag">Conteúdo & Campanhas</p>
+  <p class="tag">Conteúdo &amp; Campanhas</p>
   <h1 class="hero-frase" id="heroFrase">Seu conteúdo com <em>olhar</em> de <em>cinema</em>.</h1>
-  <div class="hero-sub">
-    <p class="hero-desc">Produção audiovisual completa para campanhas políticas, conteúdo digital e redes sociais. Captação, edição e entrega rápida — com equipamento próprio de cinema e mais de 7 anos criando conteúdo que conecta.</p>
-  </div>
+  <div class="hero-sub"><p class="hero-desc">Produção audiovisual completa para campanhas políticas, conteúdo digital e redes sociais. Captação, edição e entrega rápida — com equipamento próprio de cinema e mais de 7 anos criando conteúdo que conecta.</p></div>
   <span class="hero-scroll">role pra conhecer o trabalho</span>
 </header>
-
 <div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> </div></div>
-
-<!-- CELULARES -->
 <section class="escuro">
   <p class="tag" data-reveal>O que eu produzo</p>
   <div class="celulares">
-    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" poster="assets/conteudo/jess-jingle-vertical-poster.jpg" data-autoplay><source src="assets/conteudo/jess-jingle-vertical.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Jingle de campanha</strong><span>campanha eleitoral</span></div></div>
-    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" poster="assets/conteudo/jess-panfletagem-poster.jpg" data-autoplay><source src="assets/conteudo/jess-panfletagem.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Cobertura de rua</strong><span>campanha eleitoral</span></div></div>
-    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" poster="assets/conteudo/maria-homem-600k-poster.jpg" data-autoplay><source src="assets/conteudo/maria-homem-600k.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · YouTube</span></div></div>
-    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" poster="assets/conteudo/maria-homem-responde-poster.jpg" data-autoplay><source src="assets/conteudo/maria-homem-responde.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Conteúdo recorrente</strong><span>Maria Homem · redes</span></div></div>
+    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/jess_jingle.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Jingle de campanha</strong><span>campanha eleitoral</span></div></div>
+    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div><div class="cel-legenda"><strong>Campanha na rua</strong><span>campanha eleitoral</span></div></div>
+    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem 600mil seguidores .mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · YouTube</span></div></div>
+    <div class="cel" data-reveal><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem respondendo pergunta.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Conteúdo recorrente</strong><span>Maria Homem · redes</span></div></div>
   </div>
 </section>
-
-<!-- CASE MARIA HOMEM (vídeo de fundo) -->
 <div class="case-bloco" data-reveal>
-  <div class="case-bg"><video muted loop playsinline preload="none" poster="assets/conteudo/mh-fundo-poster.jpg" data-autoplay><source src="assets/conteudo/mh-fundo.mp4" type="video/mp4"></video></div>
-  <div class="case-conteudo">
-    <p class="tag">Case · desde 2020</p>
-    <h3>Maria Homem</h3>
-    <p>Direção, captação, edição e publicação de todo o conteúdo audiovisual do canal e das redes sociais de Maria Homem — psicanalista, escritora e comunicadora com mais de 600 mil seguidores.</p>
-    <p>Uma rotina de produção contínua desde 2020: vídeos para YouTube, cortes para Instagram e TikTok, materiais de cursos e palestras. Do roteiro à entrega final, com consistência e identidade visual.</p>
-    <p class="detalhe"><b>função</b> direção · captação · edição · publicação<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · instagram · tiktok</p>
-  </div>
+  <div class="case-bg"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/MH_video fundo.mov" type="video/mp4"></video></div>
+  <div class="case-conteudo"><p class="tag">Case · desde 2020</p><h3>Maria Homem</h3><p>Direção, captação, edição e publicação de todo o conteúdo audiovisual do canal e das redes sociais de Maria Homem — psicanalista, escritora e comunicadora com mais de 600 mil seguidores.</p><p>Uma rotina de produção contínua desde 2020: vídeos para YouTube, cortes para Instagram e TikTok, materiais de cursos e palestras. Do roteiro à entrega final, com consistência e identidade visual.</p><p class="detalhe"><b>função</b> direção · captação · edição · publicação<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · instagram · tiktok</p></div>
 </div>
-
 <div class="letreiro c inv" aria-hidden="true"><div class="letreiro-faixa">CAPTAÇÃO <em>·</em> ROTEIRO <em>·</em> EDIÇÃO <em>·</em> REELS <em>·</em> STORIES <em>·</em> ENTREGA RÁPIDA <em>·</em> CAPTAÇÃO <em>·</em> ROTEIRO <em>·</em> EDIÇÃO <em>·</em> REELS <em>·</em> STORIES <em>·</em> ENTREGA RÁPIDA <em>·</em> </div></div>
-
-<!-- CASE CAMPANHAS (vídeo de fundo) -->
 <div class="case-bloco" data-reveal>
-  <div class="case-bg"><video muted loop playsinline preload="none" poster="assets/conteudo/campanha-fundo-poster.jpg" data-autoplay><source src="assets/conteudo/campanha-fundo.mp4" type="video/mp4"></video></div>
-  <div class="case-conteudo">
-    <p class="tag">Case · campanhas políticas</p>
-    <h3>Campanhas</h3>
-    <p>Produção audiovisual completa para campanhas eleitorais: criação de conteúdo diário para redes, jingles em vídeo, cobertura de panfletagem e eventos de rua, vídeos de depoimento e falas da candidata.</p>
-    <p>Já produzi conteúdo para 3 campanhas políticas em 2018, 2020 e 2022 — sempre com captação própria, edição rápida e entrega no ritmo que campanha exige: hoje grava, hoje publica.</p>
-    <p class="detalhe"><b>função</b> criação de conteúdo · captação · edição<br><b>formatos</b> reels · stories · jingles · cobertura</p>
-  </div>
+  <div class="case-bg"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div>
+  <div class="case-conteudo"><p class="tag">Case · campanhas políticas</p><h3>Campanhas</h3><p>Produção audiovisual completa para campanhas eleitorais: criação de conteúdo diário para redes, jingles em vídeo, cobertura de panfletagem e eventos de rua, vídeos de depoimento e falas da candidata.</p><p>Já produzi conteúdo para 3 campanhas políticas em 2018, 2020 e 2022 — sempre com captação própria, edição rápida e entrega no ritmo que campanha exige: hoje grava, hoje publica.</p><p class="detalhe"><b>função</b> criação de conteúdo · captação · edição<br><b>formatos</b> reels · stories · jingles · cobertura</p></div>
 </div>
-
-<!-- NÚMEROS -->
 <section class="claro">
   <p class="tag" data-reveal>Em números</p>
   <div class="numeros">
@@ -219,8 +142,6 @@ section{position:relative;padding:8rem 6vw}
     <div class="num-bloco" data-reveal><p class="num" data-conta="10" data-mais="+">0</p><p class="num-desc">videoclipes<br>dirigidos</p></div>
   </div>
 </section>
-
-<!-- O QUE EU OFEREÇO -->
 <section class="escuro">
   <p class="tag" data-reveal>O que eu ofereço</p>
   <div class="kit-grade">
@@ -229,8 +150,6 @@ section{position:relative;padding:8rem 6vw}
     <div class="kit-card" data-reveal><h4>Kit próprio de cinema</h4><p>Blackmagic 6K, Sony FX30, lentes, iluminação e gravadores de áudio. Não dependo de aluguel de equipamento — é marcar e gravar. Edição em Premiere e DaVinci Resolve.</p></div>
   </div>
 </section>
-
-<!-- DE ONDE VEM O OLHAR (grade com videos) -->
 <section class="escuro" style="padding:5rem 0">
   <div style="padding:0 6vw"><p class="tag" data-reveal>De onde vem o olhar</p></div>
   <div class="grade-olhar">
@@ -240,22 +159,18 @@ section{position:relative;padding:8rem 6vw}
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/noreflexo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/tfde_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/outres_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div></div>
-    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/conteudo/mh-fundo.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/MH_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/suburbana_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/dropar_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/debaixo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></div>
-    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/conteudo/debaixo-trailer.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">trailer · direção</p></div></div></div>
-    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/conteudo/campanha-fundo.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Campanhas Políticas</p><p class="g-tipo">conteúdo eleitoral</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/debaixo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">trailer · direção</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Campanhas Políticas</p><p class="g-tipo">conteúdo eleitoral</p></div></div></div>
   </div>
 </section>
-
-<!-- MINI PORTFÓLIO -->
 <section class="escuro" style="padding:5rem 6vw;text-align:center">
   <p data-reveal style="font-size:1rem;line-height:1.8;opacity:.85;max-width:54ch;margin:0 auto 2rem">A qualidade do conteúdo vem de quem faz cinema. Curtas premiados, videoclipes para Letrux e Linn da Quebrada, e um olhar treinado em festivais e sets de publicidade.</p>
   <a class="botao e" href="https://vinipoffo.com/portfolio.html" target="_blank" data-reveal style="display:inline-flex">Ver portfólio completo →</a>
 </section>
-
-<!-- CTA FINAL -->
 <section class="cta-final escuro">
   <p class="tag" data-reveal>Vamos conversar</p>
   <h3 data-reveal>Precisa de <em>conteúdo</em>?</h3>
@@ -267,14 +182,12 @@ section{position:relative;padding:8rem 6vw}
   </div>
   <p class="rodape">Vini Poffo © 2026</p>
 </section>
-
 <script>
 gsap.registerPlugin(ScrollTrigger);
 const R=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 gsap.to('#progresso',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
 if(!R){
-  const hf=document.getElementById('heroFrase');
-  const ds=new Set(hf.querySelectorAll('em'));
+  const hf=document.getElementById('heroFrase');const ds=new Set(hf.querySelectorAll('em'));
   [...hf.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/\s+/).filter(Boolean).forEach(w=>{const s=document.createElement('span');s.className='p';s.textContent=w;f.appendChild(s)});hf.replaceChild(f,n)}else if(ds.has(n)){n.classList.add('p')}});
   gsap.to(hf.querySelectorAll('.p'),{opacity:1,y:0,stagger:.2,duration:.6,ease:'power3.out',delay:.3});
   gsap.from('.hero-sub',{opacity:0,y:30,duration:1,delay:1.4,ease:'power2.out'});
@@ -288,11 +201,9 @@ if(!R){
 const vids=document.querySelectorAll('video[data-autoplay]');
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.play().catch(()=>{});else e.target.pause()})},{threshold:.15});
 vids.forEach(v=>io.observe(v));
-/* hamburger */
 const hb=document.getElementById('hamburger'),nm=document.getElementById('navMenu');
 hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active')});
 document.addEventListener('click',e=>{if(!hb.contains(e.target)&&!nm.contains(e.target)){hb.classList.remove('active');nm.classList.remove('active')}});
-
 </script>
 </body>
 </html>
