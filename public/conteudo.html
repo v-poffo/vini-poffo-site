@@ -1,4 +1,4 @@
-<![CDATA[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -44,16 +44,16 @@ section{position:relative;padding:8rem 6vw}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5rem 6vw 2rem;overflow:hidden}
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5rem 6vw 2rem;overflow:hidden;position:relative}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(.18) saturate(.7)}
-.hero-frase{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9.5vw,8.5rem);line-height:.9;margin-bottom:3rem;position:relative;z-index:2}
+.hero>*{position:relative;z-index:2}
+.hero-frase{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9.5vw,8.5rem);line-height:.9;margin-bottom:3rem}
 .hero-frase em{font-style:normal;color:var(--verde)}
 .hero-frase .p{display:inline-block;opacity:.08;transform:translateY(.4em)}
-.hero-sub{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;position:relative;z-index:2}
-.hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.85;max-width:48ch}
-.hero-dados{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;text-align:right;line-height:2.2;opacity:.65}
-.hero-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.4;animation:pisca 2.4s ease-in-out infinite;z-index:2}
+.hero-sub{max-width:52ch}
+.hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.85}
+.hero-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;opacity:.4;animation:pisca 2.4s ease-in-out infinite}
 @keyframes pisca{0%,100%{opacity:.2}50%{opacity:.7}}
 .letreiro{overflow:hidden;white-space:nowrap;padding:1.3rem 0;border-top:1px solid;border-bottom:1px solid}
 .letreiro.e{border-color:rgba(243,248,244,.15)}.letreiro.c{border-color:rgba(17,26,23,.2)}
@@ -61,15 +61,17 @@ section{position:relative;padding:8rem 6vw}
 .letreiro.inv .letreiro-faixa{animation-direction:reverse}
 @keyframes corre{to{transform:translateX(-50%)}}
 .letreiro-faixa em{font-style:normal;color:var(--verde);margin:0 .5em}
-.celulares{display:flex;gap:3vw;justify-content:center;align-items:center;flex-wrap:wrap;padding:4rem 4vw}
-.cel{width:clamp(160px,17vw,230px);position:relative}
+.celulares-wrap{position:relative;overflow:hidden;padding:4rem 0}
+.celulares{display:flex;gap:2.2vw;justify-content:center;align-items:center;padding:0 4vw}
+.cel{width:clamp(140px,16vw,200px);position:relative;flex-shrink:0}
 .cel-moldura{border:3px solid rgba(243,248,244,.35);border-radius:24px;overflow:hidden;aspect-ratio:9/16;position:relative;background:#000}
 .cel-moldura video{width:100%;height:100%;object-fit:cover;display:block}
 .cel-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38%;height:18px;background:var(--tinta);border-radius:0 0 12px 12px;z-index:3}
 .cel-legenda{margin-top:1rem;text-align:center}
-.cel-legenda strong{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em}
-.cel-legenda span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.cel-legenda strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
+.cel-legenda span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
 .cel:nth-child(odd){transform:rotate(-1.5deg)}.cel:nth-child(even){transform:rotate(1.5deg)}
+.cel-nav{display:none}
 .case-bloco{position:relative;overflow:hidden;padding:7rem 6vw;min-height:70svh;display:flex;align-items:center}
 .case-bg{position:absolute;inset:0;z-index:0}
 .case-bg video{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.35) saturate(.85)}
@@ -78,6 +80,7 @@ section{position:relative;padding:8rem 6vw}
 .case-conteudo p{font-size:.95rem;line-height:1.8;margin-bottom:1.2rem;opacity:.92;max-width:48ch}
 .case-conteudo .detalhe{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;opacity:.75}
 .case-conteudo .detalhe b{color:var(--verde);font-weight:500}
+.case-conteudo [data-p]{opacity:0;transform:translateY(30px)}
 .numeros{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6rem;margin-bottom:5rem}
 .num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.8rem,7vw,6rem);line-height:1;color:var(--verde)}
 .num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
@@ -103,42 +106,55 @@ section{position:relative;padding:8rem 6vw}
 .botao.cheio{background:var(--verde);border-color:var(--verde);color:var(--tinta)}.botao.cheio:hover{background:var(--papel)}
 .rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
 [data-reveal]{opacity:0;transform:translateY(42px)}
-@media(max-width:860px){section{padding:5rem 6vw}.celulares{gap:5vw}.cel{width:clamp(130px,35vw,180px)}.numeros{grid-template-columns:repeat(2,1fr);gap:2rem}.kit-grade{grid-template-columns:1fr}.grade-olhar{grid-template-columns:repeat(2,1fr)}.grade-overlay{opacity:1}.case-bloco{padding:5rem 6vw;min-height:auto}}
-@media(prefers-reduced-motion:reduce){[data-reveal]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-scroll{animation:none}.hero-frase .p{opacity:1!important;transform:none!important}}
+@media(max-width:860px){
+  section{padding:5rem 6vw}
+  .celulares{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:4vw;padding:0 6vw;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .celulares::-webkit-scrollbar{display:none}
+  .cel{width:clamp(160px,42vw,200px);scroll-snap-align:center}
+  .cel-nav{display:flex;justify-content:center;gap:.8rem;padding-top:1.2rem}
+  .cel-nav button{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.8rem;padding:.4rem;cursor:pointer;transition:.3s}
+  .cel-nav button:active{color:#fff}
+  .numeros{grid-template-columns:repeat(2,1fr);gap:2rem}
+  .kit-grade{grid-template-columns:1fr}
+  .grade-olhar{grid-template-columns:repeat(2,1fr)}
+  .grade-overlay{opacity:1}
+  .case-bloco{padding:5rem 6vw;min-height:auto}
+}
+@media(prefers-reduced-motion:reduce){[data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}.letreiro-faixa{animation:none!important}.hero-scroll{animation:none}.hero-frase .p{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
 <nav class="navbar"><div class="nav-container"><a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-mini"></a><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><ul class="nav-menu" id="navMenu"><li><a href="index.html">Início.</a></li><li><a href="index.html#projects">Projetos.</a></li><li><a href="index.html#about">Sobre.</a></li><li><a href="trabalhos.html">Trabalhos.</a></li></ul></div></nav>
 <div id="progresso"></div>
 <header class="hero escuro">
-  <div class="hero-bg"><video muted loop playsinline autoplay preload="auto"><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video></div>
-  <p class="tag" style="position:relative;z-index:2">Conteúdo &amp; Campanhas</p>
+  <div class="hero-bg"><video muted loop playsinline autoplay preload="auto"><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video></div>
+  <p class="tag">Conteúdo &amp; Campanhas</p>
   <h1 class="hero-frase" id="heroFrase">Seu conteúdo com <em>olhar</em> de <em>cinema</em>.</h1>
-  <div class="hero-sub">
-    <p class="hero-desc">Produção audiovisual completa para campanhas políticas, conteúdo digital e redes sociais. Captação, edição e entrega rápida — com equipamento próprio de cinema e mais de 7 anos criando conteúdo que conecta.</p>
-    <p class="hero-dados">Kit próprio de captação<br>Blackmagic 6K · Sony FX30<br>Iluminação · Áudio<br>Premiere · DaVinci Resolve</p>
-  </div>
+  <div class="hero-sub"><p class="hero-desc">Produção audiovisual completa para campanhas políticas, conteúdo digital e redes sociais. Captação, edição e entrega rápida — com equipamento próprio de cinema e mais de 7 anos criando conteúdo que conecta.</p></div>
   <span class="hero-scroll">role pra conhecer o trabalho</span>
 </header>
 <div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> </div></div>
 <section class="escuro">
   <p class="tag">O que eu produzo</p>
-  <div class="celulares">
-    <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/lirous.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Lirous</strong><span>campanha política</span></div></div>
-    <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div><div class="cel-legenda"><strong>Campanha na rua</strong><span>campanha eleitoral</span></div></div>
-    <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Umbro</strong><span>Instagram</span></div></div>
-    <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem 600mil seguidores .mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · YouTube</span></div></div>
-    <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem respondendo pergunta.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Conteúdo recorrente</strong><span>Maria Homem · redes</span></div></div>
+  <div class="celulares-wrap">
+    <div class="celulares" id="celCarousel">
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/lirous.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Lirous</strong><span>campanha política</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div><div class="cel-legenda"><strong>Campanha na rua</strong><span>campanha eleitoral</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Umbro</strong><span>Instagram</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem 600mil seguidores .mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>600 mil seguidores</strong><span>Maria Homem · YouTube</span></div></div>
+      <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Maria Homem respondendo pergunta.mp4" type="video/mp4"></video></div><div class="cel-legenda"><strong>Conteúdo recorrente</strong><span>Maria Homem · redes</span></div></div>
+    </div>
+    <div class="cel-nav"><button id="celPrev">&#10094;</button><button id="celNext">&#10095;</button></div>
   </div>
 </section>
-<div class="case-bloco" data-reveal>
+<div class="case-bloco">
   <div class="case-bg"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/MH_video fundo.mov" type="video/mp4"></video></div>
-  <div class="case-conteudo"><p class="tag">Case · desde 2020</p><h3>Maria Homem</h3><p>Direção, captação, edição e publicação de todo o conteúdo audiovisual do canal e das redes sociais de Maria Homem — psicanalista, escritora e comunicadora com mais de 600 mil seguidores.</p><p>Uma rotina de produção contínua desde 2020: vídeos para YouTube, cortes para Instagram e TikTok, materiais de cursos e palestras. Do roteiro à entrega final, com consistência e identidade visual.</p><p class="detalhe"><b>função</b> direção · captação · edição · publicação<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · instagram · tiktok</p></div>
+  <div class="case-conteudo"><h3 data-p>Maria Homem</h3><p data-p>Direção, captação, edição e publicação de todo o conteúdo audiovisual do canal e das redes sociais de Maria Homem — psicanalista, escritora e comunicadora com mais de 600 mil seguidores.</p><p data-p>Uma rotina de produção contínua desde 2020: vídeos para YouTube, cortes para Instagram e TikTok, materiais de cursos e palestras. Do roteiro à entrega final, com consistência e identidade visual.</p><p class="detalhe" data-p><b>função</b> direção · captação · edição · publicação<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · instagram · tiktok</p></div>
 </div>
 <div class="letreiro c inv" aria-hidden="true"><div class="letreiro-faixa">CAPTAÇÃO <em>·</em> ROTEIRO <em>·</em> EDIÇÃO <em>·</em> REELS <em>·</em> STORIES <em>·</em> ENTREGA RÁPIDA <em>·</em> CAPTAÇÃO <em>·</em> ROTEIRO <em>·</em> EDIÇÃO <em>·</em> REELS <em>·</em> STORIES <em>·</em> ENTREGA RÁPIDA <em>·</em> </div></div>
-<div class="case-bloco" data-reveal>
+<div class="case-bloco">
   <div class="case-bg"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video></div>
-  <div class="case-conteudo"><p class="tag">Case · campanhas políticas</p><h3>Campanhas</h3><p>Produção audiovisual completa para campanhas eleitorais: criação de conteúdo diário para redes, jingles em vídeo, cobertura de panfletagem e eventos de rua, vídeos de depoimento e falas da candidata.</p><p>Já produzi conteúdo para 3 campanhas políticas em 2018, 2020 e 2022 — sempre com captação própria, edição rápida e entrega no ritmo que campanha exige: hoje grava, hoje publica.</p><p class="detalhe"><b>função</b> criação de conteúdo · captação · edição<br><b>formatos</b> reels · stories · jingles · cobertura</p></div>
+  <div class="case-conteudo"><h3 data-p>Campanhas</h3><p data-p>Produção audiovisual completa para campanhas eleitorais: criação de conteúdo diário para redes, jingles em vídeo, cobertura de panfletagem e eventos de rua, vídeos de depoimento e falas da candidata.</p><p data-p>Já produzi conteúdo para 3 campanhas políticas em 2018, 2020 e 2022 — sempre com captação própria, edição rápida e entrega no ritmo que campanha exige: hoje grava, hoje publica.</p><p class="detalhe" data-p><b>função</b> criação de conteúdo · captação · edição<br><b>formatos</b> reels · stories · jingles · cobertura</p></div>
 </div>
 <section class="claro">
   <p class="tag" data-reveal>Em números</p>
@@ -171,7 +187,7 @@ section{position:relative;padding:8rem 6vw}
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/suburbana_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/dropar_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/debaixo_portfolio_video.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></div>
-    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">trailer</p></div></div></div>
+    <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/umbro.mp4" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Umbro</p><p class="g-tipo">Instagram</p></div></div></div>
     <div class="grade-item"><video muted loop playsinline preload="none" data-autoplay><source src="assets/videos/Campanha_video fundo.mov" type="video/mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Campanhas Políticas</p><p class="g-tipo">conteúdo eleitoral</p></div></div></div>
   </div>
 </section>
@@ -200,17 +216,19 @@ if(!R){
   gsap.to(hf.querySelectorAll('.p'),{opacity:1,y:0,stagger:.2,duration:.6,ease:'power3.out',delay:.3});
   gsap.from('.hero-sub',{opacity:0,y:30,duration:1,delay:1.4,ease:'power2.out'});
   gsap.utils.toArray('[data-reveal]').forEach(el=>{gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none reverse'}})});
-  gsap.utils.toArray('.case-conteudo h3,.cta-final h3').forEach(t=>{gsap.fromTo(t,{yPercent:15},{yPercent:-15,ease:'none',scrollTrigger:{trigger:t,start:'top bottom',end:'bottom top',scrub:1}})});
+  document.querySelectorAll('.case-conteudo').forEach(c=>{c.querySelectorAll('[data-p]').forEach((p,i)=>{gsap.to(p,{opacity:1,y:0,duration:.7,delay:i*.2,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 70%',toggleActions:'play none none reverse'}})})});
   gsap.utils.toArray('[data-conta]').forEach(n=>{const a=+n.dataset.conta,m=n.dataset.mais||'';const o={v:0};gsap.to(o,{v:a,duration:1.4,ease:'power2.out',onUpdate:()=>{n.textContent=Math.round(o.v)+m},scrollTrigger:{trigger:n,start:'top 85%',toggleActions:'play none none reverse'}})});
   gsap.utils.toArray('.kit-card').forEach((c,i)=>{gsap.from(c,{y:50,opacity:0,duration:.8,delay:i*.12,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%',toggleActions:'play none none reverse'}})});
   gsap.utils.toArray('.grade-item').forEach((g,i)=>{gsap.from(g,{scale:.85,opacity:0,duration:.7,delay:(i%4)*.1,ease:'power3.out',scrollTrigger:{trigger:g,start:'top 90%',toggleActions:'play none none reverse'}})});
-}else{document.querySelectorAll('[data-reveal]').forEach(el=>{el.style.opacity=1;el.style.transform='none'})}
+}else{document.querySelectorAll('[data-reveal],[data-p]').forEach(el=>{el.style.opacity=1;el.style.transform='none'})}
 const vids=document.querySelectorAll('video[data-autoplay]');
 const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.play().catch(()=>{});else e.target.pause()})},{threshold:.15});
 vids.forEach(v=>io.observe(v));
 const hb=document.getElementById('hamburger'),nm=document.getElementById('navMenu');
 hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active')});
 document.addEventListener('click',e=>{if(!hb.contains(e.target)&&!nm.contains(e.target)){hb.classList.remove('active');nm.classList.remove('active')}});
-</script>
+const cc=document.getElementById('celCarousel'),cp=document.getElementById('celPrev'),cn=document.getElementById('celNext');
+if(cp&&cn){const scrollCel=(dir)=>{const w=cc.querySelector('.cel').offsetWidth+16;cc.scrollBy({left:dir*w,behavior:'smooth'})};cp.addEventListener('click',()=>scrollCel(-1));cn.addEventListener('click',()=>scrollCel(1))}
+<\/script>
 </body>
-</html>]]>
+</html>
