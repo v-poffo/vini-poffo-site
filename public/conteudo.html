@@ -70,6 +70,9 @@ section{position:relative;padding:8rem 6vw}
 .cel-legenda{margin-top:1rem;text-align:center}
 .cel-legenda strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
 .cel-legenda span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.sec-pin{position:relative;z-index:1}
+.sec-pin+*{position:relative;z-index:2}
+#secOferta+*{position:relative;z-index:2}
 .cel:nth-child(odd){transform:rotate(-1.5deg)}.cel:nth-child(even){transform:rotate(1.5deg)}
 .cel-nav{display:none}
 .case-bloco{position:relative;overflow:hidden;padding:7rem 6vw;min-height:70svh;display:flex;align-items:center}
@@ -121,7 +124,7 @@ section{position:relative;padding:8rem 6vw}
   <div class="hero-sub"><p class="hero-desc">Há mais de 7 anos transformo ideias em vídeos para marcas, campanhas e criadores. Produção completa — do roteiro à entrega — com linguagem cinematográfica e agilidade para o digital.</p></div>
 </header>
 <div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO DIGITAL <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> CAMPANHAS <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> CONTEÚDO DIGITAL <em>·</em> COBERTURA <em>·</em> EDIÇÃO <em>·</em> </div></div>
-<section class="escuro">
+<section class="escuro sec-pin" id="secCelulares">
   <p class="tag">Conteúdo para diferentes públicos</p>
   <div class="celulares-wrap">
     <div class="celulares" id="celCarousel">
@@ -155,7 +158,7 @@ section{position:relative;padding:8rem 6vw}
     <div class="num-bloco" data-reveal><p class="num" data-conta="10" data-mais="+">0</p><p class="num-desc">videoclipes<br>dirigidos</p></div>
   </div>
 </section>
-<section class="escuro">
+<section class="escuro sec-pin" id="secOferta">
   <p class="tag" data-reveal>O que eu ofereço</p>
   <div class="kit-grade">
     <div class="kit-card"><h4>Audiovisual para campanhas</h4><p>Comunicação que acompanha o ritmo eleitoral. Produção diária de vídeos para redes sociais, agendas públicas, bastidores, discursos e materiais de mobilização.</p></div>
@@ -220,6 +223,7 @@ hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.togg
 document.addEventListener('click',e=>{if(!hb.contains(e.target)&&!nm.contains(e.target)){hb.classList.remove('active');nm.classList.remove('active')}});
 const cc=document.getElementById('celCarousel'),cp=document.getElementById('celPrev'),cn=document.getElementById('celNext');
 if(cp&&cn){const scrollCel=(dir)=>{const w=cc.querySelector('.cel').offsetWidth+16;cc.scrollBy({left:dir*w,behavior:'smooth'})};cp.addEventListener('click',()=>scrollCel(-1));cn.addEventListener('click',()=>scrollCel(1))}
+  if(!R){document.querySelectorAll('.sec-pin').forEach(sec=>{ScrollTrigger.create({trigger:sec,start:'top top',endTrigger:sec.nextElementSibling,end:'top top',pin:true,pinSpacing:false})})}
 </script>
 </body>
 </html>
