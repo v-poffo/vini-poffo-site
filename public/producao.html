@@ -94,6 +94,7 @@ section{position:relative;padding:8rem 6vw}
 .case-conteudo .detalhe{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;opacity:.78}
 .case-conteudo .detalhe b{color:var(--verde);font-weight:500}
 .case-conteudo [data-p]{opacity:0;transform:translateY(30px)}
+.case-bloco.dir{justify-content:flex-end}
 
 .numeros{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6rem}
 .num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1;color:var(--verde)}
@@ -146,6 +147,7 @@ section{padding:5rem 6vw}
 .grade-olhar{grid-template-columns:repeat(2,1fr)}
 .grade-overlay{opacity:1}
 .case-bloco{padding:5rem 6vw;min-height:auto}
+.case-bloco.dir{justify-content:flex-start}
 }
 @media(prefers-reduced-motion:reduce){
 [data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}
@@ -187,7 +189,7 @@ html{scroll-behavior:auto}
 
 <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/spec_instagram.mp4"></video></div><div class="cel-legenda"><strong>Spec</strong><span>Conteúdo para Instagram</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/depois%20de%20mim,%20o%20diluvio_fashionfilm.mp4"></video></div><div class="cel-legenda"><strong>Depois de Mim, o Dilúvio</strong><span>Fashion film</span></div></div>
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Manguezais_entre_no%CC%81s.mp4"></video></div><div class="cel-legenda"><strong>Manguezais entre nós</strong><span>Teaser</span></div></div>
 
 <div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/outono_POA.mp4"></video></div><div class="cel-legenda"><strong>Outono POA</strong><span>Lifestyle</span></div></div>
 
@@ -210,10 +212,10 @@ html{scroll-behavior:auto}
 <div class="letreiro c inv" aria-hidden="true"><div class="letreiro-faixa">ESTRATÉGIA <em>·</em> ROTEIRO <em>·</em> DIREÇÃO <em>·</em> CAPTAÇÃO <em>·</em> MONTAGEM <em>·</em> ENTREGA <em>·</em> ESTRATÉGIA <em>·</em> ROTEIRO <em>·</em> DIREÇÃO <em>·</em> CAPTAÇÃO <em>·</em> MONTAGEM <em>·</em> ENTREGA <em>·</em> </div></div>
 
 <!-- ===================== CASE 2 — MARCAS ===================== -->
-<div class="case-bloco">
+<div class="case-bloco dir">
 <div class="case-bg"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum_horizontal.mp4"></video></div>
 <div class="case-conteudo">
-<h3 data-p>Filmes pensados para fortalecer marcas</h3>
+<h3 data-p>Filmes que fortalecem marcas</h3>
 <p data-p>Campanhas, lançamentos e conteúdos desenvolvidos para traduzir a identidade de uma marca em imagem. Cada projeto nasce da estratégia e ganha forma por meio da direção, da fotografia e da narrativa.</p>
 <p data-p>Cada captação é planejada para gerar um ecossistema de conteúdo. Entrego versões e cortes adaptados para diferentes plataformas, ampliando o alcance da campanha.</p>
 <p class="detalhe" data-p><b>função</b> direção · roteiro · captação · montagem<br><b>formatos</b> campanha · lançamento · fashion film · institucional<br><b>entregas</b> 16:9 · 9:16 · 1:1 · cortes para tráfego</p>
