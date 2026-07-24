@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vini Poffo — Direção Audiovisual para Marcas</title>
+<meta name="description" content="Direção audiovisual para marcas, produtoras e criação de conteúdo. Filmes de campanha, conteúdo para redes e videoclipes premiados. Vini Poffo — São Paulo.">
+<link rel="icon" type="image/svg+xml" href="assets/logo/logo.svg">
+<link rel="canonical" href="https://vinipoffo.com/producao.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vinipoffo.com/producao.html">
+<meta property="og:title" content="Vini Poffo — Direção Audiovisual para Marcas">
+<meta property="og:description" content="Seu conteúdo com olhar de cinema. Da ideia à entrega, todo o processo de criação e produção.">
+<meta property="og:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Vini Poffo — Direção Audiovisual para Marcas">
+<meta property="twitter:image" content="https://vinipoffo.com/assets/quem-sou-eu/vinisobrewebcineasta.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+@font-face{font-family:'PP Woodland';src:url('assets/fonts/PPWoodland-Bold.woff2') format('woff2'),url('assets/fonts/PPWoodland-Bold.otf') format('opentype');font-weight:700;font-display:swap}
+@font-face{font-family:'AOT Serial Mono';src:url('assets/fonts/AOTSerialMono-Medium.woff2') format('woff2'),url('assets/fonts/AOTSerialMono-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+:root{--tinta:#111A17;--papel:#F3F8F4;--verde:#718878;--azul:#2A4A5A;--f-display:'PP Woodland',serif;--f-mono:'AOT Serial Mono',monospace;--f-corpo:'Montserrat',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tinta);color:var(--papel);font-family:var(--f-corpo);overflow-x:hidden}
+::selection{background:var(--verde);color:var(--tinta)}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E")}
+#progresso{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--verde);transform-origin:left;transform:scaleX(0);z-index:9500}
+
+.tag{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.8rem;margin-bottom:2.4rem}
+.tag::before{content:'';display:inline-block;width:2rem;height:1px;background:currentColor}
+section{position:relative;padding:8rem 6vw}
+.escuro{background:var(--tinta);color:var(--papel)}.claro{background:var(--papel);color:var(--tinta)}
+
+.navbar{position:fixed;top:0;left:0;right:0;width:100%;z-index:8000;background-color:transparent;padding:1.5rem 2rem;transition:background-color .4s ease}
+.nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 2rem}
+.nav-logo-mini{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.8;transition:.3s}
+.nav-logo-mini:hover{opacity:1}
+.nav-menu{display:none;list-style:none;gap:.5rem;position:fixed;top:70px;right:0;width:230px;height:auto;background-color:rgba(243,248,244,.6);flex-direction:column;padding:2rem 1.5rem;box-shadow:-2px 2px 15px rgba(0,0,0,.1);z-index:8000;backdrop-filter:blur(10px)}
+.nav-menu.active{display:flex}
+.nav-menu a{text-decoration:none;color:var(--tinta);font-weight:400;font-size:.95rem;transition:color .3s}
+.nav-menu a:hover{color:var(--verde)}
+.hamburger{display:flex;flex-direction:column;cursor:pointer;gap:5px}
+.hamburger span{width:25px;height:2px;background-color:var(--papel);transition:all .3s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+.hamburger.active span{background-color:var(--tinta)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:5rem 6vw 2rem;overflow:hidden;position:relative}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg video{width:100%;height:100%;object-fit:cover;filter:brightness(.55) saturate(.9)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(17,26,23,.75),rgba(17,26,23,.15))}
+.hero>*:not(.hero-bg){position:relative;z-index:2}
+.hero-frase{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.8rem,9.5vw,8.5rem);line-height:.9;margin-bottom:2.6rem}
+.hero-frase em{font-style:normal;color:var(--verde)}
+.hero-frase .p{display:inline-block;opacity:.08;transform:translateY(.4em)}
+.hero-sub{max-width:58ch}
+.hero-desc{font-size:clamp(.92rem,1.4vw,1.12rem);line-height:1.8;opacity:.9}
+.hero-linha{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:.6;margin-top:1.6rem}
+
+.letreiro{overflow:hidden;white-space:nowrap;padding:1.3rem 0;border-top:1px solid;border-bottom:1px solid}
+.letreiro.e{border-color:rgba(243,248,244,.15)}.letreiro.c{border-color:rgba(17,26,23,.2)}
+.letreiro-faixa{display:inline-block;white-space:nowrap;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.3rem,3vw,2.4rem);will-change:transform;animation:corre 32s linear infinite}
+.letreiro.inv .letreiro-faixa{animation-direction:reverse}
+@keyframes corre{to{transform:translateX(-50%)}}
+.letreiro-faixa em{font-style:normal;color:var(--verde);margin:0 .5em}
+
+.celulares-wrap{position:relative;overflow:hidden;padding:4rem 0}
+.celulares{display:flex;gap:2.2vw;justify-content:center;align-items:center;padding:0 4vw;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.celulares::-webkit-scrollbar{display:none}
+.cel{width:clamp(150px,14.5vw,190px);position:relative;flex-shrink:0;scroll-snap-align:center}
+.cel-moldura{border:3px solid rgba(243,248,244,.35);border-radius:24px;overflow:hidden;aspect-ratio:9/16;position:relative;background:#000}
+.cel-moldura video{width:100%;height:100%;object-fit:cover;display:block}
+.cel-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38%;height:18px;background:var(--tinta);border-radius:0 0 12px 12px;z-index:3}
+.cel-legenda{margin-top:1rem;text-align:center}
+.cel-legenda strong{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;line-height:1.3}
+.cel-legenda span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;opacity:.6}
+.cel:nth-child(odd){transform:rotate(-1.5deg)}.cel:nth-child(even){transform:rotate(1.5deg)}
+.cel-nav{display:none;justify-content:center;gap:.8rem;padding-top:1.6rem}
+.cel-nav button{background:none;border:1px solid rgba(243,248,244,.25);color:rgba(243,248,244,.55);font-size:1.1rem;width:40px;height:40px;border-radius:50%;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center}
+.cel-nav button:hover{color:var(--tinta);background:var(--papel);border-color:var(--papel)}
+
+.case-bloco{position:relative;overflow:hidden;padding:7rem 6vw;min-height:70svh;display:flex;align-items:center}
+.case-bg{position:absolute;inset:0;z-index:0;background:#000}
+.case-bg video{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.35) saturate(.85)}
+.case-conteudo{position:relative;z-index:2;max-width:620px;color:var(--papel)}
+.case-conteudo h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,3.6vw,3.2rem);line-height:.95;margin-bottom:1.6rem}
+.case-conteudo p{font-size:.95rem;line-height:1.8;margin-bottom:1.2rem;opacity:.92;max-width:48ch}
+.case-conteudo .detalhe{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;line-height:2.2;opacity:.78}
+.case-conteudo .detalhe b{color:var(--verde);font-weight:500}
+.case-conteudo [data-p]{opacity:0;transform:translateY(30px)}
+
+.numeros{display:grid;grid-template-columns:repeat(5,1fr);gap:2.6rem}
+.num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1;color:var(--verde)}
+.num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
+
+.kit-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.6rem}
+.kit-card{padding:2.4rem;border:1px solid rgba(243,248,244,.18);border-radius:6px;transition:.3s}
+.kit-card:hover{border-color:var(--verde);transform:translateY(-4px)}
+.kit-card h4{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:1.12rem;margin-bottom:1rem;line-height:1.1}
+.kit-card p{font-size:.88rem;line-height:1.8;opacity:.82}
+
+.grade-olhar{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.grade-item{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;cursor:default}
+.grade-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.grade-item:hover video{transform:scale(1.06)}
+.grade-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.2rem;background:linear-gradient(transparent 40%,rgba(17,26,23,.75));opacity:0;transition:opacity .35s}
+.grade-item:hover .grade-overlay{opacity:1}
+.grade-overlay .g-titulo{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(.8rem,1.4vw,1.15rem);line-height:1.1;color:var(--papel)}
+.grade-overlay .g-tipo{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--verde);margin-top:.35rem}
+
+.creditos{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0 4rem;margin-bottom:3rem}
+.credito{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:.95rem 0;border-bottom:1px solid rgba(17,26,23,.12)}
+.credito b{font-weight:600;font-size:.9rem;line-height:1.4}
+.credito span{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;opacity:.55;text-align:right;flex-shrink:0;line-height:1.5}
+.creditos-nota{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.45;margin-top:1.4rem;line-height:1.9}
+
+.cta-final{min-height:85svh;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.cta-final h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.4rem,8vw,7rem);line-height:.92;margin-bottom:3rem}
+.cta-final h3 em{font-style:normal;color:var(--verde)}
+.botoes{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem}
+.botao{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.95rem 1.8rem;border:1px solid;text-decoration:none;transition:.3s;display:inline-flex;align-items:center;gap:.6rem;cursor:pointer}
+.botao.e{border-color:var(--papel);color:var(--papel)}.botao.e:hover{background:var(--papel);color:var(--tinta)}
+.botao.c{border-color:var(--tinta);color:var(--tinta)}.botao.c:hover{background:var(--tinta);color:var(--papel)}
+.botao.cheio{background:var(--verde);border-color:var(--verde);color:var(--tinta)}.botao.cheio:hover{background:var(--papel)}
+.rodape{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;opacity:.4}
+
+[data-reveal]{opacity:0;transform:translateY(42px)}
+
+@media(max-width:1000px){
+.celulares{justify-content:flex-start;padding:0 6vw}
+.cel-nav{display:flex}
+}
+@media(max-width:860px){
+section{padding:5rem 6vw}
+.celulares{gap:4vw}
+.cel{width:clamp(160px,42vw,200px)}
+.numeros{grid-template-columns:repeat(2,1fr);gap:2rem}
+.kit-grade{grid-template-columns:1fr}
+.creditos{grid-template-columns:1fr;gap:0}
+.grade-olhar{grid-template-columns:repeat(2,1fr)}
+.grade-overlay{opacity:1}
+.case-bloco{padding:5rem 6vw;min-height:auto}
+}
+@media(prefers-reduced-motion:reduce){
+[data-reveal],.case-conteudo [data-p]{opacity:1!important;transform:none!important}
+.letreiro-faixa{animation:none!important}
+.hero-frase .p{opacity:1!important;transform:none!important}
+html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="nav-container"><a href="index.html"><img src="assets/logo/logo.svg" alt="Vini Poffo" class="nav-logo-mini"></a><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><ul class="nav-menu" id="navMenu"><li><a href="#projetos">Projetos.</a></li><li><a href="#trajetoria">Trajetória.</a></li><li><a href="#contato">Contato.</a></li><li><a href="trabalhos.html">Trabalhos.</a></li><li><a href="index.html">Portfólio de cinema.</a></li></ul></div></nav>
+<div id="progresso"></div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero escuro">
+<div class="hero-bg"><video muted loop playsinline autoplay preload="auto"><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video></div>
+<p class="tag">Direção audiovisual</p>
+<h1 class="hero-frase" id="heroFrase">Seu <em>conteúdo</em> com <em>olhar</em> de <em>cinema</em>.</h1>
+<div class="hero-sub">
+<p class="hero-desc">Sou Vini Poffo, cineasta. Há mais de sete anos trabalho com direção audiovisual, transformando estratégias em filmes, campanhas e conteúdo para marcas que querem comunicar com mais impacto. Da ideia à entrega, acompanho todo o processo de criação e produção.</p>
+<p class="hero-linha">São Paulo, SP · disponível para marcas, produtoras e quem cria conteúdo</p>
+</div>
+</header>
+
+<div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">FILME DE MARCA <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> FASHION FILM <em>·</em> VIDEOCLIPE <em>·</em> CAMPANHA <em>·</em> EDIÇÃO <em>·</em> FILME DE MARCA <em>·</em> REELS <em>·</em> YOUTUBE <em>·</em> FASHION FILM <em>·</em> VIDEOCLIPE <em>·</em> CAMPANHA <em>·</em> EDIÇÃO <em>·</em> </div></div>
+
+<!-- ===================== ALGUNS PROJETOS ===================== -->
+<section class="escuro" id="projetos">
+<p class="tag">Alguns projetos</p>
+<div class="celulares-wrap">
+<div class="celulares" id="celCarousel">
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/spec_instagram.mp4"></video></div><div class="cel-legenda"><strong>Spec</strong><span>Conteúdo para Instagram</span></div></div>
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum.mp4"></video></div><div class="cel-legenda"><strong>YMA for Agarum</strong><span>Filme de marca</span></div></div>
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Maria Homem respondendo pergunta.mp4"></video></div><div class="cel-legenda"><strong>Maria Homem</strong><span>Conteúdo digital</span></div></div>
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Calma Business .mp4"></video></div><div class="cel-legenda"><strong>Calma São Paulo</strong><span>Editorial</span></div></div>
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/depois_de_mim__o_diluvio_fashionfilm.mp4"></video></div><div class="cel-legenda"><strong>Depois de Mim, o Dilúvio</strong><span>Fashion film</span></div></div>
+
+<div class="cel"><div class="cel-moldura"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/outono_POA.mp4"></video></div><div class="cel-legenda"><strong>Outono POA</strong><span>Lifestyle</span></div></div>
+
+</div>
+<div class="cel-nav"><button id="celPrev" aria-label="Anterior">&#10094;</button><button id="celNext" aria-label="Próximo">&#10095;</button></div>
+</div>
+</section>
+
+<!-- ===================== CASE 1 — MARIA HOMEM ===================== -->
+<div class="case-bloco">
+<div class="case-bg"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/MH_video fundo.mov"></video></div>
+<div class="case-conteudo">
+<h3 data-p>Conteúdo para comunicação digital</h3>
+<p data-p>Direção e captação do conteúdo audiovisual do canal e das redes de Maria Homem — psicanalista, escritora e comunicadora com mais de 600 mil seguidores.</p>
+<p data-p>Mais do que vídeos isolados, trata-se de um processo contínuo de comunicação. Há cinco anos desenvolvo a produção audiovisual das redes de Maria Homem, mantendo consistência entre formatos, plataformas e lançamentos.</p>
+<p class="detalhe" data-p><b>função</b> direção · captação · criação de conteúdo<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · instagram · tiktok</p>
+</div>
+</div>
+
+<div class="letreiro c inv" aria-hidden="true"><div class="letreiro-faixa">ESTRATÉGIA <em>·</em> ROTEIRO <em>·</em> DIREÇÃO <em>·</em> CAPTAÇÃO <em>·</em> MONTAGEM <em>·</em> ENTREGA <em>·</em> ESTRATÉGIA <em>·</em> ROTEIRO <em>·</em> DIREÇÃO <em>·</em> CAPTAÇÃO <em>·</em> MONTAGEM <em>·</em> ENTREGA <em>·</em> </div></div>
+
+<!-- ===================== CASE 2 — MARCAS ===================== -->
+<div class="case-bloco">
+<div class="case-bg"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum_horizontal.mp4"></video></div>
+<div class="case-conteudo">
+<h3 data-p>Filmes pensados para fortalecer marcas</h3>
+<p data-p>Campanhas, lançamentos e conteúdos desenvolvidos para traduzir a identidade de uma marca em imagem. Cada projeto nasce da estratégia e ganha forma por meio da direção, da fotografia e da narrativa.</p>
+<p data-p>Cada captação é planejada para gerar um ecossistema de conteúdo. Entrego versões e cortes adaptados para diferentes plataformas, ampliando o alcance da campanha.</p>
+<p class="detalhe" data-p><b>função</b> direção · roteiro · captação · montagem<br><b>formatos</b> campanha · lançamento · fashion film · institucional<br><b>entregas</b> 16:9 · 9:16 · 1:1 · cortes para tráfego</p>
+</div>
+</div>
+
+<div class="letreiro e" aria-hidden="true"><div class="letreiro-faixa">LETRUX <em>·</em> LINN DA QUEBRADA <em>·</em> LINIKER <em>·</em> AGARUM <em>·</em> CERAVE <em>·</em> UMBRO <em>·</em> NUTREN <em>·</em> AZUL <em>·</em> CALMA SÃO PAULO <em>·</em> LETRUX <em>·</em> LINN DA QUEBRADA <em>·</em> LINIKER <em>·</em> AGARUM <em>·</em> CERAVE <em>·</em> UMBRO <em>·</em> NUTREN <em>·</em> AZUL <em>·</em> CALMA SÃO PAULO <em>·</em> </div></div>
+
+<!-- ===================== CASE 3 — VIDEOCLIPES ===================== -->
+<div class="case-bloco">
+<div class="case-bg"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/video-1782334396691.mov"></video></div>
+<div class="case-conteudo">
+<h3 data-p>Videoclipes &amp; direção criativa</h3>
+<p data-p>Foi dirigindo videoclipes que desenvolvi meu olhar. Transformar música em imagem exige traduzir identidade e conceito em poucos minutos, equilibrando criatividade, prazo e produção para entregar o melhor trabalho possível.</p>
+<p data-p>Ao longo da carreira dirigi clipes para artistas como Linn da Quebrada, Letrux e Jesus Lumma, e participei de produções com Liniker, Vitor Kley e Lou Garcia.</p>
+<p data-p>O videoclipe <i>Aranha</i>, da Letrux, recebeu o prêmio de Melhor Videoclipe no FestCine Brasília. Hoje esse repertório em narrativa, direção e linguagem visual acompanha cada projeto que desenvolvo.</p>
+<p class="detalhe" data-p><b>função</b> direção · roteiro · concepção de arte<br><b>prêmio</b> melhor videoclipe · festcine brasília</p>
+</div>
+</div>
+
+<!-- ===================== NÚMEROS ===================== -->
+<section class="claro">
+<p class="tag" data-reveal>Em números</p>
+<div class="numeros">
+<div class="num-bloco" data-reveal><p class="num" data-conta="7" data-mais="+">0</p><p class="num-desc">anos criando<br>audiovisual</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-conta="5" data-mais="+">0</p><p class="num-desc">anos de produção<br>para o mesmo cliente</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-conta="10" data-mais="+">0</p><p class="num-desc">videoclipes<br>dirigidos</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-conta="10" data-mais="+">0</p><p class="num-desc">sets de publicidade<br>e videoclipe</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-conta="7">0</p><p class="num-desc">prêmios<br>em cinema e videoarte</p></div>
+</div>
+</section>
+
+<!-- ===================== O QUE EU FAÇO ===================== -->
+<section class="escuro">
+<p class="tag" data-reveal>O que eu faço</p>
+<div class="kit-grade">
+<div class="kit-card"><h4>Filme de marca</h4><p>Campanha, lançamento, fashion film, institucional. Do tratamento e do roteiro à direção, captação, montagem e cor — com versões pensadas para cada plataforma desde o primeiro dia.</p></div>
+<div class="kit-card"><h4>Conteúdo recorrente</h4><p>Para quem publica o ano inteiro. Planejamento de pauta, gravação e acompanhamento das entregas para YouTube, Instagram e TikTok. Cinco anos sustentando exatamente esse processo.</p></div>
+<div class="kit-card"><h4>Direção &amp; roteiro</h4><p>Quando a ideia ainda não existe. Conceito, referência visual, decupagem, direção de elenco e de arte. É a parte que vem do cinema — e a que costuma faltar em quem só executa.</p></div>
+<div class="kit-card"><h4>Produção com autonomia</h4><p>Trabalho com equipamento próprio de cinema, iluminação e áudio profissional, o que garante agilidade, flexibilidade e independência em diferentes tipos de produção.</p></div>
+</div>
+</section>
+
+<!-- ===================== DE ONDE VEM O OLHAR ===================== -->
+<section class="escuro" style="padding:5rem 0">
+<div style="padding:0 6vw"><p class="tag" data-reveal>De onde vem o olhar</p></div>
+<div class="grade-olhar">
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/naoc_vinipoffo.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Não Alimente os Cães</p><p class="g-tipo">curta-metragem · 2026</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/video-1782334396691.mov"></video><div class="grade-overlay"><div><p class="g-titulo">Nuvem Negra</p><p class="g-tipo">videoclipe · Linn da Quebrada</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/aranha_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Aranha</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/noreflexo_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/tfde_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/outres_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/MH_video fundo.mov"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/suburbana_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/dropar_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/debaixo_portfolio_video.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/umbro.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">Umbro</p><p class="g-tipo">publicidade · assistência de arte</p></div></div></div>
+
+<div class="grade-item"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum_horizontal.mp4"></video><div class="grade-overlay"><div><p class="g-titulo">YMA for Agarum</p><p class="g-tipo">filme de marca</p></div></div></div>
+
+</div>
+</section>
+
+<section class="escuro" style="padding:5rem 6vw;text-align:center">
+<p data-reveal style="font-size:1rem;line-height:1.8;opacity:.85;max-width:60ch;margin:0 auto 2rem">Meu trabalho comercial nasceu do cinema. A direção de curtas premiados, videoclipes e projetos autorais desenvolveu um olhar para narrativa, ritmo e direção de imagem que hoje aplico em campanhas, marcas e conteúdo digital. Não se trata apenas de produzir vídeos, mas de construir uma linguagem própria para cada projeto.</p>
+<a class="botao e" href="index.html" style="display:inline-flex">Conheça meu portfólio de cinema →</a>
+</section>
+
+<!-- ===================== TRAJETÓRIA ===================== -->
+<section class="claro" id="trajetoria">
+<p class="tag" data-reveal>Trajetória</p>
+<div class="creditos" data-reveal>
+
+<div class="credito"><b>Linn da Quebrada</b><span>videoclipe · direção</span></div>
+<div class="credito"><b>Letrux</b><span>três videoclipes · direção</span></div>
+<div class="credito"><b>Maria Homem</b><span>conteúdo digital · direção e captação</span></div>
+<div class="credito"><b>Agarum</b><span>filme de marca · direção</span></div>
+<div class="credito"><b>Liniker feat. Priscila Senna</b><span>videoclipe · produção executiva</span></div>
+<div class="credito"><b>Jesus Lumma feat. Dandara Manoela</b><span>videoclipe · direção</span></div>
+<div class="credito"><b>Umbro</b><span>publicidade · arte</span></div>
+<div class="credito"><b>Calma São Paulo</b><span>editorial · arte</span></div>
+<div class="credito"><b>CeraVe</b><span>publicidade · produção de objetos</span></div>
+<div class="credito"><b>Malu Maria</b><span>videoclipe · direção</span></div>
+<div class="credito"><b>Nutren</b><span>publicidade · produção de objetos</span></div>
+<div class="credito"><b>Gabeu</b><span>videoclipes · direção de arte</span></div>
+<div class="credito"><b>Azul</b><span>publicidade · produção de objetos</span></div>
+<div class="credito"><b>YMA</b><span>videoclipe · direção de arte</span></div>
+<div class="credito"><b>Vitor Kley</b><span>videoclipe · produção de objetos</span></div>
+<div class="credito"><b>Trinco Produtora</b><span>curta-metragem · direção</span></div>
+<div class="credito"><b>Lou Garcia</b><span>videoclipe · arte</span></div>
+<div class="credito"><b>E! Channel</b><span>reality · still e câmera ptz</span></div>
+<div class="credito"><b>Ananda Paixão</b><span>videoclipe · assistência de direção</span></div>
+<div class="credito"><b>Som do Ale</b><span>visualizer · arte e cenografia</span></div>
+
+</div>
+<div style="display:flex;gap:1rem;flex-wrap:wrap" data-reveal>
+<a class="botao c" href="assets/VINI_POFFO_CV.pdf" target="_blank" rel="noopener">Baixar currículo em PDF ↓</a>
+<a class="botao c" href="trabalhos.html">Lista completa de trabalhos →</a>
+</div>
+<p class="creditos-nota">Atuação em direção, produção, arte ou assistência conforme o projeto — créditos individuais em /trabalhos.</p>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-final escuro" id="contato">
+<p class="tag" data-reveal>Contato</p>
+<h3 data-reveal>Vamos <em>conversar</em>.</h3>
+<p data-reveal style="font-size:1rem;line-height:1.8;opacity:.85;max-width:64ch;margin:0 auto 3rem">Se você procura direção audiovisual para campanhas, conteúdo recorrente ou filmes de marca, me conte seu projeto. Vamos pensar juntos na melhor forma de transformá-lo em imagem.</p>
+<div class="botoes" data-reveal>
+<a class="botao cheio" href="https://wa.me/5511989393348" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.3 0-4.438-.763-6.152-2.05l-.43-.332-3.29 1.103 1.103-3.29-.332-.43A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>WhatsApp</a>
+<a class="botao e" href="mailto:projetos@vinipoffo.com">projetos@vinipoffo.com</a>
+<a class="botao e" href="https://instagram.com/poffovini" target="_blank" rel="noopener">Instagram</a>
+<a class="botao e" href="assets/VINI_POFFO_CV.pdf" target="_blank" rel="noopener">Currículo em PDF</a>
+</div>
+<p class="rodape">Vini Poffo © 2026</p>
+</section>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+const R = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+gsap.to('#progresso',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:.3}});
+
+if(!R){
+  const hf = document.getElementById('heroFrase');
+  const ds = new Set(hf.querySelectorAll('em'));
+  [...hf.childNodes].forEach(n=>{
+    if(n.nodeType===3){
+      const f=document.createDocumentFragment();
+      n.textContent.split(/\s+/).filter(Boolean).forEach(w=>{const s=document.createElement('span');s.className='p';s.textContent=w;f.appendChild(s)});
+      hf.replaceChild(f,n);
+    } else if(ds.has(n)){ n.classList.add('p') }
+  });
+  gsap.to(hf.querySelectorAll('.p'),{opacity:1,y:0,stagger:.16,duration:.6,ease:'power3.out',delay:.3});
+  gsap.from('.hero-sub',{opacity:0,y:30,duration:1,delay:1.3,ease:'power2.out'});
+
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none reverse'}});
+  });
+
+  document.querySelectorAll('.case-conteudo').forEach(c=>{
+    c.querySelectorAll('[data-p]').forEach((p,i)=>{
+      gsap.to(p,{opacity:1,y:0,duration:.7,delay:i*.16,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 70%',toggleActions:'play none none reverse'}});
+    });
+  });
+
+  gsap.utils.toArray('[data-conta]').forEach(n=>{
+    const a=+n.dataset.conta, m=n.dataset.mais||'', o={v:0};
+    gsap.to(o,{v:a,duration:1.4,ease:'power2.out',onUpdate:()=>{n.textContent=Math.round(o.v)+m},scrollTrigger:{trigger:n,start:'top 85%',toggleActions:'play none none reverse'}});
+  });
+
+  gsap.utils.toArray('.kit-card').forEach((c,i)=>{
+    gsap.from(c,{y:50,opacity:0,duration:.8,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%',toggleActions:'play none none reverse'}});
+  });
+
+  gsap.utils.toArray('.grade-item').forEach((g,i)=>{
+    gsap.from(g,{scale:.85,opacity:0,duration:.7,delay:(i%4)*.08,ease:'power3.out',scrollTrigger:{trigger:g,start:'top 90%',toggleActions:'play none none reverse'}});
+  });
+
+  gsap.utils.toArray('.cel').forEach((c,i)=>{
+    gsap.from(c,{y:60,opacity:0,duration:.8,delay:i*.09,ease:'power3.out',scrollTrigger:{trigger:'#celCarousel',start:'top 85%',toggleActions:'play none none reverse'}});
+  });
+
+  gsap.utils.toArray('.credito').forEach((c,i)=>{
+    gsap.from(c,{opacity:0,x:-18,duration:.5,delay:(i%10)*.05,ease:'power2.out',scrollTrigger:{trigger:c,start:'top 95%',toggleActions:'play none none reverse'}});
+  });
+} else {
+  document.querySelectorAll('[data-reveal],[data-p]').forEach(el=>{el.style.opacity=1;el.style.transform='none'});
+  document.querySelectorAll('[data-conta]').forEach(n=>{n.textContent=n.dataset.conta+(n.dataset.mais||'')});
+}
+
+/* ---- carregamento preguiçoso de vídeo ---- */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    const v = e.target;
+    if(e.isIntersecting){
+      if(!v.dataset.loaded && v.dataset.src){
+        v.dataset.loaded = '1';
+        const s = document.createElement('source');
+        s.src = v.dataset.src;
+        if(/\.mp4$/i.test(v.dataset.src)) s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+      }
+      v.play().catch(()=>{});
+    } else {
+      v.pause();
+    }
+  });
+},{threshold:.15, rootMargin:'200px'});
+document.querySelectorAll('video[data-autoplay]').forEach(v=>io.observe(v));
+
+/* ---- menu ---- */
+const hb = document.getElementById('hamburger'), nm = document.getElementById('navMenu');
+hb.addEventListener('click',()=>{hb.classList.toggle('active');nm.classList.toggle('active')});
+document.addEventListener('click',e=>{
+  if(!hb.contains(e.target) && !nm.contains(e.target)){hb.classList.remove('active');nm.classList.remove('active')}
+});
+nm.addEventListener('click',()=>{hb.classList.remove('active');nm.classList.remove('active')});
+
+/* ---- carrossel ---- */
+const cc = document.getElementById('celCarousel'), cp = document.getElementById('celPrev'), cn = document.getElementById('celNext');
+if(cp && cn){
+  const scrollCel = dir => {
+    const el = cc.querySelector('.cel');
+    if(!el) return;
+    const w = el.offsetWidth + parseFloat(getComputedStyle(cc).gap || 16);
+    cc.scrollBy({left: dir*w, behavior:'smooth'});
+  };
+  cp.addEventListener('click',()=>scrollCel(-1));
+  cn.addEventListener('click',()=>scrollCel(1));
+}
+</script>
+</body>
+</html>
