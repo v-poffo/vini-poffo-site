@@ -96,7 +96,7 @@ section{position:relative;padding:8rem 6vw}
 .case-conteudo [data-p]{opacity:1}
 .case-bloco.dir{justify-content:flex-end}
 
-.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6rem}
+.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:2.6rem}
 .num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1;color:var(--verde)}
 .num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
 
@@ -174,16 +174,10 @@ html{scroll-behavior:auto}
 .ferramentas{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.8rem;padding-top:2rem;border-top:1px solid rgba(243,248,244,.2)}
 .micro{display:block;font-family:var(--f-mono);text-transform:uppercase;font-size:.65rem;letter-spacing:.12em;line-height:1.8;color:var(--verde);margin-bottom:.7rem}
 .ferramentas p{font-size:.9rem;line-height:1.9}
-.trajetoria-intro,.formacao-layout{display:grid;grid-template-columns:1fr 1fr;gap:5vw;margin-bottom:3.5rem;align-items:start}
-.trajetoria-intro h2,.formacao-layout h2{font-family:var(--f-display);font-size:clamp(2rem,4vw,3.6rem);text-transform:uppercase;line-height:1.05}
-.trajetoria-intro p,.formacao-layout>div>p{font-size:.94rem;line-height:1.9;max-width:48ch}
-.formacao-layout>div>p{margin-top:1.5rem;opacity:.85}
-.formacao-lista h3{font-family:var(--f-display);font-size:1.35rem;line-height:1.2;margin-bottom:.8rem}
-.formacao-lista p{font-size:.86rem;line-height:1.8}
+.trajetoria-intro{display:grid;grid-template-columns:1fr 1fr;gap:5vw;margin-bottom:3.5rem;align-items:start}
+.trajetoria-intro h2{font-family:var(--f-display);font-size:clamp(2rem,4vw,3.6rem);text-transform:uppercase;line-height:1.05}
+.trajetoria-intro p{font-size:.94rem;line-height:1.9;max-width:48ch}
 .creditos-titulo{color:var(--tinta);margin-bottom:1.5rem}
-.formacao-lista article{padding:1.5rem 0;border-bottom:1px solid rgba(243,248,244,.2)}
-.formacao-lista article:first-child{padding-top:0}
-.formacao-lista p{opacity:.8}
 .filme-dialog{margin:auto;width:min(1100px,94vw);max-height:94svh;overflow:auto;border:1px solid var(--verde);background:var(--tinta);color:var(--papel);padding:1rem;border-radius:8px}
 .filme-dialog::backdrop{background:rgba(0,0,0,.88)}
 .filme-dialog header{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
@@ -191,13 +185,27 @@ html{scroll-behavior:auto}
 .filme-dialog button{color:var(--papel);background:none;border:1px solid var(--verde);padding:.6rem 1rem;cursor:pointer;font-family:var(--f-mono)}
 .filme-dialog video{display:block;width:100%;height:auto;max-height:72svh;background:#000}
 .filme-dialog p{font-size:.8rem;line-height:1.7;margin-top:.8rem}
-@media(max-width:860px){.trajetoria-intro,.formacao-layout,.ferramentas{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.numeros{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.trajetoria-intro,.ferramentas{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.numeros{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.grade-item video,.kit-card{transition:none}}
 
 .navbar.scrolled{background:rgba(17,26,23,.94);backdrop-filter:blur(12px)}
 
 .video-abrir{cursor:pointer}.video-abrir:hover video{filter:brightness(1.06)}
-@media(max-width:860px){.numeros{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.num-bloco .num{font-size:clamp(2rem,9vw,3.5rem)}.num-bloco .num-desc{font-size:.55rem;letter-spacing:.06em;line-height:1.8}}
+
+
+.trajetoria-corpo{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(260px,1fr);gap:3.2rem;align-items:start}
+.trajetoria-trabalhos{min-width:0}.trajetoria-trabalhos .creditos{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 2rem}
+.trajetoria-trabalhos .credito{gap:.8rem}.trajetoria-trabalhos .credito b{font-size:.82rem}.trajetoria-trabalhos .credito span{font-size:.54rem;letter-spacing:.06em}
+.formacao-compacta{border-left:1px solid rgba(17,26,23,.18);padding-left:2rem;scroll-margin-top:110px}
+.formacao-compacta>.micro{color:var(--tinta);margin-bottom:.8rem}
+.formacao-compacta>h3{font-family:var(--f-display);font-size:1.5rem;line-height:1.15;margin-bottom:1.5rem}
+.formacao-cursos article{padding:1rem 0;border-bottom:1px solid rgba(17,26,23,.12)}.formacao-cursos article:first-child{padding-top:0}
+.formacao-cursos h4{font-family:var(--f-corpo);font-size:.85rem;font-weight:600;line-height:1.5;margin-bottom:.3rem}
+.formacao-cursos p{font-size:.78rem;line-height:1.7;opacity:.8}
+.formacao-status{display:block;font-family:var(--f-mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem;color:var(--azul)}
+@media(max-width:1100px){.trajetoria-corpo{grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:2rem}.trajetoria-trabalhos .creditos{grid-template-columns:1fr}}
+@media(max-width:860px){.trajetoria-corpo{grid-template-columns:1fr;gap:2.5rem}.formacao-compacta{border-left:0;border-top:1px solid rgba(17,26,23,.18);padding:1.5rem 0 0}.formacao-compacta>h3{font-size:1.35rem}.formacao-cursos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.4rem}.formacao-cursos article:first-child{padding-top:1rem}.numeros{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.num-bloco .num{font-size:clamp(2.6rem,12vw,4rem)}.num-bloco .num-desc{font-size:.6rem;letter-spacing:.08em}}
+@media(max-width:380px){.formacao-cursos{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -281,12 +289,13 @@ html{scroll-behavior:auto}
 </div>
 
 <!-- ===================== NÚMEROS ===================== -->
-<section class="claro">
+<section class="claro" id="numeros">
 <p class="tag" data-reveal>Em números</p>
 <div class="numeros">
 <div class="num-bloco" data-reveal><p class="num">2019</p><p class="num-desc">desde quando trabalho<br>com audiovisual</p></div>
-<div class="num-bloco" data-reveal><p class="num">50+</p><p class="num-desc">festivais com seleção<br>dos meus projetos</p></div>
-<div class="num-bloco" data-reveal><p class="num">7+</p><p class="num-desc">prêmios recebidos<br>pelos meus projetos</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-counter="50" data-suffix="+">50+</p><p class="num-desc">festivais com seleção<br>dos meus projetos</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-counter="7" data-suffix="+">7+</p><p class="num-desc">prêmios recebidos<br>pelos meus projetos</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-counter="3">3</p><p class="num-desc">videoclipes dirigidos<br>para Letrux</p></div>
 </div>
 </section>
 
@@ -343,7 +352,7 @@ html{scroll-behavior:auto}
 <section class="claro" id="trajetoria">
 <p class="tag" data-reveal>Trajetória</p>
 <div class="trajetoria-intro"><h2>Um olhar autoral.<br>Experiência na prática.</h2><p>Cinema, videoclipes, campanhas e conteúdo digital. Minha trajetória reúne projetos autorais e produções com marcas, artistas e criadores — experiências que ampliam meu olhar e a forma como conduzo cada trabalho.</p></div>
-<h3 class="micro creditos-titulo">Artistas, marcas e equipes com quem trabalhei</h3>
+<div class="trajetoria-corpo"><div class="trajetoria-trabalhos"><h3 class="micro creditos-titulo">Artistas e marcas com quem trabalhei</h3>
 <div class="creditos" data-reveal>
 <div class="credito"><b>OAKHUKAS</b><span>campanha de lançamento</span></div>
 <div class="credito"><b>CeraVe</b><span>campanha · 2025</span></div>
@@ -374,15 +383,16 @@ html{scroll-behavior:auto}
 <a class="botao c" href="trabalhos.html">Lista completa de trabalhos →</a>
 </div>
 <p class="creditos-nota">Uma seleção de projetos de que participei. Fichas e créditos completos na lista de trabalhos.</p>
+</div>
+<aside class="formacao-compacta" id="formacao" aria-labelledby="formacaoTitulo">
+<p class="micro">Formação</p><h3 id="formacaoTitulo">Repertório em movimento.</h3>
+<div class="formacao-cursos">
+<article><h4>Especialização em Assistência de Direção</h4><p>Instituto Brasileiro de Cultura<br/>Programa Atores 360</p><span class="formacao-status">Em andamento</span></article>
+<article><h4>Produção Audiovisual</h4><p>UniCV</p></article>
+<article><h4>Direção Cinematográfica</h4><p>Academia Internacional de Cinema<br/>Curso livre</p></article>
+<article><h4>Cinema</h4><p>Bucareste · Curso livre</p></article>
+</div></aside></div>
 </section>
-
-<section class="escuro" id="formacao">
-<p class="tag">Formação</p><div class="formacao-layout"><div><h2>Repertório em<br>movimento.</h2><p>Minha formação passa pelo audiovisual, pela direção cinematográfica e pelo trabalho de set. Continuo estudando e ampliando esse repertório na prática.</p></div><div class="formacao-lista">
-<article><span class="micro">Em andamento</span><h3>Especialização em Assistência de Direção</h3><p>Instituto Brasileiro de Cultura · Programa A360</p></article>
-<article><h3>Tecnólogo em Produção Audiovisual</h3><p>UniCV</p></article>
-<article><h3>Direção Cinematográfica</h3><p>AIC · Academia Internacional de Cinema · Curso livre</p></article>
-<article><h3>Cinema</h3><p>Bucareste · Curso livre</p></article>
-</div></div></section>
 
 <!-- ===================== CTA ===================== -->
 <section class="cta-final escuro" id="contato">

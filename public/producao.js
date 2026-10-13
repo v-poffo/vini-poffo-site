@@ -100,6 +100,37 @@
     if (opener) opener.focus(); inView.forEach(playPreview);
   });
 
+  /* Os números animam uma única vez, ao entrar na tela. */
+  const counters = [...document.querySelectorAll('[data-counter]')];
+  const finishCounter = el => { el.textContent = el.dataset.counter + (el.dataset.suffix || ''); };
+  if (!reduce.matches && 'IntersectionObserver' in window) {
+    counters.forEach(el => { el.textContent = '0' + (el.dataset.suffix || ''); });
+    const statsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        statsObserver.unobserve(entry.target);
+        counters.forEach(el => {
+          const end = Number(el.dataset.counter), suffix = el.dataset.suffix || '';
+          let start;
+          function tick(now) {
+            if (reduce.matches) { finishCounter(el); return; }
+            if (start === undefined) start = now;
+            const t = Math.min((now - start) / 1600, 1);
+            el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+            else finishCounter(el);
+          }
+          requestAnimationFrame(tick);
+        });
+      });
+    }, {threshold: .35});
+    const stats = document.querySelector('.numeros');
+    if (stats) statsObserver.observe(stats);
+    reduce.addEventListener('change', () => {
+      if (reduce.matches) { statsObserver.disconnect(); counters.forEach(finishCounter); }
+    });
+  }
+
   if (window.gsap && window.ScrollTrigger && !reduce.matches) {
     const gsap = window.gsap;
     gsap.registerPlugin(window.ScrollTrigger);
