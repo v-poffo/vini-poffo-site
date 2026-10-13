@@ -160,7 +160,6 @@ html{scroll-behavior:auto}
 .hamburger{background:none;border:0;padding:8px}
 .hamburger span{display:block}
 .hero-acoes{display:flex;align-items:center;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
-.hero-link{color:var(--papel);font-size:.76rem;text-underline-offset:5px;padding:.6rem}
 .hero-acoes .botao{font-size:.62rem;padding:.85rem 1.2rem}
 .sec-intro{max-width:62ch;font-size:.94rem;line-height:1.8;opacity:.82}
 .celulares-wrap{padding-top:2.8rem}
@@ -171,9 +170,7 @@ html{scroll-behavior:auto}
 
 .credito{align-items:start}.credito b{flex:1}.credito span{flex:1;flex-shrink:1;opacity:.78}
 .creditos-nota{opacity:.75}
-.ferramentas{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.8rem;padding-top:2rem;border-top:1px solid rgba(243,248,244,.2)}
 .micro{display:block;font-family:var(--f-mono);text-transform:uppercase;font-size:.65rem;letter-spacing:.12em;line-height:1.8;color:var(--verde);margin-bottom:.7rem}
-.ferramentas p{font-size:.9rem;line-height:1.9}
 .trajetoria-intro{display:grid;grid-template-columns:1fr 1fr;gap:5vw;margin-bottom:3.5rem;align-items:start}
 .trajetoria-intro h2{font-family:var(--f-display);font-size:clamp(2rem,4vw,3.6rem);text-transform:uppercase;line-height:1.05}
 .trajetoria-intro p{font-size:.94rem;line-height:1.9;max-width:48ch}
@@ -185,7 +182,7 @@ html{scroll-behavior:auto}
 .filme-dialog button{color:var(--papel);background:none;border:1px solid var(--verde);padding:.6rem 1rem;cursor:pointer;font-family:var(--f-mono)}
 .filme-dialog video{display:block;width:100%;height:auto;max-height:72svh;background:#000}
 .filme-dialog p{font-size:.8rem;line-height:1.7;margin-top:.8rem}
-@media(max-width:860px){.trajetoria-intro,.ferramentas{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.numeros{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.trajetoria-intro{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.numeros{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.grade-item video,.kit-card{transition:none}}
 
 .navbar.scrolled{background:rgba(17,26,23,.94);backdrop-filter:blur(12px)}
@@ -206,6 +203,12 @@ html{scroll-behavior:auto}
 @media(max-width:1100px){.trajetoria-corpo{grid-template-columns:minmax(0,1.7fr) minmax(240px,1fr);gap:2rem}.trajetoria-trabalhos .creditos{grid-template-columns:1fr}}
 @media(max-width:860px){.trajetoria-corpo{grid-template-columns:1fr;gap:2.5rem}.formacao-compacta{border-left:0;border-top:1px solid rgba(17,26,23,.18);padding:1.5rem 0 0}.formacao-compacta>h3{font-size:1.35rem}.formacao-cursos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.4rem}.formacao-cursos article:first-child{padding-top:1rem}.numeros{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.num-bloco .num{font-size:clamp(2.6rem,12vw,4rem)}.num-bloco .num-desc{font-size:.6rem;letter-spacing:.08em}}
 @media(max-width:380px){.formacao-cursos{grid-template-columns:1fr}}
+
+#atuacao{padding-bottom:3rem}
+.repertorio-origem{max-width:78ch;margin-top:2.8rem;padding-top:2rem;border-top:1px solid rgba(243,248,244,.18)}
+.repertorio-origem p{font-size:.92rem;line-height:1.9;opacity:.85}
+.repertorio-link{display:inline-block;color:var(--papel);font-family:var(--f-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;text-underline-offset:5px;margin-top:1.2rem}
+@media(max-width:860px){#atuacao{padding-bottom:2rem}.repertorio-origem{margin-top:2rem}}
 </style>
 </head>
 <body>
@@ -216,12 +219,12 @@ html{scroll-behavior:auto}
 <!-- ===================== HERO ===================== -->
 <header class="hero escuro">
 <div class="hero-bg"><video muted loop playsinline preload="none" poster="assets/producao/capa-hero.jpg"><source src="assets/videos/Debaixo do guarda-chuva pra ser resistência - trailer.mp4" type="video/mp4"></video></div>
-<p class="tag">Vini Poffo · Filmmaker em São Paulo</p>
+<p class="tag">Vini Poffo · Cineasta e filmmaker</p>
 <h1 class="hero-frase" id="heroFrase">Seu <em>conteúdo</em> com <em>olhar</em> de <em>cinema</em>.</h1>
 <div class="hero-sub">
 <p class="hero-desc">Sou Vini Poffo, cineasta e filmmaker. Trabalho com direção, captação e edição para marcas, artistas e quem cria conteúdo. Do cinema às redes sociais, penso cada projeto a partir da sua história, de quem vai assistir e do que precisa ser comunicado.</p>
-<p class="hero-linha">São Paulo, SP · Campanhas, conteúdo digital e videoclipes</p>
-<div class="hero-acoes"><a class="botao cheio" href="#projetos">Ver trabalhos ↓</a><a class="botao e" href="assets/VINI_POFFO_CV.pdf" target="_blank" rel="noopener">Meu currículo ↗</a><a class="hero-link" href="#trajetoria">Conheça minha trajetória</a></div>
+<p class="hero-linha">Campanhas · Conteúdo digital · Videoclipes · Cinema</p>
+<div class="hero-acoes"><a class="botao cheio" href="#projetos">Ver trabalhos ↓</a><a class="botao e" href="assets/VINI_POFFO_CV.pdf" target="_blank" rel="noopener">Meu currículo ↗</a></div>
 </div>
 </header>
 
@@ -295,12 +298,12 @@ html{scroll-behavior:auto}
 <div class="num-bloco" data-reveal><p class="num">2019</p><p class="num-desc">desde quando trabalho<br>com audiovisual</p></div>
 <div class="num-bloco" data-reveal><p class="num" data-counter="50" data-suffix="+">50+</p><p class="num-desc">festivais com seleção<br>dos meus projetos</p></div>
 <div class="num-bloco" data-reveal><p class="num" data-counter="7" data-suffix="+">7+</p><p class="num-desc">prêmios recebidos<br>pelos meus projetos</p></div>
-<div class="num-bloco" data-reveal><p class="num" data-counter="3">3</p><p class="num-desc">videoclipes dirigidos<br>para Letrux</p></div>
+<div class="num-bloco" data-reveal><p class="num" data-counter="15" data-suffix="+">15+</p><p class="num-desc">projetos dirigidos<br>cinema, clipes e conteúdo</p></div>
 </div>
 </section>
 
 <!-- ===================== O QUE EU FAÇO ===================== -->
-<section class="escuro">
+<section class="escuro" id="atuacao">
 <p class="tag" data-reveal>O que eu faço</p>
 <div class="kit-grade">
 <div class="kit-card"><h4>Direção &amp; criação</h4><p>Conceito, roteiro, referências visuais e planejamento das cenas. Encontro a linguagem do projeto e conduzo as escolhas que dão forma à história.</p></div>
@@ -308,11 +311,11 @@ html{scroll-behavior:auto}
 <div class="kit-card"><h4>Edição &amp; conteúdo digital</h4><p>Montagem, ritmo e adaptação de vídeos para YouTube e redes sociais. Experiência com conteúdos pontuais e com a rotina de quem publica o ano inteiro.</p></div>
 <div class="kit-card"><h4>Filmagem &amp; execução</h4><p>Vivência em sets de publicidade e produções audiovisuais. Planejamento, autonomia na gravação e colaboração com equipes de criação e produção, com atenção ao briefing, aos prazos e aos detalhes.</p></div>
 </div>
-<div class="ferramentas"><div><span class="micro">Ferramentas</span><p>Adobe Premiere Pro · DaVinci Resolve · Lightroom · Photoshop</p></div><div><span class="micro">Kit próprio</span><p>Blackmagic 6K · Sony FX30 · Lentes, iluminação e som</p></div></div>
+<div class="repertorio-origem" data-reveal><p>Meu trabalho comercial nasceu do cinema. A direção de curtas premiados, videoclipes e projetos autorais desenvolveu um olhar para narrativa, ritmo e direção de imagem que hoje aplico em campanhas, marcas e conteúdo digital. Esse repertório me ajuda a encontrar uma linguagem para cada projeto, em diálogo com a marca, o artista e a equipe.</p><a class="repertorio-link" href="index.html">Conheça meu portfólio de cinema →</a></div>
 </section>
 
 <!-- ===================== DE ONDE VEM O OLHAR ===================== -->
-<section class="escuro" style="padding:5rem 0">
+<section class="escuro" id="olhar" style="padding:2rem 0 5rem">
 <div style="padding:0 6vw"><p class="tag" data-reveal>De onde vem o olhar</p></div>
 <div class="grade-olhar">
 
@@ -343,10 +346,7 @@ html{scroll-behavior:auto}
 </div>
 </section>
 
-<section class="escuro" style="padding:5rem 6vw;text-align:center">
-<p data-reveal style="font-size:1rem;line-height:1.8;opacity:.85;max-width:60ch;margin:0 auto 2rem">Meu trabalho comercial nasceu do cinema. A direção de curtas premiados, videoclipes e projetos autorais desenvolveu um olhar para narrativa, ritmo e direção de imagem que hoje aplico em campanhas, marcas e conteúdo digital. Esse repertório me ajuda a encontrar uma linguagem para cada projeto, em diálogo com a marca, o artista e a equipe.</p>
-<a class="botao e" href="index.html" style="display:inline-flex">Conheça meu portfólio de cinema →</a>
-</section>
+
 
 <!-- ===================== TRAJETÓRIA ===================== -->
 <section class="claro" id="trajetoria">
