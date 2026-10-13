@@ -96,7 +96,7 @@ section{position:relative;padding:8rem 6vw}
 .case-conteudo [data-p]{opacity:1}
 .case-bloco.dir{justify-content:flex-end}
 
-.numeros{display:grid;grid-template-columns:repeat(4,1fr);gap:2.6rem}
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);gap:2.6rem}
 .num-bloco .num{font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,6.4vw,5.4rem);line-height:1;color:var(--verde)}
 .num-bloco .num-desc{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;margin-top:.8rem;line-height:1.9;opacity:.75}
 
@@ -166,10 +166,9 @@ html{scroll-behavior:auto}
 .celulares-wrap{padding-top:2.8rem}
 .cel-legenda span{display:block;line-height:1.7;margin-top:.3rem}
 .video-abrir{display:block;position:relative;color:inherit;text-decoration:none}
-.video-abrir .play-label{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);z-index:4;background:rgba(17,26,23,.88);border:1px solid rgba(243,248,244,.4);border-radius:20px;padding:.5rem .8rem;font-family:var(--f-mono);font-size:.56rem;white-space:nowrap;letter-spacing:.05em}
 .grade-item .video-abrir{height:100%}
 .grade-overlay{opacity:1;pointer-events:none}
-.grade-item .play-label{top:10px;bottom:auto;left:auto;right:10px;transform:none}
+
 .credito{align-items:start}.credito b{flex:1}.credito span{flex:1;flex-shrink:1;opacity:.78}
 .creditos-nota{opacity:.75}
 .ferramentas{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.8rem;padding-top:2rem;border-top:1px solid rgba(243,248,244,.2)}
@@ -179,9 +178,8 @@ html{scroll-behavior:auto}
 .trajetoria-intro h2,.formacao-layout h2{font-family:var(--f-display);font-size:clamp(2rem,4vw,3.6rem);text-transform:uppercase;line-height:1.05}
 .trajetoria-intro p,.formacao-layout>div>p{font-size:.94rem;line-height:1.9;max-width:48ch}
 .formacao-layout>div>p{margin-top:1.5rem;opacity:.85}
-.experiencia-destaque{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-bottom:4rem;padding:2rem 0;border-top:1px solid rgba(17,26,23,.2);border-bottom:1px solid rgba(17,26,23,.2)}
-.experiencia-destaque h3,.formacao-lista h3{font-family:var(--f-display);font-size:1.35rem;line-height:1.2;margin-bottom:.8rem}
-.experiencia-destaque p,.formacao-lista p{font-size:.86rem;line-height:1.8}
+.formacao-lista h3{font-family:var(--f-display);font-size:1.35rem;line-height:1.2;margin-bottom:.8rem}
+.formacao-lista p{font-size:.86rem;line-height:1.8}
 .creditos-titulo{color:var(--tinta);margin-bottom:1.5rem}
 .formacao-lista article{padding:1.5rem 0;border-bottom:1px solid rgba(243,248,244,.2)}
 .formacao-lista article:first-child{padding-top:0}
@@ -193,10 +191,13 @@ html{scroll-behavior:auto}
 .filme-dialog button{color:var(--papel);background:none;border:1px solid var(--verde);padding:.6rem 1rem;cursor:pointer;font-family:var(--f-mono)}
 .filme-dialog video{display:block;width:100%;height:auto;max-height:72svh;background:#000}
 .filme-dialog p{font-size:.8rem;line-height:1.7;margin-top:.8rem}
-@media(max-width:860px){.trajetoria-intro,.formacao-layout,.experiencia-destaque,.ferramentas{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.grade-item .play-label{font-size:.5rem;padding:.35rem .5rem}.numeros{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:860px){.trajetoria-intro,.formacao-layout,.ferramentas{grid-template-columns:1fr;gap:1.6rem}.hero{padding-top:7rem}.hero-frase{font-size:clamp(2.8rem,11vw,5.5rem)}.hero-acoes{margin-bottom:1rem}.creditos{grid-template-columns:1fr}.credito{gap:.9rem}.credito span{font-size:.56rem}.grade-overlay{padding:.8rem}.numeros{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:reduce){.grade-item video,.kit-card{transition:none}}
 
 .navbar.scrolled{background:rgba(17,26,23,.94);backdrop-filter:blur(12px)}
+
+.video-abrir{cursor:pointer}.video-abrir:hover video{filter:brightness(1.06)}
+@media(max-width:860px){.numeros{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.num-bloco .num{font-size:clamp(2rem,9vw,3.5rem)}.num-bloco .num-desc{font-size:.55rem;letter-spacing:.06em;line-height:1.8}}
 </style>
 </head>
 <body>
@@ -224,17 +225,17 @@ html{scroll-behavior:auto}
 <div class="celulares-wrap">
 <div class="celulares" id="celCarousel">
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/producao/oakhukas-lancamento-vertical.mp4" data-watch data-title="OAKHUKAS" data-credit="Campanha de lançamento" aria-label="Assistir OAKHUKAS"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/oakhukas-lancamento-vertical.mp4" poster="assets/producao/capa-01.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>OAKHUKAS</strong><span>Campanha de lançamento</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/producao/oakhukas-lancamento-vertical.mp4" data-watch data-title="OAKHUKAS" data-credit="Campanha de lançamento" aria-label="Assistir OAKHUKAS"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/oakhukas-lancamento-vertical.mp4" poster="assets/producao/capa-01.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>OAKHUKAS</strong><span>Campanha de lançamento</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/YMA for Agarum.mp4" data-watch data-title="YMA for Agarum" data-credit="Filme de marca" aria-label="Assistir YMA for Agarum"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum.mp4" poster="assets/producao/capa-02.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>YMA for Agarum</strong><span>Filme de marca</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/YMA for Agarum.mp4" data-watch data-title="YMA for Agarum" data-credit="Filme de marca" aria-label="Assistir YMA for Agarum"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum.mp4" poster="assets/producao/capa-02.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>YMA for Agarum</strong><span>Filme de marca</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Maria Homem_instagram.mp4" data-watch data-title="Maria Homem" data-credit="Direção, captação e edição" aria-label="Assistir Maria Homem"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Maria Homem_instagram.mp4" poster="assets/producao/capa-03.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>Maria Homem</strong><span>Direção, captação e edição</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Maria Homem_instagram.mp4" data-watch data-title="Maria Homem" data-credit="Direção, captação e edição" aria-label="Assistir Maria Homem"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Maria Homem_instagram.mp4" poster="assets/producao/capa-03.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>Maria Homem</strong><span>Direção, captação e edição</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Calma Business .mp4" data-watch data-title="Calma São Paulo" data-credit="Editorial · assistência de arte" aria-label="Assistir Calma São Paulo"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Calma Business .mp4" poster="assets/producao/capa-04.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>Calma São Paulo</strong><span>Editorial · assistência de arte</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Calma Business .mp4" data-watch data-title="Calma São Paulo" data-credit="Editorial" aria-label="Assistir Calma São Paulo"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Calma Business .mp4" poster="assets/producao/capa-04.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>Calma São Paulo</strong><span>Editorial</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/spec_instagram.mp4" data-watch data-title="Spec" data-credit="Conteúdo para Instagram" aria-label="Assistir Spec"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/spec_instagram.mp4" poster="assets/producao/capa-05.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>Spec</strong><span>Conteúdo para Instagram</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/spec_instagram.mp4" data-watch data-title="Spec" data-credit="Conteúdo para Instagram" aria-label="Assistir Spec"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/spec_instagram.mp4" poster="assets/producao/capa-05.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>Spec</strong><span>Conteúdo para Instagram</span></div></div>
 
-<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Manguezais_entre_no%CC%81s.mp4" data-watch data-title="Manguezais entre nós" data-credit="Teaser" aria-label="Assistir Manguezais entre nós"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Manguezais_entre_no%CC%81s.mp4" poster="assets/producao/capa-06.jpg" aria-hidden="true"></video><span class="play-label">▶ Assistir</span></a></div><div class="cel-legenda"><strong>Manguezais entre nós</strong><span>Teaser</span></div></div>
+<div class="cel"><div class="cel-moldura"><a class="video-abrir" href="assets/videos/Manguezais_entre_no%CC%81s.mp4" data-watch data-title="Manguezais entre nós" data-credit="Teaser" aria-label="Assistir Manguezais entre nós"><div class="cel-notch"></div><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/Manguezais_entre_no%CC%81s.mp4" poster="assets/producao/capa-06.jpg" aria-hidden="true"></video></a></div><div class="cel-legenda"><strong>Manguezais entre nós</strong><span>Teaser</span></div></div>
 
 </div>
 <div class="cel-nav"><button id="celPrev" aria-label="Anterior">&#10094;</button><button id="celNext" aria-label="Próximo">&#10095;</button></div>
@@ -247,7 +248,7 @@ html{scroll-behavior:auto}
 <div class="case-conteudo">
 <h3 data-p>Conteúdo para comunicação digital</h3>
 <p data-p>Desde 2020, trabalho na produção audiovisual do Canal Maria Homem: direção, captação, edição e rotina de publicação para YouTube, cursos e redes sociais.</p>
-<p data-p>É um trabalho contínuo: gravar, organizar os materiais e dar forma às ideias em diferentes formatos. Também produzo conteúdos orgânicos para o Instagram do influenciador Gabriel Bernardo.</p>
+<p data-p>Além desse trabalho contínuo, produzo conteúdos para as redes de outros influenciadores e marcas: vídeos orgânicos para Instagram, entrevistas e conteúdos que traduzem ideias em uma linguagem próxima de quem assiste.</p>
 <p class="detalhe" data-p><b>função</b> direção · captação · edição · publicação<br><b>período</b> 2020 — atualmente<br><b>plataformas</b> youtube · cursos · redes sociais</p>
 </div>
 </div>
@@ -260,8 +261,8 @@ html{scroll-behavior:auto}
 <div class="case-conteudo">
 <h3 data-p>Filmes que fortalecem marcas</h3>
 <p data-p>Campanhas de lançamento, filmes de moda e conteúdos que dão forma à identidade de uma marca. A seleção reúne trabalhos como OAKHUKAS e YMA for Agarum, com linguagens pensadas para cada projeto.</p>
-<p data-p>Minha experiência passa também pelos sets de publicidade: atuei na assistência de produção de objetos em campanhas de CeraVe, Nutren e Azul. Conheço tanto a criação de imagens quanto o trabalho coletivo que faz uma gravação acontecer.</p>
-<p class="detalhe" data-p><b>projetos</b> filmes de marca · campanhas · editoriais<br><b>formatos</b> vídeos horizontais e verticais<br><b>atuação</b> direção, produção e assistência conforme o projeto</p>
+<p data-p>Minha experiência também passa por produções de campanhas para CeraVe, Nutren, Azul e Umbro. Essa vivência em sets de publicidade ampliou meu repertório de linguagem visual, planejamento e trabalho em equipe — um cuidado que levo para cada gravação.</p>
+<p class="detalhe" data-p><b>projetos</b> filmes de marca · campanhas · editoriais<br><b>formatos</b> vídeos horizontais e verticais<br><b>linguagem</b> identidade de marca · narrativa visual</p>
 </div>
 </div>
 
@@ -273,9 +274,9 @@ html{scroll-behavior:auto}
 <div class="case-conteudo">
 <h3 data-p>Videoclipes &amp; direção criativa</h3>
 <p data-p>A música é um dos lugares onde desenvolvo meu olhar. Dirigir um videoclipe é encontrar a linguagem de cada artista e transformar conceito, ritmo e performance em imagem.</p>
-<p data-p>Dirigi clipes para Linn da Quebrada, Letrux, Jesus Lumma e Malu Maria. Em outros projetos, atuei em produção, arte e assistência, ao lado de equipes que ampliaram meu repertório de set.</p>
-<p data-p>O videoclipe <i>Aranha</i>, da Letrux, recebeu o prêmio de Melhor Videoclipe no Curta Fest Brasília. Esse cuidado com narrativa e linguagem visual também acompanha meus trabalhos para marcas e redes sociais.</p>
-<p class="detalhe" data-p><b>função</b> direção · roteiro · concepção de arte<br><b>prêmio</b> melhor videoclipe · curta fest brasília · 2024</p>
+<p data-p>Dirigi clipes para Linn da Quebrada, Letrux, Jesus Lumma e Malu Maria. Cada artista pede um universo próprio: trabalho com conceito, performance, ritmo e direção de imagem para construir essa linguagem.</p>
+<p data-p><i>Aranha</i>, da Letrux, recebeu o prêmio de Melhor Videoclipe no Curta Fest Brasília. <i>Nuvem Negra</i>, da Linn da Quebrada, foi selecionado para a Mostra Brasileira Independente de Cinema 2026. Esse repertório também acompanha meus trabalhos para marcas e redes sociais.</p>
+<p class="detalhe" data-p><b>função</b> direção · roteiro · concepção de arte<br><b>prêmio</b> Aranha · melhor videoclipe · Curta Fest Brasília<br><b>seleção</b> Nuvem Negra · Mostra Brasileira Independente de Cinema 2026</p>
 </div>
 </div>
 
@@ -283,10 +284,9 @@ html{scroll-behavior:auto}
 <section class="claro">
 <p class="tag" data-reveal>Em números</p>
 <div class="numeros">
-<div class="num-bloco" data-reveal><p class="num">2020</p><p class="num-desc">desde quando produzo<br>para Maria Homem</p></div>
-<div class="num-bloco" data-reveal><p class="num">20+</p><p class="num-desc">festivais por onde<br>circulou (Sub)Urbana</p></div>
-<div class="num-bloco" data-reveal><p class="num">5</p><p class="num-desc">prêmios de melhor filme<br>para (Sub)Urbana</p></div>
-<div class="num-bloco" data-reveal><p class="num">2</p><p class="num-desc">câmeras no kit próprio<br>Blackmagic 6K e Sony FX30</p></div>
+<div class="num-bloco" data-reveal><p class="num">2019</p><p class="num-desc">desde quando trabalho<br>com audiovisual</p></div>
+<div class="num-bloco" data-reveal><p class="num">50+</p><p class="num-desc">festivais com seleção<br>dos meus projetos</p></div>
+<div class="num-bloco" data-reveal><p class="num">7+</p><p class="num-desc">prêmios recebidos<br>pelos meus projetos</p></div>
 </div>
 </section>
 
@@ -297,7 +297,7 @@ html{scroll-behavior:auto}
 <div class="kit-card"><h4>Direção &amp; criação</h4><p>Conceito, roteiro, referências visuais e planejamento das cenas. Encontro a linguagem do projeto e conduzo as escolhas que dão forma à história.</p></div>
 <div class="kit-card"><h4>Captação audiovisual</h4><p>Gravação de campanhas, entrevistas, videoclipes e conteúdos para redes. Atenção ao enquadramento, à luz e ao som, em diálogo com o briefing e a equipe.</p></div>
 <div class="kit-card"><h4>Edição &amp; conteúdo digital</h4><p>Montagem, ritmo e adaptação de vídeos para YouTube e redes sociais. Experiência com conteúdos pontuais e com a rotina de quem publica o ano inteiro.</p></div>
-<div class="kit-card"><h4>Produção &amp; trabalho de set</h4><p>Vivência em publicidade, produção de objetos, arte e assistência de direção. Organização, colaboração e cuidado com os detalhes de cada gravação.</p></div>
+<div class="kit-card"><h4>Filmagem &amp; execução</h4><p>Vivência em sets de publicidade e produções audiovisuais. Planejamento, autonomia na gravação e colaboração com equipes de criação e produção, com atenção ao briefing, aos prazos e aos detalhes.</p></div>
 </div>
 <div class="ferramentas"><div><span class="micro">Ferramentas</span><p>Adobe Premiere Pro · DaVinci Resolve · Lightroom · Photoshop</p></div><div><span class="micro">Kit próprio</span><p>Blackmagic 6K · Sony FX30 · Lentes, iluminação e som</p></div></div>
 </section>
@@ -307,29 +307,29 @@ html{scroll-behavior:auto}
 <div style="padding:0 6vw"><p class="tag" data-reveal>De onde vem o olhar</p></div>
 <div class="grade-olhar">
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/naoc_vinipoffo.mp4" data-watch data-title="Não Alimente os Cães" data-credit="curta-metragem · 2026" aria-label="Assistir Não Alimente os Cães"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/naoc_vinipoffo.mp4" poster="assets/producao/capa-10.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Não Alimente os Cães</p><p class="g-tipo">curta-metragem · 2026</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/naoc_vinipoffo.mp4" data-watch data-title="Não Alimente os Cães" data-credit="curta-metragem · 2026" aria-label="Assistir Não Alimente os Cães"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/naoc_vinipoffo.mp4" poster="assets/producao/capa-10.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Não Alimente os Cães</p><p class="g-tipo">curta-metragem · 2026</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/producao/nuvem-negra.mp4" data-watch data-title="Nuvem Negra" data-credit="videoclipe · Linn da Quebrada" aria-label="Assistir Nuvem Negra"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/nuvem-negra.mp4" poster="assets/producao/capa-09.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Nuvem Negra</p><p class="g-tipo">videoclipe · Linn da Quebrada</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/producao/nuvem-negra.mp4" data-watch data-title="Nuvem Negra" data-credit="videoclipe · Linn da Quebrada" aria-label="Assistir Nuvem Negra"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/nuvem-negra.mp4" poster="assets/producao/capa-09.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Nuvem Negra</p><p class="g-tipo">videoclipe · Linn da Quebrada</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/aranha_portfolio_video.mp4" data-watch data-title="Aranha" data-credit="videoclipe · Letrux" aria-label="Assistir Aranha"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/aranha_portfolio_video.mp4" poster="assets/producao/capa-11.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Aranha</p><p class="g-tipo">videoclipe · Letrux</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/aranha_portfolio_video.mp4" data-watch data-title="Aranha" data-credit="videoclipe · Letrux" aria-label="Assistir Aranha"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/aranha_portfolio_video.mp4" poster="assets/producao/capa-11.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Aranha</p><p class="g-tipo">videoclipe · Letrux</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/noreflexo_portfolio_video.mp4" data-watch data-title="No Reflexo do Meu Nome" data-credit="curta-metragem · 2022" aria-label="Assistir No Reflexo do Meu Nome"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/noreflexo_portfolio_video.mp4" poster="assets/producao/capa-12.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/noreflexo_portfolio_video.mp4" data-watch data-title="No Reflexo do Meu Nome" data-credit="curta-metragem · 2022" aria-label="Assistir No Reflexo do Meu Nome"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/noreflexo_portfolio_video.mp4" poster="assets/producao/capa-12.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">No Reflexo do Meu Nome</p><p class="g-tipo">curta-metragem · 2022</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/tfde_portfolio_video.mp4" data-watch data-title="Tem Feito Uns Dias Esquisitos" data-credit="curta-metragem · 2025" aria-label="Assistir Tem Feito Uns Dias Esquisitos"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/tfde_portfolio_video.mp4" poster="assets/producao/capa-13.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/tfde_portfolio_video.mp4" data-watch data-title="Tem Feito Uns Dias Esquisitos" data-credit="curta-metragem · 2025" aria-label="Assistir Tem Feito Uns Dias Esquisitos"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/tfde_portfolio_video.mp4" poster="assets/producao/capa-13.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Tem Feito Uns Dias Esquisitos</p><p class="g-tipo">curta-metragem · 2025</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/outres_portfolio_video.mp4" data-watch data-title="Outres de Nós" data-credit="videoclipe · Jesus Lumma" aria-label="Assistir Outres de Nós"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/outres_portfolio_video.mp4" poster="assets/producao/capa-14.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/outres_portfolio_video.mp4" data-watch data-title="Outres de Nós" data-credit="videoclipe · Jesus Lumma" aria-label="Assistir Outres de Nós"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/outres_portfolio_video.mp4" poster="assets/producao/capa-14.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Outres de Nós</p><p class="g-tipo">videoclipe · Jesus Lumma</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/producao/maria-homem-horizontal.mp4" data-watch data-title="Maria Homem" data-credit="conteúdo · desde 2020" aria-label="Assistir Maria Homem"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/maria-homem-horizontal.mp4" poster="assets/producao/capa-07.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/producao/maria-homem-horizontal.mp4" data-watch data-title="Maria Homem" data-credit="conteúdo · desde 2020" aria-label="Assistir Maria Homem"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/maria-homem-horizontal.mp4" poster="assets/producao/capa-07.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Maria Homem</p><p class="g-tipo">conteúdo · desde 2020</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/suburbana_portfolio_video.mp4" data-watch data-title="(Sub)Urbana" data-credit="curta-metragem · 2023" aria-label="Assistir (Sub)Urbana"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/suburbana_portfolio_video.mp4" poster="assets/producao/capa-15.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/suburbana_portfolio_video.mp4" data-watch data-title="(Sub)Urbana" data-credit="curta-metragem · 2023" aria-label="Assistir (Sub)Urbana"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/suburbana_portfolio_video.mp4" poster="assets/producao/capa-15.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">(Sub)Urbana</p><p class="g-tipo">curta-metragem · 2023</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/dropar_portfolio_video.mp4" data-watch data-title="Dropar Teu Nome" data-credit="videoclipe · Letrux" aria-label="Assistir Dropar Teu Nome"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/dropar_portfolio_video.mp4" poster="assets/producao/capa-16.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/dropar_portfolio_video.mp4" data-watch data-title="Dropar Teu Nome" data-credit="videoclipe · Letrux" aria-label="Assistir Dropar Teu Nome"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/dropar_portfolio_video.mp4" poster="assets/producao/capa-16.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Dropar Teu Nome</p><p class="g-tipo">videoclipe · Letrux</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/debaixo_portfolio_video.mp4" data-watch data-title="Debaixo do Guarda-chuva" data-credit="documentário" aria-label="Assistir Debaixo do Guarda-chuva"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/debaixo_portfolio_video.mp4" poster="assets/producao/capa-17.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/debaixo_portfolio_video.mp4" data-watch data-title="Debaixo do Guarda-chuva" data-credit="documentário" aria-label="Assistir Debaixo do Guarda-chuva"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/debaixo_portfolio_video.mp4" poster="assets/producao/capa-17.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">Debaixo do Guarda-chuva</p><p class="g-tipo">documentário</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/producao/oakhukas-fashion-film.mp4" data-watch data-title="OAKHUKAS" data-credit="campanha de moda · lançamento" aria-label="Assistir OAKHUKAS"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/oakhukas-fashion-film.mp4" poster="assets/producao/capa-18.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">OAKHUKAS</p><p class="g-tipo">campanha de moda · lançamento</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/producao/oakhukas-fashion-film.mp4" data-watch data-title="OAKHUKAS" data-credit="campanha de moda · lançamento" aria-label="Assistir OAKHUKAS"><video muted loop playsinline preload="none" data-autoplay data-src="assets/producao/oakhukas-fashion-film.mp4" poster="assets/producao/capa-18.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">OAKHUKAS</p><p class="g-tipo">campanha de moda · lançamento</p></div></div></a></div>
 
-<div class="grade-item"><a class="video-abrir" href="assets/videos/YMA for Agarum_horizontal.mp4" data-watch data-title="YMA for Agarum" data-credit="filme de marca" aria-label="Assistir YMA for Agarum"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum_horizontal.mp4" poster="assets/producao/capa-08.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">YMA for Agarum</p><p class="g-tipo">filme de marca</p></div></div><span class="play-label">▶ Assistir</span></a></div>
+<div class="grade-item"><a class="video-abrir" href="assets/videos/YMA for Agarum_horizontal.mp4" data-watch data-title="YMA for Agarum" data-credit="filme de marca" aria-label="Assistir YMA for Agarum"><video muted loop playsinline preload="none" data-autoplay data-src="assets/videos/YMA for Agarum_horizontal.mp4" poster="assets/producao/capa-08.jpg" aria-hidden="true"></video><div class="grade-overlay"><div><p class="g-titulo">YMA for Agarum</p><p class="g-tipo">filme de marca</p></div></div></a></div>
 
 </div>
 </section>
@@ -342,39 +342,38 @@ html{scroll-behavior:auto}
 <!-- ===================== TRAJETÓRIA ===================== -->
 <section class="claro" id="trajetoria">
 <p class="tag" data-reveal>Trajetória</p>
-<div class="trajetoria-intro"><h2>Um olhar autoral.<br>Experiência na prática.</h2><p>Minha trajetória reúne produção contínua de conteúdo, direção de cinema e videoclipes e participação em equipes de publicidade. Cada projeto aqui tem um crédito: o que fiz, com quem trabalhei e onde essa experiência se conecta.</p></div>
-<div class="experiencia-destaque"><article><span class="micro">2020 — atualmente</span><h3>Canal Maria Homem</h3><p>Direção, captação, edição e publicação de conteúdos para YouTube, cursos e redes sociais.</p></article><article><span class="micro">Conteúdo orgânico</span><h3>Gabriel Bernardo</h3><p>Produção de conteúdos para Instagram com o influenciador.</p></article><article><span class="micro">Publicidade e produção</span><h3>Experiência de set</h3><p>Assistência de produção de objetos em campanhas de CeraVe, Nutren e Azul; operação de câmera PTZ e still no reality Segue o Baile, do E! Channel.</p></article></div>
+<div class="trajetoria-intro"><h2>Um olhar autoral.<br>Experiência na prática.</h2><p>Cinema, videoclipes, campanhas e conteúdo digital. Minha trajetória reúne projetos autorais e produções com marcas, artistas e criadores — experiências que ampliam meu olhar e a forma como conduzo cada trabalho.</p></div>
 <h3 class="micro creditos-titulo">Artistas, marcas e equipes com quem trabalhei</h3>
 <div class="creditos" data-reveal>
-
-<div class="credito"><b>Linn da Quebrada</b><span>videoclipe · direção</span></div>
-<div class="credito"><b>Letrux</b><span>três videoclipes · direção</span></div>
-<div class="credito"><b>Maria Homem</b><span>conteúdo · direção, captação e edição</span></div>
-<div class="credito"><b>Gabriel Bernardo</b><span>Instagram · produção de conteúdo</span></div>
-<div class="credito"><b>Agarum</b><span>filme de marca · direção</span></div>
-<div class="credito"><b>Liniker feat. Priscila Senna</b><span>videoclipe · assistência de produção executiva</span></div>
-<div class="credito"><b>Jesus Lumma feat. Dandara Manoela</b><span>videoclipe · direção</span></div>
 <div class="credito"><b>OAKHUKAS</b><span>campanha de lançamento</span></div>
-<div class="credito"><b>Calma São Paulo</b><span>editorial · assistência de arte</span></div>
-<div class="credito"><b>CeraVe</b><span>publicidade · assistência de produção de objetos</span></div>
-<div class="credito"><b>Malu Maria</b><span>videoclipe · direção</span></div>
-<div class="credito"><b>Nutren</b><span>publicidade · assistência de produção de objetos</span></div>
-<div class="credito"><b>Gabeu</b><span>videoclipes · direção de arte</span></div>
-<div class="credito"><b>Azul</b><span>publicidade · assistência de produção de objetos</span></div>
-<div class="credito"><b>YMA</b><span>videoclipe · direção de arte</span></div>
-<div class="credito"><b>Vitor Kley</b><span>videoclipe · assistência de produção de objetos</span></div>
-<div class="credito"><b>Trinco Produtora</b><span>curta-metragem · direção</span></div>
-<div class="credito"><b>Lou Garcia</b><span>videoclipe · assistência de produção de objetos</span></div>
-<div class="credito"><b>E! Channel</b><span>reality · still e câmera ptz</span></div>
-<div class="credito"><b>Ananda Paixão</b><span>videoclipe · assistência de direção</span></div>
-<div class="credito"><b>Som do Ale</b><span>visualizer · assistência de arte e cenografia</span></div>
-
+<div class="credito"><b>CeraVe</b><span>campanha · 2025</span></div>
+<div class="credito"><b>Nutren</b><span>campanha · 2025</span></div>
+<div class="credito"><b>Azul</b><span>campanha · 2025</span></div>
+<div class="credito"><b>Umbro</b><span>campanha · 2026</span></div>
+<div class="credito"><b>120 Vinhos</b><span>publicidade · 2026</span></div>
+<div class="credito"><b>Calma São Paulo</b><span>editoriais · 2024–2025</span></div>
+<div class="credito"><b>Agarum</b><span>filme de marca</span></div>
+<div class="credito"><b>Maria Homem</b><span>conteúdo digital · desde 2020</span></div>
+<div class="credito"><b>Gabriel Bernardo</b><span>conteúdo para Instagram</span></div>
+<div class="credito"><b>Linn da Quebrada</b><span>videoclipe</span></div>
+<div class="credito"><b>Letrux</b><span>três videoclipes</span></div>
+<div class="credito"><b>Liniker feat. Priscila Senna</b><span>videoclipe · 2025</span></div>
+<div class="credito"><b>Jesus Lumma feat. Dandara Manoela</b><span>videoclipe</span></div>
+<div class="credito"><b>Vitor Kley</b><span>videoclipe · 2025</span></div>
+<div class="credito"><b>Lou Garcia</b><span>videoclipe · 2025</span></div>
+<div class="credito"><b>Malu Maria</b><span>videoclipe</span></div>
+<div class="credito"><b>Gabeu</b><span>videoclipes</span></div>
+<div class="credito"><b>YMA</b><span>videoclipe</span></div>
+<div class="credito"><b>E! Channel</b><span>reality · 2024</span></div>
+<div class="credito"><b>Trinco Produtora</b><span>cinema</span></div>
+<div class="credito"><b>Ananda Paixão</b><span>videoclipes</span></div>
 </div>
+
 <div style="display:flex;gap:1rem;flex-wrap:wrap" data-reveal>
 <a class="botao c" href="assets/VINI_POFFO_CV.pdf" target="_blank" rel="noopener">Baixar currículo em PDF ↓</a>
 <a class="botao c" href="trabalhos.html">Lista completa de trabalhos →</a>
 </div>
-<p class="creditos-nota">Atuação em direção, produção, arte ou assistência conforme o projeto — créditos individuais em /trabalhos.</p>
+<p class="creditos-nota">Uma seleção de projetos de que participei. Fichas e créditos completos na lista de trabalhos.</p>
 </section>
 
 <section class="escuro" id="formacao">
