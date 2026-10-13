@@ -100,34 +100,51 @@
     if (opener) opener.focus(); inView.forEach(playPreview);
   });
 
-  /* Os números animam uma única vez, ao entrar na tela. */
+  /* Conta uma vez, após o bloco permanecer realmente visível. */
   const counters = [...document.querySelectorAll('[data-counter]')];
   const finishCounter = el => { el.textContent = el.dataset.counter + (el.dataset.suffix || ''); };
   if (!reduce.matches && 'IntersectionObserver' in window) {
     counters.forEach(el => { el.textContent = '0' + (el.dataset.suffix || ''); });
-    const statsObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        statsObserver.unobserve(entry.target);
-        counters.forEach(el => {
-          const end = Number(el.dataset.counter), suffix = el.dataset.suffix || '';
-          let start;
-          function tick(now) {
-            if (reduce.matches) { finishCounter(el); return; }
-            if (start === undefined) start = now;
-            const t = Math.min((now - start) / 1600, 1);
-            el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
-            if (t < 1) requestAnimationFrame(tick);
-            else finishCounter(el);
-          }
-          requestAnimationFrame(tick);
-        });
-      });
-    }, {threshold: .35});
     const stats = document.querySelector('.numeros');
+    let pending, started = false;
+    function isVisible() {
+      if (!stats || document.hidden) return false;
+      const box = stats.getBoundingClientRect();
+      const visible = Math.min(box.bottom, window.innerHeight) - Math.max(box.top, 88);
+      return box.height > 0 && visible / box.height >= .65;
+    }
+    function startCounters() {
+      pending = undefined;
+      if (started || reduce.matches || !isVisible()) return;
+      started = true;
+      stats.dataset.counterStarted = 'true';
+      statsObserver.disconnect();
+      counters.forEach(el => {
+        const end = Number(el.dataset.counter), suffix = el.dataset.suffix || '';
+        let start;
+        function tick(now) {
+          if (reduce.matches) { finishCounter(el); return; }
+          if (start === undefined) start = now;
+          const t = Math.min((now - start) / 1600, 1);
+          el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
+          if (t < 1) requestAnimationFrame(tick);
+          else finishCounter(el);
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+    function queueCounters() {
+      clearTimeout(pending);
+      pending = undefined;
+      if (!started && !reduce.matches && isVisible()) pending = setTimeout(startCounters, 350);
+    }
+    const statsObserver = new IntersectionObserver(queueCounters, {threshold: [0, .65, 1]});
     if (stats) statsObserver.observe(stats);
+    document.addEventListener('visibilitychange', queueCounters);
     reduce.addEventListener('change', () => {
-      if (reduce.matches) { statsObserver.disconnect(); counters.forEach(finishCounter); }
+      if (reduce.matches) {
+        clearTimeout(pending); statsObserver.disconnect(); counters.forEach(finishCounter);
+      }
     });
   }
 
